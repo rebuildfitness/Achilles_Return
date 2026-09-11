@@ -1,0 +1,19 @@
+{
+  "name": "Achilles Return to Basketball",
+  "short_name": "Achilles Return",
+  "description": "Criteria-based Achilles rehabilitation and return-to-basketball tracker.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F6F7F9",
+  "theme_color": "#1E2633",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

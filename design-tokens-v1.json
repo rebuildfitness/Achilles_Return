@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "visualReference": "assets/design/achilles-return-hero-reference.png",
+  "colors": {
+    "navy950": "#151B24",
+    "navy900": "#1E2633",
+    "navy800": "#273241",
+    "blue600": "#3165FC",
+    "blue500": "#4A78FF",
+    "blue050": "#EEF3FF",
+    "green600": "#38A971",
+    "green050": "#ECF8F1",
+    "amber500": "#F5B73A",
+    "amber050": "#FFF8E8",
+    "red500": "#E45B5B",
+    "red050": "#FFF0F0",
+    "ink900": "#18202C",
+    "ink700": "#3D4755",
+    "ink500": "#6B7480",
+    "line200": "#E5E8EE",
+    "surface100": "#F6F7F9",
+    "surface000": "#FFFFFF"
+  },
+  "radii": {
+    "small": 10,
+    "input": 12,
+    "button": 14,
+    "card": 16,
+    "heroCard": 18,
+    "pill": 999
+  },
+  "spacing": [4, 8, 12, 16, 20, 24, 32, 40],
+  "layout": {
+    "mobileGutter": 16,
+    "appContentMaxWidth": 720,
+    "headerMinHeight": 56,
+    "bottomNavMinHeight": 64,
+    "tapTargetMin": 44
+  },
+  "type": {
+    "family": "Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+    "display": { "size": 36, "weight": 700, "lineHeight": 1.08 },
+    "screenTitle": { "size": 28, "weight": 700, "lineHeight": 1.15 },
+    "sectionTitle": { "size": 18, "weight": 700, "lineHeight": 1.25 },
+    "cardTitle": { "size": 16, "weight": 700, "lineHeight": 1.3 },
+    "body": { "size": 15, "weight": 450, "lineHeight": 1.45 },
+    "small": { "size": 13, "weight": 450, "lineHeight": 1.35 },
+    "meta": { "size": 12, "weight": 600, "lineHeight": 1.2 }
+  },
+  "shadow": "0 6px 20px rgba(21, 27, 36, 0.06)",
+  "navigation": ["Today", "Plan", "Progress", "Tests", "More"],
+  "semanticRules": {
+    "blue": "interaction and progress",
+    "green": "ready, tolerated, completed",
+    "amber": "modified or caution",
+    "red": "stop or safety only"
+  }
+}
