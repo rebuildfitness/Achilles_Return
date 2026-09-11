@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f3d57" />
+  <meta name="description" content="Criteria-based Achilles rehabilitation and return-to-basketball tracker." />
+  <title>Achilles Return</title>
+  <style>
+:root{--bg:#f4f7f9;--card:#fff;--ink:#12232d;--muted:#657781;--brand:#0f3d57;--brand2:#1d607f;--green:#20845b;--green-bg:#eaf7f1;--amber:#9b6500;--amber-bg:#fff5dc;--red:#b33a3a;--red-bg:#fff0f0;--line:#dfe7eb;--shadow:0 12px 34px rgba(15,61,87,.08);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}*{box-sizing:border-box}body{margin:0;background:var(--bg)}button,input,textarea{font:inherit}.app-shell{max-width:760px;margin:0 auto;min-height:100vh;padding-bottom:92px}.topbar{display:flex;align-items:center;justify-content:space-between;padding:24px 20px 14px;position:sticky;top:0;background:rgba(244,247,249,.94);backdrop-filter:blur(12px);z-index:5}.topbar h1{margin:2px 0 0;font-size:24px}.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--muted);font-size:11px}.icon-button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;font-weight:800;color:var(--brand)}.content{padding:4px 16px 36px}.hero-card,.status-card,.milestone-card,.exercise-card,.log-card,.detail-card,.settings-card,.info-card,.warning-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow);margin-bottom:14px}.hero-card{background:linear-gradient(135deg,#0f3d57,#1d607f);color:#fff;border:none}.hero-card .pill{background:rgba(255,255,255,.16);color:#fff}.hero-card p{color:#e6f2f6}.hero-card h2{font-size:28px;line-height:1.08;margin:14px 0 10px}.pill,.ready-tag{display:inline-flex;padding:6px 10px;border-radius:999px;background:#e9f3f7;color:var(--brand);font-size:12px;font-weight:800}.status-card{display:flex;gap:14px;align-items:center}.status-card .grow{flex:1}.status-card h3,.milestone-card h3{margin:3px 0 5px}.status-card p,.milestone-card p,.detail-card p,.info-card p,.warning-card p{margin:0;color:var(--muted);line-height:1.45}.status-dot{width:13px;height:13px;border-radius:50%;background:#93a2aa;flex:none}.status-card.green{background:var(--green-bg);border-color:#c4ead9}.status-card.green .status-dot{background:var(--green)}.status-card.yellow-1,.status-card.yellow-2,.status-card.yellow-3{background:var(--amber-bg);border-color:#f1dda7}.status-card.yellow-1 .status-dot,.status-card.yellow-2 .status-dot,.status-card.yellow-3 .status-dot{background:var(--amber)}.status-card.red{background:var(--red-bg);border-color:#f0c2c2}.status-card.red .status-dot{background:var(--red)}.primary,.secondary,.back,.text-button,.link-button{border:0;border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer}.primary{background:var(--brand);color:#fff}.secondary{background:#eef4f7;color:var(--brand)}.wide{display:block;width:100%;text-align:center}.back{padding:8px 0;background:transparent;color:var(--brand);margin-bottom:14px}.text-button{background:transparent;color:var(--brand);padding:12px 0}.link-button{text-decoration:none;margin-top:12px}.milestone-card{display:flex;gap:18px;align-items:center;justify-content:space-between}.milestone-card>div{flex:1}.section-head{display:flex;align-items:end;justify-content:space-between;margin:26px 4px 10px}.section-head h2{font-size:20px;margin:3px 0}.section-head span{color:var(--muted);font-size:13px}.workout-preview{background:#fff;border:1px solid var(--line);border-radius:18px;margin-bottom:12px;overflow:hidden}.preview-row{display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}.preview-row:last-of-type{border-bottom:0}.preview-more{padding:12px 16px;color:var(--muted);font-size:13px}.flow-head{margin:12px 4px 20px}.flow-head h2{font-size:30px;line-height:1.06;margin:6px 0}.flow-head p{color:var(--muted)}.centered{text-align:center}.form-stack{display:grid;gap:12px}.question-card{border:1px solid var(--line);border-radius:18px;background:#fff;padding:16px;margin:0}.question-card legend{font-weight:800;padding:0 5px;margin-bottom:10px}.segmented{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.segmented label{position:relative}.segmented input{position:absolute;opacity:0;pointer-events:none}.segmented label span,.choice{display:block;padding:12px 10px;border:1px solid var(--line);border-radius:12px;text-align:center;background:#fff;font-weight:700;color:var(--ink)}.segmented input:checked+span,.choice.selected{background:#e8f2f6;border-color:#8ab8cb;color:var(--brand)}.option{display:flex;align-items:center;gap:10px;padding:9px 0}.option input{width:20px;height:20px}.progress-track{height:6px;background:#dfe8ec;border-radius:999px;overflow:hidden;margin-bottom:18px}.progress-track div{height:100%;background:var(--brand);border-radius:999px}.exercise-prescription{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}.exercise-prescription>div{background:#f5f8fa;border-radius:14px;padding:12px;text-align:center}.exercise-prescription span{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:800}.exercise-prescription strong{display:block;margin-top:4px;font-size:16px}.cue{border-left:4px solid #80c7a7;padding-left:12px}.cue span{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:800}.cue p{margin:4px 0}.adjustment{margin-top:12px;padding:10px 12px;background:var(--amber-bg);border-radius:10px;color:var(--amber);font-weight:700}.log-card h3,.detail-card h3{margin-top:0}.log-card>label{display:block;margin:12px 0;font-weight:700}.log-card input,.question-card textarea{display:block;width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:7px;background:#fff}.mini-question{margin-top:14px}.mini-question>span{display:block;font-weight:700;margin-bottom:7px}.segmented.compact{grid-template-columns:repeat(3,1fr)}.choice{cursor:pointer}.action-row{display:flex;gap:10px}.grow{flex:1}.finish-icon{width:70px;height:70px;margin:18px auto;background:var(--green-bg);color:var(--green);border-radius:50%;display:grid;place-items:center;font-size:36px;font-weight:900}.stage-list{background:#fff;border:1px solid var(--line);border-radius:20px;padding:8px 18px;margin-bottom:14px}.stage{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line)}.stage:last-child{border:0}.stage>span{font-size:18px;color:#a0aeb5}.stage.current>span{color:var(--green)}.stage div{display:grid;gap:2px}.stage small{color:var(--muted)}.stage.locked{opacity:.65}.test-list,.menu-list{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:14px}.test-row,.setting-row{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--line)}.test-row:last-child,.setting-row:last-child{border:0}.test-row div{display:grid;gap:3px}.test-row small{color:var(--muted)}.lock{font-size:12px;color:var(--muted)}.menu-list button{display:flex;width:100%;justify-content:space-between;padding:16px;background:#fff;border:0;border-bottom:1px solid var(--line);font-weight:700}.menu-list button:last-child{border:0}.disclaimer{font-size:12px;color:var(--muted);line-height:1.5;padding:4px 6px}.warning-card{background:var(--red-bg);border-color:#efc2c2}.bottom-nav{position:fixed;bottom:0;left:0;right:0;margin:auto;max-width:760px;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));z-index:10}.bottom-nav button{border:0;background:transparent;color:var(--muted);display:grid;place-items:center;gap:2px;font-size:11px;font-weight:800;padding:7px}.bottom-nav button span{font-size:19px}.bottom-nav button.active{color:var(--brand)}.toast{position:fixed;left:16px;right:16px;bottom:92px;max-width:700px;margin:auto;background:#12232d;color:#fff;padding:14px 16px;border-radius:14px;box-shadow:var(--shadow);z-index:50}.info-card{background:#f8fbfc;box-shadow:none}@media(min-width:680px){.content{padding-left:24px;padding-right:24px}.segmented{grid-template-columns:repeat(4,minmax(0,1fr))}.hero-card h2{font-size:34px}}
+.workout-day-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-end;margin:4px 4px 16px}.workout-day-head h2{font-size:28px;line-height:1.08;margin:4px 0 6px}.workout-day-head p{margin:0;color:var(--muted)}.day-workout-list{display:grid;gap:14px}.workout-exercise-card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}.workout-exercise-head{display:flex;justify-content:space-between;align-items:center;padding:16px}.workout-exercise-head>div{display:flex;align-items:center;gap:12px;min-width:0}.exercise-number{width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:#eef4f7;color:var(--brand);font-weight:900;flex:none}.workout-exercise-head h3{margin:0 0 3px;font-size:17px}.workout-exercise-head p{margin:0;color:var(--muted);font-size:12px}.exercise-card-actions{display:flex;align-items:center;gap:8px;flex:none}.exercise-demo-button{display:inline-flex;align-items:center;justify-content:center;padding:8px 10px;border-radius:10px;background:#e8f2f6;color:var(--brand);font-size:12px;font-weight:900;text-decoration:none;white-space:nowrap}.exercise-info-button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--brand);font-weight:900;flex:none}.set-table{border-top:1px solid var(--line)}.set-row{display:grid;grid-template-columns:42px minmax(70px,1fr) minmax(70px,1fr) 58px;gap:8px;align-items:center;padding:8px 12px;border-bottom:1px solid #edf1f3}.set-row:last-child{border-bottom:0}.set-row input{width:100%;min-width:0;border:1px solid var(--line);border-radius:10px;padding:10px 8px;text-align:center;background:#fff}.set-header{padding-top:8px;padding-bottom:6px;background:#f8fafb;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.06em;text-align:center}.set-number{text-align:center;font-weight:900;color:var(--muted)}.set-check{width:38px;height:38px;margin:auto;border-radius:11px;border:1px solid var(--line);background:#fff;color:#9aa9b1;font-size:20px;font-weight:900}.set-check.checked{background:var(--green);border-color:var(--green);color:#fff}.set-row.set-complete{background:#f5fbf8}.workout-cue{padding:10px 14px 13px;color:var(--muted);font-size:12px;line-height:1.4;background:#fbfcfd}.compact-adjustment{margin:0 12px 10px}.finish-workout-button{margin-top:18px;padding:15px}.equipment-title{margin:7px 0 12px}.equipment-chips{display:flex;flex-wrap:wrap;gap:7px}.equipment-chips span{display:inline-flex;padding:7px 9px;border-radius:999px;background:#eef4f7;color:var(--brand);font-size:12px;font-weight:800}.equipment-note{color:var(--muted);font-size:12px;line-height:1.45;margin:12px 0 0}.workout-preview .preview-row{gap:12px}.workout-preview .preview-row span{min-width:0}.workout-preview .preview-row strong{white-space:nowrap}.preview-more{display:none}@media(max-width:390px){.set-row{grid-template-columns:36px minmax(60px,1fr) minmax(60px,1fr) 50px;padding-left:8px;padding-right:8px}.workout-exercise-head{padding:14px}.workout-exercise-head h3{font-size:16px}}
+
+
+.plan-banner{background:#eef6f9;border:1px solid #cfe0e7;border-radius:18px;padding:15px 16px;margin-bottom:16px}.plan-banner strong{display:block;margin-bottom:4px}.plan-banner p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}.week-plan{display:grid;gap:10px;margin-bottom:22px}.plan-day-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.plan-day-row{display:grid;grid-template-columns:54px 1fr auto;gap:12px;align-items:center;padding:14px}.plan-day-row.today-plan{background:#f3f9fb}.plan-date{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:#eef4f7;color:var(--brand);line-height:1}.plan-date span{font-size:10px;font-weight:900;text-transform:uppercase}.plan-date strong{font-size:19px;margin-top:3px}.plan-main h3{margin:0 0 4px;font-size:15px}.plan-main p{margin:0;color:var(--muted);font-size:12px}.plan-status{font-size:11px;font-weight:900;padding:6px 8px;border-radius:999px;background:#f1f4f5;color:var(--muted);white-space:nowrap}.plan-status.training{background:#e9f3f7;color:var(--brand)}.plan-status.complete{background:var(--green-bg);color:var(--green)}.plan-detail-toggle{border:0;border-top:1px solid var(--line);background:#fff;color:var(--brand);font-weight:900;padding:11px 14px;width:100%;text-align:left}.plan-workout-detail{border-top:1px solid var(--line);background:#fbfcfd;padding:12px}.plan-exercise-row{display:flex;justify-content:space-between;gap:12px;padding:10px 4px;border-bottom:1px solid #e9eef0}.plan-exercise-row:last-child{border-bottom:0}.plan-exercise-row div{min-width:0}.plan-exercise-row strong{display:block;font-size:13px}.plan-exercise-row small{color:var(--muted);font-size:11px}.plan-exercise-row span{font-weight:900;font-size:12px;white-space:nowrap}.calendar-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:var(--shadow);margin-bottom:14px}.calendar-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.calendar-head h3{margin:0;font-size:18px}.calendar-nav{display:flex;gap:6px}.calendar-nav button{width:34px;height:34px;border:1px solid var(--line);background:#fff;border-radius:10px;color:var(--brand);font-weight:900}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.calendar-dow{text-align:center;color:var(--muted);font-size:10px;font-weight:900;padding:5px 0}.calendar-day{position:relative;min-height:43px;border:0;background:#f8fafb;border-radius:10px;color:var(--ink);font-weight:800}.calendar-day.blank{background:transparent}.calendar-day.today{outline:2px solid #9fc5d4}.calendar-day.has-session{background:#eaf7f1;color:var(--green)}.calendar-day.has-session::after{content:'';position:absolute;bottom:5px;left:50%;width:5px;height:5px;border-radius:50%;background:var(--green);transform:translateX(-50%)}.calendar-day.selected{background:var(--brand);color:#fff;outline:none}.calendar-day.selected::after{background:#fff}.history-detail{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px}.history-detail h3{margin:0 0 4px}.history-detail>p{margin:0 0 12px;color:var(--muted);font-size:13px}.history-session{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.history-session:first-of-type{border-top:0;margin-top:0;padding-top:0}.history-session-head{display:flex;justify-content:space-between;gap:12px}.history-session-head small{color:var(--muted)}.history-exercise{padding:8px 0;border-bottom:1px solid #edf1f3}.history-exercise:last-child{border-bottom:0}.history-exercise strong{display:block;font-size:13px}.history-exercise small{color:var(--muted);font-size:11px}.empty-history{color:var(--muted);font-size:13px;padding:4px 0}.bottom-nav{grid-template-columns:repeat(5,1fr)}
+@media(max-width:390px){.bottom-nav button{font-size:10px;padding-left:3px;padding-right:3px}.plan-day-row{grid-template-columns:48px 1fr auto;padding:12px 10px;gap:9px}.plan-date{width:44px;height:44px}}
+
+</style>
+</head>
+<body>
+  <div id="app"><div style="padding:24px;font-family:system-ui,sans-serif">Loading Achilles Return…</div></div>
+  <script>
+
+// ---- src/db.js ----
+const DB_NAME = 'achilles-return-db';
+const DB_VERSION = 1;
+let dbPromise;
+
+function getDb() {
+  if (!('indexedDB' in window)) return Promise.resolve(null);
+  if (!dbPromise) {
+    dbPromise = new Promise((resolve, reject) => {
+      const req = indexedDB.open(DB_NAME, DB_VERSION);
+      req.onupgradeneeded = () => {
+        const db = req.result;
+        if (!db.objectStoreNames.contains('checkins')) db.createObjectStore('checkins', { keyPath:'id' });
+        if (!db.objectStoreNames.contains('sessions')) db.createObjectStore('sessions', { keyPath:'id' });
+        if (!db.objectStoreNames.contains('profile')) db.createObjectStore('profile', { keyPath:'id' });
+        if (!db.objectStoreNames.contains('assessments')) db.createObjectStore('assessments', { keyPath:'id' });
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+  return dbPromise;
+}
+
+async function put(store, value) {
+  const db = await getDb();
+  if (!db) return;
+  await txPromise(db, store, 'readwrite', s => s.put(value));
+}
+
+async function get(store, id) {
+  const db = await getDb();
+  if (!db) return null;
+  return txPromise(db, store, 'readonly', s => s.get(id));
+}
+
+async function getAll(store) {
+  const db = await getDb();
+  if (!db) return [];
+  return txPromise(db, store, 'readonly', s => s.getAll());
+}
+
+function txPromise(db, store, mode, op) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(store, mode);
+    const request = op(tx.objectStore(store));
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+async function exportAll() {
+  return {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    profile: await getAll('profile'),
+    checkins: await getAll('checkins'),
+    sessions: await getAll('sessions'),
+    assessments: await getAll('assessments')
+  };
+}
+
+
+// ---- src/data/exercises.js ----
+const OWNED_EQUIPMENT = Object.freeze([
+  'smith-machine',
+  'adjustable-bench',
+  'cable-machine',
+  'belt-squat',
+  'trap-bar',
+  'dumbbells',
+  'pull-up-bar',
+  'dip-bars',
+  'exercise-bike',
+  'incline-treadmill',
+  'slant-board',
+  'balance-pad',
+  'rehab-bands',
+  'weighted-wagon'
+]);
+
+const exercises = {
+  seatedCalf: {
+    id: 'seated-dumbbell-calf-raise',
+    name: 'Seated Dumbbell Calf Raise',
+    purpose: 'Build soleus and plantar-flexor strength with controlled Achilles loading.',
+    sets: 4,
+    reps: '8–12',
+    effort: 'Hard but controlled',
+    rpe: '7–8',
+    restSec: 90,
+    tempo: '2 sec up • 1 sec hold • 3 sec down',
+    cue: 'Sit on your adjustable bench, keep the knee bent, and reach full controlled heel height.',
+    loadTier: 'moderate',
+    tags: ['soleus','calf-strength'],
+    equipment: ['adjustable-bench','dumbbells'],
+    evidence: 'Supportive',
+    videoSource: 'NHS inform',
+    videoUrl: 'https://www.youtube.com/watch?v=RsdE7Ehwhvc',
+    videoNote: 'Short exercise-specific demonstration'
+  },
+  singleCalf: {
+    id: 'single-leg-calf-raise',
+    name: 'Single-Leg Calf Raise',
+    purpose: 'Build unilateral calf strength, heel-rise height and endurance.',
+    sets: 3,
+    reps: '6–10',
+    effort: 'Hard but clean',
+    rpe: '7–8',
+    restSec: 120,
+    tempo: '2 sec up • 1 sec hold • 3 sec down',
+    cue: 'Use your slant board or a stable step only if it allows full control; prioritize heel height over load.',
+    loadTier: 'high',
+    tags: ['gastroc','calf-strength'],
+    equipment: ['slant-board','dumbbells'],
+    evidence: 'Supportive',
+    videoSource: 'Revival Performance Physical Therapy',
+    videoUrl: 'https://www.youtube.com/watch?v=blPyPFXR-WU',
+    videoNote: 'Exercise-specific physical therapist demonstration'
+  },
+  beltSquat: {
+    id: 'belt-squat',
+    name: 'Belt Squat',
+    purpose: 'Build quad and glute strength without requiring a leg press or barbell back squat.',
+    sets: 3,
+    reps: '8–10',
+    effort: 'Hard',
+    rpe: '7–8',
+    restSec: 150,
+    tempo: '3 sec down • controlled up',
+    cue: 'Stay tall, keep the knees tracking over the feet, and use a pain-free depth you can control.',
+    loadTier: 'moderate',
+    tags: ['quad','glute','strength'],
+    equipment: ['belt-squat'],
+    evidence: 'General strength evidence',
+    videoSource: 'Flow High Performance',
+    videoUrl: 'https://www.youtube.com/watch?v=lSN8HtptOvE'
+  },
+  rdl: {
+    id: 'dumbbell-romanian-deadlift',
+    name: 'Dumbbell Romanian Deadlift',
+    purpose: 'Build hamstrings and hip-extension strength for athletic movement without conventional deadlifting.',
+    sets: 3,
+    reps: '8–10',
+    effort: 'Hard',
+    rpe: '7–8',
+    restSec: 150,
+    tempo: '3 sec down • controlled up',
+    cue: 'Push the hips back while keeping the trunk stable and the dumbbells close to your legs.',
+    loadTier: 'low',
+    tags: ['hamstring','glute','strength'],
+    equipment: ['dumbbells'],
+    evidence: 'General strength evidence',
+    videoSource: 'NASM',
+    videoUrl: 'https://www.youtube.com/watch?v=xgusDooVfKU'
+  },
+  stepUp: {
+    id: 'bench-step-up',
+    name: 'Bench Step-Up',
+    purpose: 'Build controlled single-leg strength and force transfer.',
+    sets: 3,
+    reps: '8 / side',
+    effort: 'Moderate-hard',
+    rpe: '7',
+    restSec: 90,
+    tempo: 'Controlled',
+    cue: 'Use a conservative bench height and drive through the working leg without pushing hard from the trailing foot.',
+    loadTier: 'moderate',
+    tags: ['single-leg','quad','glute'],
+    equipment: ['adjustable-bench','dumbbells'],
+    evidence: 'Supportive',
+    videoSource: 'NASM',
+    videoUrl: 'https://www.youtube.com/watch?v=k0_42mij5Fc'
+  },
+  pallof: {
+    id: 'cable-pallof-press',
+    name: 'Cable Pallof Press',
+    purpose: 'Build trunk control for running, cutting and force transfer.',
+    sets: 2,
+    reps: '10 / side',
+    effort: 'Controlled',
+    rpe: '6–7',
+    restSec: 45,
+    tempo: 'Controlled',
+    cue: 'Keep shoulders and hips square while resisting rotation.',
+    loadTier: 'minimal',
+    tags: ['trunk'],
+    equipment: ['cable-machine'],
+    evidence: 'General strength evidence',
+    videoSource: 'NASM',
+    videoUrl: 'https://www.youtube.com/watch?v=f3R99GoYvCs'
+  },
+  wagonBackwardDrag: {
+    id: 'weighted-wagon-backward-drag',
+    name: 'Weighted Wagon Backward Drag',
+    purpose: 'Build low-impact leg capacity and conditioning while using your weighted wagon as a sled substitute.',
+    sets: 4,
+    reps: '15–25 yd',
+    effort: 'Smooth and controlled',
+    rpe: '5–7',
+    restSec: 60,
+    tempo: 'Steady backward steps',
+    cue: 'Face the wagon, keep your torso tall, take short controlled backward steps, and use a load that rolls smoothly without jerking.',
+    loadTier: 'moderate',
+    tags: ['conditioning','quad','sled','gait-capacity'],
+    equipment: ['weighted-wagon'],
+    evidence: 'General strength and conditioning evidence; use as an implementation option, not an Achilles clearance test.',
+    videoSource: 'Resilient Performance Physical Therapy',
+    videoUrl: 'https://www.youtube.com/watch?v=YyaNNPy-FNQ'
+  },
+  bike: {
+    id: 'easy-bike',
+    name: 'Easy Bike',
+    purpose: 'Maintain conditioning while reducing impact demand.',
+    sets: 1,
+    reps: '15–25 min',
+    effort: 'Easy-moderate',
+    rpe: '4–6',
+    restSec: 0,
+    tempo: 'Steady',
+    cue: 'Keep cadence smooth and symptoms quiet.',
+    loadTier: 'low',
+    tags: ['conditioning'],
+    equipment: ['exercise-bike'],
+    evidence: 'General conditioning evidence',
+    videoUrl: ''
+  }
+};
+
+function usesOnlyOwnedEquipment(exercise) {
+  return (exercise.equipment || []).every(item => OWNED_EQUIPMENT.includes(item));
+}
+
+
+// ---- src/data/workouts.js ----
+
+function owned(items) {
+  return items.filter(usesOnlyOwnedEquipment);
+}
+
+const BASE_WORKOUT = {
+  id: 'foundation-strength-a',
+  title: 'Achilles + Lower Body Strength',
+  phase: 'Re-entry / Baseline',
+  items: owned([
+    exercises.seatedCalf,
+    exercises.singleCalf,
+    exercises.beltSquat,
+    exercises.rdl,
+    exercises.stepUp,
+    exercises.pallof
+  ])
+};
+
+const RECOVERY_WORKOUT = {
+  id: 'recovery-strength',
+  title: 'Modified Strength + Recovery',
+  phase: 'Re-entry / Baseline',
+  items: owned([
+    { ...exercises.seatedCalf, sets: 2, effort: 'Moderate' },
+    { ...exercises.beltSquat, sets: 2, effort: 'Moderate' },
+    { ...exercises.rdl, sets: 2, effort: 'Moderate' },
+    exercises.pallof,
+    exercises.bike
+  ])
+};
+
+
+// ---- src/rules/readiness.js ----
+const READINESS = Object.freeze({
+  GREEN: 'GREEN',
+  YELLOW_1: 'YELLOW_1',
+  YELLOW_2: 'YELLOW_2',
+  YELLOW_3: 'YELLOW_3',
+  RED: 'RED'
+});
+
+const redSymptoms = new Set(['sharp-pain','new-bruising','major-swelling','sudden-weakness','new-limp','other-concerning']);
+
+function classifyReadiness(checkIn) {
+  const unusual = checkIn.unusualSymptoms || [];
+  if (unusual.some(x => redSymptoms.has(x))) {
+    return decision(READINESS.RED, 'A concerning symptom was reported.', 'Stop Achilles loading and seek appropriate medical evaluation.');
+  }
+
+  if (checkIn.pain === 'significant') {
+    return decision(READINESS.YELLOW_3, 'Pain is substantially above a normal training response.', 'No impact loading today; use only tolerated low-load work.');
+  }
+
+  const severeTendonResponse = checkIn.pain === 'moderate' || checkIn.stiffness === 'much-more' || checkIn.swelling === 'a-lot' || checkIn.previousResponse === 'poor';
+  if (severeTendonResponse) {
+    return decision(READINESS.YELLOW_2, 'Your Achilles is showing a meaningful increase in symptoms.', 'Reduce Achilles loading and remove impact/high-rate work.');
+  }
+
+  const mildChange = checkIn.pain === 'mild' || checkIn.stiffness === 'slightly-more' || checkIn.swelling === 'a-little' || checkIn.previousResponse === 'somewhat-sore' || checkIn.recovery === 'poor';
+  if (mildChange) {
+    return decision(READINESS.YELLOW_1, 'Your Achilles or recovery is slightly below baseline.', 'Keep the session but reduce Achilles volume and do not progress loads.');
+  }
+
+  return decision(READINESS.GREEN, 'Your Achilles response looks stable today.', 'Complete the planned session.');
+}
+
+function decision(level, reason, action) {
+  return { level, reason, action };
+}
+
+function readinessLabel(level) {
+  return {
+    GREEN: 'Ready to Train',
+    YELLOW_1: 'Workout Adjusted',
+    YELLOW_2: 'Workout Adjusted',
+    YELLOW_3: 'Recovery Focus Today',
+    RED: 'Stop Achilles Loading'
+  }[level] || 'Check-In Needed';
+}
+
+
+// ---- src/rules/workout.js ----
+
+
+function buildWorkout(readiness) {
+  if (!readiness || readiness.level === READINESS.GREEN) return clone(BASE_WORKOUT);
+  if (readiness.level === READINESS.RED) return { id:'red-stop', title:'No Achilles Workout', phase:'Safety Hold', items:[], stopped:true };
+  if (readiness.level === READINESS.YELLOW_3) return clone(RECOVERY_WORKOUT);
+
+  const workout = clone(BASE_WORKOUT);
+  workout.title = 'Modified Achilles + Lower Body';
+  workout.items = workout.items.map(item => {
+    if (readiness.level === READINESS.YELLOW_1 && ['moderate','high'].includes(item.loadTier)) {
+      return { ...item, sets: Math.max(2, item.sets - 1), adjustment: 'Reduced volume today' };
+    }
+    if (readiness.level === READINESS.YELLOW_2 && item.loadTier === 'high') {
+      return null;
+    }
+    if (readiness.level === READINESS.YELLOW_2 && item.loadTier === 'moderate') {
+      return { ...item, sets: Math.max(2, item.sets - 1), effort: 'Moderate', adjustment: 'Reduced Achilles demand today' };
+    }
+    return item;
+  }).filter(Boolean);
+  return workout;
+}
+
+function clone(obj) { return JSON.parse(JSON.stringify(obj)); }
+
+function resumeAfterMissedSessions(daysMissed, readinessLevel) {
+  if (readinessLevel === READINESS.RED) return { action:'STOP', reduction:1 };
+  if (daysMissed <= 3) return { action:'RESUME', reduction:0 };
+  if (daysMissed <= 10) return { action:'REDUCED_REENTRY', reduction:0.2 };
+  return { action:'RETEST_AND_REENTER', reduction:0.3 };
+}
+
+
+// ---- src/app.js ----
+
+
+
+
+const app = document.querySelector('#app');
+const state = {
+  tab: 'today',
+  checkIn: null,
+  readiness: null,
+  workout: null,
+  workoutLog: {},
+  currentExercise: 0,
+  showCheckin: false,
+  showWorkout: false,
+  showExerciseDetail: null,
+  showFinish: false,
+  sessions: [],
+  planDetailDate: null,
+  calendarCursor: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+  selectedHistoryDate: null
+};
+
+const profile = {
+  surgeryDate: '2026-01-07',
+  phase: 'Re-entry / Baseline',
+  target: 'Return safely to basketball'
+};
+
+function currentWeekPlan() {
+  const today = new Date();
+  const monday = startOfWeek(today);
+  const schedule = [
+    { key:'strength', title:'Achilles + Lower Body Strength', type:'Strength', workout: BASE_WORKOUT },
+    { key:'conditioning', title:'Low-Impact Conditioning', type:'Conditioning', workout:{ id:'conditioning-bike', title:'Low-Impact Conditioning', items:[exercises.bike] } },
+    { key:'strength-b', title:'Achilles Strength + Lower Body B', type:'Strength', workout:{ id:'foundation-strength-b', title:'Achilles Strength + Lower Body B', items: owned([exercises.seatedCalf, exercises.singleCalf, exercises.stepUp, exercises.rdl, exercises.pallof]) } },
+    { key:'recovery', title:'Recovery / Mobility', type:'Recovery', workout:null, note:'Easy movement and recovery. No catch-up loading.' },
+    { key:'strength-a', title:'Achilles + Lower Body Strength', type:'Strength', workout: BASE_WORKOUT },
+    { key:'conditioning-2', title:'Easy Conditioning / Walk', type:'Conditioning', workout:{ id:'easy-conditioning', title:'Easy Conditioning', items:[exercises.bike] } },
+    { key:'rest', title:'Rest / Mobility', type:'Recovery', workout:null, note:'Rest or gentle mobility based on readiness.' }
+  ];
+  return schedule.map((item, i) => {
+    const date = new Date(monday); date.setDate(monday.getDate()+i);
+    return { ...item, date: dateKey(date), dateObj: date };
+  });
+}
+
+function startOfWeek(date) {
+  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const day = (d.getDay()+6)%7;
+  d.setDate(d.getDate()-day);
+  return d;
+}
+
+function dateKey(d) {
+  const y=d.getFullYear(); const m=String(d.getMonth()+1).padStart(2,'0'); const day=String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+
+hydrateToday().then(() => { render(); registerPwa(); }).catch(err => { console.error(err); document.querySelector('#app').innerHTML = '<div style="padding:24px;font-family:system-ui"><h2>Achilles Return</h2><p>The app could not start. Please refresh or use the full project package.</p></div>'; });
+
+async function hydrateToday() {
+  state.sessions = await getAll('sessions');
+  const all = await getAll('checkins');
+  const today = dayKey();
+  const record = all.find(x => x.date === today);
+  if (record) {
+    state.checkIn = record.answers;
+    state.readiness = record.readiness;
+    state.workout = buildWorkout(record.readiness);
+  }
+}
+
+function render() {
+  app.innerHTML = `
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">Achilles Return</div>
+          <h1>${titleForTab()}</h1>
+        </div>
+        <button class="icon-button" data-action="info" aria-label="App information">i</button>
+      </header>
+      <section class="content">${renderCurrent()}</section>
+      ${renderNav()}
+    </main>
+  `;
+  bindEvents();
+}
+
+function titleForTab() {
+  return ({ today:'Today', plan:'Plan', progress:'Progress', tests:'Tests', more:'More' })[state.tab];
+}
+
+function renderCurrent() {
+  if (state.showCheckin) return renderCheckIn();
+  if (state.showWorkout) return renderWorkout();
+  if (state.showExerciseDetail) return renderExerciseDetail(state.showExerciseDetail);
+  if (state.showFinish) return renderFinish();
+  if (state.tab === 'plan') return renderPlan();
+  if (state.tab === 'progress') return renderProgress();
+  if (state.tab === 'tests') return renderTests();
+  if (state.tab === 'more') return renderMore();
+  return renderToday();
+}
+
+function renderToday() {
+  const status = state.readiness ? readinessLabel(state.readiness.level) : 'Check in to start';
+  const levelClass = state.readiness ? state.readiness.level.toLowerCase().replace('_','-') : 'neutral';
+  const workout = state.workout || buildWorkout({ level: READINESS.GREEN });
+  return `
+    <section class="hero-card">
+      <span class="pill">${profile.phase}</span>
+      <h2>Build the capacity for your next safe step.</h2>
+      <p>${profile.target}</p>
+    </section>
+
+    <section class="status-card ${levelClass}">
+      <div class="status-dot"></div>
+      <div class="grow">
+        <div class="eyebrow">Today's status</div>
+        <h3>${status}</h3>
+        <p>${state.readiness ? state.readiness.reason : 'A quick check-in helps the app adjust today’s Achilles loading.'}</p>
+      </div>
+      ${!state.readiness ? '<button class="primary" data-action="checkin">Check In</button>' : ''}
+    </section>
+
+    ${state.readiness ? `
+      <section class="section-head"><div><div class="eyebrow">Today's plan</div><h2>${workout.title}</h2></div><span>${workout.items.length} items</span></section>
+      ${state.readiness.level === READINESS.RED ? `
+        <div class="warning-card"><strong>No Achilles workout today.</strong><p>${state.readiness.action}</p></div>
+      ` : `
+        <div class="workout-preview">
+          ${workout.items.map(x => `<div class="preview-row"><span>${x.name}</span><strong>${x.sets} × ${x.reps}</strong></div>`).join('')}
+        </div>
+        <button class="primary wide" data-action="start-workout">Open Full Workout</button>
+      `}
+    ` : ''}
+
+    <section class="milestone-card">
+      <div>
+        <div class="eyebrow">This week</div>
+        <h3>See your full training plan</h3>
+        <p>View every scheduled workout plus your completed-workout calendar.</p>
+      </div>
+      <button class="secondary" data-tab="plan">Open Plan</button>
+    </section>
+
+    <section class="milestone-card">
+      <div>
+        <div class="eyebrow">Next milestone</div>
+        <h3>Complete Baseline Assessment</h3>
+        <p>Establish calf strength, heel-rise capacity, balance and mobility before the app assigns a later phase.</p>
+      </div>
+      <button class="secondary" data-tab="tests">View Tests</button>
+    </section>
+  `;
+}
+
+function renderCheckIn() {
+  return `
+    <button class="back" data-action="close-flow">← Back</button>
+    <div class="flow-head"><div class="eyebrow">About 30 seconds</div><h2>How is your Achilles today?</h2></div>
+    <form id="checkin-form" class="form-stack">
+      ${radioGroup('pain','Achilles pain right now?', [['none','None'],['mild','Mild'],['moderate','Moderate'],['significant','Significant']])}
+      ${radioGroup('stiffness','Morning stiffness compared with usual?', [['normal','Normal'],['slightly-more','A little more'],['much-more','Much more']])}
+      ${radioGroup('swelling','Extra swelling today?', [['normal','No'],['a-little','A little'],['a-lot','A lot']])}
+      ${radioGroup('previousResponse','Response to your last workout?', [['good','Good'],['somewhat-sore','A little sore'],['poor','Poor']])}
+      ${radioGroup('recovery','How recovered do you feel?', [['good','Good'],['okay','Okay'],['poor','Poor']])}
+      <fieldset class="question-card">
+        <legend>Anything unusual?</legend>
+        <label class="option"><input type="checkbox" name="unusual" value="sharp-pain"><span>Sharp pain</span></label>
+        <label class="option"><input type="checkbox" name="unusual" value="new-bruising"><span>New bruising</span></label>
+        <label class="option"><input type="checkbox" name="unusual" value="major-swelling"><span>Major swelling</span></label>
+        <label class="option"><input type="checkbox" name="unusual" value="sudden-weakness"><span>Sudden weakness</span></label>
+        <label class="option"><input type="checkbox" name="unusual" value="new-limp"><span>New limp</span></label>
+      </fieldset>
+      <button class="primary wide" type="submit">Finish Check-In</button>
+    </form>
+  `;
+}
+
+function radioGroup(name, legend, options) {
+  return `<fieldset class="question-card"><legend>${legend}</legend><div class="segmented">${options.map(([v,l],i) => `<label><input ${i===0?'checked':''} type="radio" name="${name}" value="${v}"><span>${l}</span></label>`).join('')}</div></fieldset>`;
+}
+
+function renderWorkout() {
+  const w = state.workout;
+  return `
+    <button class="back" data-action="close-workout">← Today</button>
+    <div class="workout-day-head">
+      <div>
+        <div class="eyebrow">Full workout</div>
+        <h2>${w.title}</h2>
+        <p>${w.items.length} exercises · Home gym equipment only</p>
+      </div>
+    </div>
+    <div class="day-workout-list">
+      ${w.items.map((ex, index) => renderWorkoutExercise(ex, index)).join('')}
+    </div>
+    <button class="primary wide finish-workout-button" data-action="finish-workout">Finish Workout</button>
+  `;
+}
+
+function renderWorkoutExercise(ex, index) {
+  const log = state.workoutLog[ex.id] || { sets: [] };
+  const sets = Array.from({ length: ex.sets }, (_, setIndex) => {
+    const setLog = log.sets?.[setIndex] || {};
+    return `
+      <div class="set-row ${setLog.complete ? 'set-complete' : ''}">
+        <div class="set-number">${setIndex + 1}</div>
+        <input aria-label="${ex.name} set ${setIndex+1} load" inputmode="decimal" placeholder="lb" value="${setLog.load || ''}" data-log-field="load" data-exercise="${ex.id}" data-set="${setIndex}">
+        <input aria-label="${ex.name} set ${setIndex+1} reps" inputmode="numeric" placeholder="${targetRepPlaceholder(ex.reps)}" value="${setLog.reps || ''}" data-log-field="reps" data-exercise="${ex.id}" data-set="${setIndex}">
+        <button type="button" class="set-check ${setLog.complete ? 'checked' : ''}" aria-label="Mark ${ex.name} set ${setIndex+1} complete" data-set-complete="1" data-exercise="${ex.id}" data-set="${setIndex}">${setLog.complete ? '✓' : '○'}</button>
+      </div>`;
+  }).join('');
+
+  return `
+    <section class="workout-exercise-card">
+      <div class="workout-exercise-head">
+        <div>
+          <div class="exercise-number">${index + 1}</div>
+          <div>
+            <h3>${ex.name}</h3>
+            <p>${ex.sets} × ${ex.reps} · RPE ${ex.rpe} · ${ex.restSec ? ex.restSec + ' sec rest' : 'continuous'}</p>
+          </div>
+        </div>
+        <div class="exercise-card-actions">
+          ${ex.videoUrl ? `<a class="exercise-demo-button" target="_blank" rel="noopener" href="${ex.videoUrl}" aria-label="Watch ${ex.name} demonstration">▶ Short Demo</a>` : ''}
+          <button class="exercise-info-button" data-action="exercise-detail" data-id="${ex.id}" aria-label="${ex.name} details">i</button>
+        </div>
+      </div>
+      ${ex.adjustment ? `<div class="adjustment compact-adjustment">${ex.adjustment}</div>` : ''}
+      <div class="set-table">
+        <div class="set-row set-header"><span>SET</span><span>LB</span><span>REPS</span><span>DONE</span></div>
+        ${sets}
+      </div>
+      <div class="workout-cue"><strong>Cue:</strong> ${ex.cue}</div>
+    </section>`;
+}
+
+function targetRepPlaceholder(reps) {
+  const match = String(reps).match(/\d+/);
+  return match ? match[0] : 'reps';
+}
+
+function renderExerciseDetail(id) {
+  const ex = state.workout.items.find(x => x.id === id);
+  return `
+    <button class="back" data-action="back-workout">← Workout</button>
+    <div class="flow-head"><div class="eyebrow">Exercise guide</div><h2>${ex.name}</h2></div>
+    <section class="detail-card"><h3>Why am I doing this?</h3><p>${ex.purpose}</p></section>
+    <section class="detail-card"><h3>Technique</h3><p><strong>Tempo:</strong> ${ex.tempo}</p><p><strong>Rest:</strong> ${ex.restSec ? ex.restSec + ' sec' : 'As needed'}</p><p><strong>Key cue:</strong> ${ex.cue}</p></section>
+    <section class="detail-card"><h3>Evidence</h3><p>${ex.evidence}</p></section>
+    ${ex.videoUrl ? `<a class="primary wide link-button" target="_blank" rel="noopener" href="${ex.videoUrl}">▶ Watch Short Demo${ex.videoSource ? ` · ${ex.videoSource}` : ''}</a>` : ''}
+  `;
+}
+
+function renderFinish() {
+  return `
+    <button class="back" data-action="back-workout">← Workout</button>
+    <div class="finish-icon">✓</div>
+    <div class="flow-head centered"><div class="eyebrow">Workout complete</div><h2>How did it go?</h2><p>We’ll use tomorrow morning’s response before progressing Achilles loading.</p></div>
+    <form id="finish-form" class="form-stack">
+      ${radioGroup('difficulty','Overall difficulty?', [['easy','Easy'],['right','About right'],['hard','Hard'],['too-hard','Too hard']])}
+      ${radioGroup('achilles','How does your Achilles feel now?', [['good','Good'],['mild','Mild symptoms'],['worse','Worse than expected']])}
+      <label class="question-card">Notes <textarea name="notes" rows="3" placeholder="Optional"></textarea></label>
+      <button class="primary wide" type="submit">Save Workout</button>
+    </form>
+  `;
+}
+
+
+function renderPlan() {
+  const week = currentWeekPlan();
+  const sessionsByDate = state.sessions.reduce((acc,s)=>{ (acc[s.date] ||= []).push(s); return acc; },{});
+  return `
+    <section class="hero-card"><span class="pill">Training plan</span><h2>Your week at a glance.</h2><p>See what is scheduled, open any workout, and review completed sessions on the calendar.</p></section>
+    <div class="plan-banner"><strong>Provisional Re-entry Week</strong><p>This schedule stays conservative until your baseline assessment assigns your actual starting level. Daily readiness can still modify a scheduled workout.</p></div>
+    <section class="section-head"><div><div class="eyebrow">Schedule</div><h2>This Week</h2></div><span>Mon–Sun</span></section>
+    <div class="week-plan">
+      ${week.map(entry => renderPlanDay(entry, sessionsByDate[entry.date] || [])).join('')}
+    </div>
+    <section class="section-head"><div><div class="eyebrow">History</div><h2>Workout Calendar</h2></div><span>Tap a completed day</span></section>
+    ${renderCalendar()}
+    ${renderSelectedHistory()}
+  `;
+}
+
+function renderPlanDay(entry, sessions) {
+  const isToday = entry.date === dayKey();
+  const isComplete = sessions.length > 0;
+  const expanded = state.planDetailDate === entry.date;
+  const dayName = entry.dateObj.toLocaleDateString(undefined,{weekday:'short'});
+  const monthDay = entry.dateObj.getDate();
+  const status = isComplete ? 'Completed' : entry.type;
+  const statusClass = isComplete ? 'complete' : entry.type === 'Recovery' ? '' : 'training';
+  return `
+    <section class="plan-day-card">
+      <div class="plan-day-row ${isToday?'today-plan':''}">
+        <div class="plan-date"><span>${dayName}</span><strong>${monthDay}</strong></div>
+        <div class="plan-main"><h3>${entry.title}</h3><p>${isToday?'Today · ':''}${entry.workout ? `${entry.workout.items.length} exercise${entry.workout.items.length===1?'':'s'}` : (entry.note || 'Recovery day')}</p></div>
+        <span class="plan-status ${statusClass}">${status}</span>
+      </div>
+      ${entry.workout ? `<button class="plan-detail-toggle" data-plan-date="${entry.date}">${expanded?'Hide workout':'View full workout'} ${expanded?'↑':'↓'}</button>` : ''}
+      ${expanded && entry.workout ? renderPlanWorkoutDetail(entry.workout) : ''}
+    </section>`;
+}
+
+function renderPlanWorkoutDetail(workout) {
+  return `<div class="plan-workout-detail">${workout.items.map(ex => `
+    <div class="plan-exercise-row">
+      <div><strong>${ex.name}</strong><small>RPE ${ex.rpe} · ${ex.restSec ? ex.restSec+' sec rest' : 'continuous'}</small></div>
+      <span>${ex.sets} × ${ex.reps}</span>
+    </div>`).join('')}</div>`;
+}
+
+function renderCalendar() {
+  const cursor = state.calendarCursor;
+  const y = cursor.getFullYear(), m = cursor.getMonth();
+  const first = new Date(y,m,1);
+  const offset = (first.getDay()+6)%7;
+  const days = new Date(y,m+1,0).getDate();
+  const sessionDates = new Set(state.sessions.map(s=>s.date));
+  const cells = [];
+  for(let i=0;i<offset;i++) cells.push('<div class="calendar-day blank"></div>');
+  for(let d=1;d<=days;d++){
+    const date = new Date(y,m,d); const key=dateKey(date);
+    const classes=['calendar-day'];
+    if(key===dayKey()) classes.push('today');
+    if(sessionDates.has(key)) classes.push('has-session');
+    if(state.selectedHistoryDate===key) classes.push('selected');
+    cells.push(`<button class="${classes.join(' ')}" data-calendar-date="${key}">${d}</button>`);
+  }
+  return `<section class="calendar-card">
+    <div class="calendar-head"><h3>${cursor.toLocaleDateString(undefined,{month:'long',year:'numeric'})}</h3><div class="calendar-nav"><button data-calendar-shift="-1" aria-label="Previous month">‹</button><button data-calendar-shift="1" aria-label="Next month">›</button></div></div>
+    <div class="calendar-grid">${['M','T','W','T','F','S','S'].map(d=>`<div class="calendar-dow">${d}</div>`).join('')}${cells.join('')}</div>
+  </section>`;
+}
+
+function renderSelectedHistory() {
+  if(!state.selectedHistoryDate) return '<div class="info-card"><strong>Calendar history</strong><p>Completed workout days are highlighted. Tap one to review the session.</p></div>';
+  const sessions=state.sessions.filter(s=>s.date===state.selectedHistoryDate).sort((a,b)=>String(a.createdAt).localeCompare(String(b.createdAt)));
+  const label=new Date(state.selectedHistoryDate+'T12:00:00').toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  if(!sessions.length) return `<section class="history-detail"><h3>${label}</h3><p>No completed workout saved for this date.</p><div class="empty-history">Scheduled and rest days remain visible in the weekly plan above.</div></section>`;
+  return `<section class="history-detail"><h3>${label}</h3><p>${sessions.length} saved workout${sessions.length===1?'':'s'}</p>${sessions.map(renderHistorySession).join('')}</section>`;
+}
+
+function renderHistorySession(session) {
+  const entries=Object.entries(session.exerciseLog||{});
+  const title=session.workoutTitle || workoutTitleFromId(session.workoutId);
+  return `<div class="history-session"><div class="history-session-head"><div><strong>${title}</strong><br><small>${historyStatusLabel(session.status)}</small></div><small>${session.overallDifficulty ? 'Difficulty: '+session.overallDifficulty.replace('-', ' ') : ''}</small></div>${entries.length ? entries.map(([id,log])=>{
+    const ex=findExerciseById(id); const sets=(log.sets||[]).filter(x=>x.complete||x.load||x.reps); const summary=sets.map(x=>`${x.load?x.load+' lb × ':''}${x.reps||'—'}`).join(' · ');
+    return `<div class="history-exercise"><strong>${ex?.name || id}</strong><small>${summary || 'Logged'}</small></div>`;
+  }).join('') : '<div class="empty-history">No set details were saved.</div>'}</div>`;
+}
+
+function findExerciseById(id) { return Object.values(exercises).find(x=>x.id===id); }
+function workoutTitleFromId(id) { if(id===BASE_WORKOUT.id) return BASE_WORKOUT.title; if(id===RECOVERY_WORKOUT.id) return RECOVERY_WORKOUT.title; return 'Workout'; }
+function historyStatusLabel(status) { return ({TOLERATED:'Tolerated ✓',BORDERLINE:'Borderline response',NOT_TOLERATED:'Not tolerated',PENDING_NEXT_DAY_RESPONSE:'Waiting for next-morning response'})[status] || status || 'Completed'; }
+
+function renderProgress() {
+  const stages = ['Strength','Running Readiness','Running','Jumping','Plyometrics','Speed','Change of Direction','Basketball'];
+  return `
+    <section class="hero-card"><span class="pill">Current stage</span><h2>Re-entry / Baseline</h2><p>We need your objective baseline before assigning a later stage.</p></section>
+    <section class="stage-list">${stages.map((s,i)=>`<div class="stage ${i===0?'current':'locked'}"><span>${i===0?'●':'○'}</span><div><strong>${s}</strong><small>${i===0?'Building foundation':'Locked until criteria are met'}</small></div></div>`).join('')}</section>
+    <section class="milestone-card"><div><div class="eyebrow">Next milestone</div><h3>Baseline testing</h3><p>Heel-rise capacity, balance and ankle mobility establish your starting point.</p></div><button class="secondary" data-tab="tests">View Tests</button></section>
+  `;
+}
+
+function renderTests() {
+  return `
+    <section class="hero-card"><span class="pill">Due now</span><h2>Baseline Assessment</h2><p>Complete these in short sessions rather than one exhausting test day.</p></section>
+    <div class="test-list">
+      ${testRow('Symptoms & function','5 min','Ready')}
+      ${testRow('Knee-to-wall mobility','5 min','Ready')}
+      ${testRow('Single-leg balance','5 min','Ready')}
+      ${testRow('Heel-rise assessment','10 min','Ready')}
+      ${testRow('Loaded calf capacity','10 min','Ready')}
+      ${testRow('Running readiness','Later','Locked',true)}
+      ${testRow('Jump & landing','Later','Locked',true)}
+    </div>
+    <div class="info-card"><strong>Why are later tests locked?</strong><p>The app avoids testing high-load activities before prerequisite strength and symptom criteria are established.</p></div>
+  `;
+}
+
+function testRow(name,time,status,locked=false){ return `<div class="test-row"><div><strong>${name}</strong><small>${time}</small></div><span class="${locked?'lock':'ready-tag'}">${locked?'🔒 ':''}${status}</span></div>`; }
+
+function renderMore() {
+  return `
+    <section class="settings-card">
+      <div class="setting-row"><span>Surgery date</span><strong>January 7, 2026</strong></div>
+      <div class="setting-row"><span>Current stage</span><strong>Re-entry / Baseline</strong></div>
+      <div class="setting-row"><span>Ruleset</span><strong>v1.3</strong></div>
+    </section>
+    <section class="settings-card">
+      <div class="eyebrow">Home gym equipment</div>
+      <h3 class="equipment-title">Workout equipment whitelist</h3>
+      <div class="equipment-chips">${OWNED_EQUIPMENT.map(e => `<span>${equipmentLabel(e)}</span>`).join('')}</div>
+      <p class="equipment-note">Workouts are filtered to this equipment list. A standalone leg press is not used.</p>
+    </section>
+    <div class="menu-list">
+      <button data-tab="plan">Plan & Workout Calendar <span>›</span></button>
+      <button data-action="export">Export My Data <span>↓</span></button>
+      <button data-action="about">Evidence & Safety <span>›</span></button>
+    </div>
+    <div class="info-card"><strong>Local-first privacy</strong><p>Your rehab information is stored in this browser on this device. Export a backup periodically.</p></div>
+    <p class="disclaimer">This app supports rehabilitation tracking and exercise progression. It does not diagnose injury or replace individualized medical care.</p>
+  `;
+}
+
+function equipmentLabel(id) {
+  return ({
+    'smith-machine':'Smith machine',
+    'adjustable-bench':'Adjustable bench',
+    'cable-machine':'Cable machine',
+    'belt-squat':'Belt squat',
+    'trap-bar':'Trap / hex bar',
+    'dumbbells':'Dumbbells',
+    'pull-up-bar':'Pull-up bar',
+    'dip-bars':'Dip bars',
+    'exercise-bike':'Exercise bike',
+    'incline-treadmill':'Incline treadmill',
+    'slant-board':'Slant board',
+    'balance-pad':'Balance pad',
+    'rehab-bands':'Rehab bands',
+    'weighted-wagon':'Weighted wagon / sled'
+  })[id] || id;
+}
+
+function renderNav() {
+  if (state.showCheckin || state.showWorkout || state.showExerciseDetail || state.showFinish) return '';
+  return `<nav class="bottom-nav">${[['today','Today'],['plan','Plan'],['progress','Progress'],['tests','Tests'],['more','More']].map(([id,label])=>`<button class="${state.tab===id?'active':''}" data-tab="${id}"><span>${navIcon(id)}</span>${label}</button>`).join('')}</nav>`;
+}
+
+function navIcon(id) { return ({today:'⌂',plan:'▦',progress:'↗',tests:'✓',more:'•••'})[id]; }
+
+function bindEvents() {
+  app.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{ state.tab=b.dataset.tab; clearFlows(); render(); });
+  const action = (name, fn) => { const el=app.querySelector(`[data-action="${name}"]`); if(el) el.onclick=fn; };
+  action('checkin',()=>{state.showCheckin=true;render();});
+  action('close-flow',()=>{state.showCheckin=false;render();});
+  action('start-workout',()=>{state.showWorkout=true;render();});
+  action('close-workout',()=>{state.showWorkout=false;render();});
+  action('finish-workout',()=>{state.showWorkout=false;state.showFinish=true;render();});
+  action('back-workout',()=>{state.showExerciseDetail=null;state.showFinish=false;state.showWorkout=true;render();});
+  app.querySelectorAll('[data-action="exercise-detail"]').forEach(b=>b.onclick=()=>{state.showWorkout=false;state.showExerciseDetail=b.dataset.id;render();});
+  app.querySelectorAll('[data-log-field]').forEach(input=>input.oninput=()=>updateSetLog(input));
+  app.querySelectorAll('[data-set-complete]').forEach(button=>button.onclick=()=>toggleSetComplete(button));
+  app.querySelectorAll('[data-plan-date]').forEach(button=>button.onclick=()=>{ state.planDetailDate = state.planDetailDate === button.dataset.planDate ? null : button.dataset.planDate; render(); });
+  app.querySelectorAll('[data-calendar-date]').forEach(button=>button.onclick=()=>{ state.selectedHistoryDate=button.dataset.calendarDate; render(); });
+  app.querySelectorAll('[data-calendar-shift]').forEach(button=>button.onclick=()=>{ const shift=Number(button.dataset.calendarShift); state.calendarCursor=new Date(state.calendarCursor.getFullYear(), state.calendarCursor.getMonth()+shift, 1); state.selectedHistoryDate=null; render(); });
+  const form = app.querySelector('#checkin-form'); if(form) form.onsubmit=submitCheckin;
+  const finish = app.querySelector('#finish-form'); if(finish) finish.onsubmit=submitFinish;
+  action('export', exportData);
+  action('history', showHistory);
+  action('about', showAbout);
+  action('info', showAbout);
+}
+
+function ensureSetLog(exerciseId, setIndex) {
+  state.workoutLog[exerciseId] ||= { sets: [] };
+  state.workoutLog[exerciseId].sets ||= [];
+  state.workoutLog[exerciseId].sets[setIndex] ||= {};
+  return state.workoutLog[exerciseId].sets[setIndex];
+}
+
+function updateSetLog(input) {
+  const setLog = ensureSetLog(input.dataset.exercise, Number(input.dataset.set));
+  setLog[input.dataset.logField] = input.value;
+}
+
+function toggleSetComplete(button) {
+  const setLog = ensureSetLog(button.dataset.exercise, Number(button.dataset.set));
+  setLog.complete = !setLog.complete;
+  render();
+}
+
+async function submitCheckin(e) {
+  e.preventDefault(); const fd=new FormData(e.target);
+  const answers={ pain:fd.get('pain'), stiffness:fd.get('stiffness'), swelling:fd.get('swelling'), previousResponse:fd.get('previousResponse'), recovery:fd.get('recovery'), unusualSymptoms:fd.getAll('unusual') };
+  const readiness=classifyReadiness(answers);
+  state.checkIn=answers; state.readiness=readiness; state.workout=buildWorkout(readiness); state.showCheckin=false;
+  await put('checkins',{id:dayKey(),date:dayKey(),createdAt:new Date().toISOString(),answers,readiness});
+  await closePreviousPendingSession(answers.previousResponse);
+  render();
+}
+
+async function submitFinish(e) {
+  e.preventDefault(); const fd=new FormData(e.target);
+  const session={ id:`${dayKey()}-${Date.now()}`, date:dayKey(), createdAt:new Date().toISOString(), workoutId:state.workout.id, workoutTitle:state.workout.title, readiness:state.readiness, exerciseLog:state.workoutLog, overallDifficulty:fd.get('difficulty'), immediateAchillesResponse:fd.get('achilles'), notes:fd.get('notes')||'', status:'PENDING_NEXT_DAY_RESPONSE' };
+  await put('sessions',session);
+  state.sessions = await getAll('sessions');
+  state.showFinish=false; state.workoutLog={}; state.currentExercise=0; render();
+  toast('Workout saved. Tomorrow’s check-in will confirm how the Achilles tolerated it.');
+}
+
+
+async function closePreviousPendingSession(previousResponse) {
+  const sessions = await getAll('sessions');
+  const pending = sessions
+    .filter(s => s.status === 'PENDING_NEXT_DAY_RESPONSE' && s.date < dayKey())
+    .sort((a,b) => String(b.createdAt).localeCompare(String(a.createdAt)))[0];
+  if (!pending) return;
+  const statusMap = { good:'TOLERATED', 'somewhat-sore':'BORDERLINE', poor:'NOT_TOLERATED' };
+  pending.status = statusMap[previousResponse] || 'PENDING_NEXT_DAY_RESPONSE';
+  pending.nextDayResponse = previousResponse;
+  pending.closedAt = new Date().toISOString();
+  await put('sessions', pending);
+  state.sessions = await getAll('sessions');
+}
+
+async function exportData() {
+  const payload=await exportAll(); const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=`achilles-rehab-backup-${dayKey()}.json`; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+async function showHistory() { state.tab='plan'; clearFlows(); render(); }
+function showAbout(){ alert('Achilles Return v0.1\n\nRule-based rehabilitation support. Red-flag symptoms override workout progression. The app does not replace individualized medical care.'); }
+function clearFlows(){ state.showCheckin=false;state.showWorkout=false;state.showExerciseDetail=null;state.showFinish=false; }
+function dayKey(){ const d=new Date(); const y=d.getFullYear(); const m=String(d.getMonth()+1).padStart(2,'0'); const day=String(d.getDate()).padStart(2,'0'); return `${y}-${m}-${day}`; }
+function toast(msg){ const n=document.createElement('div');n.className='toast';n.textContent=msg;document.body.appendChild(n);setTimeout(()=>n.remove(),4200); }
+
+function registerPwa(){ if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{})); }
+
+</script>
+</body>
+</html>
