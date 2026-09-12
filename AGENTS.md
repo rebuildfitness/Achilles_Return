@@ -68,6 +68,15 @@ Only generate home-gym exercises using:
 - Balance pad
 - Rehab bands
 - Weighted wagon / sled substitute
+- 45 lb Olympic barbell
+- Free-weight plates
+- BOSU ball
+- Inflatable balance cushion (Trideer; previously called dyno pad)
+- Stability/yoga ball (Trideer; previously called plyo ball)
+- Vibration plate (AXV)
+
+User-approved full-body strength extension: see `docs/FULL_BODY_STRENGTH_UPDATE.md`.
+Equipment ownership does not itself unlock balance, impact or sport progressions.
 
 Never add a standalone leg press or other equipment without explicit user update.
 

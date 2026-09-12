@@ -29,6 +29,8 @@ Key documents:
 - `assets/design/achilles-return-hero-reference.png`
 
 ## Application features
+- four-step baseline with optional tests, monthly comparisons and detailed assessment access
+- full-body 5×5 / hypertrophy additions alongside the original rehabilitation work
 - mobile-first local PWA prototype
 - Today / Plan / Progress / Tests / More
 - readiness logic
@@ -43,6 +45,9 @@ Key documents:
 - weighted wagon / sled substitute
 - no leg press
 - exercise-specific demo links
+
+Latest user-approved extensions: `docs/SIMPLE_BASELINE_UPDATE.md` and
+`docs/FULL_BODY_STRENGTH_UPDATE.md`. Equipment names reflect the supplied photos.
 
 ## Run application
 Use Node.js 22.12+ (Node 24 recommended) and pnpm. The lockfile pins dependencies.
