@@ -98,3 +98,8 @@ Codex should reproduce the mobile UI language shown in the hero rather than rede
 ## GitHub Pages setup
 
 This local workspace has no Git remote configured yet. Create/select the destination repository, sign in to GitHub through your normal Git credential manager, and push the project to `main`. In the repository Pages settings choose GitHub Actions. No password or access token belongs in the app or source files. The workflow builds and tests before deploying; actual hosting has not been verified until it runs in that repository.
+
+## Expanded home-gym library
+
+Open More > Exercise library for 90 searchable exercises with equipment and muscle filters, individual demo links and setup notes. See docs/EQUIPMENT_EXERCISE_LIBRARY.md for the complete inventory and verification limitations. Reference options do not alter prescribed rehab workouts.
+
