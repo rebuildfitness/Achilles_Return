@@ -58,9 +58,9 @@ export function RecoveryLog({
         {
           id: crypto.randomUUID(),
           activity,
-          distance,
+          distance: activity.startsWith("cycle-") ? distance : "",
           unit,
-          mobility: selected,
+          mobility: activity === "mobility" ? selected : [],
           notes,
           createdAt: new Date().toISOString(),
         },

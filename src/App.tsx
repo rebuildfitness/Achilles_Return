@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { AppShell, Card } from "./components/ui";
 import { Today } from "./screens/Today";
 import { RecoveryLog } from "./components/RecoveryLog";
-import { RescheduleWorkout } from "./components/RescheduleWorkout";
 import { swapExercise } from "./rules/trainingFlexibility.js";
 import { weeklyPlan } from "./rules/planner.js";
 import { baselineResult } from "./rules/baseline.js";
@@ -80,6 +79,7 @@ export function App() {
   const logRef = useRef(log);
   const queue = useRef(Promise.resolve());
   const [flow, setFlow] = useState<
+    | "recovery"
     | "checkin"
     | "workout"
     | "finish"
@@ -531,6 +531,20 @@ export function App() {
                 open(null);
               }}
             />
+          ) : flow === "recovery" ? (
+            <>
+              <button
+                className="text-button page-back"
+                onClick={() => open(null)}
+              >
+                ← Today
+              </button>
+              <div className="screen-heading">
+                <h1>Recovery</h1>
+                <p>Record your movement, cycling or mobility.</p>
+              </div>
+              <RecoveryLog date={date} blocked={readiness?.level === "RED"} />
+            </>
           ) : flow === "checkin" ? (
             <CheckInScreen
               initial={checkIn?.answers}
@@ -589,6 +603,8 @@ export function App() {
           ) : tab === "Today" ? (
             <>
               <Today
+                onRecovery={() => open("recovery")}
+                completed={strengthDone}
                 assessment={program.assessment}
                 canOpenWorkout={canOpenWorkout}
                 workoutNote={
@@ -610,17 +626,6 @@ export function App() {
                 onPlan={() => select("Plan")}
                 onTests={() => select("Tests")}
               />
-              {program.assessment && (
-                <RecoveryLog date={date} blocked={readiness?.level === "RED"} />
-              )}
-              {program.assessment && !strengthDone && (
-                <RescheduleWorkout
-                  profile={program.profile}
-                  assessment={program.assessment}
-                  sessions={sessions}
-                  onSaved={reloadProgram}
-                />
-              )}
             </>
           ) : tab === "Plan" ? (
             <PlanScreen

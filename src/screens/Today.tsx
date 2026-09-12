@@ -5,6 +5,8 @@ import { baselineResult } from "../rules/baseline.js";
 import { dayKey } from "../data/provisionalWeek.js";
 
 export function Today({
+  onRecovery,
+  completed,
   readiness,
   workout,
   sessions,
@@ -17,6 +19,8 @@ export function Today({
   workoutNote,
   onResponse,
 }: {
+  onRecovery: () => void;
+  completed: boolean;
   readiness: Readiness | null;
   workout: Workout;
   sessions: Session[];
@@ -29,6 +33,7 @@ export function Today({
   workoutNote: string;
   onResponse: (session: Session) => void;
 }) {
+  const recovery = workout.items.length === 0;
   const red = readiness?.level === "RED";
   const result = assessment ? baselineResult(assessment.values) : null;
   const pending = sessions.filter(
@@ -102,7 +107,7 @@ export function Today({
       ) : (
         <>
           <div className="section-heading">
-            <h2>Today’s Workout</h2>
+            <h2>Today’s session</h2>
             <button className="text-button" onClick={onPlan}>
               View Plan <Icon name="arrow" size={15} />
             </button>
@@ -113,7 +118,7 @@ export function Today({
                 <Icon name="strength" size={30} />
               </span>
               <div>
-                <h3>{workout.title}</h3>
+                <h3>{completed ? "Workout saved" : workout.title}</h3>
                 <p>{workout.phase}</p>
               </div>
             </div>
@@ -121,27 +126,52 @@ export function Today({
               <span className="pill">
                 {assessment ? "Criteria-based plan" : "Baseline first"}
               </span>
-              <span>{workout.items.length} exercises</span>
-            </div>
-            <div className="workout-preview">
-              {workout.items.map((ex) => (
-                <div className="preview-row" key={ex.id}>
-                  <span className="exercise-bullet" />
-                  <span>{ex.name}</span>
-                  <span className="prescription">
-                    {ex.sets} × {ex.reps}
-                  </span>
-                </div>
-              ))}
+              <span>
+                {completed
+                  ? "Saved"
+                  : recovery
+                    ? "Recovery & mobility"
+                    : `${workout.items.length} exercises`}
+              </span>
             </div>
             <PrimaryButton
-              onClick={assessment ? onWorkout : onTests}
-              disabled={!!assessment && !canOpenWorkout}
+              onClick={
+                !assessment
+                  ? onTests
+                  : completed || recovery
+                    ? onRecovery
+                    : !readiness
+                      ? onCheckIn
+                      : canOpenWorkout
+                        ? onWorkout
+                        : onTests
+              }
             >
-              {assessment ? "Open Workout" : "Start Baseline"}{" "}
+              {!assessment
+                ? "Start Baseline"
+                : completed || recovery
+                  ? "Log recovery"
+                  : !readiness
+                    ? "Check In to Train"
+                    : canOpenWorkout
+                      ? "Open Workout"
+                      : "Review Tests"}{" "}
               <span aria-hidden="true">→</span>
             </PrimaryButton>
-            {!readiness && (
+            <div className="workout-preview">
+              {!completed &&
+                workout.items.map((ex) => (
+                  <div className="preview-row" key={ex.id}>
+                    <span className="exercise-bullet" />
+                    <span>{ex.name}</span>
+                    <span className="prescription">
+                      {ex.sets} × {ex.reps}
+                    </span>
+                  </div>
+                ))}
+            </div>
+
+            {!readiness && !recovery && !completed && (
               <p className="helper">
                 Complete your check-in to open the workout.
               </p>
@@ -149,6 +179,11 @@ export function Today({
             <p className="helper">{workoutNote}</p>
           </Card>
         </>
+      )}
+      {assessment && !red && !recovery && !completed && (
+        <button className="text-button recovery-link" onClick={onRecovery}>
+          Log a walk, cycle or mobility →
+        </button>
       )}
       <Card className="milestone-card">
         <div className="eyebrow">NEXT MILESTONE</div>

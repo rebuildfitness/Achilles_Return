@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { RestTimer } from "../components/RestTimer";
+import { dayKey } from "../data/provisionalWeek.js";
 import { ExerciseCard, PrimaryButton, SetRow } from "../components/ui";
 import { Choice } from "./CheckIn";
 import { ExerciseGuidance } from "../components/ExerciseGuidance";
@@ -30,6 +33,17 @@ export function WorkoutScreen({
   equipment?: string[];
   readiness?: string;
 }) {
+  const [rest, setRest] = useState<{ seconds: number; at: number } | null>(
+    null,
+  );
+  const total = workout.items.reduce((n, ex) => n + ex.sets, 0);
+  const completed = workout.items.reduce(
+    (n, ex) =>
+      n +
+      (log[ex.id]?.sets.slice(0, ex.sets).filter((s) => s?.complete).length ||
+        0),
+    0,
+  );
   const hasSets = Object.values(log).some((item) =>
     item.sets.some((set) => set?.complete),
   );
@@ -42,20 +56,40 @@ export function WorkoutScreen({
         <h1>Full Workout</h1>
         <p>{workout.title}</p>
       </div>
-      <p className="notice">
-        {workout.phase} · Keep quality and symptoms in view. Your next-morning
-        response determines tolerance.
-      </p>
-      {workout.notes?.map((note) => (
-        <p className="helper" key={note}>
-          {note}
+      <div className="session-dashboard">
+        <div className="section-heading">
+          <strong>Session progress</strong>
+          <span>
+            {completed} / {total} sets
+          </span>
+        </div>
+        <progress
+          aria-label="Completed workout sets"
+          value={completed}
+          max={Math.max(1, total)}
+        />
+        <RestTimer
+          storageKey={`rest-${dayKey()}-${workout.id}`}
+          signal={rest}
+        />
+      </div>
+      <details className="detail-section">
+        <summary>Session guidance</summary>
+        <p className="notice">
+          {workout.phase} · Keep quality and symptoms in view. Your next-morning
+          response determines tolerance.
         </p>
-      ))}
-      {workout.omitted?.map((ex) => (
-        <p className="helper" key={ex.id}>
-          {ex.name} omitted: {ex.reason}
-        </p>
-      ))}
+        {workout.notes?.map((note) => (
+          <p className="helper" key={note}>
+            {note}
+          </p>
+        ))}
+        {workout.omitted?.map((ex) => (
+          <p className="helper" key={ex.id}>
+            {ex.name} omitted: {ex.reason}
+          </p>
+        ))}
+      </details>
       {workout.items.map((exercise) => {
         const previous = [...sessions]
           .filter(
@@ -92,7 +126,17 @@ export function WorkoutScreen({
                 index={index}
                 previous={previous?.sets[index]}
                 value={log[exercise.id]?.sets[index] || {}}
-                onChange={(value) => onChange(exercise.id, index, value)}
+                onChange={(value) => {
+                  if (
+                    value.complete &&
+                    !log[exercise.id]?.sets[index]?.complete
+                  )
+                    setRest({
+                      seconds: Number(exercise.restSec) || 60,
+                      at: Date.now(),
+                    });
+                  onChange(exercise.id, index, value);
+                }}
               />
             ))}
           </ExerciseCard>

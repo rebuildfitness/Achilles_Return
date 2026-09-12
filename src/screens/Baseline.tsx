@@ -444,11 +444,12 @@ export function AssessmentResult({ assessment }: { assessment: Assessment }) {
               <span className={c.passed ? "success-text" : "muted"}>
                 {c.passed ? "✓" : "○"}
               </span>
-              <div>{c.label}
-              <small className="block">
-                {c.status}
-                {c.detail ? ` · ${c.detail}` : ""}
-              </small>
+              <div>
+                {c.label}
+                <small className="block">
+                  {c.status}
+                  {c.detail ? ` · ${c.detail}` : ""}
+                </small>
               </div>
             </li>
           ))}

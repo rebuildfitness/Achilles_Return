@@ -313,6 +313,23 @@ try {
       .inputValue(),
     "20",
   );
+  assert.equal(
+    await page.getByLabel("Rest remaining", { exact: true }).innerText(),
+    "1:30",
+  );
+  await page.getByRole("button", { name: "+30 sec", exact: true }).click();
+  assert.equal(
+    await page.getByLabel("Rest remaining", { exact: true }).innerText(),
+    "2:00",
+  );
+  await page.getByRole("button", { name: "Clear", exact: true }).click();
+  assert.equal(
+    await page.getByLabel("Rest remaining", { exact: true }).innerText(),
+    "Ready",
+  );
+  pass(
+    "Rest timer starts on a completed set, survives reload, and supports extending and clearing",
+  );
   await page.screenshot({
     animations: "disabled",
     path: resolve(artifacts, "workout-mobile.png"),
@@ -382,15 +399,20 @@ try {
   const saved = (await readStore("sessions")).find((s) => s.id !== "legacy");
   assert.equal(saved.status, "PENDING_NEXT_DAY_RESPONSE");
   assert.equal(saved.exerciseLog["single-calf"].sets[0].load, "25");
-  assert.ok(
-    await page.getByRole("button", { name: "Open Workout" }).isDisabled(),
+  assert.equal(
+    await page.getByRole("button", { name: "Open Workout" }).count(),
+    0,
   );
+  await page
+    .getByRole("button", { name: "Log recovery", exact: true })
+    .waitFor();
   pass(
     "Offline app shell, all tabs, logging and finish work; no same-day catch-up workout",
   );
   await nav("Plan");
   assert.equal(await page.locator(".plan-day").count(), 7);
   await page.locator(".plan-day summary").first().click();
+  await page.getByRole("button", { name: "Calendar", exact: true }).click();
   await page
     .getByRole("button", { name: "2026-09-07, saved workout", exact: true })
     .click();
@@ -414,6 +436,7 @@ try {
   await response();
   await checkin();
   await nav("Progress");
+  await page.getByRole("button", { name: "Sport", exact: true }).click();
   await page.getByRole("button", { name: "Open R1 exposure" }).click();
   await page.locator("#field-minutes").fill("18");
   await page.locator("#field-sessionRPE").fill("4");
@@ -423,6 +446,7 @@ try {
   await page.getByRole("button", { name: "← Progress" }).click();
   await page.reload();
   await enterIntro();
+  await page.getByRole("button", { name: "Sport", exact: true }).click();
   await page.getByRole("button", { name: "Open R1 exposure" }).click();
   assert.equal(await page.locator("#field-minutes").inputValue(), "18");
   await page
@@ -434,6 +458,7 @@ try {
     "PENDING_NEXT_DAY_RESPONSE",
   );
   await nav("Progress");
+  await page.getByRole("button", { name: "Sport", exact: true }).click();
   assert.ok(
     await page.getByRole("button", { name: "Open R1 exposure" }).isDisabled(),
   );
@@ -619,6 +644,8 @@ try {
   assert.equal(finishing.values.noRehabPain, "yes");
   assert.equal(finishing.values.heel_repaired_reps, "30");
   await nav("Progress");
+  await page.getByRole("button", { name: "Sport", exact: true }).click();
+  await page.getByRole("button", { name: "Rehab", exact: true }).click();
   assert.equal(await page.locator("#trend-month").inputValue(), "2026-09");
   assert.equal(
     await page
@@ -758,6 +785,7 @@ try {
     "Exercise library search, combined filters, demo link, empty state and pagination work on mobile",
   );
   await nav("Today");
+  await page.getByRole("button", { name: /Log a walk|Log recovery/ }).click();
   await page
     .getByLabel("Recovery activity", { exact: true })
     .selectOption("cycle-25");
@@ -770,18 +798,18 @@ try {
     .waitFor();
   await page.reload();
   await enterIntro(page, false);
+  await page.getByRole("button", { name: /Log a walk|Log recovery/ }).click();
   await page.getByText("Recorded activities (1)", { exact: true }).click();
   assert.ok((await page.locator("body").innerText()).includes("7.5 miles"));
+  await page.getByRole("button", { name: "← Today", exact: true }).click();
   await checkin();
   await page.getByRole("button", { name: "Open Workout", exact: true }).click();
-  const press = page
-    .locator(".exercise-card")
-    .filter({
-      has: page.getByRole("heading", {
-        name: "Incline Dumbbell Press",
-        exact: true,
-      }),
-    });
+  const press = page.locator(".exercise-card").filter({
+    has: page.getByRole("heading", {
+      name: "Incline Dumbbell Press",
+      exact: true,
+    }),
+  });
   await press
     .getByText("Starting weight, cadence & exercise options", { exact: true })
     .click();
@@ -795,6 +823,8 @@ try {
     .getByRole("heading", { name: "Smith incline bench press", exact: true })
     .waitFor();
   await page.getByRole("button", { name: "← Today", exact: true }).click();
+  await nav("Plan");
+  await page.getByRole("button", { name: "Reschedule", exact: true }).click();
   await page
     .getByLabel("Workout to move", { exact: true })
     .selectOption("2026-09-30");
@@ -815,6 +845,59 @@ try {
   });
   pass(
     "Recovery distance persists, press swaps persist, and a moved workout opens on its make-up day",
+  );
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: resolve(artifacts, "rebuild-workout.png") });
+  await nav("Today");
+  assert.equal(
+    await page.getByLabel("Recovery activity", { exact: true }).count(),
+    0,
+  );
+  assert.equal(
+    await page.getByLabel("Workout to move", { exact: true }).count(),
+    0,
+  );
+  await page.screenshot({ path: resolve(artifacts, "rebuild-today.png") });
+  await nav("Plan");
+  await page.screenshot({ path: resolve(artifacts, "rebuild-plan.png") });
+  await nav("Progress");
+  await page.getByRole("button", { name: "Overview", exact: true }).click();
+  await page
+    .getByRole("heading", { name: "Your training, together", exact: true })
+    .waitFor();
+  await page.getByText("7.5 miles", { exact: true }).waitFor();
+  await page.screenshot({ path: resolve(artifacts, "rebuild-progress.png") });
+  await page.getByRole("button", { name: "Strength", exact: true }).click();
+  await page.locator("#strength-trend").selectOption("single-calf");
+  await page
+    .getByRole("img", {
+      name: "Recorded load trend in pounds; values listed below",
+      exact: true,
+    })
+    .waitFor();
+  await page.getByText(/Recorded sets/).click();
+  await page.getByText("25 lb × 10", { exact: true }).waitFor();
+  await nav("Tests");
+  await page.screenshot({ path: resolve(artifacts, "rebuild-tests.png") });
+  await nav("More");
+  await page
+    .getByRole("button", { name: "Exercise library", exact: true })
+    .click();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Backup & restore", exact: true })
+      .count(),
+    0,
+  );
+  await page
+    .getByRole("button", { name: "← All settings", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Backup & restore", exact: true })
+    .waitFor();
+  pass(
+    "Focused destinations keep forms out of Today, combine recovery and training history, and show recorded strength loads",
   );
   assert.deepEqual(errors, []);
   pass("No browser runtime errors");

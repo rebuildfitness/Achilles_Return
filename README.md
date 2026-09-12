@@ -4,6 +4,12 @@ This repository contains the React + TypeScript + Vite application, the retained
 
 The approved Today design now connects to a resumable baseline, Strength A/B/C planning, six independent exposure ladders, next-morning responses, capacity reviews, evidence, history and backup/restore. See `IMPLEMENTATION_B_G.md` for validation, assumptions and remaining release restrictions.
 
+## Experience rebuild — app 1.1.0
+
+The app now separates daily action, scheduling, workout execution and progress review. Today opens recovery as a dedicated flow; Plan separates Week, Calendar and Reschedule; Progress separates Overview, Strength, Rehab and Sport. Workout logging includes completed-set progress and a rest timer. Tests presents monthly starting/finishing data together. More opens focused destinations. Clinical rules and existing IndexedDB records remain compatible.
+
+Research and rationale: `docs/PRODUCT_REBUILD_RESEARCH.md`. Release and upload instructions: `docs/COHERENT_REBUILD_RELEASE.md`.
+
 ## Planning status
 **Complete / frozen for implementation.**
 
