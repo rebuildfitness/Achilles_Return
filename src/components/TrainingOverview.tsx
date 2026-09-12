@@ -1,3 +1,8 @@
+import {
+  movementRecords,
+  movementTitle,
+  movementAmount,
+} from "../data/movement.js";
 import { useEffect, useState } from "react";
 import { Card } from "./ui";
 import { getAll } from "../db.js";
@@ -20,14 +25,7 @@ export function TrainingOverview({
       .then((rows) => {
         if (active)
           setRecovery(
-            rows
-              .filter((r: any) => String(r.id).startsWith("recovery-"))
-              .flatMap((r: any) =>
-                (r.entries || []).map((e: any) => ({
-                  ...e,
-                  date: r.id.slice(9),
-                })),
-              ),
+            movementRecords(rows).filter((r) => r.status === "saved"),
           );
       })
       .catch(() => {
@@ -64,7 +62,7 @@ export function TrainingOverview({
                 ).length
               }
             </strong>
-            <span>Recovery activities</span>
+            <span>Movement activities</span>
           </div>
         </div>
         {error && <p role="alert">{error}</p>}
@@ -117,12 +115,8 @@ export function TrainingOverview({
           ...recovery.map((r) => ({
             id: r.id,
             date: r.date,
-            title: r.activity
-              .replace("walk-", "Walk · ")
-              .replace("cycle-", "Cycle · "),
-            detail: r.distance
-              ? `${r.distance} ${r.unit}`
-              : "Recovery recorded",
+            title: movementTitle(r),
+            detail: movementAmount(r),
           })),
         ]
           .sort((a, b) => b.date.localeCompare(a.date))

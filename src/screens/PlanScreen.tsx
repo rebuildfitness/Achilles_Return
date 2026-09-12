@@ -1,7 +1,6 @@
 import { SectionSwitch } from "../components/SectionSwitch";
 import { useState } from "react";
 import { Card, PrimaryButton, CalendarCard } from "../components/ui";
-import { RecoveryLog } from "../components/RecoveryLog";
 import { RescheduleWorkout } from "../components/RescheduleWorkout";
 import { weeklyPlan } from "../rules/planner.js";
 import { dayKey } from "../data/provisionalWeek.js";
@@ -9,6 +8,7 @@ import type { Assessment, Profile, Session, Exercise } from "../types";
 import { History } from "./History";
 
 export function PlanScreen({
+  onMovement,
   profile,
   assessment,
   sessions,
@@ -16,6 +16,7 @@ export function PlanScreen({
   onTests,
   onReload,
 }: {
+  onMovement: (date: string) => void;
   profile?: Profile;
   assessment?: Assessment;
   sessions: Session[];
@@ -108,6 +109,14 @@ export function PlanScreen({
                   </small>
                 </summary>
                 <p className="plan-context">{day.note}</p>
+                {day.date <= dayKey() && (
+                  <button
+                    className="text-button"
+                    onClick={() => onMovement(day.date)}
+                  >
+                    Optional movement support →
+                  </button>
+                )}
                 {day.retest && (
                   <p className="notice">
                     Reassessment due after more than 10 missed days. Resume with
@@ -159,7 +168,15 @@ export function PlanScreen({
             onSelect={setSelected}
           />
           {assessment && selected <= dayKey() && (
-            <RecoveryLog key={selected} date={selected} />
+            <Card>
+              <h2>Movement & Recovery</h2>
+              <button
+                className="secondary-button"
+                onClick={() => onMovement(selected)}
+              >
+                View / log movement · {selected}
+              </button>
+            </Card>
           )}
           <Card>
             <h2>

@@ -19,7 +19,7 @@ export function Today({
   workoutNote,
   onResponse,
 }: {
-  onRecovery: () => void;
+  onRecovery: (type?: string) => void;
   completed: boolean;
   readiness: Readiness | null;
   workout: Workout;
@@ -139,7 +139,7 @@ export function Today({
                 !assessment
                   ? onTests
                   : completed || recovery
-                    ? onRecovery
+                    ? () => onRecovery()
                     : !readiness
                       ? onCheckIn
                       : canOpenWorkout
@@ -180,11 +180,6 @@ export function Today({
           </Card>
         </>
       )}
-      {assessment && !red && !recovery && !completed && (
-        <button className="text-button recovery-link" onClick={onRecovery}>
-          Log a walk, cycle or mobility →
-        </button>
-      )}
       <Card className="milestone-card">
         <div className="eyebrow">NEXT MILESTONE</div>
         <h3>
@@ -201,6 +196,41 @@ export function Today({
         <button className="text-button" onClick={onTests}>
           View Tests <Icon name="arrow" size={15} />
         </button>
+      </Card>
+      <Card className="movement-support">
+        <div className="section-heading">
+          <h2>Movement support</h2>
+          <button className="text-button" onClick={() => onRecovery()}>
+            View all →
+          </button>
+        </div>
+        <p>
+          {red
+            ? "Record past activity. Follow your safety guidance."
+            : "Optional support work. Choose what fits today."}
+        </p>
+        <div className="movement-chips">
+          {(red
+            ? [["other", "Log activity"]]
+            : recovery
+              ? [
+                  ["walk", "Walk"],
+                  ["cycle", "Cycle"],
+                  ["mobility", "Mobility"],
+                  ["core_stability", "Core"],
+                ]
+              : [
+                  ["mobility", "Mobility"],
+                  ["core_stability", "Core"],
+                  ["balance_movement_control", "Balance"],
+                  ["walk", "Walk"],
+                ]
+          ).map(([id, label]) => (
+            <button key={id} onClick={() => onRecovery(id)}>
+              {label}
+            </button>
+          ))}
+        </div>
       </Card>
       <p className="local-note">
         <Icon name="lock" size={13} /> Your progress stays on this device.

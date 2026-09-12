@@ -785,23 +785,24 @@ try {
     "Exercise library search, combined filters, demo link, empty state and pagination work on mobile",
   );
   await nav("Today");
-  await page.getByRole("button", { name: /Log a walk|Log recovery/ }).click();
+  await page.getByRole("button", { name: "View all →", exact: true }).click();
+  await page.getByRole("button", { name: "Cycle", exact: true }).click();
+  await page.getByRole("button", { name: "25 min", exact: true }).click();
   await page
-    .getByLabel("Recovery activity", { exact: true })
-    .selectOption("cycle-25");
-  await page.getByLabel("Cycling distance", { exact: true }).fill("7.5");
+    .getByText("Distance, effort & symptoms (optional)", { exact: true })
+    .click();
+  await page.getByLabel("Distance", { exact: true }).fill("7.5");
   await page
-    .getByRole("button", { name: "Save recovery activity", exact: true })
+    .getByRole("button", { name: "Save activity", exact: true })
     .click();
   await page
-    .getByText("Recovery activity saved on this device.", { exact: true })
+    .getByText("Movement saved on this device.", { exact: true })
     .waitFor();
   await page.reload();
   await enterIntro(page, false);
-  await page.getByRole("button", { name: /Log a walk|Log recovery/ }).click();
-  await page.getByText("Recorded activities (1)", { exact: true }).click();
-  assert.ok((await page.locator("body").innerText()).includes("7.5 miles"));
-  await page.getByRole("button", { name: "← Today", exact: true }).click();
+  await page.getByRole("button", { name: "View all →", exact: true }).click();
+  await page.getByText("25 min · 7.5 miles", {exact:true}).waitFor();
+  await page.getByRole("button", { name: "← Back", exact: true }).click();
   await checkin();
   await page.getByRole("button", { name: "Open Workout", exact: true }).click();
   const press = page.locator(".exercise-card").filter({
@@ -866,7 +867,10 @@ try {
   await page
     .getByRole("heading", { name: "Your training, together", exact: true })
     .waitFor();
-  await page.getByText("7.5 miles", { exact: true }).waitFor();
+  await page
+    .getByText(/25 min · 7.5 miles/)
+    .first()
+    .waitFor();
   await page.screenshot({ path: resolve(artifacts, "rebuild-progress.png") });
   await page.getByRole("button", { name: "Strength", exact: true }).click();
   await page.locator("#strength-trend").selectOption("single-calf");
@@ -898,6 +902,153 @@ try {
     .waitFor();
   pass(
     "Focused destinations keep forms out of Today, combine recovery and training history, and show recorded strength loads",
+  );
+  await page.clock.setFixedTime(new Date(2026, 8, 30, 12));
+  await page.reload();
+  await enterIntro(page,false);
+  await nav("Today");
+  await page.getByRole("button", { name: "View all →", exact: true }).click();
+  await page
+    .getByRole("button", { name: "+ Add activity", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Walk", exact: true }).click();
+  await page.getByRole("button", { name: "8,000", exact: true }).click();
+  await page.getByRole("button", { name: "Add to today", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Resume draft", exact: true })
+    .waitFor();
+  await page.reload();
+  await enterIntro(page, false);
+  await page.getByRole("button", { name: "View all →", exact: true }).click();
+  await page.getByRole("button", { name: "Resume draft", exact: true }).click();
+  assert.equal(
+    await page.getByLabel("Custom steps", { exact: true }).inputValue(),
+    "8000",
+  );
+  await page
+    .getByRole("button", { name: "Save activity", exact: true })
+    .click();
+  await page
+    .getByText("Movement saved on this device.", { exact: true })
+    .waitFor();
+  await page.getByRole("button", { name: "Undo save", exact: true }).click();
+  await page
+    .getByText("Save undone. Other activities and workouts are unchanged.", {
+      exact: true,
+    })
+    .waitFor();
+  assert.equal(
+    await page.getByRole("button", { name: "Edit Walk", exact: true }).count(),
+    0,
+  );
+  assert.equal(
+    await page.getByRole("button", { name: "Edit Cycle", exact: true }).count(),
+    1,
+  );
+  pass(
+    "Movement drafts survive reload; scoped Undo removes only its saved walk",
+  );
+  await page.getByRole("button", { name: "Edit Cycle", exact: true }).click();
+  await page.getByRole("button", { name: "30 min", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Save activity", exact: true })
+    .click();
+  await page.getByText("30 min · 7.5 miles", { exact: true }).waitFor();
+  await page
+    .getByRole("button", { name: "+ Add activity", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Mobility", exact: true }).click();
+  await page
+    .locator(".movement-routine")
+    .filter({ has: page.getByText("Morning Reset", { exact: true }) })
+    .getByRole("button")
+    .click();
+  await page.locator(".movement-step-check").first().click();
+  await page
+    .locator(".movement-step")
+    .first()
+    .getByText("Actual amounts, alternative or skip", { exact: true })
+    .click();
+  assert.equal(
+    await page
+      .locator(".movement-step")
+      .first()
+      .getByLabel("Seconds", { exact: true })
+      .inputValue(),
+    "60",
+  );
+  await page
+    .locator(".movement-step")
+    .first()
+    .getByLabel("Seconds", { exact: true })
+    .fill("45");
+  await page
+    .locator(".movement-step")
+    .first()
+    .getByText("Short Demo & setup", { exact: true })
+    .click();
+  await page.screenshot({ path: resolve(artifacts, "movement-routine.png") });
+  await page.getByRole("button", { name: "Add to today", exact: true }).click();
+  await context.setOffline(true);
+  await page.reload();
+  await enterIntro(page, false);
+  await page.getByRole("button", { name: "View all →", exact: true }).click();
+  await page.getByRole("button", { name: "Resume draft", exact: true }).click();
+  await page
+    .locator(".movement-step")
+    .first()
+    .getByText("Actual amounts, alternative or skip", { exact: true })
+    .click();
+  assert.equal(
+    await page
+      .locator(".movement-step")
+      .first()
+      .getByLabel("Seconds", { exact: true })
+      .inputValue(),
+    "45",
+  );
+  await page
+    .getByRole("button", { name: "Save activity", exact: true })
+    .click();
+  await page.getByText("1 of 5 exercises", { exact: true }).waitFor();
+  await context.setOffline(false);
+  await page.evaluate(()=>window.scrollTo(0,0));
+  await page.screenshot({ path: resolve(artifacts, "movement-summary.png") });
+  await page.setViewportSize({ width: 320, height: 740 });
+  assert.ok(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  );
+  await nav("Progress");
+  await page.getByRole("button", { name: "Movement", exact: true }).click();
+  await page
+    .getByRole("heading", { name: "Movement this week", exact: true })
+    .waitFor();
+  await page.getByRole("img", { name: /activities/ }).waitFor();
+  assert.ok(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  );
+  await page.screenshot({
+    path: resolve(artifacts, "movement-progress.png"),
+    fullPage: true,
+  });
+  const movementRows = (await readStore("settings")).filter(
+    (r) => r.kind === "activity" && r.status === "saved",
+  );
+  assert.equal(
+    movementRows.filter((r) => r.activityType === "cycle").length,
+    1,
+  );
+  assert.equal(
+    movementRows.find((r) => r.routineInstance)?.routineInstance
+      .exerciseCompletions[0].actual.durationSeconds,
+    45,
+  );
+  pass(
+    "Movement edits preserve IDs; routine actual amounts autosave offline and appear in mobile Progress",
   );
   assert.deepEqual(errors, []);
   pass("No browser runtime errors");

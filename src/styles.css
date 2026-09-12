@@ -1210,3 +1210,46 @@ pre {
     flex-direction: column;
   }
 }
+
+.movement-tiles { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:20px; }
+.movement-tiles button { min-height:72px; text-align:left; padding:16px; background:var(--blue050); border:1px solid var(--line200); border-radius:14px; }
+.movement-chips { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 20px; }
+.movement-chips button { border:1px solid var(--line200); border-radius:12px; background:var(--surface000); padding:8px 12px; min-height:44px; font-size:13px; }
+.movement-chips button[aria-pressed="true"] { background:var(--blue050); border-color:var(--blue600); color:var(--blue600); }
+.movement-date { margin-bottom:20px; font-size:13px; color:var(--ink500); }
+.movement-summary { display:flex; align-items:center; gap:12px; padding:16px 0; border-bottom:1px solid var(--line200); flex-wrap:wrap; }
+.movement-summary > div:first-child { flex:1; min-width:130px; }
+.movement-summary time,.movement-summary strong,.movement-summary small { display:block; }
+.movement-subheading { margin-top:20px; }
+.movement-summary + .secondary-button { margin-top:16px; }
+.movement-routine { padding:16px 0; border-bottom:1px solid var(--line200); }
+.movement-routine small { display:block; margin:8px 0; }
+.movement-step { padding:16px 0; border-bottom:1px solid var(--line200); }
+.movement-step-check { display:flex; align-items:center; text-align:left; gap:12px; width:100%; border:0; background:var(--surface100); padding:12px; border-radius:12px; min-height:60px; font-weight:600; }
+.movement-step-check[aria-pressed="true"] { background:var(--green050); }
+.movement-step-check small { display:block; margin-top:4px; font-weight:400; }
+.movement-demo { margin:12px 0; }
+.movement-demo summary { min-height:44px; display:flex; align-items:center; color:var(--blue600); cursor:pointer; }
+.movement-demo small { display:block; margin:8px 0; }
+.movement-actual { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.movement-exercise-pick { display:block; width:100%; min-height:44px; text-align:left; background:var(--surface000); border:0; border-bottom:1px solid var(--line200); padding:12px; }
+.movement-footer { position:sticky; bottom:calc(68px + env(safe-area-inset-bottom)); display:flex; gap:8px; z-index:6; background:var(--surface000); padding:12px; border:1px solid var(--line200); border-radius:16px; box-shadow:var(--shadow); margin-bottom:20px; }
+.movement-footer > button { flex:1; min-width:0; }
+.movement-chart { display:flex; align-items:flex-end; gap:12px; height:110px; margin:20px 0; }
+.movement-chart > div { flex:1; text-align:center; }
+.movement-chart span { display:block; background:var(--blue600); border-radius:6px 6px 0 0; }
+.movement-counts > div { display:flex; justify-content:space-between; border-bottom:1px solid var(--line200); padding:8px 0; }
+.movement-support .section-heading { margin-bottom:8px; }
+.movement-support .movement-chips { margin-bottom:0; }
+.card fieldset { border:0; padding:0; margin:16px 0; min-width:0; }
+.card legend { font-weight:600; }
+.section-switch { flex-wrap:wrap; }
+.section-switch button { flex:1 0 auto; padding:8px 10px; }
+
+.movement-editor label { display:grid; gap:8px; margin:16px 0; font-size:14px; }
+.movement-editor input:not([type="checkbox"]), .movement-editor select, .movement-editor textarea,
+.card > label select { width:100%; min-height:44px; padding:10px 12px; border:1px solid var(--line200); border-radius:10px; background:var(--surface000); }
+.movement-editor label:has(input[type="checkbox"]) { display:flex; align-items:center; min-height:44px; }
+.movement-feedback .text-button { min-height:44px; margin-right:16px; padding:8px 0; }
+.movement-summary .text-button { min-height:44px; padding:8px; }
+.movement-editor details > summary { min-height:44px; padding:12px 0; cursor:pointer; }

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AppShell, Card } from "./components/ui";
 import { Today } from "./screens/Today";
-import { RecoveryLog } from "./components/RecoveryLog";
+import { MovementScreen } from "./screens/Movement";
 import { swapExercise } from "./rules/trainingFlexibility.js";
 import { weeklyPlan } from "./rules/planner.js";
 import { baselineResult } from "./rules/baseline.js";
@@ -58,6 +58,8 @@ function currentTab(): Tab {
 
 export function App() {
   const [intro, setIntro] = useState(true);
+  const [movementDate, setMovementDate] = useState(dayKey());
+  const [movementType, setMovementType] = useState("");
   const [tab, setTab] = useState<Tab>(currentTab);
   const [date, setDate] = useState(dayKey());
   const [checkIn, setCheckIn] = useState<CheckIn>();
@@ -532,19 +534,19 @@ export function App() {
               }}
             />
           ) : flow === "recovery" ? (
-            <>
-              <button
-                className="text-button page-back"
-                onClick={() => open(null)}
-              >
-                ← Today
-              </button>
-              <div className="screen-heading">
-                <h1>Recovery</h1>
-                <p>Record your movement, cycling or mobility.</p>
-              </div>
-              <RecoveryLog date={date} blocked={readiness?.level === "RED"} />
-            </>
+            <MovementScreen
+              key={movementDate}
+              date={movementDate}
+              initialType={movementType}
+              sessions={sessions}
+              context={{
+                readiness: readiness?.level || "UNCHECKED",
+                assessment: program.assessment,
+                equipment: program.profile?.equipment,
+              }}
+              onBack={() => open(null)}
+              onPlan={() => select("Today")}
+            />
           ) : flow === "checkin" ? (
             <CheckInScreen
               initial={checkIn?.answers}
@@ -603,7 +605,11 @@ export function App() {
           ) : tab === "Today" ? (
             <>
               <Today
-                onRecovery={() => open("recovery")}
+                onRecovery={(type = "") => {
+                  setMovementType(type);
+                  setMovementDate(date);
+                  open("recovery");
+                }}
                 completed={strengthDone}
                 assessment={program.assessment}
                 canOpenWorkout={canOpenWorkout}
@@ -629,6 +635,11 @@ export function App() {
             </>
           ) : tab === "Plan" ? (
             <PlanScreen
+              onMovement={(d) => {
+                setMovementType("");
+                setMovementDate(d);
+                open("recovery");
+              }}
               sessions={sessions}
               profile={program.profile}
               assessment={program.assessment}
@@ -638,6 +649,11 @@ export function App() {
             />
           ) : tab === "Progress" ? (
             <ProgressScreen
+              onMovement={(d) => {
+                setMovementType("");
+                setMovementDate(d);
+                open("recovery");
+              }}
               assessments={program.assessments}
               isLoadingDay={today.high}
               retest={today.retest}
@@ -663,6 +679,11 @@ export function App() {
             />
           ) : (
             <MoreScreen
+              onMovement={() => {
+                setMovementType("");
+                setMovementDate(date);
+                open("recovery");
+              }}
               initialSection={restoreOnOpen ? "backup" : ""}
               profile={program.profile}
               onExport={download}

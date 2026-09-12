@@ -1,3 +1,4 @@
+import { MovementProgress } from "../components/MovementProgress";
 import { SectionSwitch } from "../components/SectionSwitch";
 import {
   TrainingOverview,
@@ -20,6 +21,7 @@ import type { Assessment, Session, Values } from "../types";
 import { History } from "./History";
 
 export function ProgressScreen({
+  onMovement,
   assessment,
   assessments,
   checkpoints,
@@ -30,6 +32,7 @@ export function ProgressScreen({
   isLoadingDay,
   retest,
 }: {
+  onMovement: (date: string) => void;
   assessment?: Assessment;
   assessments: Assessment[];
   checkpoints: Values;
@@ -58,11 +61,13 @@ export function ProgressScreen({
           ["strength", "Strength"],
           ["baseline", "Rehab"],
           ["sport", "Sport"],
+          ["movement", "Movement"],
         ]}
       />
       {view === "overview" && (
         <TrainingOverview sessions={sessions} onView={setView} />
       )}
+      {view === "movement" && <MovementProgress onOpen={onMovement} sessions={sessions} />}
       {view === "baseline" && <AssessmentProgress assessments={assessments} />}
       {!assessment && (
         <Card>

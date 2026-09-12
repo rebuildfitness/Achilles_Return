@@ -10,11 +10,13 @@ import { migrateBackup, STORE_NAMES, VERSIONS } from "../persistence/schema.js";
 import type { Profile, Values, Exercise } from "../types";
 
 export function MoreScreen({
+  onMovement,
   profile,
   onExport,
   onReload,
   initialSection = "",
 }: {
+  onMovement: () => void;
   profile?: Profile;
   onExport: () => void;
   onReload: () => Promise<void>;
@@ -153,7 +155,12 @@ export function MoreScreen({
           </PrimaryButton>
         </Card>
       )}
-      {section === "library" && <ExerciseLibrary />}
+      {section === "library" && (
+        <ExerciseLibrary
+          onMovement={onMovement}
+          equipment={profile?.equipment}
+        />
+      )}
       {section === "evidence" && (
         <>
           <Card>

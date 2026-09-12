@@ -1,5 +1,6 @@
+import { validateMovement } from "../data/movement.js";
 export const VERSIONS = Object.freeze({
-  appVersion: "1.1.0",
+  appVersion: "1.2.0",
   databaseVersion: 2,
   rulesetVersion: "1.1.0",
   exerciseLibraryVersion: "1.0.0",
@@ -49,6 +50,7 @@ export function migrateBackup(input) {
     if (new Set(rows.map((row) => row.id)).size !== rows.length)
       throw new Error(`Duplicate record IDs in ${name}`);
     for (const row of rows) {
+      if (row.movementRecordSchemaVersion !== undefined) validateMovement(row);
       if (
         row.values !== undefined &&
         (!row.values ||
