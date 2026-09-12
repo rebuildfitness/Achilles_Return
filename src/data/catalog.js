@@ -82,6 +82,24 @@ const upper = (id, name, equipment, slug, extra = {}) =>
     ...extra,
   });
 export const CATALOG = {
+  seatedCore: base(
+    "seated-march",
+    "Seated Core March",
+    ["adjustable-bench"],
+    2,
+    "8–12 / side",
+    {
+      ...demo(
+        "https://library.theprehabguys.com/vimeo-video/seated-march/",
+        "Prehab",
+        "https://library.theprehabguys.com/vimeo-video/seated-march/",
+      ),
+      tags: ["core", "seated"],
+      loadTier: "minimal",
+      rpe: "5–6",
+      cue: "Sit tall on a stable bench. Slowly lift one knee at a time without leaning back; keep breathing.",
+    },
+  ),
   row: upper(
     "supported-db-row",
     "Bench-Supported Dumbbell Row",
@@ -215,7 +233,7 @@ export const CATALOG = {
   }),
   pallof: base(
     "cable-pallof-press",
-    "Cable Pallof Press",
+    "Standing Cable Pallof Press",
     ["cable-station"],
     2,
     "10 / side",

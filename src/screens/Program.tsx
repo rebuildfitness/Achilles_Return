@@ -7,6 +7,8 @@ import {
 } from "../components/ui";
 import { AssessmentResult, DataField } from "./Baseline";
 import { ExerciseLibrary } from "../components/ExerciseLibrary";
+import { RecoveryLog } from "../components/RecoveryLog";
+import { RescheduleWorkout } from "../components/RescheduleWorkout";
 import { AssessmentProgress } from "../components/AssessmentProgress";
 import { monthlyStatus, assessmentLabel } from "../data/assessmentHistory.js";
 import { BASELINE_SECTIONS } from "../data/baseline.js";
@@ -105,12 +107,14 @@ export function PlanScreen({
   sessions,
   readiness,
   onTests,
+  onReload,
 }: {
   profile?: Profile;
   assessment?: Assessment;
   sessions: Session[];
   readiness: string;
   onTests: () => void;
+  onReload: () => Promise<void>;
 }) {
   const [selected, setSelected] = useState(dayKey()),
     [offset, setOffset] = useState(0);
@@ -123,6 +127,14 @@ export function PlanScreen({
         <h1>Plan</h1>
         <p>Your full week. Capacity first, recovery built in.</p>
       </div>
+      {assessment && (
+        <RescheduleWorkout
+          profile={profile}
+          assessment={assessment}
+          sessions={sessions}
+          onSaved={onReload}
+        />
+      )}
       {!assessment && (
         <Card>
           <h2>Baseline first</h2>
@@ -212,6 +224,9 @@ export function PlanScreen({
         sessionDates={sessions.map((s) => s.date)}
         onSelect={setSelected}
       />
+      {assessment && selected <= dayKey() && (
+        <RecoveryLog key={selected} date={selected} />
+      )}
       <Card>
         <h2>
           {new Date(selected + "T12:00:00").toLocaleDateString(undefined, {

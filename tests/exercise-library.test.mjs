@@ -8,9 +8,12 @@ import { CATALOG, EQUIPMENT } from "../src/data/catalog.js";
 
 test("Press and row groups include upper-body lifts without misclassifying Pallof press", () => {
   const chest = filterLibrary({ muscle: "Chest", search: "press" });
-  assert.equal(chest.length, 5);
-  assert.ok(chest.every(ex => !/Pallof/.test(ex.name)));
-  assert.equal(filterLibrary({ muscle: "Shoulders", search: "press" }).length, 4);
+  assert.equal(chest.length, 6);
+  assert.ok(chest.every((ex) => !/Pallof/.test(ex.name)));
+  assert.equal(
+    filterLibrary({ muscle: "Shoulders", search: "press" }).length,
+    4,
+  );
   assert.equal(filterLibrary({ muscle: "Back", search: "row" }).length, 5);
   assert.equal(filterLibrary({ muscle: "Core", search: "Pallof" }).length, 1);
 });

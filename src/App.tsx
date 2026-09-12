@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { AppShell, Card } from "./components/ui";
 import { Today } from "./screens/Today";
+import { RecoveryLog } from "./components/RecoveryLog";
+import { RescheduleWorkout } from "./components/RescheduleWorkout";
+import { swapExercise } from "./rules/trainingFlexibility.js";
 import { weeklyPlan } from "./rules/planner.js";
 import { baselineResult } from "./rules/baseline.js";
 import {
@@ -55,6 +58,7 @@ function currentTab(): Tab {
 }
 
 export function App() {
+  const [intro, setIntro] = useState(true);
   const [tab, setTab] = useState<Tab>(currentTab);
   const [date, setDate] = useState(dayKey());
   const [checkIn, setCheckIn] = useState<CheckIn>();
@@ -437,14 +441,7 @@ export function App() {
     );
     update?.waiting?.postMessage("ACTIVATE_UPDATE");
   }
-  if (
-    loaded &&
-    !program.welcomed &&
-    !program.assessment &&
-    !program.profile &&
-    sessions.length === 0 &&
-    !checkIn
-  )
+  if (loaded && intro)
     return (
       <Welcome
         busy={busy}
@@ -454,6 +451,7 @@ export function App() {
           try {
             await put("settings", { id: "onboarding", done: true });
             await reloadProgram();
+            setIntro(false);
             setRestoreOnOpen(restore);
             setTab(restore ? "More" : "Today");
             location.hash = restore ? "More" : "Today";
@@ -549,6 +547,38 @@ export function App() {
               onChange={changeSet}
               onBack={() => open(null)}
               onFinish={() => open("finish")}
+              readiness={readiness?.level || "UNCHECKED"}
+              equipment={program.profile?.equipment}
+              onSwap={async (exercise, id, reason) => {
+                const replacement = swapExercise(
+                  exercise,
+                  id,
+                  program.profile?.equipment,
+                  readiness?.level,
+                  reason,
+                );
+                if (workout.items.some((ex) => ex.id === id))
+                  throw new Error("That exercise is already in this workout.");
+                if (
+                  logRef.current[exercise.id]?.sets.some((set) => set?.complete)
+                )
+                  throw new Error(
+                    "Finish logging this exercise before changing its variation on a later workout.",
+                  );
+                await queue.current;
+                await put("profile", {
+                  ...program.profile,
+                  id: "athlete",
+                  exerciseChoices: {
+                    ...program.profile?.exerciseChoices,
+                    [exercise.originalId || exercise.id]: {
+                      id: replacement.id,
+                      reason,
+                    },
+                  },
+                });
+                await reloadProgram();
+              }}
             />
           ) : flow === "finish" ? (
             <FinishScreen
@@ -557,28 +587,41 @@ export function App() {
               onSave={finish}
             />
           ) : tab === "Today" ? (
-            <Today
-              assessment={program.assessment}
-              canOpenWorkout={canOpenWorkout}
-              workoutNote={
-                strengthDone
-                  ? "Workout saved. Recovery now; record the response tomorrow."
-                  : today.retest
-                    ? "Reassessment due after the training break."
-                    : today.note
-              }
-              onResponse={(s) => {
-                setResponseSession(s);
-                open("response");
-              }}
-              readiness={readiness}
-              workout={workout}
-              sessions={sessions}
-              onCheckIn={() => open("checkin")}
-              onWorkout={() => canOpenWorkout && open("workout")}
-              onPlan={() => select("Plan")}
-              onTests={() => select("Tests")}
-            />
+            <>
+              <Today
+                assessment={program.assessment}
+                canOpenWorkout={canOpenWorkout}
+                workoutNote={
+                  strengthDone
+                    ? "Workout saved. Recovery now; record the response tomorrow."
+                    : today.retest
+                      ? "Reassessment due after the training break."
+                      : today.note
+                }
+                onResponse={(s) => {
+                  setResponseSession(s);
+                  open("response");
+                }}
+                readiness={readiness}
+                workout={workout}
+                sessions={sessions}
+                onCheckIn={() => open("checkin")}
+                onWorkout={() => canOpenWorkout && open("workout")}
+                onPlan={() => select("Plan")}
+                onTests={() => select("Tests")}
+              />
+              {program.assessment && (
+                <RecoveryLog date={date} blocked={readiness?.level === "RED"} />
+              )}
+              {program.assessment && !strengthDone && (
+                <RescheduleWorkout
+                  profile={program.profile}
+                  assessment={program.assessment}
+                  sessions={sessions}
+                  onSaved={reloadProgram}
+                />
+              )}
+            </>
           ) : tab === "Plan" ? (
             <PlanScreen
               sessions={sessions}
@@ -586,6 +629,7 @@ export function App() {
               assessment={program.assessment}
               readiness={readiness?.level || "GREEN"}
               onTests={() => select("Tests")}
+              onReload={reloadProgram}
             />
           ) : tab === "Progress" ? (
             <ProgressScreen

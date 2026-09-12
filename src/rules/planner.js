@@ -2,6 +2,7 @@ import { CATALOG, activeExercise, EQUIPMENT } from "../data/catalog.js";
 import { baselineResult } from "./baseline.js";
 import { dayKey } from "../data/provisionalWeek.js";
 import { resumeAfterMissedSessions } from "./workout.js";
+import { swapExercise } from "./trainingFlexibility.js";
 const clone = (value) => structuredClone(value);
 export const STRENGTH_STYLES = [
   ["hybrid", "Rehab + 5×5 & hypertrophy"],
@@ -69,7 +70,7 @@ export function strengthTemplate(kind, values, style = "hybrid") {
       },
       CATALOG.triceps,
     ],
-    C: [CATALOG.shoulderPress, CATALOG.row, CATALOG.curl],
+    C: [CATALOG.shoulderPress, CATALOG.row, CATALOG.curl, CATALOG.seatedCore],
   };
   const expanded = style !== "rehab";
   return {
@@ -223,7 +224,14 @@ export function weeklyPlan(
     const date = new Date(monday);
     date.setDate(date.getDate() + index);
     const key = dayKey(date);
-    const number = high.indexOf(index);
+    const moves = profile?.scheduleMoves || [];
+    const movedHere = moves.find((m) => m.to === key);
+    const movedAway = moves.some((m) => m.from === key);
+    const number = movedHere
+      ? ["A", "B", "C"].indexOf(movedHere.kind)
+      : movedAway
+        ? -1
+        : high.indexOf(index);
     const needsBaseline = !assessment?.completedAt;
     const restrictionReview =
       values?.clearance === "no" || values?.noRestrictions === "no";
@@ -251,6 +259,22 @@ export function weeklyPlan(
           severity.indexOf(responseReadiness),
         )
       ];
+    if (raw)
+      raw.items = raw.items.map((ex) => {
+        const choice = profile?.exerciseChoices?.[ex.id];
+        if (!choice) return ex;
+        try {
+          return swapExercise(
+            ex,
+            choice.id,
+            profile?.equipment || EQUIPMENT,
+            modifiedReadiness,
+            "equipment",
+          );
+        } catch {
+          return ex;
+        }
+      });
     const workout = raw
       ? modifyWorkout(
           raw,
@@ -286,7 +310,13 @@ export function weeklyPlan(
       retest:
         daysMissed > 10 &&
         (!assessment?.completedAt ||
-          assessment.completedAt.slice(0, 10) < dayKey(today)),
+          Math.floor(
+            (new Date(dayKey(today) + "T12:00:00").getTime() -
+              new Date(
+                assessment.completedAt.slice(0, 10) + "T12:00:00",
+              ).getTime()) /
+              86400000,
+          ) > 10),
     };
   });
 }

@@ -18,6 +18,22 @@ export function classifyTolerance(response) {
   return "PENDING_NEXT_DAY_RESPONSE";
 }
 export function validateWorkoutLog(workout, log) {
+  for (const ex of workout.items) {
+    const limit =
+      ex.id === "belt-squat"
+        ? 225
+        : /dumbbell|db-|supported-db-row|seated-arnold/.test(ex.id) &&
+            !/triceps|seated-calf/.test(ex.id)
+          ? 50
+          : null;
+    if (
+      limit &&
+      (log[ex.id]?.sets || []).some(
+        (s) => s?.complete && Number(s.load) > limit,
+      )
+    )
+      return `${ex.name}: the equipment limit is ${limit} lb${limit === 50 ? " per dumbbell" : ""}. Choose another variation rather than exceeding capacity.`;
+  }
   const completed = workout.items.flatMap((ex) =>
     (log[ex.id]?.sets || []).slice(0, ex.sets).filter((set) => set?.complete),
   );

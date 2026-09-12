@@ -492,6 +492,22 @@ unilateral.equipment.push("adjustable-bench");
 unilateral.verification =
   "Unilateral movement visually checked at 1:40. Full exercise tutorial is 2:47; the demo link starts at the movement segment.";
 additional.unshift(unilateral);
+for (const [name, slug, muscle] of [
+  ["Barbell bench press", "barbell-bench-press.html", "Chest"],
+  ["Barbell back squat", "squat.html", "Legs"],
+]) {
+  const ex = make(
+    name,
+    "olympic-barbell",
+    muscle,
+    M + slug,
+    "Use your B52 rack J-hooks and correctly positioned safeties. Check the empty 45 lb bar first; select a lighter alternative if that is too heavy. Record total bar plus plates.",
+    "Muscle & Strength",
+  );
+  ex.equipment.push("smith-machine", "weight-plates");
+  if (muscle === "Chest") ex.equipment.push("adjustable-bench");
+  additional.push(ex);
+}
 additional.push(
   make(
     "Stationary cycling",

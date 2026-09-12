@@ -103,3 +103,8 @@ This local workspace has no Git remote configured yet. Create/select the destina
 
 Open More > Exercise library for 90 searchable exercises with equipment and muscle filters, individual demo links and setup notes. See docs/EQUIPMENT_EXERCISE_LIBRARY.md for the complete inventory and verification limitations. Reference options do not alter prescribed rehab workouts.
 
+
+## Training flexibility update
+
+See docs/TRAINING_FLEXIBILITY_UPDATE.md for make-up scheduling, recovery logs, the every-launch hero, load/cadence guidance, persistent exercise alternatives and standing/seated core work.
+

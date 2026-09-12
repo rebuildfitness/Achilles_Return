@@ -1,5 +1,6 @@
 import { ExerciseCard, PrimaryButton, SetRow } from "../components/ui";
 import { Choice } from "./CheckIn";
+import { ExerciseGuidance } from "../components/ExerciseGuidance";
 import type { FormEvent } from "react";
 import type { Session, SetLog, Workout, WorkoutLog } from "../types";
 export function WorkoutScreen({
@@ -10,6 +11,9 @@ export function WorkoutScreen({
   onChange,
   onBack,
   onFinish,
+  onSwap,
+  equipment,
+  readiness = "GREEN",
 }: {
   workout: Workout;
   log: WorkoutLog;
@@ -18,6 +22,13 @@ export function WorkoutScreen({
   onChange: (id: string, index: number, value: SetLog) => void;
   onBack: () => void;
   onFinish: () => void;
+  onSwap?: (
+    exercise: import("../types").Exercise,
+    id: string,
+    reason: string,
+  ) => Promise<void>;
+  equipment?: string[];
+  readiness?: string;
 }) {
   const hasSets = Object.values(log).some((item) =>
     item.sets.some((set) => set?.complete),
@@ -54,6 +65,13 @@ export function WorkoutScreen({
           ?.exerciseLog[exercise.id];
         return (
           <ExerciseCard key={exercise.id} exercise={exercise} online={online}>
+            <ExerciseGuidance
+              exercise={exercise}
+              sessions={sessions}
+              readiness={readiness}
+              equipment={equipment}
+              onSwap={onSwap}
+            />
             <div className="set-row set-header" aria-hidden="true">
               <span>SET</span>
               <span>PREVIOUS</span>

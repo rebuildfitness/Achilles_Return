@@ -90,6 +90,18 @@ try {
     console.error("Browser error:", e.message);
   });
   const url = `http://127.0.0.1:4174${scope}`;
+  const enterIntro = async (target = page, restoreTab = true) => {
+    const oldHash = new URL(target.url()).hash.slice(1);
+    await target
+      .getByRole("button", { name: "Get Started", exact: true })
+      .click();
+    await target.getByRole("heading", { name: "Today", exact: true }).waitFor();
+    if (restoreTab && oldHash && oldHash !== "Today")
+      await target
+        .getByRole("navigation")
+        .getByRole("button", { name: oldHash, exact: true })
+        .click();
+  };
   const nav = async (tab) => {
     await page
       .getByRole("navigation")
@@ -175,6 +187,7 @@ try {
     });
   });
   await page.goto(url);
+  await enterIntro();
   await page.getByRole("heading", { name: "Today", exact: true }).waitFor();
   assert.equal(
     (await readStore("sessions"))[0].rulesetVersion,
@@ -205,6 +218,7 @@ try {
   await page.locator("#field-repairSide").selectOption("left");
   await page.getByRole("button", { name: "Save & exit" }).click();
   await page.reload();
+  await enterIntro();
   await page.getByRole("button", { name: "Resume assessment" }).click();
   assert.equal(await page.locator("#field-repairSide").inputValue(), "left");
   pass("Baseline autosaves and resumes after exit and reload");
@@ -291,6 +305,7 @@ try {
     return rows.some((r) => r.log?.["single-calf"]?.sets?.[0]?.complete);
   });
   await page.reload();
+  await enterIntro();
   await page.getByRole("button", { name: "Open Workout" }).click();
   assert.equal(
     await page
@@ -340,6 +355,7 @@ try {
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
   await context.setOffline(true);
   await page.reload();
+  await enterIntro();
   await page.getByRole("button", { name: "Open Workout" }).click();
   await page
     .getByText("Video requires internet", { exact: true })
@@ -393,6 +409,7 @@ try {
   await context.setOffline(false);
   await page.clock.setFixedTime(new Date(2026, 8, 9, 12));
   await page.reload();
+  await enterIntro();
   await nav("Today");
   await response();
   await checkin();
@@ -405,6 +422,7 @@ try {
   await page.locator("#field-immediateAchillesResponse").selectOption("good");
   await page.getByRole("button", { name: "← Progress" }).click();
   await page.reload();
+  await enterIntro();
   await page.getByRole("button", { name: "Open R1 exposure" }).click();
   assert.equal(await page.locator("#field-minutes").inputValue(), "18");
   await page
@@ -472,6 +490,7 @@ try {
     page.waitForEvent("load"),
     page.getByRole("button", { name: "Update & reload" }).click(),
   ]);
+  await enterIntro(page, false);
   await page.getByRole("heading", { name: "Today", exact: true }).waitFor();
   await page.waitForFunction(
     async () =>
@@ -530,11 +549,15 @@ try {
   await welcome.getByRole("button", { name: "Get Started" }).click();
   await welcome.getByRole("heading", { name: "Today", exact: true }).waitFor();
   await welcome.reload();
+  await enterIntro(welcome, false);
   await welcome.getByRole("heading", { name: "Today", exact: true }).waitFor();
   await fresh.close();
-  pass("Approved hero artwork appears on first launch; setup choice persists");
+  pass(
+    "Approved hero artwork appears on every fresh launch and continues to Today",
+  );
   await page.clock.setFixedTime(new Date(2026, 8, 30, 12));
   await page.reload();
+  await enterIntro();
   await nav("Tests");
   await page
     .getByRole("button", { name: "Start reassessment", exact: true })
@@ -585,6 +608,7 @@ try {
   }
   await page.getByRole("heading", { name: "Tests", exact: true }).waitFor();
   await page.reload();
+  await enterIntro();
   await page.getByRole("heading", { name: "Tests", exact: true }).waitFor();
   const monthlyRecords = await readStore("assessments");
   assert.equal(monthlyRecords.length, 2);
@@ -655,6 +679,7 @@ try {
   await page.locator("#field-heelQuality").selectOption("yes");
   await page.getByRole("button", { name: "Save & exit", exact: true }).click();
   await page.reload();
+  await enterIntro();
   await page
     .getByRole("button", { name: "Resume assessment", exact: true })
     .click();
@@ -731,6 +756,65 @@ try {
   );
   pass(
     "Exercise library search, combined filters, demo link, empty state and pagination work on mobile",
+  );
+  await nav("Today");
+  await page
+    .getByLabel("Recovery activity", { exact: true })
+    .selectOption("cycle-25");
+  await page.getByLabel("Cycling distance", { exact: true }).fill("7.5");
+  await page
+    .getByRole("button", { name: "Save recovery activity", exact: true })
+    .click();
+  await page
+    .getByText("Recovery activity saved on this device.", { exact: true })
+    .waitFor();
+  await page.reload();
+  await enterIntro(page, false);
+  await page.getByText("Recorded activities (1)", { exact: true }).click();
+  assert.ok((await page.locator("body").innerText()).includes("7.5 miles"));
+  await checkin();
+  await page.getByRole("button", { name: "Open Workout", exact: true }).click();
+  const press = page
+    .locator(".exercise-card")
+    .filter({
+      has: page.getByRole("heading", {
+        name: "Incline Dumbbell Press",
+        exact: true,
+      }),
+    });
+  await press
+    .getByText("Starting weight, cadence & exercise options", { exact: true })
+    .click();
+  await press
+    .getByLabel("Alternative for Incline Dumbbell Press", { exact: true })
+    .selectOption("library-smith-incline-bench-press");
+  await press
+    .getByRole("button", { name: "Use this alternative", exact: true })
+    .click();
+  await page
+    .getByRole("heading", { name: "Smith incline bench press", exact: true })
+    .waitFor();
+  await page.getByRole("button", { name: "← Today", exact: true }).click();
+  await page
+    .getByLabel("Workout to move", { exact: true })
+    .selectOption("2026-09-30");
+  await page.getByLabel("Make-up date", { exact: true }).fill("2026-10-01");
+  await page.getByRole("button", { name: "Move workout", exact: true }).click();
+  await page.getByText(/Workout moved to 2026-10-01/).waitFor();
+  await page.clock.setFixedTime(new Date(2026, 9, 1, 12));
+  await page.reload();
+  await enterIntro(page, false);
+  await checkin();
+  await page.getByRole("button", { name: "Open Workout", exact: true }).click();
+  await page
+    .getByRole("heading", { name: "Smith incline bench press", exact: true })
+    .waitFor();
+  await page.screenshot({
+    path: resolve(artifacts, "flexible-workout-mobile.png"),
+    fullPage: true,
+  });
+  pass(
+    "Recovery distance persists, press swaps persist, and a moved workout opens on its make-up day",
   );
   assert.deepEqual(errors, []);
   pass("No browser runtime errors");

@@ -8,7 +8,7 @@ const lines = [
   "",
   "User-requested reference expansion, September 11, 2026. Canonical data: src/data/exerciseLibrary.js. Regenerate this inventory with node scripts/export-exercise-library.mjs.",
   "",
-  `${EXERCISE_LIBRARY.length} exercises. The added reference options do not change the frozen clinical rules, workout prescriptions or existing CATALOG. Equipment-specific attachments and setup requirements are listed below. No standalone rack, leg press, medicine ball or slam ball is assumed.`,
+  `${EXERCISE_LIBRARY.length} exercises. The frozen clinical rules remain unchanged; see TRAINING_FLEXIBILITY_UPDATE.md for user-selected workout alternatives and seated core programming. Equipment-specific attachments and setup requirements are listed below. The user confirmed the Major Fitness B52 rack and safeties. No standalone leg press, medicine ball or slam ball is assumed.`,
   "",
   "The user confirmed cable equipment and ankle cuffs and corrected the requested hamstring curl to seated unilateral. Its Evolve Flagstaff video was visually checked at 1:40; the link starts there (full tutorial 2:47). Other new links are exercise-specific provider pages checked through their published catalogs; individual playback and duration are not universally verified. All videos are external and need internet access. Source demonstration is technique guidance, not Achilles clearance.",
   "",
@@ -27,3 +27,4 @@ await writeFile(
   new URL("../docs/EQUIPMENT_EXERCISE_LIBRARY.md", import.meta.url),
   lines.join("\n"),
 );
+

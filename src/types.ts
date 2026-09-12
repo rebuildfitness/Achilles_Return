@@ -26,6 +26,7 @@ export type SetLog = {
 };
 export type WorkoutLog = Record<string, { sets: SetLog[] }>;
 export type Exercise = {
+  originalId?: string;
   id: string;
   name: string;
   sets: number;
@@ -79,6 +80,8 @@ export type Assessment = {
   step: number;
 };
 export type Profile = {
+  scheduleMoves?: { from: string; to: string; kind: string }[];
+  exerciseChoices?: Record<string, { id: string; reason: string }>;
   id: string;
   availableDays: string[];
   equipment: string[];
