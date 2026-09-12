@@ -775,6 +775,7 @@ input:not([type="checkbox"]):not([type="radio"]) {
 }
 .form-field input,
 .form-field select,
+.assessment-progress select,
 .review-form input,
 .review-form select,
 .review-form textarea,
@@ -970,6 +971,56 @@ pre {
     grid-column: 2;
     padding-bottom: 5px;
   }
+}
+.assessment-test {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line200);
+}
+.exercise-library-card .helper {
+  text-align: left;
+}
+.library-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+.exercise-library-card .demo-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--blue600);
+  font-weight: 600;
+  text-decoration: none;
+}
+.assessment-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-size: 12px;
+  margin-top: 20px;
+}
+.trend-primary {
+  color: var(--blue600);
+}
+.trend-secondary {
+  color: var(--green600);
+}
+.assessment-table {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+.assessment-table table {
+  width: 100%;
+  min-width: 360px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.assessment-table th,
+.assessment-table td {
+  text-align: left;
+  padding: 10px 6px;
+  border-bottom: 1px solid var(--line200);
 }
 @media (prefers-reduced-motion: no-preference) {
   button,

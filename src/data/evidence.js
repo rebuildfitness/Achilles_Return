@@ -1,5 +1,16 @@
 export const EVIDENCE = [
   {
+    id: "general-strength",
+    title: "Effective resistance training for strength and hypertrophy",
+    authors: "ACSM, 2026; user-requested strength module",
+    url: "https://acsm.org/effective-resistance-training-program-infographic/",
+    strength:
+      "Supportive for general strength; indirect for Achilles rehabilitation",
+    type: "General resistance-training guidance / product programming",
+    summary:
+      "General training guidance supports strength and muscle development. The 5×5 option is a user-requested programming choice, not an Achilles clearance criterion or a uniquely validated rehabilitation dose.",
+  },
+  {
     id: "running-consensus",
     title: "Return-to-running criteria after Achilles repair",
     authors: "Gaspar et al., 2026",

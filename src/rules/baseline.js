@@ -1,4 +1,4 @@
-export const RULESET = "1.0.1";
+export const RULESET = "1.1.0";
 export function metric(value) {
   return value === "" ||
     value === undefined ||
@@ -40,8 +40,8 @@ export function runningCriteria(v) {
       label: "No pain in daily life",
       passed:
         v.noDailyPain === "yes" &&
-        metric(v.restPain) === 0 &&
-        metric(v.walkPain) === 0,
+        !(metric(v.restPain) > 0) &&
+        !(metric(v.walkPain) > 0),
     },
     {
       id: "rehab-pain",
@@ -70,7 +70,38 @@ export function runningCriteria(v) {
       label: "Psychologically ready to run",
       passed: v.psychReady === "yes",
     },
-  ];
+  ].map((c) => {
+    const recorded = {
+      "daily-pain": !!v.noDailyPain,
+      "rehab-pain": !!v.noRehabPain,
+      gait: !!v.gait,
+      tiptoes: !!v.function_5,
+      "heel-rise": metric(v.heel_repaired_reps) !== null && !!v.heelQuality,
+      balance: !!v.goodBalance,
+      confidence: !!v.psychReady,
+    };
+    const conflict =
+      c.id === "daily-pain" &&
+      v.noDailyPain === "yes" &&
+      (metric(v.restPain) > 0 || metric(v.walkPain) > 0);
+    return {
+      ...c,
+      status: conflict
+        ? "Review conflicting answers"
+        : c.passed
+          ? "Met"
+          : recorded[c.id]
+            ? "Not yet met"
+            : "Not recorded",
+      detail: conflict
+        ? "Pain-free was answered Yes, but resting or walking pain is above zero. Review these answers."
+        : c.id === "rehab-pain"
+          ? `Your answer: ${v.noRehabPain || "not recorded"}`
+          : c.id === "daily-pain"
+            ? `Your answer: ${v.noDailyPain || "not recorded"}`
+            : "",
+    };
+  });
 }
 export function baselineResult(v) {
   const criteria = runningCriteria(v),
@@ -90,14 +121,13 @@ export function baselineResult(v) {
     v.runSameDay === "yes" &&
     v.runNextDay === "yes" &&
     (metric(v.runMinutes) ?? 0) > 0;
-  const phase =
-    red
-      ? "Safety Hold"
-      : low || restricted
-        ? "Foundational Strength"
-        : recent
-          ? "Running"
-          : "Running Readiness";
+  const phase = red
+    ? "Safety Hold"
+    : low || restricted
+      ? "Foundational Strength"
+      : recent
+        ? "Running"
+        : "Running Readiness";
   return {
     phase,
     canRun,

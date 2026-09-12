@@ -62,7 +62,7 @@ const server = createServer(async (req, res) => {
   }
 });
 await new Promise((resolve) => server.listen(4174, "127.0.0.1", resolve));
-let browser;
+let browser, page;
 const passed = [];
 function pass(name) {
   passed.push(name);
@@ -82,10 +82,13 @@ try {
     viewport: { width: 390, height: 844 },
     deviceScaleFactor: 1,
   });
-  const page = await context.newPage();
+  page = await context.newPage();
   await page.clock.setFixedTime(new Date(2026, 8, 7, 12));
   const errors = [];
-  page.on("pageerror", (e) => errors.push(e.message));
+  page.on("pageerror", (e) => {
+    errors.push(e.message);
+    console.error("Browser error:", e.message);
+  });
   const url = `http://127.0.0.1:4174${scope}`;
   const nav = async (tab) => {
     await page
@@ -193,6 +196,12 @@ try {
   await page
     .getByRole("button", { name: "Start Baseline", exact: true })
     .click();
+  await page
+    .getByRole("button", { name: "Open detailed assessment", exact: true })
+    .click();
+  await page.waitForFunction(
+    () => document.querySelector("progress")?.max === 13,
+  );
   await page.locator("#field-repairSide").selectOption("left");
   await page.getByRole("button", { name: "Save & exit" }).click();
   await page.reload();
@@ -254,10 +263,10 @@ try {
     fullPage: true,
   });
   await page.getByRole("button", { name: "Open Workout" }).click();
-  assert.equal(await page.locator(".exercise-card").count(), 6);
+  assert.equal(await page.locator(".exercise-card").count(), 9);
   assert.equal(
     await page.getByRole("link", { name: "Short Demo", exact: true }).count(),
-    6,
+    9,
   );
   const load = "Single-Leg Calf Raise set 1 load",
     reps = "Single-Leg Calf Raise set 1 reps";
@@ -294,7 +303,18 @@ try {
     path: resolve(artifacts, "workout-mobile.png"),
     fullPage: true,
   });
-  pass("Six exercise cards have specific demos and inline sets survive reload");
+  assert.equal(
+    await page
+      .getByRole("spinbutton", {
+        name: "Incline Dumbbell Press set 5 reps",
+        exact: true,
+      })
+      .count(),
+    1,
+  );
+  pass(
+    "Nine exercise cards include 5×5, specific demos and inline sets that survive reload",
+  );
   for (const width of [320, 375, 390, 720, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     assert.ok(
@@ -513,6 +533,205 @@ try {
   await welcome.getByRole("heading", { name: "Today", exact: true }).waitFor();
   await fresh.close();
   pass("Approved hero artwork appears on first launch; setup choice persists");
+  await page.clock.setFixedTime(new Date(2026, 8, 30, 12));
+  await page.reload();
+  await nav("Tests");
+  await page
+    .getByRole("button", { name: "Start reassessment", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Open detailed assessment", exact: true })
+    .click();
+  await page.waitForFunction(
+    () => document.querySelector("progress")?.max === 13,
+  );
+  assert.equal(await page.locator("#field-restPain").inputValue(), "");
+  await page.locator("#field-assessmentSlot").selectOption("finish");
+  const finishValues = { ...baselineValues(), heel_repaired_reps: "30" };
+  for (const [index, section] of BASELINE_SECTIONS.entries()) {
+    if (section.id === "mobility")
+      assert.equal(
+        await page.locator("#field-mobility_repaired_trial1").isVisible(),
+        true,
+      );
+    if (section.id === "strength") {
+      assert.equal(await page.locator(".assessment-test").count(), 4);
+      await page.screenshot({
+        path: resolve(artifacts, "baseline-strength-monthly.png"),
+        fullPage: true,
+      });
+    }
+    for (const f of section.fields) {
+      const value = finishValues[f.id];
+      if (f.type === "checks") {
+        for (const v of value)
+          await page
+            .getByRole("group", { name: f.label + (f.required ? " *" : "") })
+            .getByLabel(f.options.find((o) => o[0] === v)[1], { exact: true })
+            .check();
+      } else if (f.type === "select")
+        await page.locator(`#field-${f.id}`).selectOption(String(value));
+      else await page.locator(`#field-${f.id}`).fill(String(value));
+    }
+    await page
+      .getByRole("button", {
+        name:
+          index === BASELINE_SECTIONS.length - 1
+            ? "Finish assessment"
+            : "Continue",
+        exact: true,
+      })
+      .click();
+  }
+  await page.getByRole("heading", { name: "Tests", exact: true }).waitFor();
+  await page.reload();
+  await page.getByRole("heading", { name: "Tests", exact: true }).waitFor();
+  const monthlyRecords = await readStore("assessments");
+  assert.equal(monthlyRecords.length, 2);
+  const finishing = monthlyRecords.find(
+    (a) => a.values.assessmentSlot === "finish",
+  );
+  assert.equal(finishing.values.noDailyPain, "yes");
+  assert.equal(finishing.values.noRehabPain, "yes");
+  assert.equal(finishing.values.heel_repaired_reps, "30");
+  await nav("Progress");
+  assert.equal(await page.locator("#trend-month").inputValue(), "2026-09");
+  assert.equal(
+    await page
+      .getByRole("img", { name: /Heel-rise repetitions across 2 assessments/ })
+      .count(),
+    1,
+  );
+  assert.ok(
+    (await page.locator(".assessment-table").first().innerText()).includes(
+      "30 reps",
+    ),
+  );
+  await page.screenshot({
+    path: resolve(artifacts, "monthly-progress.png"),
+    fullPage: true,
+  });
+  pass(
+    "Monthly finishing retest preserves starting data and pain-free answers; separated exercise inputs and charts render",
+  );
+  await nav("More");
+  await page.getByRole("button", { name: /Profile & schedule/ }).click();
+  await page.locator("#field-strengthStyle").selectOption("hypertrophy");
+  await page
+    .getByRole("button", { name: "Save preferences", exact: true })
+    .click();
+  await page
+    .getByText("Preferences saved on this device.", { exact: true })
+    .waitFor();
+  await nav("Tests");
+  await page
+    .getByRole("button", { name: "Start reassessment", exact: true })
+    .click();
+  assert.ok((await page.locator("body").innerText()).includes("Step 1 of 4"));
+  const { SIMPLE_SAFETY, SIMPLE_FUNCTION } =
+    await import("../src/data/simpleBaseline.js");
+  for (const f of SIMPLE_SAFETY.fields.filter(
+    (f) => f.required && f.id !== "surgeryDate",
+  )) {
+    if (f.type === "select")
+      await page.locator(`#field-${f.id}`).selectOption(String(values[f.id]));
+    else await page.locator(`#field-${f.id}`).fill(String(values[f.id]));
+  }
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  for (const f of SIMPLE_FUNCTION.fields) {
+    if (f.type === "select")
+      await page.locator(`#field-${f.id}`).selectOption(String(values[f.id]));
+    else await page.locator(`#field-${f.id}`).fill(String(values[f.id]));
+  }
+  await page.getByRole("button", { name: "Continue", exact: true }).click();
+  await page.screenshot({
+    path: resolve(artifacts, "baseline-simple-mobile.png"),
+    fullPage: true,
+  });
+  await page
+    .getByText("Single-leg heel-rise test · Not tested", { exact: true })
+    .click();
+  await page.locator("#field-heel_repaired_reps").fill("15");
+  await page.locator("#field-heelQuality").selectOption("yes");
+  await page.getByRole("button", { name: "Save & exit", exact: true }).click();
+  await page.reload();
+  await page
+    .getByRole("button", { name: "Resume assessment", exact: true })
+    .click();
+  assert.ok((await page.locator("body").innerText()).includes("Step 3 of 4"));
+  await page
+    .getByText("Single-leg heel-rise test · Data entered", { exact: true })
+    .click();
+  assert.equal(
+    await page.locator("#field-heel_repaired_reps").inputValue(),
+    "15",
+  );
+  await page
+    .getByRole("button", { name: "Continue with recorded tests", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Save baseline", exact: true })
+    .click();
+  await page.getByRole("heading", { name: "Tests", exact: true }).waitFor();
+  const simplified = (await readStore("assessments")).find(
+    (a) => a.values.baselineMode === "simple",
+  );
+  assert.equal(simplified.values.heel_repaired_reps, "15");
+  assert.equal(simplified.values.balance_repaired_seconds, undefined);
+  assert.equal((await readStore("assessments")).length, 3);
+  assert.equal((await readStore("profile"))[0].strengthStyle, "hypertrophy");
+  pass(
+    "Four-step baseline resumes, saves partial measurements and preserves history and strength preference",
+  );
+  await nav("More");
+  await page.getByRole("button", { name: /Exercise library/i }).click();
+  await page.getByRole("heading", { name: "Your exercise library" }).waitFor();
+  await page.getByLabel("Find an exercise").fill("seated unilateral hamstring");
+  assert.equal(
+    await page.getByRole("link", { name: /Short Demo:/ }).count(),
+    1,
+  );
+  assert.match(
+    await page.getByRole("link", { name: /Short Demo:/ }).getAttribute("href"),
+    /LsP3CaDboRA/,
+  );
+  await page.getByText("Setup & guidance", { exact: true }).click();
+  await page.screenshot({
+    path: resolve(artifacts, "exercise-library-mobile.png"),
+    fullPage: true,
+  });
+  await page
+    .getByRole("button", { name: "Clear filters", exact: true })
+    .click();
+  await page.getByLabel("Equipment", { exact: true }).selectOption("plyo-ball");
+  assert.equal(
+    await page.getByRole("link", { name: /Short Demo:/ }).count(),
+    6,
+  );
+  await page.getByLabel("Muscle group", { exact: true }).selectOption("Arms");
+  await page
+    .getByRole("heading", { name: "No matching exercises yet" })
+    .waitFor();
+  await page
+    .getByRole("button", { name: "Show all exercises", exact: true })
+    .click();
+  assert.equal(
+    await page.getByRole("link", { name: /Short Demo:/ }).count(),
+    20,
+  );
+  await page.getByRole("button", { name: "Show 20 more exercises" }).click();
+  assert.equal(
+    await page.getByRole("link", { name: /Short Demo:/ }).count(),
+    40,
+  );
+  assert.ok(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  );
+  pass(
+    "Exercise library search, combined filters, demo link, empty state and pagination work on mobile",
+  );
   assert.deepEqual(errors, []);
   pass("No browser runtime errors");
   await writeFile(
@@ -520,6 +739,13 @@ try {
     JSON.stringify({ passed, failed: 0, isolatedProfile: true }, null, 2),
   );
 } catch (error) {
+  if (page) {
+    console.error(await page.locator("body").innerText());
+    await page.screenshot({
+      path: resolve(artifacts, "browser-failure.png"),
+      fullPage: true,
+    });
+  }
   await writeFile(
     resolve(artifacts, "browser-qa-results.json"),
     JSON.stringify({ passed, failed: 1, error: String(error) }, null, 2),

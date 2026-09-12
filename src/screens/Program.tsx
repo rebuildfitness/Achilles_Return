@@ -6,10 +6,15 @@ import {
   ExerciseCard,
 } from "../components/ui";
 import { AssessmentResult, DataField } from "./Baseline";
+import { ExerciseLibrary } from "../components/ExerciseLibrary";
+import { AssessmentProgress } from "../components/AssessmentProgress";
+import { monthlyStatus, assessmentLabel } from "../data/assessmentHistory.js";
+import { BASELINE_SECTIONS } from "../data/baseline.js";
 import { CHECKPOINTS } from "../data/checkpoints.js";
 import {
   CATALOG,
   EQUIPMENT,
+  EQUIPMENT_LABELS,
   PROGRESSION_DOMAINS,
   validDemo,
 } from "../data/catalog.js";
@@ -27,7 +32,7 @@ import {
   courtCap,
   validateExposureLog,
 } from "../data/exposures.js";
-import { weeklyPlan } from "../rules/planner.js";
+import { weeklyPlan, STRENGTH_STYLES } from "../rules/planner.js";
 import { dayKey } from "../data/provisionalWeek.js";
 import { get, getAll, put, restoreBackup } from "../db.js";
 import { migrateBackup, STORE_NAMES, VERSIONS } from "../persistence/schema.js";
@@ -284,11 +289,26 @@ export function TestsScreen({
       </Card>
       {assessment && <AssessmentResult assessment={assessment} />}
       <Card>
+        <h2>Monthly starting & finishing data</h2>
+        <p>
+          {monthlyStatus(assessments).month}: starting baseline{" "}
+          {monthlyStatus(assessments).startDone ? "recorded" : "not recorded"};
+          finishing baseline{" "}
+          {monthlyStatus(assessments).finishDone ? "recorded" : "not recorded"}.
+        </p>
+        <p>
+          Record your starting data at the beginning of the month and finishing
+          data near {monthlyStatus(assessments).finishDate}. You can record
+          either point from the reassessment form.
+        </p>
+      </Card>
+      <Card>
         <h2>Capacity reviews</h2>
         <p>
-          Record the result of a performed assessment. These reviews address
-          qualitative prerequisites in the approved plan; a score alone is not
-          clearance.
+          More advanced assessments become available as their existing
+          prerequisites are met. Record the result of a performed assessment.
+          These reviews address qualitative prerequisites in the approved plan;
+          a score alone is not clearance.
         </p>
         {CHECKPOINTS.map((c) => (
           <details key={c.id} className="review-row">
@@ -384,10 +404,26 @@ export function TestsScreen({
           <h2>Assessment history</h2>
           {assessments.map((a) => (
             <details key={a.id}>
-              <summary>
-                {new Date(a.completedAt!).toLocaleDateString()} · Baseline
-              </summary>
+              <summary>{assessmentLabel(a)}</summary>
               <AssessmentResult assessment={a} />
+              <details>
+                <summary>All saved answers & measurements</summary>
+                <dl>
+                  {BASELINE_SECTIONS.flatMap((s) => s.fields).map((f) => (
+                    <div key={f.id}>
+                      <dt>{f.label}</dt>
+                      <dd>
+                        {a.values[f.id] === undefined || a.values[f.id] === ""
+                          ? "Not recorded"
+                          : Array.isArray(a.values[f.id])
+                            ? (a.values[f.id] as string[]).join(", ") ||
+                              "None selected"
+                            : String(a.values[f.id])}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </details>
             </details>
           ))}
         </Card>
@@ -398,6 +434,7 @@ export function TestsScreen({
 
 export function ProgressScreen({
   assessment,
+  assessments,
   checkpoints,
   sessions,
   readiness,
@@ -407,6 +444,7 @@ export function ProgressScreen({
   retest,
 }: {
   assessment?: Assessment;
+  assessments: Assessment[];
   checkpoints: Values;
   sessions: Session[];
   readiness: string;
@@ -423,6 +461,7 @@ export function ProgressScreen({
         <h1>Progress</h1>
         <p>A structured path back to the game.</p>
       </div>
+      <AssessmentProgress assessments={assessments} />
       {!assessment && (
         <Card>
           <h2>Start with your baseline</h2>
@@ -986,6 +1025,7 @@ export function MoreScreen({
   const [values, setValues] = useState<Values>({
     availableDays: profile?.availableDays || ["1", "3", "5"],
     equipment: profile?.equipment || EQUIPMENT,
+    strengthStyle: profile?.strengthStyle || "hybrid",
   });
   async function settings() {
     setBusy(true);
@@ -1055,67 +1095,48 @@ export function MoreScreen({
           />
           <DataField
             field={{
+              id: "strengthStyle",
+              label: "Strength training style",
+              type: "select",
+              options: STRENGTH_STYLES,
+            }}
+            values={values}
+            onChange={(id, v) => setValues({ ...values, [id]: v })}
+          />
+          <p className="helper">
+            5×5 adds an incline dumbbell press on Strength A and a supported row
+            on Strength B. Strength C adds higher-rep shoulder, back and arm
+            work. Rehab stays first. Use lighter warm-up sets, keep 2–4 reps in
+            reserve, and let the next-morning response guide progression.
+          </p>
+          <DataField
+            field={{
               id: "equipment",
               label: "Available owned equipment",
               type: "checks",
-              options: EQUIPMENT.map((e) => [e, e.replaceAll("-", " ")]),
+              options: EQUIPMENT.map((e) => [
+                e,
+                EQUIPMENT_LABELS[e as keyof typeof EQUIPMENT_LABELS] ||
+                  e.replaceAll("-", " "),
+              ]),
             }}
             values={values}
             onChange={(id, v) => setValues({ ...values, [id]: v })}
           />
           <p className="helper">
             Only whitelisted equipment can appear. Unavailable exercises are
-            omitted and explained.
+            omitted and explained. Your Olympic barbell weighs 45 lb; include
+            the bar and plates when recording total barbell load. Your photos
+            identify a half ball, inflatable balance cushion, stability ball and
+            vibration plate. These are equipment options; owning them does not
+            unlock impact or unstable-surface work.
           </p>
           <PrimaryButton disabled={busy} onClick={settings}>
             Save preferences
           </PrimaryButton>
         </Card>
       )}
-      {section === "library" && (
-        <>
-          <Card>
-            <label>
-              Find an exercise
-              <input
-                type="search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Calf, strength, balance…"
-              />
-            </label>
-          </Card>
-          {Object.values(CATALOG)
-            .filter((ex) =>
-              `${ex.name} ${ex.tags?.join(" ")}`
-                .toLowerCase()
-                .includes(search.toLowerCase()),
-            )
-            .map((ex) => (
-              <ExerciseCard key={ex.id} exercise={ex}>
-                <p className="helper">
-                  Equipment: {ex.equipment.join(", ") || "Bodyweight"} ·
-                  Achilles load: {ex.loadTier}
-                </p>
-                {!validDemo(ex) && (
-                  <p className="notice">Locked: {ex.lockedReason}</p>
-                )}
-                <details>
-                  <summary>Demo & source metadata</summary>
-                  <p>
-                    {ex.videoSource || "Pending verification"} ·{" "}
-                    {ex.videoType || "Unverified"}
-                  </p>
-                  <p>Verification: {ex.videoVerifiedAt || "Pending"}</p>
-                  <p>{ex.videoVerification}</p>
-                  <p>
-                    Evidence: {ex.evidenceType} · {ex.evidenceStrength}
-                  </p>
-                </details>
-              </ExerciseCard>
-            ))}
-        </>
-      )}
+      {section === "library" && <ExerciseLibrary />}
       {section === "evidence" && (
         <>
           <Card>

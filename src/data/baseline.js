@@ -3,6 +3,7 @@ import { CATALOG } from "./catalog.js";
 // Reuse the workout catalog so assessment demonstrations cannot drift.
 export const BASELINE_DEMOS = {
   mobility: [CATALOG.mobility],
+  balance: [CATALOG.balance],
   bilateral: [CATALOG.bilateral],
   heelrise: [CATALOG.single],
   soleus: [CATALOG.seated],
@@ -212,18 +213,29 @@ export const BASELINE_SECTIONS = [
       "10 controlled repetitions: 2 seconds up, 1 second hold, 2 seconds down. If unsafe or clearly poor, skip loaded and unilateral tests.",
     video: "https://www.youtube.com/watch?v=wfytUSMszPw",
     fields: [
-      choice("bilateralTen", "Completed all 10 repetitions"),
-      choice("bilateralSafe", "Safe, controlled performance"),
-      choice("bilateralSymmetry", "Symmetry", [
-        ["good", "Good"],
-        ["mild", "Mild shift"],
-        ["clear", "Clear shift"],
-      ]),
-      choice("bilateralHeight", "Heel height", [
-        ["normal", "Normal-looking"],
-        ["reduced", "Reduced"],
-        ["marked", "Markedly reduced"],
-      ]),
+      number("bilateralReps", "Actual repetitions completed"),
+      choice("bilateralTen", "Completed all 10 repetitions", yesNo, false),
+      choice("bilateralSafe", "Safe, controlled performance", yesNo, false),
+      choice(
+        "bilateralSymmetry",
+        "Symmetry",
+        [
+          ["good", "Good"],
+          ["mild", "Mild shift"],
+          ["clear", "Clear shift"],
+        ],
+        false,
+      ),
+      choice(
+        "bilateralHeight",
+        "Heel height",
+        [
+          ["normal", "Normal-looking"],
+          ["reduced", "Reduced"],
+          ["marked", "Markedly reduced"],
+        ],
+        false,
+      ),
       number("bilateralPain", "Pain (0–10)", 10),
     ],
   },
@@ -389,12 +401,13 @@ export function sectionBlocked(section, values) {
   return null;
 }
 export function validateSection(section, values) {
-  if (sectionBlocked(section, values)) return [];
+  const blocked = sectionBlocked(section, values);
   return section.fields
     .filter((field) => {
       const value = values[field.id];
       if (
         field.required &&
+        !blocked &&
         (value === undefined ||
           value === "" ||
           (Array.isArray(value) && !value.length))

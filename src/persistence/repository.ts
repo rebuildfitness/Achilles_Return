@@ -99,6 +99,7 @@ export async function completeBaseline(values: Values) {
     {
       store: "profile",
       value: {
+        ...profile,
         id: "athlete",
         equipment: profile?.equipment || EQUIPMENT,
         availableDays: values.availableDays,

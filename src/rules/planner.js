@@ -3,7 +3,12 @@ import { baselineResult } from "./baseline.js";
 import { dayKey } from "../data/provisionalWeek.js";
 import { resumeAfterMissedSessions } from "./workout.js";
 const clone = (value) => structuredClone(value);
-export function strengthTemplate(kind, values) {
+export const STRENGTH_STYLES = [
+  ["hybrid", "Rehab + 5×5 & hypertrophy"],
+  ["hypertrophy", "Rehab + hypertrophy"],
+  ["rehab", "Original rehab template"],
+];
+export function strengthTemplate(kind, values, style = "hybrid") {
   const unilateral =
     values.bilateralSafe === "yes" &&
     values.bilateralTen === "yes" &&
@@ -38,13 +43,52 @@ export function strengthTemplate(kind, values) {
       CATALOG.balance,
     ],
   };
+  const compound = (ex) => ({
+    ...ex,
+    sets: style === "hypertrophy" ? 3 : 5,
+    reps: style === "hypertrophy" ? "8–12" : "5",
+    rpe: "6–8",
+    restSec: style === "hypertrophy" ? 120 : 180,
+    strengthModule: true,
+    cue: `${ex.cue} Warm up with lighter loads first. Keep 2–4 reps in reserve; no maximal attempts or forced reps.`,
+    evidence:
+      "User-requested general strength programming; 5×5 is not an Achilles clearance test.",
+    evidenceType: "General resistance-training guidance / product programming",
+    evidenceSourceIds: ["general-strength"],
+  });
+  const additions = {
+    A: [
+      compound(CATALOG.press),
+      { ...CATALOG.row, sets: 2 },
+      CATALOG.lateralRaise,
+    ],
+    B: [
+      {
+        ...compound(CATALOG.row),
+        reps: style === "hypertrophy" ? "8–12 / side" : "5 / side",
+      },
+      CATALOG.triceps,
+    ],
+    C: [CATALOG.shoulderPress, CATALOG.row, CATALOG.curl],
+  };
+  const expanded = style !== "rehab";
   return {
     id: `strength-${kind}`,
-    title: `Strength ${kind}`,
+    title: `Strength ${kind}${expanded ? (kind === "C" || style === "hypertrophy" ? " · Hypertrophy" : " · 5×5 + accessories") : ""}`,
     phase: baselineResult(values).phase,
-    items: clone(templates[kind]),
-    ruleId: `template.strength-${kind}.v1`,
-    rulesetVersion: "1.0.0",
+    items: clone([
+      ...templates[kind],
+      ...(expanded
+        ? additions[kind].map((ex) => ({ ...ex, strengthModule: true }))
+        : []),
+    ]),
+    notes: expanded
+      ? [
+          "Complete the rehab block first, then the added upper-body work. Added work uses the same strength days. Keep 2–4 reps in reserve and reduce accessory load or volume if it compromises rehab quality or recovery.",
+        ]
+      : [],
+    ruleId: `template.strength-${kind}.${expanded ? "full-body.v1" : "v1"}`,
+    rulesetVersion: "1.1.0",
   };
 }
 export function modifyWorkout(
@@ -70,6 +114,8 @@ export function modifyWorkout(
     items = items.filter((ex) => ex.impactTier === 0 && ex.loadTier !== "high");
   items = items.map((ex) => {
     let sets = ex.sets;
+    const easeUpper = ex.strengthModule && readiness !== "GREEN";
+    if (easeUpper) sets = Math.min(sets, readiness === "YELLOW_3" ? 2 : 3);
     if (
       ["YELLOW_1", "YELLOW_2"].includes(readiness) &&
       ["moderate", "high"].includes(ex.loadTier)
@@ -79,7 +125,15 @@ export function modifyWorkout(
     return {
       ...ex,
       sets,
-      ...(sets !== ex.sets
+      ...(easeUpper
+        ? {
+            reps: ex.reps.includes("side") ? "8–12 / side" : "8–12",
+            rpe: readiness === "YELLOW_3" ? "5–6" : "6–7",
+            adjustment:
+              "Use an easier load and fewer sets. No 5×5 or load progression today.",
+          }
+        : {}),
+      ...(sets !== ex.sets && !easeUpper
         ? { adjustment: "Reduced volume; hold load progression." }
         : {}),
     };
@@ -99,6 +153,7 @@ export function modifyWorkout(
       reason: ex.lockedReason || "Equipment unavailable",
     })),
     notes: [
+      ...(workout.notes || []),
       ...(unavailable.length
         ? [
             "Some template items are unavailable; no unreviewed replacements have been added.",
@@ -170,11 +225,16 @@ export function weeklyPlan(
     const key = dayKey(date);
     const number = high.indexOf(index);
     const needsBaseline = !assessment?.completedAt;
-    const restrictionReview = values?.clearance === "no" || values?.noRestrictions === "no";
+    const restrictionReview =
+      values?.clearance === "no" || values?.noRestrictions === "no";
     const blocked = phase === "Safety Hold" || restrictionReview;
     const isHigh = !needsBaseline && !blocked && number >= 0;
     const raw = isHigh
-      ? strengthTemplate(["A", "B", "C"][number], values)
+      ? strengthTemplate(
+          ["A", "B", "C"][number],
+          values,
+          profile?.strengthStyle || "hybrid",
+        )
       : null;
     const effectiveReadiness = key === dayKey(today) ? readiness : "GREEN";
     const responseReadiness =
@@ -205,7 +265,9 @@ export function weeklyPlan(
       title: needsBaseline
         ? "Baseline first"
         : blocked
-          ? (phase === "Safety Hold" ? "Safety Hold" : "Review exercise restrictions")
+          ? phase === "Safety Hold"
+            ? "Safety Hold"
+            : "Review exercise restrictions"
           : workout?.title ||
             (index === 6 ? "Rest / Mobility" : "Easy aerobic / Recovery"),
       workout,
@@ -215,7 +277,9 @@ export function weeklyPlan(
       note: needsBaseline
         ? "Complete baseline before activating a personalized plan."
         : blocked
-          ? (restrictionReview ? "Your assessment records no exercise clearance or an active restriction. Confirm which activities are permitted before generating a strength workout." : "Resolve concerning symptoms before Achilles loading.")
+          ? restrictionReview
+            ? "Your assessment records no exercise clearance or an active restriction. Confirm which activities are permitted before generating a strength workout."
+            : "Resolve concerning symptoms before Achilles loading."
           : !isHigh
             ? "Easy bike or comfortable walking if tolerated. No catch-up loading."
             : "Strength, quality and next-day tolerance.",

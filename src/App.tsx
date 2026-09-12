@@ -36,7 +36,7 @@ import {
   ExposureScreen,
   ResponseScreen,
 } from "./screens/Program";
-import { BaselineWizard } from "./screens/Baseline";
+import { BaselineWizard } from "./screens/SimpleBaseline";
 import type {
   Answers,
   CheckIn,
@@ -112,7 +112,7 @@ export function App() {
     program.profile,
     program.assessment,
     sessions,
-    new Date(),
+    new Date(date + "T12:00:00"),
     readiness?.level || "GREEN",
   );
   const today = week.find((d) => d.date === date)!;
@@ -500,6 +500,8 @@ export function App() {
             <BaselineWizard
               draft={program.draft}
               previous={program.assessment}
+              checkpoints={program.checkpoints}
+              sessions={sessions}
               onBack={async () => {
                 await reloadProgram();
                 open(null);
@@ -587,6 +589,7 @@ export function App() {
             />
           ) : tab === "Progress" ? (
             <ProgressScreen
+              assessments={program.assessments}
               isLoadingDay={today.high}
               retest={today.retest}
               assessment={program.assessment}

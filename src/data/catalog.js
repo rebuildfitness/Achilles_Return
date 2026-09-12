@@ -1,6 +1,12 @@
 import { exercises as legacy } from "./exercises.js";
 import plan from "../../spec/rehab-plan-v1.json" with { type: "json" };
 export const EQUIPMENT = plan.equipmentWhitelist;
+export const EQUIPMENT_LABELS = {
+  "bosu-ball": "BOSU-style half ball (VEVOR)",
+  "dyno-pad": "Inflatable balance cushion (Trideer)",
+  "plyo-ball": "Stability / yoga ball (Trideer)",
+  "vibration-plate": "Vibration plate (AXV)",
+};
 export const VIDEO_TYPES = [
   "short",
   "exercise_specific_page",
@@ -55,7 +61,94 @@ const base = (id, name, equipment, sets, reps, extra = {}) => ({
   contraindicationFlags: ["red-flags"],
   ...extra,
 });
+const upper = (id, name, equipment, slug, extra = {}) =>
+  base(id, name, equipment, 2, "10–15", {
+    ...demo(
+      `https://library.theprehabguys.com/vimeo-video/${slug}/`,
+      "[P]rehab",
+      `https://library.theprehabguys.com/vimeo-video/${slug}/`,
+    ),
+    tags: ["upper", "hypertrophy"],
+    loadTier: "low",
+    rpe: "6–8",
+    purpose:
+      "Build general upper-body strength and muscle alongside the rehab program.",
+    evidence:
+      "General resistance-training guidance; this exercise and its dose do not establish Achilles or sport clearance.",
+    evidenceType: "General resistance-training guidance / product programming",
+    evidenceStrength:
+      "Supportive for general strength; indirect for Achilles rehabilitation",
+    evidenceSourceIds: ["general-strength"],
+    ...extra,
+  });
 export const CATALOG = {
+  row: upper(
+    "supported-db-row",
+    "Bench-Supported Dumbbell Row",
+    ["adjustable-bench", "dumbbells"],
+    "three-point-stance-row-dumbbell",
+    {
+      reps: "8–12 / side",
+      sets: 3,
+      cue: "Support one hand and knee on a stable bench. Keep the standing foot planted and torso still; record reps per side and load per dumbbell.",
+    },
+  ),
+  shoulderPress: upper(
+    "seated-arnold-press",
+    "Seated Dumbbell Arnold Press",
+    ["adjustable-bench", "dumbbells"],
+    "arnold-press-dumbbell",
+    {
+      reps: "8–12",
+      sets: 3,
+      loadTier: "minimal",
+      cue: "Sit on the bench with feet comfortably supported. Use a controlled shoulder range without leg drive or back arching. Record load per dumbbell.",
+    },
+  ),
+  curl: upper(
+    "db-curl",
+    "Dumbbell Biceps Curl",
+    ["dumbbells"],
+    "dumbbell-biceps-curl",
+    {
+      cue: "Keep elbows close and torso quiet. Avoid bouncing or pushing through the toes. Record load per dumbbell.",
+    },
+  ),
+  lateralRaise: upper(
+    "db-lateral-raise",
+    "Dumbbell Lateral Raise",
+    ["dumbbells"],
+    "lateral-raise-dumbbell-2",
+    {
+      reps: "12–15",
+      cue: "Use light dumbbells with a soft elbow bend. Raise under control without shrugging, bouncing or leaning. Record load per dumbbell.",
+    },
+  ),
+  triceps: upper(
+    "seated-db-triceps",
+    "Seated Dumbbell Triceps Extension",
+    ["adjustable-bench", "dumbbells"],
+    "seated-overhead-tricep-extension-dumbbell-3",
+    {
+      loadTier: "minimal",
+      cue: "Hold one dumbbell with both hands. Keep ribs quiet and use a comfortable elbow/shoulder range. Record the single dumbbell's load.",
+    },
+  ),
+  barbellCurl: upper(
+    "barbell-curl",
+    "Olympic Barbell Biceps Curl",
+    ["olympic-barbell", "weight-plates"],
+    "dumbbell-biceps-curl",
+    {
+      ...demo(
+        yt("pQfJR-sSIvA"),
+        "NASM",
+        "https://www.nasm.org/resource-center/exercise-library/barbell-bicep-curl",
+        "short",
+      ),
+      cue: "Use only if the 45 lb empty bar is comfortably controlled. Keep elbows near your sides and avoid leg drive. Record total bar plus plates; use dumbbell curls if the bar is too heavy.",
+    },
+  ),
   bilateral: base(
     "bilateral-calf",
     "Bilateral Standing Calf Raise",

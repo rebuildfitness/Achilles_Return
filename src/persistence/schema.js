@@ -1,7 +1,7 @@
 export const VERSIONS = Object.freeze({
   appVersion: "1.0.0",
   databaseVersion: 2,
-  rulesetVersion: "1.0.0",
+  rulesetVersion: "1.1.0",
   exerciseLibraryVersion: "1.0.0",
   evidenceCatalogVersion: "1.0.0",
 });

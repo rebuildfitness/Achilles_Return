@@ -6,9 +6,12 @@ import {
   validateSection,
 } from "../data/baseline.js";
 import { baselineResult } from "../rules/baseline.js";
+import { freshBaseline, localDate } from "../data/assessmentHistory.js";
+import { CHECKPOINTS } from "../data/checkpoints.js";
+import { checkpointAvailability } from "../rules/progression.js";
 import { saveBaselineDraft } from "../persistence/repository";
 import { Card, PrimaryButton, StatusCard } from "../components/ui";
-import type { Assessment, Values } from "../types";
+import type { Assessment, Values, Session } from "../types";
 
 type Field = {
   id: string;
@@ -29,7 +32,7 @@ export function DataField({
   onChange: (id: string, value: string | string[]) => void;
 }) {
   const id = `field-${field.id}`,
-    value = values[field.id] || "";
+    value = values[field.id] ?? "";
   if (field.type === "checks")
     return (
       <fieldset className="question">
@@ -99,22 +102,20 @@ export function BaselineWizard({
   previous,
   onComplete,
   onBack,
+  checkpoints = {},
+  sessions = [],
 }: {
   draft?: Assessment;
   previous?: Assessment;
   onComplete: (values: Values) => Promise<void>;
   onBack: () => void;
+  checkpoints?: Values;
+  sessions?: Session[];
 }) {
   const [values, setValues] = useState<Values>(
     Object.keys(draft?.values || {}).length
-      ? draft!.values
-      : {
-          ...previous?.values,
-          clearance: "",
-          noRestrictions: "",
-          surgeryDate: previous?.values.surgeryDate || "2026-01-07",
-          ptEndDate: previous?.values.ptEndDate || "2026-06",
-        },
+      ? { ...freshBaseline(previous?.values), ...draft!.values }
+      : freshBaseline(previous?.values),
   );
   const [step, setStep] = useState(draft?.step || 0),
     [error, setError] = useState(""),
@@ -123,6 +124,7 @@ export function BaselineWizard({
   const queue = useRef(Promise.resolve()),
     section = BASELINE_SECTIONS[step],
     blocked = sectionBlocked(section, values);
+  const valuesRef = useRef(values);
   function persist(next: Values, index: number) {
     setSaved("Saving…");
     queue.current = queue.current
@@ -138,11 +140,24 @@ export function BaselineWizard({
     void queue.current.catch(() => {});
   }
   function change(id: string, value: string | string[]) {
-    const next = { ...values, [id]: value };
+    const next = { ...valuesRef.current, [id]: value };
+    valuesRef.current = next;
     setValues(next);
     persist(next, step);
   }
   async function next() {
+    if (
+      !/^\d{4}-\d{2}-\d{2}$/.test(String(values.assessmentDate || "")) ||
+      String(values.assessmentDate) > localDate() ||
+      !/^\d{4}-\d{2}$/.test(String(values.assessmentMonth || "")) ||
+      !["start", "finish"].includes(String(values.assessmentSlot))
+    ) {
+      setStep(0);
+      setError(
+        "Choose the measurement date, comparison month and starting or finishing assessment.",
+      );
+      return;
+    }
     const errors = validateSection(section, values);
     if (errors.length) {
       setError(`Complete or correct: ${errors.join(", ")}`);
@@ -199,33 +214,114 @@ export function BaselineWizard({
         value={step + 1}
         max={BASELINE_SECTIONS.length}
       />
+      {step === 0 && (
+        <Card>
+          <h2>Monthly baseline</h2>
+          <p>
+            Record a starting baseline and a finishing baseline each month.
+            Unperformed measurements can stay blank. New results never replace
+            your history.
+          </p>
+          <DataField
+            field={{
+              id: "assessmentDate",
+              label: "Measurement date",
+              type: "date",
+            }}
+            values={values}
+            onChange={change}
+          />
+          <DataField
+            field={{
+              id: "assessmentMonth",
+              label: "Comparison month",
+              type: "month",
+            }}
+            values={values}
+            onChange={change}
+          />
+          <DataField
+            field={{
+              id: "assessmentSlot",
+              label: "Assessment point",
+              type: "select",
+              options: [
+                ["start", "Monthly starting data"],
+                ["finish", "Monthly finishing data"],
+              ],
+            }}
+            values={values}
+            onChange={change}
+          />
+        </Card>
+      )}
       <Card>
         <h2>{section.title}</h2>
         <p>{section.instructions}</p>
-        {(BASELINE_DEMOS[section.id as keyof typeof BASELINE_DEMOS] || []).map(
-          (demo) => (
-            <a
-              key={demo.id}
-              className="demo-link"
-              href={demo.videoUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Short Demo · {demo.name} ↗
-            </a>
-          ),
-        )}
+        {(section.id === "strength"
+          ? []
+          : BASELINE_DEMOS[section.id as keyof typeof BASELINE_DEMOS] || []
+        ).map((demo) => (
+          <a
+            key={demo.id}
+            className="demo-link"
+            href={demo.videoUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Short Demo · {demo.name} ↗
+          </a>
+        ))}
         {BASELINE_DEMOS[section.id as keyof typeof BASELINE_DEMOS] && (
           <p className="muted">
             Technique reference only. Follow the assessment instructions above
             for load, cadence and stopping criteria.
           </p>
         )}
-        {blocked ? (
+        {blocked && (
           <p className="notice" role="status">
-            {blocked} This section is skipped; missing results will not be
-            treated as passed.
+            {blocked} Do not perform a restricted test now. You can still record
+            results already obtained safely for this assessment, or leave them
+            blank. Recording data does not grant clearance.
           </p>
+        )}
+        {section.id === "strength" ? (
+          <div className="assessment-fields">
+            {["belt", "rdl", "step", "bridge"].map((prefix, index) => {
+              const demo = BASELINE_DEMOS.strength[index];
+              return (
+                <section
+                  className="assessment-test"
+                  key={prefix}
+                  aria-label={demo.name}
+                >
+                  <h3>{demo.name}</h3>
+                  <p>{demo.cue}</p>
+                  <a
+                    className="demo-link"
+                    href={demo.videoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Short Demo · {demo.name} ↗
+                  </a>
+                  {section.fields
+                    .filter((f) => f.id.startsWith(prefix + "_"))
+                    .map((field) => (
+                      <DataField
+                        key={field.id}
+                        field={{
+                          ...field,
+                          label: field.label.replace(prefix + " · ", ""),
+                        }}
+                        values={values}
+                        onChange={change}
+                      />
+                    ))}
+                </section>
+              );
+            })}
+          </div>
         ) : (
           <div className="assessment-fields">
             {section.fields.map((field) => (
@@ -238,7 +334,59 @@ export function BaselineWizard({
             ))}
           </div>
         )}
+        {section.dynamic && (
+          <p className="helper">
+            Record actual results. Blank means not recorded; 0 means a measured
+            zero. Repeat the same setup when retesting.
+          </p>
+        )}
       </Card>
+      {step === BASELINE_SECTIONS.length - 1 && (
+        <Card>
+          <h2>Advanced assessment record</h2>
+          <p>
+            As your recorded capacity and tolerated exposures improve, the
+            relevant assessments become available here. Record findings from a
+            performed assessment; no new maximal test is prescribed by this
+            form.
+          </p>
+          {CHECKPOINTS.filter(
+            (c) => !["calfCapacity", "stationarySkills"].includes(c.id),
+          ).map((c) => {
+            const available = checkpointAvailability(
+              c.id,
+              values,
+              checkpoints,
+              sessions,
+            );
+            return (
+              <details key={c.id}>
+                <summary>
+                  {c.label} ·{" "}
+                  {available ? "Available to record" : "Not needed yet"}
+                </summary>
+                <p>{c.description}</p>
+                {available && (
+                  <DataField
+                    field={{
+                      id: `advanced_${c.id}`,
+                      label:
+                        "Measured results, units, setup, quality and reviewer",
+                      type: "text",
+                    }}
+                    values={values}
+                    onChange={change}
+                  />
+                )}
+              </details>
+            );
+          })}
+          <p className="helper">
+            Advanced findings are saved with this monthly baseline. Capacity
+            reviews in Tests remain separate from recording measurements.
+          </p>
+        </Card>
+      )}
       {error && (
         <p role="alert" className="error-message">
           {error}
@@ -296,17 +444,31 @@ export function AssessmentResult({ assessment }: { assessment: Assessment }) {
               <span className={c.passed ? "success-text" : "muted"}>
                 {c.passed ? "✓" : "○"}
               </span>
-              {c.label}
+              <div>{c.label}
+              <small className="block">
+                {c.status}
+                {c.detail ? ` · ${c.detail}` : ""}
+              </small>
+              </div>
             </li>
           ))}
         </ul>
         <p className="helper">
           Expert consensus criteria; not a prospectively validated clearance
-          rule.
+          rule. These determine running entry, not whether you can begin
+          appropriate foundational training.
         </p>
       </Card>
       <Card>
         <h2>What to build next</h2>
+        {Object.entries(assessment.values)
+          .filter(([key, value]) => key.startsWith("advanced_") && value)
+          .map(([key, value]) => (
+            <p key={key}>
+              {CHECKPOINTS.find((c) => `advanced_${c.id}` === key)?.label}:{" "}
+              {String(value)}
+            </p>
+          ))}
         {result.limiters.length ? (
           <ul>
             {result.limiters.map((l) => (

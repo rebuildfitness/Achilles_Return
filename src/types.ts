@@ -82,4 +82,5 @@ export type Profile = {
   id: string;
   availableDays: string[];
   equipment: string[];
+  strengthStyle?: string;
 };
