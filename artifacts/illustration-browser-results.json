@@ -1,0 +1,12 @@
+{
+  "passed": [
+    "Strength thumbnail, enlarged view, Escape/focus restoration and original demo",
+    "Pagination retains stable exercise IDs",
+    "Missing strength artwork preserves demo and setup",
+    "Movement thumbnail/detail and external demo remain available",
+    "Movement filters retain image mapping",
+    "320px mobile layout and enlarged text reflow",
+    "Project-subpath service-worker install and offline images",
+    "Failed image requests fall back in both libraries without broken icons"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "canonicalIds": 127,
+  "generated": 55,
+  "unresolved": 72,
+  "duplicateAppearances": 21,
+  "motionFormats": {
+    "start_end": 21,
+    "concentric_eccentric": 23,
+    "setup_hold": 11
+  },
+  "modelRepresentation": {
+    "woman": 26,
+    "man": 29
+  },
+  "imageBytes": 11045200,
+  "meanBytes": 200822,
+  "medianBytes": 197162,
+  "largest": "library-chest-supported-dumbbell-row",
+  "largestBytes": 240414,
+  "over250KB": [],
+  "over400KB": [],
+  "initialPrecacheBytes": 13807325,
+  "initialPrecacheBudgetBytes": 15000000,
+  "cacheDecisionRequired": false
+}
