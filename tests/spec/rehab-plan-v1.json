@@ -1,0 +1,117 @@
+{
+  "version": "1.0.0",
+  "status": "planning_frozen_for_implementation",
+  "user": {
+    "age": 47,
+    "sex": "male",
+    "surgeryDate": "2026-01-07",
+    "primaryGoal": "return_to_basketball",
+    "secondaryGoals": ["sprinting", "serious_strength_training", "general_athleticism", "beginner_soccer"]
+  },
+  "equipmentWhitelist": [
+    "smith-machine", "adjustable-bench", "cable-station", "belt-squat", "trap-hex-bar",
+    "dumbbells", "pull-up-bar", "dip-bars", "exercise-bike", "incline-treadmill",
+    "slant-board", "balance-pad", "rehab-bands", "weighted-wagon", "olympic-barbell", "weight-plates",
+    "bosu-ball", "dyno-pad", "plyo-ball", "vibration-plate"
+  ],
+  "prohibitedEquipment": ["leg-press-machine"],
+  "readiness": {
+    "redFlags": ["sharp-pain", "new-bruising", "major-swelling", "sudden-weakness", "new-significant-limp", "suspected-tendon-gap", "sudden-loss-of-heel-raise"],
+    "yellow1": {"volumeReductionRange": [0.2, 0.3], "allowProgression": false},
+    "yellow2": {"removeHighRateImpact": true, "reduceAchillesTier": 1, "allowProgression": false},
+    "yellow3": {"impactAllowed": false, "sessionType": "recovery_focus"}
+  },
+  "runningConsensusGate": {
+    "source": "Gaspar et al 2026 modified Delphi",
+    "prospectivelyValidated": false,
+    "allRequired": true,
+    "criteria": [
+      "no_pain_daily_life",
+      "no_pain_during_or_after_rehab",
+      "walk_without_limp",
+      "walk_on_tiptoes",
+      "ten_single_leg_heel_rises",
+      "good_single_leg_balance",
+      "psychologically_ready_to_run"
+    ]
+  },
+  "phases": [
+    "re-entry-baseline", "foundational-strength", "running-readiness", "running",
+    "jumping-landing", "plyometrics", "speed-sprinting", "deceleration-cod",
+    "basketball-reintroduction", "controlled-basketball", "full-basketball", "basketball-performance"
+  ],
+  "runningLadder": [
+    {"id":"R1","work":"6x1min jog","recovery":"2min walk"},
+    {"id":"R2","work":"8x1min jog","recovery":"1min walk"},
+    {"id":"R3","work":"6x2min jog","recovery":"1min walk"},
+    {"id":"R4","work":"5x3min jog","recovery":"1min walk"},
+    {"id":"R5","work":"4x5min jog","recovery":"1min walk"},
+    {"id":"R6","work":"20min continuous easy"},
+    {"id":"R7","work":"25min continuous easy"},
+    {"id":"R8","work":"30min continuous easy"},
+    {"id":"R9","work":"20-30min easy + 4-6x20sec relaxed strides", "intensity":"~70%"}
+  ],
+  "jumpLadder": [
+    {"id":"J0","items":["snap-down 3x5", "landing hold 3x4"]},
+    {"id":"J1","items":["bilateral pogo 3x15", "jump-to-stick 3x5"]},
+    {"id":"J2","items":["bilateral pogo 3x20", "countermovement jump 3x5", "lateral line hop 2x10"]},
+    {"id":"J3","items":["assisted low single-leg pogo 3x8-10/side", "forward hop-to-stick 3x4/side"]},
+    {"id":"J4","items":["single-leg pogo 3x12-15/side", "lateral hop-to-stick 3x4/side", "repeated bilateral jump 3x5"]},
+    {"id":"J5","items":["repeated single-leg hops", "diagonal hops", "reactive tasks"]}
+  ],
+  "sprintLadder": [
+    {"id":"S1","dose":"6x10m","intensity":"60-70%"},
+    {"id":"S2","dose":"6x15m","intensity":"70-80%"},
+    {"id":"S3","dose":"5x20m","intensity":"80-85%"},
+    {"id":"S4","dose":"4-6x20m","intensity":"85-90%"},
+    {"id":"S5","dose":"4x20-30m","intensity":">90%"},
+    {"id":"S6","dose":"near-max performance exposure","clinicianAssessmentRecommended":true}
+  ],
+  "codLadder": [
+    "D1 jog-to-controlled-stop",
+    "D2 run-to-stop progressively shorter braking zone",
+    "D3 planned 45deg cuts",
+    "D4 planned 90deg cuts",
+    "D5 lateral shuffle crossover closeout",
+    "D6 reactive visual/cone cuts",
+    "D7 basketball-specific reactive movement"
+  ],
+  "basketballLadder": [
+    "B1 stationary skills 20-30min",
+    "B2 controlled movement 20-30min",
+    "B3 planned basketball movement 25-40min",
+    "B4 higher-speed planned work 30-45min",
+    "B5 reactive non-contact 30-45min",
+    "B6 controlled half-court limited bouts",
+    "B7 controlled full-court limited possessions/minutes",
+    "B8 initial unrestricted play 20-30min then 30-45min if tolerated"
+  ],
+  "soccerLadder": [
+    "SC1 ball touches and passing",
+    "SC2 receiving and walking dribble",
+    "SC3 jogging with ball and submax shooting",
+    "SC4 planned COD with ball",
+    "SC5 reactive ball movement",
+    "SC6 limited recreational practice/play"
+  ],
+  "lateStageTargets": {
+    "classification": "clinical_performance_targets_not_validated_clearance_guarantees",
+    "plantarflexionStrengthLSI": ">=90% preferred",
+    "soleusStrengthLSI": ">=90% preferred",
+    "heelRiseRepsLSI": ">=90% preferred",
+    "heelRiseWorkLSI": ">=90% preferred",
+    "heelRiseHeightLSI": "approaching >=90% preferred",
+    "jumpHopAsymmetry": "<10% preferred"
+  },
+  "sessionRule": {
+    "statusAfterWorkout": "PENDING_NEXT_DAY_RESPONSE",
+    "possibleNextDayStatuses": ["TOLERATED", "BORDERLINE", "NOT_TOLERATED", "MEDICAL_FLAG"],
+    "progressionRequiresTolerance": true
+  },
+  "videoPolicy": {
+    "activeExerciseRequiresVideo": true,
+    "buttonLabel": "Short Demo",
+    "allowedTypes": ["short", "exercise_specific_page", "governing_body_clip"],
+    "rejectLongGeneralLecture": true
+  }
+}

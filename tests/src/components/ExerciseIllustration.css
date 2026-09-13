@@ -1,0 +1,23 @@
+.illustrated-exercise { min-width: 0; }
+.illustrated-exercise-row { display: flex; align-items: flex-start; gap: 12px; }
+.illustrated-exercise-content { flex: 1; min-width: 0; overflow-wrap: anywhere; display: grid; gap: 8px; }
+.illustration-thumbnail, .illustration-unavailable {
+  width: 88px; flex: 0 0 88px; border: 1px solid var(--line200);
+  border-radius: var(--radius-small, 10px); background: var(--surface000);
+  padding: 0; overflow: hidden;
+}
+.illustration-thumbnail img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: contain; }
+.illustration-thumbnail span { display: block; padding: 6px 2px; color: var(--blue600); font-size: 0.75rem; }
+.illustration-unavailable { aspect-ratio: 2 / 3; display: grid; align-items: center; padding: 6px; background: var(--surface100); }
+.illustration-unavailable span { font-size: 0.75rem; line-height: 1.4; color: var(--ink700); text-align: center; overflow-wrap: anywhere; }
+.illustration-detail { display: grid; gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line200); }
+.illustration-detail > img { display: block; width: min(100%, 320px); height: auto; aspect-ratio: 2 / 3; object-fit: contain; margin: auto; }
+.illustration-detail > button { justify-self: start; }
+@media (max-width: 360px) {
+  .illustration-thumbnail, .illustration-unavailable { width: 72px; flex-basis: 72px; }
+  .illustrated-exercise-row { gap: 8px; }
+}
+@media (max-width: 260px) {
+  .illustrated-exercise-row { flex-wrap: wrap; }
+  .illustrated-exercise-content { flex-basis: 100%; }
+}

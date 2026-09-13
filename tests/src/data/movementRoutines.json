@@ -1,0 +1,1313 @@
+[
+  {
+    "routineId": "morning-reset",
+    "routineVersion": "1.0.0",
+    "name": "Morning Reset",
+    "category": "mobility",
+    "estimatedDurationMinutes": 8,
+    "steps": [
+      {
+        "id": "morning-reset-1",
+        "exerciseId": "diaphragmatic-breathing-with-brace",
+        "name": "Diaphragmatic breathing with brace",
+        "defaultDose": "60 seconds",
+        "substitution": "90/90 breathing",
+        "setupCues": "Comfortable position; no pain-focused requirement",
+        "required": true,
+        "order": 1,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Comfortable position; no pain-focused requirement"
+        ],
+        "offlineGuidance": "Lie or sit comfortably. Breathe into your lower ribs; gently tighten the trunk as you breathe out without holding your breath. Comfortable position; no pain-focused requirement",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "morning-reset-2",
+        "exerciseId": "ankle-circles",
+        "name": "Ankle circles",
+        "defaultDose": "30 seconds each direction/side",
+        "substitution": "Ankle alphabet",
+        "setupCues": "Gentle controlled range",
+        "required": true,
+        "order": 2,
+        "position": "Seated",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Gentle controlled range"
+        ],
+        "offlineGuidance": "Sit with the leg supported. Slowly trace circles with the foot in each direction, keeping the knee still and using a comfortable range. Gentle controlled range",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "morning-reset-3",
+        "exerciseId": "90-90-hip-switches",
+        "name": "90/90 hip switches",
+        "defaultDose": "8 reps/side",
+        "substitution": "Seated 90/90 hip rotation",
+        "setupCues": "Use support as needed",
+        "required": true,
+        "order": 3,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Use support as needed"
+        ],
+        "offlineGuidance": "Sit with both knees bent and hands behind you for support. Rotate both knees toward one side, then slowly toward the other side. Use support as needed",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "morning-reset-4",
+        "exerciseId": "open-book-thoracic-rotation",
+        "name": "Open-book thoracic rotation",
+        "defaultDose": "6 reps/side",
+        "substitution": "Seated thoracic rotation",
+        "setupCues": "Controlled range; do not force rotation",
+        "required": true,
+        "order": 4,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled range; do not force rotation"
+        ],
+        "offlineGuidance": "Lie on your side with knees bent and arms reaching forward together. Open your top arm and rotate your upper trunk; keep the knees together. Controlled range; do not force rotation",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "morning-reset-5",
+        "exerciseId": "wall-slides",
+        "name": "Wall slides",
+        "defaultDose": "10 reps",
+        "substitution": "Scapular wall slides",
+        "setupCues": "Use pain-free range",
+        "required": true,
+        "order": 5,
+        "position": "Standing",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Use pain-free range"
+        ],
+        "offlineGuidance": "Face a wall with forearms supported on it. Slowly slide your arms upward within a comfortable range and lower them with control. Use pain-free range",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      }
+    ],
+    "sourceMetadata": {
+      "definitionOwner": "User-approved v3 handoff",
+      "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md",
+      "lastReviewedAt": "2026-09-12",
+      "reviewStatus": "content_complete_with_media_fallback",
+      "evidenceOrRationaleIds": [
+        "user-approved-movement-recovery-v3"
+      ]
+    },
+    "recommendationRules": [
+      "movement-support-existing-restrictions"
+    ],
+    "progressionCredit": false,
+    "intendedContexts": [
+      "any_day",
+      "optional_support"
+    ],
+    "restrictions": [
+      "Follow existing plan, red-flag and individual restrictions."
+    ]
+  },
+  {
+    "routineId": "undo-the-chair",
+    "routineVersion": "1.0.0",
+    "name": "Undo the Chair",
+    "category": "mobility",
+    "estimatedDurationMinutes": 10,
+    "steps": [
+      {
+        "id": "undo-the-chair-1",
+        "exerciseId": "seated-thoracic-extension-over-chair-back",
+        "name": "Seated thoracic extension over chair back",
+        "defaultDose": "8 slow reps",
+        "substitution": "Cat-cow",
+        "setupCues": "Use stable chair; avoid neck strain",
+        "required": true,
+        "order": 1,
+        "position": "Seated",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Use stable chair; avoid neck strain"
+        ],
+        "offlineGuidance": "Sit on a stable chair with its back supporting your mid-back. Support your head with your hands and gently extend your upper back over the chair without pulling your neck. Use stable chair; avoid neck strain",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "undo-the-chair-2",
+        "exerciseId": "half-kneeling-hip-flexor-stretch",
+        "name": "Half-kneeling hip-flexor stretch",
+        "defaultDose": "30 seconds/side",
+        "substitution": "Standing hip-flexor stretch",
+        "setupCues": "Pad knee if needed; controlled pelvic position",
+        "required": true,
+        "order": 2,
+        "position": "Kneeling",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Pad knee if needed; controlled pelvic position"
+        ],
+        "offlineGuidance": "Kneel on one knee with the other foot in front and use stable support. Keep the trunk upright and gently shift the pelvis forward without arching the lower back. Pad knee if needed; controlled pelvic position",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "undo-the-chair-3",
+        "exerciseId": "open-book-thoracic-rotation",
+        "name": "Open-book thoracic rotation",
+        "defaultDose": "6 reps/side",
+        "substitution": "Thread-the-needle",
+        "setupCues": "Controlled range",
+        "required": true,
+        "order": 3,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled range"
+        ],
+        "offlineGuidance": "Lie on your side with knees bent and arms reaching forward together. Open your top arm and rotate your upper trunk; keep the knees together. Controlled range",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "undo-the-chair-4",
+        "exerciseId": "band-pull-aparts",
+        "name": "Band pull-aparts",
+        "defaultDose": "2 sets \u00d7 10",
+        "substitution": "Scapular wall slides",
+        "setupCues": "Requires rehab band; omit if shoulder symptoms",
+        "required": true,
+        "order": 4,
+        "position": "Standing",
+        "equipment": [
+          "rehab-bands"
+        ],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Requires rehab band; omit if shoulder symptoms"
+        ],
+        "offlineGuidance": "Hold a light band in front of you with arms extended. Pull the hands apart without shrugging, then return slowly. Requires rehab band; omit if shoulder symptoms",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "undo-the-chair-5",
+        "exerciseId": "chin-tucks",
+        "name": "Chin tucks",
+        "defaultDose": "8 reps with 3-second hold",
+        "substitution": "Controlled neck rotations",
+        "setupCues": "Gentle, no forced range",
+        "required": true,
+        "order": 5,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Gentle, no forced range"
+        ],
+        "offlineGuidance": "Lie on your back with your head supported. Gently draw your chin inward to lengthen the back of the neck, then relax; do not lift the head. Gentle, no forced range",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      }
+    ],
+    "sourceMetadata": {
+      "definitionOwner": "User-approved v3 handoff",
+      "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md",
+      "lastReviewedAt": "2026-09-12",
+      "reviewStatus": "content_complete_with_media_fallback",
+      "evidenceOrRationaleIds": [
+        "user-approved-movement-recovery-v3"
+      ]
+    },
+    "recommendationRules": [
+      "movement-support-existing-restrictions"
+    ],
+    "progressionCredit": false,
+    "intendedContexts": [
+      "any_day",
+      "optional_support"
+    ],
+    "restrictions": [
+      "Follow existing plan, red-flag and individual restrictions."
+    ]
+  },
+  {
+    "routineId": "whole-body-mobility",
+    "routineVersion": "1.0.0",
+    "name": "Whole-Body Mobility",
+    "category": "mobility",
+    "estimatedDurationMinutes": 12,
+    "steps": [
+      {
+        "id": "whole-body-mobility-1",
+        "exerciseId": "ankle-circles",
+        "name": "Ankle circles",
+        "defaultDose": "30 seconds each direction/side",
+        "substitution": "Ankle alphabet",
+        "setupCues": "Controlled range",
+        "required": true,
+        "order": 1,
+        "position": "Seated",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled range"
+        ],
+        "offlineGuidance": "Sit with the leg supported. Slowly trace circles with the foot in each direction, keeping the knee still and using a comfortable range. Controlled range",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "whole-body-mobility-2",
+        "exerciseId": "knee-to-wall-dorsiflexion-mobility",
+        "name": "Knee-to-wall dorsiflexion mobility",
+        "defaultDose": "2 sets \u00d7 8/side",
+        "substitution": "Seated ankle dorsiflexion",
+        "setupCues": "Must honor active Achilles restrictions",
+        "required": true,
+        "order": 2,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Must honor active Achilles restrictions"
+        ],
+        "offlineGuidance": "Face a wall with one foot near it and use the wall for support. Move the knee toward the wall while keeping the heel down; do not force the range. Must honor active Achilles restrictions",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "whole-body-mobility-3",
+        "exerciseId": "90-90-hip-switches",
+        "name": "90/90 hip switches",
+        "defaultDose": "8 reps/side",
+        "substitution": "Seated 90/90 rotation",
+        "setupCues": "Use hand support as needed",
+        "required": true,
+        "order": 3,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Use hand support as needed"
+        ],
+        "offlineGuidance": "Sit with both knees bent and hands behind you for support. Rotate both knees toward one side, then slowly toward the other side. Use hand support as needed",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "whole-body-mobility-4",
+        "exerciseId": "adductor-rock-back",
+        "name": "Adductor rock-back",
+        "defaultDose": "8 reps/side",
+        "substitution": "Quadruped rock-back",
+        "setupCues": "Controlled, no forced depth",
+        "required": true,
+        "order": 4,
+        "position": "Quadruped",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled, no forced depth"
+        ],
+        "offlineGuidance": "On hands and knees, extend one leg out to the side. Keep your back neutral and gently move your hips back, then return. Controlled, no forced depth",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "whole-body-mobility-5",
+        "exerciseId": "open-book-thoracic-rotation",
+        "name": "Open-book thoracic rotation",
+        "defaultDose": "6 reps/side",
+        "substitution": "Seated thoracic rotation",
+        "setupCues": "Controlled range",
+        "required": true,
+        "order": 5,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled range"
+        ],
+        "offlineGuidance": "Lie on your side with knees bent and arms reaching forward together. Open your top arm and rotate your upper trunk; keep the knees together. Controlled range",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "whole-body-mobility-6",
+        "exerciseId": "wall-slides",
+        "name": "Wall slides",
+        "defaultDose": "10 reps",
+        "substitution": "Scapular wall slides",
+        "setupCues": "Pain-free range",
+        "required": true,
+        "order": 6,
+        "position": "Standing",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Pain-free range"
+        ],
+        "offlineGuidance": "Face a wall with forearms supported on it. Slowly slide your arms upward within a comfortable range and lower them with control. Pain-free range",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      }
+    ],
+    "sourceMetadata": {
+      "definitionOwner": "User-approved v3 handoff",
+      "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md",
+      "lastReviewedAt": "2026-09-12",
+      "reviewStatus": "content_complete_with_media_fallback",
+      "evidenceOrRationaleIds": [
+        "user-approved-movement-recovery-v3"
+      ]
+    },
+    "recommendationRules": [
+      "movement-support-existing-restrictions"
+    ],
+    "progressionCredit": false,
+    "intendedContexts": [
+      "any_day",
+      "optional_support"
+    ],
+    "restrictions": [
+      "Follow existing plan, red-flag and individual restrictions."
+    ]
+  },
+  {
+    "routineId": "lower-body-rebuild",
+    "routineVersion": "1.0.0",
+    "name": "Lower-Body Rebuild",
+    "category": "mobility",
+    "estimatedDurationMinutes": 12,
+    "steps": [
+      {
+        "id": "lower-body-rebuild-1",
+        "exerciseId": "pelvic-tilts",
+        "name": "Pelvic tilts",
+        "defaultDose": "10 reps",
+        "substitution": "90/90 breathing",
+        "setupCues": "Controlled lumbar/pelvic movement",
+        "required": true,
+        "order": 1,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled lumbar/pelvic movement"
+        ],
+        "offlineGuidance": "Lie on your back with knees bent and feet supported. Gently tilt the pelvis to flatten the lower back slightly, then return to a relaxed position. Controlled lumbar/pelvic movement",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "lower-body-rebuild-2",
+        "exerciseId": "glute-bridge-with-reach",
+        "name": "Glute bridge with reach",
+        "defaultDose": "2 sets \u00d7 8",
+        "substitution": "Standard glute bridge",
+        "setupCues": "Keep controlled trunk position",
+        "required": true,
+        "order": 2,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Keep controlled trunk position"
+        ],
+        "offlineGuidance": "Lie on your back with knees bent and feet planted. Lift the hips into a bridge and reach one arm across the body within a controlled range, then return. Keep controlled trunk position",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "lower-body-rebuild-3",
+        "exerciseId": "banded-lateral-walk",
+        "name": "Banded lateral walk",
+        "defaultDose": "2 sets \u00d7 8 steps/side",
+        "substitution": "Side-lying clamshell with brace",
+        "setupCues": "Requires band; avoid if gait/ankle response is poor",
+        "required": true,
+        "order": 3,
+        "position": "Standing",
+        "equipment": [
+          "rehab-bands"
+        ],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Requires band; avoid if gait/ankle response is poor"
+        ],
+        "offlineGuidance": "Place a light band around the thighs. With softly bent knees and an upright trunk, take small controlled sideways steps without letting the feet snap together. Requires band; avoid if gait/ankle response is poor",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "lower-body-rebuild-4",
+        "exerciseId": "supported-hip-airplane",
+        "name": "Supported hip airplane",
+        "defaultDose": "2 sets \u00d7 5/side",
+        "substitution": "Supported single-leg stance",
+        "setupCues": "Use wall/rack; prioritize control",
+        "required": true,
+        "order": 4,
+        "position": "Standing",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Use wall/rack; prioritize control"
+        ],
+        "offlineGuidance": "Hold a stable support and hinge forward slightly on one leg. Slowly turn the pelvis open and closed while keeping control of the standing leg. Use wall/rack; prioritize control",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "lower-body-rebuild-5",
+        "exerciseId": "box-squat-pattern",
+        "name": "Box squat pattern",
+        "defaultDose": "2 sets \u00d7 8",
+        "substitution": "Sit-to-stand with symmetrical loading",
+        "setupCues": "Must comply with active lower-body restrictions",
+        "required": true,
+        "order": 5,
+        "position": "Standing",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Must comply with active lower-body restrictions"
+        ],
+        "offlineGuidance": "Stand in front of a stable bench. Reach your hips back, lower to a light seated touch, and stand again with controlled movement. Must comply with active lower-body restrictions",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      }
+    ],
+    "sourceMetadata": {
+      "definitionOwner": "User-approved v3 handoff",
+      "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md",
+      "lastReviewedAt": "2026-09-12",
+      "reviewStatus": "content_complete_with_media_fallback",
+      "evidenceOrRationaleIds": [
+        "user-approved-movement-recovery-v3"
+      ]
+    },
+    "recommendationRules": [
+      "movement-support-existing-restrictions"
+    ],
+    "progressionCredit": false,
+    "intendedContexts": [
+      "any_day",
+      "optional_support"
+    ],
+    "restrictions": [
+      "Follow existing plan, red-flag and individual restrictions."
+    ]
+  },
+  {
+    "routineId": "rehab-core",
+    "routineVersion": "1.0.0",
+    "name": "Rehab Core",
+    "category": "core_stability",
+    "estimatedDurationMinutes": 10,
+    "steps": [
+      {
+        "id": "rehab-core-1",
+        "exerciseId": "90-90-breathing",
+        "name": "90/90 breathing",
+        "defaultDose": "5 breaths",
+        "substitution": "Diaphragmatic breathing with brace",
+        "setupCues": "Controlled breathing/bracing",
+        "required": true,
+        "order": 1,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled breathing/bracing"
+        ],
+        "offlineGuidance": "Lie on your back with your lower legs supported on a stable bench and hips and knees bent. Breathe slowly into your lower ribs and exhale without straining. Controlled breathing/bracing",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "rehab-core-2",
+        "exerciseId": "dead-bug",
+        "name": "Dead bug",
+        "defaultDose": "2 sets \u00d7 6/side",
+        "substitution": "Dead-bug heel tap",
+        "setupCues": "Maintain trunk control",
+        "required": true,
+        "order": 2,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Maintain trunk control"
+        ],
+        "offlineGuidance": "Lie on your back with hips and knees bent and arms pointing upward. Slowly lower an opposite arm and leg, then return, keeping the trunk steady. Maintain trunk control",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "rehab-core-3",
+        "exerciseId": "seated-core-march",
+        "name": "Seated core march",
+        "defaultDose": "2 sets \u00d7 8/side",
+        "substitution": "Seated alternating knee lift",
+        "setupCues": "Use upright controlled posture",
+        "required": true,
+        "order": 3,
+        "position": "Seated",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Use upright controlled posture"
+        ],
+        "offlineGuidance": "Sit tall on a stable bench with both feet down. Lift one knee a small amount without leaning back, lower it, then alternate. Use upright controlled posture",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "rehab-core-4",
+        "exerciseId": "seated-pallof-hold",
+        "name": "Seated Pallof hold",
+        "defaultDose": "2 sets \u00d7 15 sec/side",
+        "substitution": "Seated Pallof press \u00d7 8/side",
+        "setupCues": "Requires cable/band; low rotation",
+        "required": true,
+        "order": 4,
+        "position": "Seated",
+        "equipment": [
+          "cable-station"
+        ],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Requires cable/band; low rotation"
+        ],
+        "offlineGuidance": "Sit side-on to a cable anchored at chest height. Hold the handle in front of your chest, extend the arms and resist turning your trunk. Requires cable/band; low rotation",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "rehab-core-5",
+        "exerciseId": "side-plank-from-knees",
+        "name": "Side plank from knees",
+        "defaultDose": "2 sets \u00d7 15 sec/side",
+        "substitution": "Side-lying clamshell with brace",
+        "setupCues": "Use comfortable shoulder position",
+        "required": true,
+        "order": 5,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Use comfortable shoulder position"
+        ],
+        "offlineGuidance": "Lie on your side with knees bent and elbow beneath the shoulder. Lift the hips so shoulders, hips and knees form a line, then lower with control. Use comfortable shoulder position",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      }
+    ],
+    "sourceMetadata": {
+      "definitionOwner": "User-approved v3 handoff",
+      "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md",
+      "lastReviewedAt": "2026-09-12",
+      "reviewStatus": "content_complete_with_media_fallback",
+      "evidenceOrRationaleIds": [
+        "user-approved-movement-recovery-v3"
+      ]
+    },
+    "recommendationRules": [
+      "movement-support-existing-restrictions"
+    ],
+    "progressionCredit": false,
+    "intendedContexts": [
+      "any_day",
+      "optional_support"
+    ],
+    "restrictions": [
+      "Follow existing plan, red-flag and individual restrictions."
+    ]
+  },
+  {
+    "routineId": "standing-stability",
+    "routineVersion": "1.0.0",
+    "name": "Standing Stability",
+    "category": "core_stability",
+    "estimatedDurationMinutes": 12,
+    "steps": [
+      {
+        "id": "standing-stability-1",
+        "exerciseId": "standing-pallof-press",
+        "name": "Standing Pallof press",
+        "defaultDose": "2 sets \u00d7 8/side",
+        "substitution": "Seated Pallof press",
+        "setupCues": "Cable/band; stable stance",
+        "required": true,
+        "order": 1,
+        "position": "Standing",
+        "equipment": [
+          "cable-station"
+        ],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Cable/band; stable stance"
+        ],
+        "offlineGuidance": "Stand side-on to a chest-height cable with both feet planted. Press the handle forward and bring it back without letting the trunk rotate. Cable/band; stable stance",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "standing-stability-2",
+        "exerciseId": "cable-anti-rotation-walkout",
+        "name": "Cable anti-rotation walkout",
+        "defaultDose": "2 sets \u00d7 5/side",
+        "substitution": "Standing Pallof hold 15 sec/side",
+        "setupCues": "Use controlled steps",
+        "required": true,
+        "order": 2,
+        "position": "Standing",
+        "equipment": [
+          "cable-station"
+        ],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Use controlled steps"
+        ],
+        "offlineGuidance": "Stand side-on to a chest-height cable and hold the handle in front of the trunk. Take small steps away from the anchor while resisting rotation, then return with control. Use controlled steps",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "standing-stability-3",
+        "exerciseId": "supported-single-arm-cable-press-with-brace",
+        "name": "Supported single-arm cable press with brace",
+        "defaultDose": "2 sets \u00d7 8/side",
+        "substitution": "Seated cable/band press",
+        "setupCues": "Use support as needed",
+        "required": true,
+        "order": 3,
+        "position": "Standing",
+        "equipment": [
+          "cable-station"
+        ],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Use support as needed"
+        ],
+        "offlineGuidance": "Set the cable at chest height and use a stable stance with your free hand on fixed support. Press one handle forward while keeping the trunk steady; return slowly. Use support as needed",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "standing-stability-4",
+        "exerciseId": "suitcase-carry",
+        "name": "Suitcase carry",
+        "defaultDose": "2 \u00d7 20\u201330 m/side",
+        "substitution": "Seated suitcase hold 20 sec/side",
+        "setupCues": "Must comply with gait/Achilles restrictions",
+        "required": true,
+        "order": 4,
+        "position": "Standing",
+        "equipment": [
+          "dumbbells"
+        ],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Must comply with gait/Achilles restrictions"
+        ],
+        "offlineGuidance": "Hold one dumbbell at your side. Walk with an upright trunk and controlled steps without leaning toward or away from the weight. Must comply with gait/Achilles restrictions",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "standing-stability-5",
+        "exerciseId": "supported-single-leg-stance",
+        "name": "Supported single-leg stance",
+        "defaultDose": "2 \u00d7 20 sec/side",
+        "substitution": "Tandem stance",
+        "setupCues": "Quality before duration",
+        "required": true,
+        "order": 5,
+        "position": "Standing",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Quality before duration"
+        ],
+        "offlineGuidance": "Stand next to a fixed support with a hand available. Lift one foot slightly and maintain a steady stance; use the support as needed. Quality before duration",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      }
+    ],
+    "sourceMetadata": {
+      "definitionOwner": "User-approved v3 handoff",
+      "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md",
+      "lastReviewedAt": "2026-09-12",
+      "reviewStatus": "content_complete_with_media_fallback",
+      "evidenceOrRationaleIds": [
+        "user-approved-movement-recovery-v3"
+      ]
+    },
+    "recommendationRules": [
+      "movement-support-existing-restrictions"
+    ],
+    "progressionCredit": false,
+    "intendedContexts": [
+      "any_day",
+      "optional_support"
+    ],
+    "restrictions": [
+      "Follow existing plan, red-flag and individual restrictions."
+    ]
+  },
+  {
+    "routineId": "pre-lift-prep",
+    "routineVersion": "1.0.0",
+    "name": "Pre-Lift Prep",
+    "category": "mobility",
+    "estimatedDurationMinutes": 8,
+    "steps": [
+      {
+        "id": "pre-lift-prep-1",
+        "exerciseId": "cat-cow",
+        "name": "Cat-cow",
+        "defaultDose": "8 reps",
+        "substitution": "Seated thoracic extension",
+        "setupCues": "Controlled range",
+        "required": true,
+        "order": 1,
+        "position": "Quadruped",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled range"
+        ],
+        "offlineGuidance": "Start on hands and knees. Slowly round the back and then gently reverse the curve without forcing your neck or lower back. Controlled range",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "pre-lift-prep-2",
+        "exerciseId": "knee-to-wall-dorsiflexion-mobility",
+        "name": "Knee-to-wall dorsiflexion mobility",
+        "defaultDose": "1 set \u00d7 8/side",
+        "substitution": "Seated ankle dorsiflexion",
+        "setupCues": "Respect active restrictions",
+        "required": true,
+        "order": 2,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Respect active restrictions"
+        ],
+        "offlineGuidance": "Face a wall with one foot near it and use the wall for support. Move the knee toward the wall while keeping the heel down; do not force the range. Respect active restrictions",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "pre-lift-prep-3",
+        "exerciseId": "90-90-hip-switches",
+        "name": "90/90 hip switches",
+        "defaultDose": "6 reps/side",
+        "substitution": "Seated 90/90 rotations",
+        "setupCues": "Controlled range",
+        "required": true,
+        "order": 3,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled range"
+        ],
+        "offlineGuidance": "Sit with both knees bent and hands behind you for support. Rotate both knees toward one side, then slowly toward the other side. Controlled range",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "pre-lift-prep-4",
+        "exerciseId": "dead-bug",
+        "name": "Dead bug",
+        "defaultDose": "1 set \u00d7 6/side",
+        "substitution": "Bent-knee fall-out",
+        "setupCues": "Brace and control",
+        "required": true,
+        "order": 4,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Brace and control"
+        ],
+        "offlineGuidance": "Lie on your back with hips and knees bent and arms pointing upward. Slowly lower an opposite arm and leg, then return, keeping the trunk steady. Brace and control",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "pre-lift-prep-5",
+        "exerciseId": "standing-pallof-press",
+        "name": "Standing Pallof press",
+        "defaultDose": "1 set \u00d7 8/side",
+        "substitution": "Seated Pallof press",
+        "setupCues": "Light setup, not fatigue work",
+        "required": true,
+        "order": 5,
+        "position": "Standing",
+        "equipment": [
+          "cable-station"
+        ],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Light setup, not fatigue work"
+        ],
+        "offlineGuidance": "Stand side-on to a chest-height cable with both feet planted. Press the handle forward and bring it back without letting the trunk rotate. Light setup, not fatigue work",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      }
+    ],
+    "sourceMetadata": {
+      "definitionOwner": "User-approved v3 handoff",
+      "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md",
+      "lastReviewedAt": "2026-09-12",
+      "reviewStatus": "content_complete_with_media_fallback",
+      "evidenceOrRationaleIds": [
+        "user-approved-movement-recovery-v3"
+      ]
+    },
+    "recommendationRules": [
+      "movement-support-existing-restrictions"
+    ],
+    "progressionCredit": false,
+    "intendedContexts": [
+      "before_prescribed_strength"
+    ],
+    "restrictions": [
+      "Follow existing plan, red-flag and individual restrictions."
+    ]
+  },
+  {
+    "routineId": "balance-basics",
+    "routineVersion": "1.0.0",
+    "name": "Balance Basics",
+    "category": "balance_movement_control",
+    "estimatedDurationMinutes": 8,
+    "steps": [
+      {
+        "id": "balance-basics-1",
+        "exerciseId": "supported-weight-shifts",
+        "name": "Supported weight shifts",
+        "defaultDose": "10 reps/side",
+        "substitution": "Lateral weight shifts",
+        "setupCues": "Controlled loading",
+        "required": true,
+        "order": 1,
+        "position": "Standing",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled loading"
+        ],
+        "offlineGuidance": "Stand holding a fixed support with both feet down. Slowly shift your weight from one leg toward the other, then return. Controlled loading",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "balance-basics-2",
+        "exerciseId": "tandem-stance",
+        "name": "Tandem stance",
+        "defaultDose": "2 \u00d7 20 sec/side",
+        "substitution": "Wide tandem stance",
+        "setupCues": "Use support as needed",
+        "required": true,
+        "order": 2,
+        "position": "Standing",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Use support as needed"
+        ],
+        "offlineGuidance": "Stand beside fixed support with one foot directly in front of the other. Keep both feet down and maintain a steady position. Use support as needed",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "balance-basics-3",
+        "exerciseId": "supported-single-leg-stance",
+        "name": "Supported single-leg stance",
+        "defaultDose": "2 \u00d7 20 sec/side",
+        "substitution": "Toe-touch single-leg stance",
+        "setupCues": "Document support level",
+        "required": true,
+        "order": 3,
+        "position": "Standing",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Document support level"
+        ],
+        "offlineGuidance": "Stand next to a fixed support with a hand available. Lift one foot slightly and maintain a steady stance; use the support as needed. Document support level",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "balance-basics-4",
+        "exerciseId": "star-reach",
+        "name": "Star reach",
+        "defaultDose": "1 set \u00d7 3 reaches/direction/side",
+        "substitution": "Single-leg balance with reach",
+        "setupCues": "Must meet active balance restrictions",
+        "required": true,
+        "order": 4,
+        "position": "Standing",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Must meet active balance restrictions"
+        ],
+        "offlineGuidance": "Stand beside fixed support on one leg. Reach the other foot a short distance in different directions and return between reaches without losing control. Must meet active balance restrictions",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      },
+      {
+        "id": "balance-basics-5",
+        "exerciseId": "controlled-step-down",
+        "name": "Controlled step-down",
+        "defaultDose": "2 sets \u00d7 5/side",
+        "substitution": "Supported step-down",
+        "setupCues": "Prioritize alignment/control",
+        "required": true,
+        "order": 5,
+        "position": "Standing",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Prioritize alignment/control"
+        ],
+        "offlineGuidance": "Use a low stable step next to fixed support. Slowly lower the opposite heel toward the floor, then return, keeping the supporting knee controlled. Prioritize alignment/control",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": true
+      }
+    ],
+    "sourceMetadata": {
+      "definitionOwner": "User-approved v3 handoff",
+      "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md",
+      "lastReviewedAt": "2026-09-12",
+      "reviewStatus": "content_complete_with_media_fallback",
+      "evidenceOrRationaleIds": [
+        "user-approved-movement-recovery-v3"
+      ]
+    },
+    "recommendationRules": [
+      "movement-support-existing-restrictions"
+    ],
+    "progressionCredit": false,
+    "intendedContexts": [
+      "any_day",
+      "optional_support"
+    ],
+    "restrictions": [
+      "Follow existing plan, red-flag and individual restrictions."
+    ]
+  },
+  {
+    "routineId": "evening-downshift",
+    "routineVersion": "1.0.0",
+    "name": "Evening Downshift",
+    "category": "recovery_practice",
+    "estimatedDurationMinutes": 6,
+    "steps": [
+      {
+        "id": "evening-downshift-1",
+        "exerciseId": "diaphragmatic-breathing",
+        "name": "Diaphragmatic breathing",
+        "defaultDose": "2 minutes",
+        "substitution": "90/90 breathing",
+        "setupCues": "Comfortable position",
+        "required": true,
+        "order": 1,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Comfortable position"
+        ],
+        "offlineGuidance": "Rest in a comfortable position with one hand over the lower ribs. Breathe slowly in and out, keeping the shoulders relaxed. Comfortable position",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "evening-downshift-2",
+        "exerciseId": "cat-cow",
+        "name": "Cat-cow",
+        "defaultDose": "6 slow reps",
+        "substitution": "Seated thoracic extension",
+        "setupCues": "Easy range",
+        "required": true,
+        "order": 2,
+        "position": "Quadruped",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Easy range"
+        ],
+        "offlineGuidance": "Start on hands and knees. Slowly round the back and then gently reverse the curve without forcing your neck or lower back. Easy range",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "evening-downshift-3",
+        "exerciseId": "figure-four-glute-stretch",
+        "name": "Figure-four glute stretch",
+        "defaultDose": "30 sec/side",
+        "substitution": "Seated figure-four stretch",
+        "setupCues": "Gentle, no force",
+        "required": true,
+        "order": 3,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Gentle, no force"
+        ],
+        "offlineGuidance": "Lie on your back and cross one ankle over the opposite thigh. Support the thigh with your hands and gently bring it toward you without pressing on the knee. Gentle, no force",
+        "demoStatus": "no_verified_media",
+        "impact": "none",
+        "lowerLegDemand": false
+      },
+      {
+        "id": "evening-downshift-4",
+        "exerciseId": "open-book-rotation",
+        "name": "Open-book rotation",
+        "defaultDose": "5 reps/side",
+        "substitution": "Seated thoracic rotation",
+        "setupCues": "Controlled",
+        "required": true,
+        "order": 4,
+        "position": "Floor",
+        "equipment": [],
+        "availabilityRuleId": "movement-support-existing-restrictions",
+        "sourceMetadata": {
+          "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md"
+        },
+        "safetyNotes": [
+          "Controlled"
+        ],
+        "offlineGuidance": "Lie on your side with knees bent and arms reaching forward together. Open your top arm and rotate your upper trunk; keep the knees together. Controlled",
+        "demoStatus": "external_only",
+        "impact": "none",
+        "lowerLegDemand": false
+      }
+    ],
+    "sourceMetadata": {
+      "definitionOwner": "User-approved v3 handoff",
+      "source": "docs/MOVEMENT_RECOVERY_HANDOFF_V3.md",
+      "lastReviewedAt": "2026-09-12",
+      "reviewStatus": "content_complete_with_media_fallback",
+      "evidenceOrRationaleIds": [
+        "user-approved-movement-recovery-v3"
+      ]
+    },
+    "recommendationRules": [
+      "movement-support-existing-restrictions"
+    ],
+    "progressionCredit": false,
+    "intendedContexts": [
+      "any_day",
+      "optional_support"
+    ],
+    "restrictions": [
+      "Follow existing plan, red-flag and individual restrictions."
+    ]
+  }
+]
