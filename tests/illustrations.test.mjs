@@ -25,6 +25,11 @@ test('generated PNGs exist with accurate dimensions and file sizes; unresolved e
     assert.equal(bytes.readUInt32BE(16),640);assert.equal(bytes.readUInt32BE(20),960);
     assert.deepEqual(r.assetDimensions,{width:640,height:960});assert.equal(r.assetFileSizeBytes,bytes.length);
     assert(r.altText.includes(r.exerciseName));assert(r.panelDescription);assert(r.mechanicsSources.length);
+    const thumbnail=await readFile(new URL(r.thumbnailPath.slice(1),root));
+    assert.equal(thumbnail.readUInt32BE(16),192);assert.equal(thumbnail.readUInt32BE(20),288);
+    assert.equal(thumbnail.length,r.thumbnailFileSizeBytes);
+    assert(thumbnail.length<bytes.length);
+    assert.equal(illustrationUrl(r,'/Achilles_Return/',true),'/Achilles_Return'+r.thumbnailPath);
   }
 });
 test('shared collection appearances use one file and every physical PNG is accounted for',async()=>{
@@ -35,7 +40,8 @@ test('shared collection appearances use one file and every physical PNG is accou
     assert(row.sourceCollections.includes('prescribed'));assert(row.sourceCollections.includes('strength-library'));
   }
   const files=await readdir(new URL('assets/exercises/',root),{recursive:true});
-  assert.equal(files.filter(p=>p.endsWith('.png')).length,paths.length);
+  assert.equal(files.filter(p=>p.endsWith('.png')).length,paths.length*2);
+  assert.equal(new Set(manifest.filter(r=>r.assetStatus==='generated').map(r=>r.thumbnailPath)).size,paths.length);
 });
 test('base-path resolver supports relative Vite URLs and Pages subpaths, rejects invalid assets',()=>{
   const row=manifest.find(r=>r.assetStatus==='generated');
