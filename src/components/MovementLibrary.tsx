@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card } from "./ui";
 import { MOVEMENT_EXERCISES } from "../data/movementRoutines.js";
 import { MovementDemo } from "./MovementDemo";
+import { ExerciseIllustration } from "./ExerciseIllustration";
 export function MovementLibrary({
   category,
   onMovement,
@@ -93,6 +94,7 @@ export function MovementLibrary({
       </Card>
       {rows.map((ex) => (
         <Card key={ex.id}>
+          <ExerciseIllustration exerciseId={ex.id} name={ex.name}>
           <h3>{ex.name}</h3>
           <p>
             {ex.bodyArea} · {ex.position}
@@ -102,6 +104,7 @@ export function MovementLibrary({
           <small>
             Plan/restriction guided · no automatic progression credit
           </small>
+          </ExerciseIllustration>
         </Card>
       ))}
     </>

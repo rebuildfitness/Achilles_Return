@@ -1,4 +1,5 @@
 import { MovementLibrary } from "./MovementLibrary";
+import { ExerciseIllustration } from "./ExerciseIllustration";
 import { useState } from "react";
 import { Card } from "./ui";
 import { EQUIPMENT } from "../data/catalog.js";
@@ -187,6 +188,7 @@ export function ExerciseLibrary({
           )}
           {matches.slice(0, limit).map((ex) => (
             <Card key={ex.id} className="exercise-library-card">
+              <ExerciseIllustration exerciseId={ex.id} name={ex.name}>
               <h3>{ex.name}</h3>
               <p className="helper">
                 {ex.muscle} ·{" "}
@@ -215,6 +217,7 @@ export function ExerciseLibrary({
                 </p>
                 <p className="helper">{ex.verification}</p>
               </details>
+              </ExerciseIllustration>
             </Card>
           ))}
           {matches.length > limit && (
