@@ -15,6 +15,8 @@ async function list(directory, prefix = "") {
   return files.flat().filter((file) => file !== "sw.js");
 }
 const files = (await list(fileURLToPath(root))).sort();
+const illustrations = files.filter(file => /^assets\/exercises\/(prescribed|strength-library|movement-library|thumbnails)\/[^/]+\.png$/.test(file));
+const coreFiles = files.filter(file => !illustrations.includes(file));
 const hash = createHash("sha256");
 for (const file of files) hash.update(await readFile(new URL(file, root)));
 const template = await readFile(new URL("../sw.js", import.meta.url), "utf8");
@@ -25,7 +27,8 @@ await writeFile(
     .replace("__BUILD_ID__", hash.digest("hex").slice(0, 12))
     .replace(
       "__CORE_ASSETS__",
-      JSON.stringify(["./", ...files.map((file) => `./${file}`)]),
-    ),
+      JSON.stringify(["./", ...coreFiles.map((file) => `./${file}`)]),
+    )
+    .replace("__ILLUSTRATION_ASSETS__", JSON.stringify(illustrations.map(file => `./${file}`))),
 );
-console.log(`Service worker precaches ${files.length} production files.`);
+console.log(`Service worker precaches ${coreFiles.length} production files; ${illustrations.length} illustrations cache on first request.`);

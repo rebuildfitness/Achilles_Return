@@ -27,6 +27,8 @@ for (const [id,{ex,collections}] of sources) {
   const primaryCollection=collections[0];
   const path=review?`/assets/exercises/${primaryCollection}/${id}.png`:null;
   const ready=!review?.rejected && path && await stat(new URL('public'+path,root)).catch(()=>null);
+  const thumbnailPath=ready?`/assets/exercises/thumbnails/${id}.png`:null;
+  const thumbnail=thumbnailPath?await stat(new URL('public'+thumbnailPath,root)):null;
   const demo=ex.videoUrl||media[id]?.url;
   manifest.push({exerciseId:id,exerciseName:ex.name,sourceCollections:collections,primaryCollection,
     primaryCategory:ex.category||ex.muscle||'strength', bodyRegions:[review?.bodyRegion||ex.bodyArea||ex.muscle||'Unclassified'],
@@ -34,13 +36,14 @@ for (const [id,{ex,collections}] of sources) {
     motionFormat:review?.motionFormat||null,assetStatus:ready?'generated':review?.rejected?'needs_product_review':'not_generated',
     assetPath:ready?path:null,assetDimensions:ready?{width:640,height:960}:null,assetFormat:ready?'png':null,
     assetFileSizeBytes:ready?ready.size:null,optimizedFor:['mobile_library_thumbnail','exercise_detail_view'],
+    thumbnailPath,thumbnailDimensions:thumbnail?{width:192,height:288}:null,thumbnailFileSizeBytes:thumbnail?.size||null,
     altText:review?`${ex.name}: ${review.motionFormat.replaceAll('_',' ')} panels. ${review.panelDescription}`:null,
     panelDescription:review?.panelDescription||null,
-    modelRepresentation:review?{raceEthnicityPresentation:'Black',genderPresentation:review.gender,ageGroup:'adult'}:null,
+    modelRepresentation:review?{raceEthnicityPresentation:review.race||'Black',genderPresentation:review.gender,ageGroup:'adult'}:null,
     illustrationVersion:'1.0.0',existingDemoStatus:demo?'external_reference':'no_external_reference',
     clinicalRuleReference:primaryCollection==='prescribed'?'Existing Plan and readiness rules unchanged':'Existing restrictions unchanged',
     mechanicsSources:[{source:primaryCollection==='movement-library'?'src/data/movementRoutines.json':primaryCollection==='prescribed'?'src/data/catalog.js':'src/data/exerciseLibrary.js',setup:ex.setup||ex.cue||'',existingDemoUrl:demo||null,check:'Existing app setup and source metadata inspected; generated asset does not upgrade demo verification.'}],
-    notes:review?.review||'Not generated: built-in image-generation usage limit interrupted production. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.',pilot:review?.pilot||false});
+    notes:review?.review||'Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.',pilot:review?.pilot||false});
 }
 await writeFile(new URL('exercise-illustrations.json',folder),JSON.stringify(manifest,null,2)+'\n');
 const cols=['canonical_exercise_id','exact_app_display_name','source_collections','primary_collection','primary_category','body_region','position','equipment','motion_format','requires_clinical_or_rule_review','existing_demo_status','asset_status','asset_filename','notes'];
