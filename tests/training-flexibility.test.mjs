@@ -10,6 +10,37 @@ import { CATALOG, EQUIPMENT } from "../src/data/catalog.js";
 import { baselineValues } from "./fixtures.mjs";
 import { validateWorkoutLog } from "../src/rules/response.js";
 const assessment = { values: baselineValues(), completedAt: "2026-09-01" };
+test("Mammoth milestone prompts review without a 225 lb logging cap or transferred load", () => {
+  const history = (load, status = "TOLERATED") => [{
+    createdAt: "2026-09-13",
+    status,
+    exerciseLog: { [CATALOG.belt.id]: { sets: Array.from({length: CATALOG.belt.sets}, () => ({
+      complete: true, load: String(load), reps: "10", quality: "good", symptoms: "none", rpe: "7",
+    })) } },
+  }];
+  assert.equal(loadGuidance(CATALOG.belt, history(224)).next, false);
+  const guide = loadGuidance(CATALOG.belt, history(225));
+  assert.equal(guide.next, true);
+  assert.equal(guide.limit, 380);
+  assert.match(guide.transition, /personal milestone/);
+  for (const status of ["PENDING_NEXT_DAY_RESPONSE", "BORDERLINE", "NOT_TOLERATED"]) {
+    assert.equal(loadGuidance(CATALOG.belt, history(225, status)).next, false);
+  }
+  for (const readiness of ["YELLOW_1", "RED"]) {
+    assert.equal(loadGuidance(CATALOG.belt, history(225), readiness).next, false);
+  }
+  for (const load of [225, 250, 380]) {
+    assert.equal(validateWorkoutLog({items:[CATALOG.belt]}, {
+      [CATALOG.belt.id]: {sets:[{complete:true, load:String(load), reps:"8"}]},
+    }), null);
+  }
+  assert.match(validateWorkoutLog({items:[CATALOG.belt]}, {
+    [CATALOG.belt.id]: {sets:[{complete:true, load:"385", reps:"8"}]},
+  }), /380 lb of Olympic plates/);
+  const smith = swapExercise(CATALOG.belt, "library-smith-wide-stance-squat", EQUIPMENT, "GREEN", "progression");
+  assert.match(loadGuidance(smith, history(225)).starting, /No established tolerated load/);
+  assert.equal(loadGuidance(smith, history(225)).next, false);
+});
 test("Recent reassessment stays valid for a next-day make-up; selected variants receive yellow modifications", () => {
   const profile = {
     equipment: EQUIPMENT,

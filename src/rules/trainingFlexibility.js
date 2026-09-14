@@ -1,6 +1,7 @@
 import { CATALOG, EQUIPMENT } from "../data/catalog.js";
 import { EXERCISE_LIBRARY } from "../data/exerciseLibrary.js";
 import { strengthDecision } from "./progression.js";
+import { OWNED_LOADS } from "../data/ownedLoads.js";
 
 export const FAMILIES = {
   "band-hamstring": [
@@ -111,8 +112,11 @@ export function loadGuidance(exercise, sessions = [], readiness = "GREEN") {
   const perDumbbell =
     /dumbbell|db-/.test(exercise.id) &&
     !/triceps|seated-calf/.test(exercise.id);
-  const max = exercise.id === "belt-squat" ? 225 : perDumbbell ? 50 : null;
+  const max = exercise.id === "belt-squat" ? OWNED_LOADS.olympicPlatesLb : perDumbbell ? 50 : null;
   const atLimit = max !== null && loads.length > 0 && Math.max(...loads) >= max;
+  const squatReview = exercise.id === "belt-squat" &&
+    loads.some((load) => load >= OWNED_LOADS.beltSquatReviewLb);
+  const reviewReady = squatReview && decision.action === "PROPOSE_SMALL_INCREMENT";
   return {
     starting:
       loads.length && latest.status === "TOLERATED"
@@ -124,11 +128,15 @@ export function loadGuidance(exercise, sessions = [], readiness = "GREEN") {
         ? "Hold steadily and breathe normally."
         : "Cadence: about 2 seconds lowering, a brief controlled transition, then 1–2 seconds lifting. No bouncing or forced speed.",
     overload: decision.reason,
-    transition: atLimit
+    transition: squatReview
+      ? reviewReady
+        ? "225 lb personal milestone reached: review controlled technique and Achilles tolerance before choosing a Smith squat. This is a review prompt, not automatic clearance or an exercise change. Establish a fresh starting load."
+        : "225 lb personal milestone recorded. Transition review is pending controlled prescribed sets, next-morning tolerance and green readiness. Stay with your current variation until ready; the milestone is not an equipment limit."
+      : atLimit
       ? "Your equipment limit is reached. Choose a reviewed variation rather than exceeding capacity. Establish its starting load independently."
       : "Build reps within the prescribed range before increasing load. Change one variable at a time.",
     limit: max,
-    next: atLimit && decision.action === "PROPOSE_SMALL_INCREMENT",
+    next: (atLimit || squatReview) && decision.action === "PROPOSE_SMALL_INCREMENT",
   };
 }
 export const addDays = (date, days) => {

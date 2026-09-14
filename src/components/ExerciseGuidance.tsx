@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { loadGuidance, swapOptions } from "../rules/trainingFlexibility.js";
 import { EQUIPMENT } from "../data/catalog.js";
+import { OWNED_LOADS } from "../data/ownedLoads.js";
 import type { Exercise, Session } from "../types";
 export function ExerciseGuidance({
   exercise,
@@ -37,19 +38,22 @@ export function ExerciseGuidance({
       )}
       {(exercise.originalId || exercise.id) === "belt-squat" && (
         <p>
-          Progression route: belt squat → controlled Smith squat → barbell back
-          squat with rack safeties. Reaching 225 lb is an equipment limit, not
-          proof of back-squat readiness.
+          Preferred route: Fringe Sport Mammoth belt squat → controlled Smith
+          squat → barbell back squat with B52 rack safeties. At 225 lb, review
+          technique and Achilles tolerance before transitioning. There is no
+          automatic swap or Smith-to-barbell weight threshold. Establish a
+          separate starting load for each variation; loads are not interchangeable.
         </p>
       )}
       {guide.limit !== null && (
         <p>
-          Equipment limit: {guide.limit} lb
+          {exercise.id === "belt-squat" ? "Available Olympic plates: " : "Equipment limit: "}{guide.limit} lb
           {guide.limit === 50 ? " per dumbbell" : ""}. Band resistance is
           variable; never count band color as extra pounds.
         </p>
       )}
       <p className="helper">
+        Mammoth belt-squat load means added plates only; you own {OWNED_LOADS.olympicPlatesLb} lb.
         Smith load means added plates unless you know the effective bar
         resistance; Olympic load includes the 45 lb bar. Cable stacks are
         machine-specific. A new variation starts a separate history.

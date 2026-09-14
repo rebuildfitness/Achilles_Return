@@ -5,6 +5,7 @@ import { ExerciseLibrary } from "../components/ExerciseLibrary";
 import { EQUIPMENT, EQUIPMENT_LABELS } from "../data/catalog.js";
 import { EVIDENCE, CLINICAL_COPY } from "../data/evidence.js";
 import { STRENGTH_STYLES } from "../rules/planner.js";
+import { OWNED_LOADS } from "../data/ownedLoads.js";
 import { getAll, put, restoreBackup } from "../db.js";
 import { migrateBackup, STORE_NAMES, VERSIONS } from "../persistence/schema.js";
 import type { Profile, Values, Exercise } from "../types";
@@ -90,6 +91,13 @@ export function MoreScreen({
       {section === "profile" && (
         <Card>
           <h2>Profile & schedule</h2>
+          <p>
+            Belt squat: {OWNED_LOADS.beltSquatModel}. Available Olympic plates:
+            {" "}{OWNED_LOADS.olympicPlatesLb} lb, plus your {OWNED_LOADS.olympicBarLb} lb bar.
+            Your 225 lb belt-squat milestone prompts a transition review toward
+            Smith squats, then barbell back squats. Each variation needs its own
+            starting load and readiness review.
+          </p>
           <p>
             Basketball is the primary goal. Surgery and clinical details are
             recorded in Tests.

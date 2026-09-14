@@ -1,6 +1,6 @@
 # Training flexibility — user-requested September 12, 2026 extension
 
-This implements the user's nine-item change request. The approved clinical entry criteria, exposure ladders, red-flag precedence, rehab blocks and next-morning strength progression requirements remain in force. The user confirmed a Major Fitness B-52 all-in-one rack with safeties, attachments and cable stacks, 50 lb maximum dumbbells, a 225 lb belt-squat limit and a 45 lb Olympic bar.
+This implements the user's nine-item change request. The approved clinical entry criteria, exposure ladders, red-flag precedence, rehab blocks and next-morning strength progression requirements remain in force. The user confirmed a Major Fitness B-52 all-in-one rack with safeties, attachments and cable stacks, 50 lb maximum dumbbells, a Fringe Sport Mammoth belt squat, 380 lb of Olympic plates and a separate 45 lb Olympic bar. The user clarified that 225 lb is a personal belt-squat transition-review milestone, not an equipment limit. Preferred route: belt squat → Smith squat → barbell back squat. Each variation requires an independent starting load and readiness review; neither transition occurs automatically.
 
 ## What changed
 

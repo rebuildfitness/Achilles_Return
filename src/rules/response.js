@@ -1,3 +1,4 @@
+import { OWNED_LOADS } from "../data/ownedLoads.js";
 // Qualitative categories come directly from MASTER_PLAN next-morning tolerance.
 export function classifyTolerance(response) {
   if ((response.redFlags || []).length || response.change === "medical")
@@ -21,7 +22,7 @@ export function validateWorkoutLog(workout, log) {
   for (const ex of workout.items) {
     const limit =
       ex.id === "belt-squat"
-        ? 225
+        ? OWNED_LOADS.olympicPlatesLb
         : /dumbbell|db-|supported-db-row|seated-arnold/.test(ex.id) &&
             !/triceps|seated-calf/.test(ex.id)
           ? 50
@@ -32,7 +33,9 @@ export function validateWorkoutLog(workout, log) {
         (s) => s?.complete && Number(s.load) > limit,
       )
     )
-      return `${ex.name}: the equipment limit is ${limit} lb${limit === 50 ? " per dumbbell" : ""}. Choose another variation rather than exceeding capacity.`;
+      return ex.id === "belt-squat"
+        ? `${ex.name}: you have ${limit} lb of Olympic plates available. Record added plates only; this is your inventory, not the Mammoth's rated capacity.`
+        : `${ex.name}: the equipment limit is ${limit} lb${limit === 50 ? " per dumbbell" : ""}. Choose another variation rather than exceeding capacity.`;
   }
   const completed = workout.items.flatMap((ex) =>
     (log[ex.id]?.sets || []).slice(0, ex.sets).filter((set) => set?.complete),
