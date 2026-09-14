@@ -773,6 +773,7 @@ input:not([type="checkbox"]):not([type="radio"]) {
   font: inherit;
   color: var(--navy900);
 }
+.exercise-swap select,
 .form-field input,
 .form-field select,
 .assessment-progress select,
@@ -1259,3 +1260,11 @@ pre {
 .daily-brand figcaption { position:absolute; bottom:0; left:0; right:0; padding:40px 20px 20px; color:white; background:linear-gradient(transparent,rgba(21,27,36,.92)); display:grid; gap:6px; }
 .daily-brand strong { font-size:24px; }
 .daily-brand span { font-size:15px; }
+
+.exercise-swap { margin: 12px 0; padding: 12px; border: 1px solid var(--line200); border-radius: 12px; }
+.exercise-swap > summary { color: var(--blue600); font-weight: 600; }
+.exercise-swap label { display: block; margin: 10px 0; }
+.exercise-swap select { width: 100%; }
+.exercise-swap button { margin: 8px 8px 0 0; }
+
+.exercise-swap .helper { text-align: left; }

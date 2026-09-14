@@ -4,6 +4,15 @@ import { strengthDecision } from "./progression.js";
 import { OWNED_LOADS } from "../data/ownedLoads.js";
 
 export const FAMILIES = {
+  "pull-up": ["pull-up", "library-lat-pulldown"],
+  "single-calf": ["single-calf", "bilateral-calf"],
+  "bilateral-calf": ["bilateral-calf"],
+  "seated-calf": ["seated-calf"],
+  "single-balance": ["single-balance"],
+  "knee-to-wall": ["knee-to-wall"],
+  "weighted-wagon-backward-drag": ["weighted-wagon-backward-drag"],
+  "bench-step-up": ["bench-step-up"],
+  "bridge": ["bridge", "library-barbell-glute-bridge"],
   "band-hamstring": [
     "band-hamstring",
     "library-seated-unilateral-cable-hamstring-curl",
@@ -11,6 +20,7 @@ export const FAMILIES = {
   ],
   "db-curl": [
     "db-curl",
+    "library-cable-biceps-curl",
     "library-standing-hammer-curl",
     "library-incline-dumbbell-curl",
     "barbell-curl",
@@ -59,7 +69,7 @@ export const FAMILIES = {
 };
 export function swapOptions(exercise, equipment = EQUIPMENT) {
   const origin = exercise.originalId || exercise.id;
-  const ids = FAMILIES[origin] || [];
+  const ids = FAMILIES[origin] || Object.values(FAMILIES).find(ids => ids.includes(origin)) || [exercise.id];
   return ids
     .map(
       (id) =>
@@ -70,29 +80,51 @@ export function swapOptions(exercise, equipment = EQUIPMENT) {
 }
 export function swapExercise(exercise, id, equipment, readiness, reason) {
   const option = swapOptions(exercise, equipment).find((e) => e.id === id);
-  if (!option || !["equipment", "progression", "discomfort"].includes(reason))
+  if (!option || !["equipment", "progression", "discomfort", "difficulty"].includes(reason))
     throw new Error("Choose an available reviewed alternative and a reason.");
   if (readiness === "RED")
     throw new Error("Resolve safety concerns before loading.");
   if (reason === "progression" && readiness !== "GREEN")
     throw new Error("Hold progression on a modified day.");
+  if (reason === "difficulty" && !easierOptions(exercise).includes(id))
+    throw new Error("No reviewed easier replacement selected. Reduce load within your existing guidance or skip and record why.");
+  if ((option.unit || "reps") !== (exercise.unit || "reps")) throw new Error("This substitution requires a separate dose review.");
+  const loadTier = /smith|barbell|trap/.test(id) ? "moderate" : option.loadTier || exercise.loadTier;
+  if (readiness === "YELLOW_2" && (loadTier === "high" || (option.impactTier || 0) > 0)) throw new Error("This variation is not available on today's modified plan.");
+  if (readiness === "YELLOW_3" && loadTier !== "minimal") throw new Error("This variation is not available on today's modified plan.");
   // A different movement never inherits completed sets or a pound-for-pound load.
   return {
     ...exercise,
     ...option,
     originalId: exercise.originalId || exercise.id,
-    sets: exercise.sets,
-    reps: exercise.reps,
+    sets: id === "bilateral-calf" ? Math.min(exercise.sets, option.sets) : exercise.sets,
+    reps: id === "bilateral-calf" ? option.reps : /unilateral|one-arm/i.test(option.name) && !/side/.test(exercise.reps) ? `${exercise.reps} / side` : exercise.reps,
     rpe: exercise.rpe,
     restSec: exercise.restSec,
     cue: option.setup || option.cue,
     swapReason: reason,
-    loadTier: /smith|barbell|trap/.test(id) ? "moderate" : exercise.loadTier,
+    skipReason: undefined,
+    loadTier,
     videoType: option.videoType || "exercise_specific_page",
     videoVerifiedAt: option.videoVerifiedAt || option.verifiedAt,
     adjustment:
       "New variation: warm up and establish a fresh working load. Stop if the alternative also provokes symptoms.",
   };
+}
+export function easierOptions(exercise) {
+  const origin = exercise.originalId || exercise.id;
+  const map = {
+    "pull-up": ["library-lat-pulldown"], "single-calf": ["bilateral-calf"],
+    "barbell-curl": ["db-curl", "library-cable-biceps-curl"],
+    "db-curl": ["library-cable-biceps-curl"],
+    "db-bench": ["library-dumbbell-floor-press"],
+    "seated-arnold-press": ["library-seated-dumbbell-shoulder-press"],
+    "band-hamstring": ["library-seated-unilateral-cable-hamstring-curl"],
+    "db-lateral-raise": ["library-seated-dumbbell-lateral-raise"],
+    "seated-db-triceps": ["library-rope-cable-triceps-extension"],
+    "cable-pallof-press": ["seated-march"],
+  };
+  return (map[origin] || []).filter(id => id !== exercise.id);
 }
 export function loadGuidance(exercise, sessions = [], readiness = "GREEN") {
   const latest = [...sessions]

@@ -1172,6 +1172,62 @@
     "pilot": true
   },
   {
+    "exerciseId": "library-lat-pulldown",
+    "exerciseName": "Lat pulldown",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Back",
+    "bodyRegions": [
+      "Back"
+    ],
+    "position": "Seated",
+    "equipment": [
+      "cable-station",
+      "adjustable-bench"
+    ],
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-lat-pulldown.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 197474,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": "/assets/exercises/thumbnails/library-lat-pulldown.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 17360,
+    "altText": "Lat pulldown: start end panels. Seated with thigh restraint and feet flat. Pull the overhead bar to the upper chest in front of the head, then return under control.",
+    "panelDescription": "Seated with thigh restraint and feet flat. Pull the overhead bar to the upper chest in front of the head, then return under control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Asian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Use the B52 high pulley with a stable bench and the manufacturer-approved thigh restraint. Pull the bar toward the upper chest in front of the head, then return under control. Start with light stack resistance; do not jump to reach the bar.",
+        "existingDemoUrl": "https://www.muscleandstrength.com/exercises/lat-pull-down.html",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Visually reviewed start and finish: continuous cable, stable seat, thigh restraint, front-of-head bar path, complete anatomy and readable labels. Generic apparatus; follow the B52 manufacturer-approved setup. Supplemental illustration only.",
+    "pilot": false
+  },
+  {
     "exerciseId": "calf-assisted",
     "exerciseName": "Front-foot-supported calf raise",
     "sourceCollections": [

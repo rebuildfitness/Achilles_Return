@@ -43,3 +43,7 @@ The six missing illustrations are included in the with-calf-illustrations upload
 ## Workout illustration update
 
 Workout cards now reuse the same exercise thumbnails and expandable illustrations as the library. The image is selected using the actual current exercise ID, including substitutions. The thumbnail appears beside the name, prescription, Short Demo and Why. Set logging stays full width below it. Enlarged artwork is collapsed by default; Close illustration and Escape restore focus to the thumbnail without navigating away or modifying recorded sets. Offline image fallback and on-demand caching are inherited from the shared illustration component. No protocol or clinical rule was changed.
+
+## In-workout swaps
+
+See WORKOUT_SWAP_UPDATE.md for dated session changes, retained set histories, unavailable equipment, future preferences, skips and the new illustrated lat pulldown. The cumulative library now has 134 illustrated canonical exercise entries.

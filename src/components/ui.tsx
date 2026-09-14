@@ -321,7 +321,9 @@ export function SetRow({
   value,
   previous,
   onChange,
+  completionLocked = false,
 }: {
+  completionLocked?: boolean;
   exercise: Exercise;
   index: number;
   value: SetLog;
@@ -357,6 +359,7 @@ export function SetRow({
         />
         <button
           className="set-check"
+          disabled={completionLocked}
           aria-label={`${exercise.name} set ${index + 1} complete`}
           aria-pressed={!!value.complete}
           onClick={() => onChange({ ...value, complete: !value.complete })}

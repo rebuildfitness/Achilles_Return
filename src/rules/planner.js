@@ -262,7 +262,7 @@ export function weeklyPlan(
     if (raw)
       raw.items = raw.items.map((ex) => {
         const choice = profile?.exerciseChoices?.[ex.id];
-        if (!choice) return ex;
+        if (!choice || (choice.effectiveFrom && choice.effectiveFrom > key)) return ex;
         try {
           return swapExercise(
             ex,

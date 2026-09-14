@@ -394,6 +394,41 @@ try {
   await page.evaluate(() => (document.documentElement.style.fontSize = "100%"));
   await page.setViewportSize({ width: 390, height: 844 });
   pass("Inline workout usable at 320–1280px and with 200% text");
+  assert.equal(await page.getByText('Swap exercise', {exact:true}).count(), await page.locator('.exercise-card').count());
+  const pullCard = page.locator('.exercise-card').filter({has:page.getByRole('heading',{name:'Pull-Up',exact:true})});
+  await pullCard.getByRole('spinbutton',{name:'Pull-Up set 1 reps',exact:true}).fill('3');
+  await pullCard.getByRole('button',{name:'Pull-Up set 1 complete',exact:true}).click();
+  await pullCard.getByText('Swap exercise',{exact:true}).click();
+  await pullCard.getByLabel('Reason for change',{exact:true}).selectOption('difficulty');
+  await pullCard.getByText('Equipment unavailable today (0)',{exact:true}).click();
+  await pullCard.getByRole('checkbox',{name:'pull up bar',exact:true}).check();
+  await pullCard.getByLabel('Alternative exercise',{exact:true}).selectOption('library-lat-pulldown');
+  assert.equal(await pullCard.getByLabel('Apply change to',{exact:true}).inputValue(),'session');
+  await pullCard.getByRole('button',{name:'Use this alternative',exact:true}).click();
+  const latCard = page.locator('.exercise-card').filter({has:page.getByRole('heading',{name:'Lat pulldown',exact:true})});
+  await latCard.waitFor();
+  assert.equal(await latCard.getByRole('spinbutton',{name:'Lat pulldown set 1 load',exact:true}).inputValue(),'');
+  await latCard.getByRole('button',{name:'View illustration for Lat pulldown',exact:true}).locator('img').evaluate(img=>img.decode());
+  await latCard.getByRole('spinbutton',{name:'Lat pulldown set 1 load',exact:true}).fill('20');
+  await latCard.getByRole('spinbutton',{name:'Lat pulldown set 1 reps',exact:true}).fill('8');
+  await latCard.getByRole('button',{name:'Lat pulldown set 1 complete',exact:true}).click();
+  await page.getByRole('heading',{name:'Recorded before a swap',exact:true}).waitFor();
+  await page.getByText('3 / 28 sets',{exact:true}).waitFor();
+  const seatedCard = page.locator('.exercise-card').filter({has:page.getByRole('heading',{name:'Loaded Seated Calf Raise',exact:true})});
+  await seatedCard.getByText('Swap exercise',{exact:true}).click();
+  await seatedCard.getByRole('button',{name:'Skip remaining sets today',exact:true}).click();
+  await seatedCard.getByText('Remaining sets skipped: equipment',{exact:true}).waitFor();
+  assert.equal((await readStore('profile'))[0].exerciseChoices?.['pull-up'],undefined);
+  await page.reload(); await enterIntro();
+  await page.getByRole('button',{name:/^(Open|Resume) Workout$/}).click();
+  await latCard.waitFor();
+  assert.equal(await latCard.getByRole('spinbutton',{name:'Lat pulldown set 1 load',exact:true}).inputValue(),'20');
+  await page.getByRole('heading',{name:'Recorded before a swap',exact:true}).waitFor();
+  await seatedCard.getByText('Remaining sets skipped: equipment',{exact:true}).waitFor();
+  await latCard.getByText('Swap exercise',{exact:true}).click();
+  await latCard.screenshot({path:resolve(artifacts,'workout-swap.png'),style:'.session-dashboard, .bottom-nav { visibility: hidden; }'});
+  pass('Every card offers swap; pull-up replacement, separate loads, unavailable equipment and skip survive reload');
+
   await page.evaluate(async () => {
     await navigator.serviceWorker.ready;
   });
@@ -437,6 +472,13 @@ try {
   pass(
     "Offline app shell, all tabs, logging and finish work; no same-day catch-up workout",
   );
+  const swapSaved = (await readStore('sessions')).find(s=>s.date==='2026-09-07');
+  assert.equal(swapSaved.exerciseLog['pull-up'].sets[0].reps,'3');
+  assert.equal(swapSaved.exerciseLog['library-lat-pulldown'].sets[0].load,'20');
+  assert.equal(swapSaved.exerciseChanges.length,2);
+  assert.equal(swapSaved.plannedItems.find(ex=>ex.id==='seated-calf').skipReason,'equipment');
+  pass('Finished session preserves original sets, replacement sets and recorded skips');
+
   await nav("Plan");
   assert.equal(await page.locator(".plan-day").count(), 7);
   await page.locator(".plan-day summary").first().click();
@@ -444,7 +486,7 @@ try {
   await page
     .getByRole("button", { name: "2026-09-07, saved workout", exact: true })
     .click();
-  await page.locator(".history-row summary").click();
+  await page.locator(".history-row summary").first().click();
   await page.getByText("Set 1: 25 lb × 10 ✓", { exact: true }).waitFor();
   await page.getByRole("button", { name: "Previous month" }).click();
   await page.getByRole("button", { name: "Next month" }).click();
@@ -841,11 +883,12 @@ try {
     }),
   });
   await press
-    .getByText("Starting weight, cadence & exercise options", { exact: true })
+    .getByText("Swap exercise", { exact: true })
     .click();
   await press
-    .getByLabel("Alternative for Incline Dumbbell Press", { exact: true })
+    .getByLabel("Alternative exercise", { exact: true })
     .selectOption("library-smith-incline-bench-press");
+  await press.getByLabel("Apply change to", { exact: true }).selectOption("future");
   await press
     .getByRole("button", { name: "Use this alternative", exact: true })
     .click();

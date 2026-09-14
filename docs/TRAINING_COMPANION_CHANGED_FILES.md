@@ -157,3 +157,7 @@
 - src/components/ui.tsx — reuse the shared illustration component in workout headers.
 - scripts/browser-qa.mjs — verify thumbnail/detail dimensions, preserved logged values, Close and Escape.
 - artifacts/workout-thumbnail.png and artifacts/workout-illustration.png — mobile previews using disposable test records.
+
+## In-workout swap update
+
+See WORKOUT_SWAP_CHANGED_FILES.md for the file inventory relative to the preceding complete package.

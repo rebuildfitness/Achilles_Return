@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { AppShell, Card } from "./components/ui";
 import { Today } from "./screens/Today";
 import { MovementScreen } from "./screens/Movement";
-import { swapExercise } from "./rules/trainingFlexibility.js";
+import { applySessionChanges, emptySessionChanges, recordSessionChange, sessionItems } from "./rules/sessionChanges.js";
+import { EQUIPMENT } from "./data/catalog.js";
+import { swapExercise, addDays } from "./rules/trainingFlexibility.js";
 import { weeklyPlan } from "./rules/planner.js";
 import { baselineResult } from "./rules/baseline.js";
 import {
@@ -13,7 +15,7 @@ import {
 import { exposureContent, exposureQuality } from "./data/exposures.js";
 import { validateWorkoutLog } from "./rules/response.js";
 import { classifyReadiness } from "./rules/readiness.js";
-import { exportAll, writeRecords, put } from "./db.js";
+import { exportAll, writeRecords, put, get } from "./db.js";
 import { Welcome } from "./screens/Welcome";
 import { dayKey } from "./data/provisionalWeek.js";
 import {
@@ -79,6 +81,8 @@ export function App() {
   const [restoreOnOpen, setRestoreOnOpen] = useState(false);
   const [responseSession, setResponseSession] = useState<Session>();
   const [log, setLog] = useState<WorkoutLog>({});
+  const [sessionChanges, setSessionChanges] = useState<any>(emptySessionChanges(date));
+  const swapping = useRef(false);
   const logRef = useRef(log);
   const queue = useRef(Promise.resolve());
   const [flow, setFlow] = useState<
@@ -123,13 +127,14 @@ export function App() {
     readiness?.level || "GREEN",
   );
   const today = week.find((d) => d.date === date)!;
-  const workout: Workout = today.workout || {
+  const baseWorkout: Workout = today.workout || {
     id: "recovery",
     title: today.title,
     phase: today.focus,
     items: [],
     notes: [today.note],
   };
+  const workout: Workout = applySessionChanges(baseWorkout, sessionChanges, log, program.profile?.equipment, readiness?.level || "GREEN");
   const strengthDone = sessions.some((s) => s.date === date && !s.domain);
   const canOpenWorkout =
     !!program.assessment &&
@@ -174,8 +179,9 @@ export function App() {
       loadSessions(),
       loadDraft(date),
       loadProgram(),
+      get("settings", `workout-changes-${date}`),
     ])
-      .then(([record, saved, draft, loadedProgram]) => {
+      .then(([record, saved, draft, loadedProgram, changes]) => {
         if (!active) return;
         setCheckIn(record);
         setSessions(saved);
@@ -186,6 +192,7 @@ export function App() {
           setTab("Today");
           location.hash = "Today";
         }
+        setSessionChanges(changes || emptySessionChanges(date));
         setLog(draft);
         logRef.current = draft;
         setLoaded(true);
@@ -291,17 +298,18 @@ export function App() {
     setError("");
     try {
       await queue.current;
-      const logError = validateWorkoutLog(workout, logRef.current);
+      const recordedItems = sessionItems(workout, logRef.current);
+      const logError = validateWorkoutLog({ ...workout, items: recordedItems }, logRef.current);
       if (logError) throw new Error(logError);
       const activeLog = Object.fromEntries(
         Object.entries(logRef.current)
-          .filter(([id]) => workout.items.some((ex) => ex.id === id))
+          .filter(([id]) => recordedItems.some((ex: import("./types").Exercise) => ex.id === id))
           .map(([id, entry]) => [
             id,
             {
               sets: entry.sets.slice(
                 0,
-                workout.items.find((ex) => ex.id === id)!.sets,
+                recordedItems.find((ex: import("./types").Exercise) => ex.id === id)!.sets,
               ),
             },
           ]),
@@ -312,7 +320,8 @@ export function App() {
         createdAt: new Date().toISOString(),
         workoutId: workout.id,
         workoutTitle: workout.title,
-        plannedItems: workout.items,
+        plannedItems: recordedItems,
+        exerciseChanges: sessionChanges.events,
         exerciseLog: activeLog,
         readiness,
         ...details,
@@ -570,38 +579,31 @@ export function App() {
               online={online}
               onChange={changeSet}
               onBack={() => open(null)}
-              onFinish={() => open("finish")}
+              onFinish={() => !busy && open("finish")}
+              unavailable={sessionChanges.unavailable}
               readiness={readiness?.level || "UNCHECKED"}
               equipment={program.profile?.equipment}
-              onSwap={async (exercise, id, reason) => {
-                const replacement = swapExercise(
-                  exercise,
-                  id,
-                  program.profile?.equipment,
-                  readiness?.level,
-                  reason,
-                );
-                if (workout.items.some((ex) => ex.id === id))
-                  throw new Error("That exercise is already in this workout.");
-                if (
-                  logRef.current[exercise.id]?.sets.some((set) => set?.complete)
-                )
-                  throw new Error(
-                    "Finish logging this exercise before changing its variation on a later workout.",
-                  );
-                await queue.current;
-                await put("profile", {
-                  ...program.profile,
-                  id: "athlete",
-                  exerciseChoices: {
-                    ...program.profile?.exerciseChoices,
-                    [exercise.originalId || exercise.id]: {
-                      id: replacement.id,
-                      reason,
-                    },
-                  },
-                });
-                await reloadProgram();
+              onSwap={async (exercise, id, reason, scope, unavailable) => {
+                if (swapping.current || busy) throw new Error("Please wait for the current save.");
+                if (!canOpenWorkout || readiness?.level === "RED") throw new Error("Review today's check-in before changing the workout.");
+                swapping.current = true; setBusy(true);
+                try {
+                  const owned = program.profile?.equipment || EQUIPMENT;
+                  const missing = unavailable.filter(key => owned.includes(key));
+                  const replacement = id === exercise.id ? { ...exercise, skipReason: undefined } : id ? swapExercise(exercise, id, owned.filter(key => !missing.includes(key)), readiness?.level, reason) : null;
+                  if (id !== exercise.id && workout.items.some(ex => ex.id === id)) throw new Error("That exercise is already in this workout.");
+                  await queue.current;
+                  const next = recordSessionChange(sessionChanges, exercise, replacement, reason, scope, missing, logRef.current, new Date().toISOString());
+                  const records: any[] = [{ store: "settings", value: next }];
+                  if (scope === "future" && replacement) records.push({ store: "profile", value: {
+                    ...program.profile, id: "athlete", exerciseChoices: { ...program.profile?.exerciseChoices,
+                      [exercise.originalId || exercise.id]: { id: replacement.id, reason, effectiveFrom: addDays(date, 1) }
+                    }
+                  }});
+                  await writeRecords(records);
+                  setSessionChanges(next);
+                  if (scope === "future") await reloadProgram();
+                } finally { swapping.current = false; setBusy(false); }
               }}
             />
           ) : flow === "finish" ? (

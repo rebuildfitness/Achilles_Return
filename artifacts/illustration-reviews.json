@@ -1827,5 +1827,18 @@
     "panelDescription": "With hand support and the opposite foot lifted, raise the working heel to the reviewed position and hold still.",
     "batch": 8,
     "review": "Individual generated artwork inspected for title, panels, working limb, heel position, support, anatomy and equipment. Supplemental illustration; existing setup and demos remain authoritative."
+  },
+  {
+    "id": "library-lat-pulldown",
+    "gender": "man",
+    "race": "Asian",
+    "motionFormat": "start_end",
+    "position": "Seated",
+    "bodyRegion": "Back",
+    "panelDescription": "Seated with thigh restraint and feet flat. Pull the overhead bar to the upper chest in front of the head, then return under control.",
+    "source": "C:/Users/jwalk/.codex/generated_images/01a0912b-a122-7951-a4cc-8af99692a2c5/exec-7cb65280-adb9-45ee-838b-5547192139e4.png",
+    "prompt": "Two-panel educational lat pulldown illustration, seated Asian adult man, stable bench with thigh restraint, overhead cable and bar, start and finish, white background and grayscale line art.",
+    "batch": 9,
+    "review": "Visually reviewed start and finish: continuous cable, stable seat, thigh restraint, front-of-head bar path, complete anatomy and readable labels. Generic apparatus; follow the B52 manufacturer-approved setup. Supplemental illustration only."
   }
 ]

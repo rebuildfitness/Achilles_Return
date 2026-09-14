@@ -1,3 +1,4 @@
+import { ExerciseSwap, type SwapAction } from "../components/ExerciseSwap";
 import { optionalAccessory, sessionEstimate } from "../data/sessionPresentation.js";
 import { useState } from "react";
 import { RestTimer } from "../components/RestTimer";
@@ -17,6 +18,7 @@ export function WorkoutScreen({
   onFinish,
   onSwap,
   equipment,
+  unavailable = [],
   readiness = "GREEN",
 }: {
   workout: Workout;
@@ -26,11 +28,8 @@ export function WorkoutScreen({
   onChange: (id: string, index: number, value: SetLog) => void;
   onBack: () => void;
   onFinish: () => void;
-  onSwap?: (
-    exercise: import("../types").Exercise,
-    id: string,
-    reason: string,
-  ) => Promise<void>;
+  onSwap?: SwapAction;
+  unavailable?: string[];
   equipment?: string[];
   readiness?: string;
 }) {
@@ -39,11 +38,12 @@ export function WorkoutScreen({
   );
   const [shortSession, setShortSession] = useState(false);
   const visibleItems = workout.items.filter(ex => !shortSession || !optionalAccessory(ex) || log[ex.id]?.sets.some(s => s && Object.values(s).some(Boolean)));
-  const total = visibleItems.reduce((n, ex) => n + ex.sets, 0);
-  const completed = workout.items.reduce(
+  const retainedCompleted = (workout.retained || []).reduce((n, ex) => n + (log[ex.id]?.sets.filter(set => set?.complete).length || 0), 0);
+  const total = visibleItems.reduce((n, ex) => n + Math.max(ex.sets, log[ex.id]?.sets.length || 0), 0) + retainedCompleted;
+  const completed = [...workout.items, ...(workout.retained || [])].reduce(
     (n, ex) =>
       n +
-      (log[ex.id]?.sets.slice(0, ex.sets).filter((s) => s?.complete).length ||
+      (log[ex.id]?.sets.filter((s) => s?.complete).length ||
         0),
     0,
   );
@@ -111,8 +111,13 @@ export function WorkoutScreen({
               sessions={sessions}
               readiness={readiness}
               equipment={equipment}
-              onSwap={onSwap}
             />
+            {onSwap && <ExerciseSwap exercise={exercise} equipment={equipment} unavailable={unavailable} workoutIds={workout.items.map(ex => ex.id)} onSwap={onSwap} />}
+            {exercise.sets === 0 && <p className="helper">All planned sets were already completed. This change adds no extra sets today.</p>}
+            {exercise.skipReason || exercise.equipment?.some(id => unavailable.includes(id)) ? <>
+              <p className="notice">{exercise.skipReason ? "Remaining sets skipped: " + exercise.skipReason : "Equipment marked unavailable today. Swap or skip the remaining sets."}</p>
+              <RecordedSets exercise={exercise} log={log} onChange={onChange} />
+            </> : <>
             <div className="set-row set-header" aria-hidden="true">
               <span>SET</span>
               <span>PREVIOUS</span>
@@ -146,9 +151,12 @@ export function WorkoutScreen({
                 }}
               />
             ))}
+            </>}
+            {(log[exercise.id]?.sets.length || 0) > exercise.sets && <details><summary>Earlier entries outside the remaining dose</summary><RecordedSets exercise={exercise} log={log} onChange={onChange} start={exercise.sets} /></details>}
           </ExerciseCard>
         );
       })}
+      {!!workout.retained?.length && <section className="detail-section"><h2>Recorded before a swap</h2><p className="helper">These entries stay with their original exercise and are included when you save.</p>{workout.retained.map(ex => <div key={ex.id}><h3>{ex.name}</h3><RecordedSets exercise={ex} log={log} onChange={onChange} /></div>)}</section>}
       <PrimaryButton disabled={!hasSets} onClick={onFinish}>
         Finish Workout
       </PrimaryButton>
@@ -159,6 +167,12 @@ export function WorkoutScreen({
       </p>
     </>
   );
+}
+function RecordedSets({ exercise, log, onChange, start = 0 }: { exercise: import("../types").Exercise; log: WorkoutLog; start?: number; onChange: (id: string, index: number, value: SetLog) => void }) {
+  return <>{log[exercise.id]?.sets.map((set, i) => i >= start && set && Object.values(set).some(Boolean) ? <div key={i}>
+    <p>Set {i + 1}: {set.load || "0"} lb × {set.reps || "—"} · {set.complete ? "Completed" : "Uncompleted"}</p>
+    <details><summary>Correct recorded set {i + 1}</summary><p className="helper">Correct an entry made before the change. Restore the exercise to perform remaining sets.</p><SetRow completionLocked exercise={exercise} index={i} value={set} onChange={value => onChange(exercise.id, i, { ...value, complete: set.complete })} /></details>
+  </div> : null)}</>;
 }
 export function FinishScreen({
   busy,

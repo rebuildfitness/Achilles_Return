@@ -127,6 +127,7 @@ export function TrainingOverview({
               <time>{r.date}</time>
               <strong>{r.title}</strong>
               <small>{r.detail}</small>
+              {!!sessions.find(s => s.id === r.id)?.exerciseChanges?.length && <details><summary>Exercise changes</summary>{sessions.find(s => s.id === r.id)!.exerciseChanges!.map((change, i) => <p key={i}>{change.fromName} → {change.toName || "Skipped remaining sets"} · {change.reason} · {change.scope === "future" ? "Future preference saved" : "This session"}</p>)}</details>}
             </div>
           ))}
         {sessions.length + recovery.length > historyLimit && <button className="text-button" onClick={() => setHistoryLimit(historyLimit + 20)}>Show earlier activity</button>}
