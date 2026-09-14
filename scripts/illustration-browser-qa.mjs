@@ -92,7 +92,18 @@ try{
   assert.equal(await card.locator('.illustration-detail img').evaluate(img=>img.naturalWidth),640);
   await card.screenshot({path:resolve(out,`illustration-batch4-${id}.png`),style:'.bottom-nav {visibility:hidden}'});
  }
- pass('All five batch-4 thumbnails, enlarged images and existing demos');
+  pass('All five batch-4 thumbnails, enlarged images and existing demos');
+  for(const [id,name] of [["library-dead-bug","Dead bug"],["library-superman","Superman"],["library-stability-ball-plank","Stability-ball plank"],["library-single-leg-foam-pad-balance","Single-leg foam-pad balance"],["library-straight-arm-cable-pulldown","Straight-arm cable pulldown"]]){
+   await search.fill(name);const card=page.locator(`[data-exercise-id="${id}"]`);
+   await card.scrollIntoViewIfNeeded();await card.locator('.illustration-thumbnail img').evaluate(img=>img.decode());
+   assert.equal(await card.locator('.illustration-thumbnail img').evaluate(img=>img.naturalWidth),192);
+   assert(await card.getByRole('link',{name:/Short Demo/}).isVisible());
+   await card.getByRole('button',{name:/View illustration/}).click();
+   await card.locator('.illustration-detail img').evaluate(img=>img.decode());
+   assert.equal(await card.locator('.illustration-detail img').evaluate(img=>img.naturalWidth),640);
+   await card.screenshot({path:resolve(out,`illustration-batch5-${id}.png`),style:'.bottom-nav {visibility:hidden}'});
+  }
+  pass('All five batch-5 thumbnails, enlarged images and existing demos');
  await search.fill('Cable face pull');
  assert(await page.locator('.illustration-unavailable').first().isVisible());
  assert(await page.getByRole('link',{name:/Short Demo:/}).isVisible());

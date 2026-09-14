@@ -1613,26 +1613,36 @@
     "bodyRegions": [
       "Back"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-straight-arm-cable-pulldown.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 186365,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-straight-arm-cable-pulldown.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 18438,
+    "altText": "Straight-arm cable pulldown: concentric eccentric panels. Pull the bar toward the thighs with nearly straight arms, then control its return toward shoulder height.",
+    "panelDescription": "Pull the bar toward the thighs with nearly straight arms, then control its return toward shoulder height.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1644,7 +1654,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final 640 × 960 PNG visually inspected: title, two panels, anatomy, equipment and movement checked. Dead-bug opposite-limb correction reviewed where applicable.",
     "pilot": false
   },
   {
@@ -3715,26 +3725,36 @@
     "bodyRegions": [
       "Core"
     ],
-    "position": "Unreviewed",
+    "position": "Prone support",
     "equipment": [
       "plyo-ball"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "setup_hold",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-stability-ball-plank.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 222802,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-stability-ball-plank.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 21146,
+    "altText": "Stability-ball plank: setup hold panels. Set the forearms on the stability ball, then extend the legs and hold a straight trunk while breathing.",
+    "panelDescription": "Set the forearms on the stability ball, then extend the legs and hold a straight trunk while breathing.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "South Asian / Indian",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3746,7 +3766,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final 640 × 960 PNG visually inspected: title, two panels, anatomy, equipment and movement checked. Dead-bug opposite-limb correction reviewed where applicable.",
     "pilot": false
   },
   {
@@ -3901,26 +3921,36 @@
     "primaryCollection": "strength-library",
     "primaryCategory": "Core",
     "bodyRegions": [
-      "Core"
+      "Back"
     ],
-    "position": "Unreviewed",
+    "position": "Prone",
     "equipment": [],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-superman.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 195578,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-superman.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 17416,
+    "altText": "Superman: concentric eccentric panels. Gently lift the arms and legs from prone, then lower under control while keeping the neck aligned.",
+    "panelDescription": "Gently lift the arms and legs from prone, then lower under control while keeping the neck aligned.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "White",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3932,7 +3962,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final 640 × 960 PNG visually inspected: title, two panels, anatomy, equipment and movement checked. Dead-bug opposite-limb correction reviewed where applicable.",
     "pilot": false
   },
   {
@@ -3999,24 +4029,34 @@
     "bodyRegions": [
       "Core"
     ],
-    "position": "Unreviewed",
+    "position": "Supine",
     "equipment": [],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-dead-bug.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 219298,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-dead-bug.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 22387,
+    "altText": "Dead bug: start end panels. Begin with arms above shoulders and hips and knees bent, then reach one arm and the opposite leg away while keeping the trunk still.",
+    "panelDescription": "Begin with arms above shoulders and hips and knees bent, then reach one arm and the opposite leg away while keeping the trunk still.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Middle Eastern",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4028,7 +4068,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final 640 × 960 PNG visually inspected: title, two panels, anatomy, equipment and movement checked. Dead-bug opposite-limb correction reviewed where applicable.",
     "pilot": false
   },
   {
@@ -4287,26 +4327,36 @@
     "bodyRegions": [
       "Balance"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "balance-pad"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "setup_hold",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-single-leg-foam-pad-balance.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 184562,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-single-leg-foam-pad-balance.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 16904,
+    "altText": "Single-leg foam-pad balance: setup hold panels. Stand beside stable hand support, then lift one foot and balance on the other on a flat foam pad.",
+    "panelDescription": "Stand beside stable hand support, then lift one foot and balance on the other on a flat foam pad.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "East Asian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4318,7 +4368,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final 640 × 960 PNG visually inspected: title, two panels, anatomy, equipment and movement checked. Dead-bug opposite-limb correction reviewed where applicable.",
     "pilot": false
   },
   {

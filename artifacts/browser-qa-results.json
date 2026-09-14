@@ -1,0 +1,29 @@
+{
+  "passed": [
+    "Migration preserves legacy history; check-in never fabricates next-morning tolerance",
+    "Baseline autosaves and resumes after exit and reload",
+    "All baseline sections validate, calculate measured results and activate the plan",
+    "Rest timer starts on a completed set, survives reload, and supports extending and clearing",
+    "Nine exercise cards include 5×5, specific demos and inline sets that survive reload",
+    "Inline workout usable at 320–1280px and with 200% text",
+    "Offline app shell, all tabs, logging and finish work; no same-day catch-up workout",
+    "Seven-day plan expands and calendar displays actual stored sets across month navigation",
+    "Run exposure draft survives reload; saved dose remains pending and prevents advancement",
+    "Versioned export and validated restore preserve data and avoid duplicate sessions",
+    "Red symptoms override readiness and remove loading actions",
+    "Service-worker updates preserve records and remove only obsolete app caches",
+    "All five main screens fit 320px and enlarged text",
+    "Keyboard skip link focuses content without changing the current screen",
+    "Approved hero artwork appears on every fresh launch and continues to Today",
+    "Monthly finishing retest preserves starting data and pain-free answers; separated exercise inputs and charts render",
+    "Four-step baseline resumes, saves partial measurements and preserves history and strength preference",
+    "Exercise library search, combined filters, demo link, empty state and pagination work on mobile",
+    "Recovery distance persists, press swaps persist, and a moved workout opens on its make-up day",
+    "Focused destinations keep forms out of Today, combine recovery and training history, and show recorded strength loads",
+    "Movement drafts survive reload; scoped Undo removes only its saved walk",
+    "Movement edits preserve IDs; routine actual amounts autosave offline and appear in mobile Progress",
+    "No browser runtime errors"
+  ],
+  "failed": 0,
+  "isolatedProfile": true
+}

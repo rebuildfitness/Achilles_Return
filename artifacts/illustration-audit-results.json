@@ -1,38 +1,38 @@
 {
   "canonicalIds": 127,
-  "generated": 70,
-  "unresolved": 57,
+  "generated": 75,
+  "unresolved": 52,
   "duplicateAppearances": 21,
   "motionFormats": {
-    "start_end": 21,
-    "concentric_eccentric": 37,
-    "setup_hold": 12
+    "start_end": 22,
+    "concentric_eccentric": 39,
+    "setup_hold": 14
   },
   "modelRepresentation": {
-    "woman": 33,
-    "man": 37
+    "woman": 36,
+    "man": 39
   },
   "raceEthnicityPresentation": {
-    "Black": 61,
-    "White": 2,
-    "Middle Eastern": 2,
-    "East Asian": 2,
-    "South Asian / Indian": 2,
+    "Black": 62,
+    "White": 3,
+    "Middle Eastern": 3,
+    "East Asian": 3,
+    "South Asian / Indian": 3,
     "Latino": 1
   },
-  "imageBytes": 14077290,
-  "meanBytes": 201104,
-  "medianBytes": 201007.5,
+  "imageBytes": 15085895,
+  "meanBytes": 201145,
+  "medianBytes": 200968,
   "largest": "library-supine-band-clam",
   "largestBytes": 248392,
   "over250KB": [],
   "over400KB": [],
-  "thumbnailBytes": 1326053,
-  "meanThumbnailBytes": 18944,
+  "thumbnailBytes": 1422344,
+  "meanThumbnailBytes": 18965,
   "thumbnailSavingsPercent": 91,
-  "productionBytes": 18207731,
-  "initialPrecacheBytes": 2804388,
-  "onDemandImageBytes": 15403343,
+  "productionBytes": 19317290,
+  "initialPrecacheBytes": 2809051,
+  "onDemandImageBytes": 16508239,
   "initialPrecacheBudgetBytes": 15000000,
   "cacheDecisionRequired": false
 }

@@ -1,52 +1,47 @@
-# Illustration batch 4 — complete source package
+# Illustration batch 5 — complete source package
 
-September 13, 2026. This package supersedes prior upload packages and contains the complete app, all previous artwork and the mobile-thumbnail optimization.
+This package includes the complete app, all prior illustrations and the mobile-thumbnail optimization.
 
 ## New illustrations
-
 | Exercise | Fictional model brief |
 |---|---|
-| Band pull-apart | East Asian woman |
-| Side plank | South Asian / Indian man |
-| Stability-ball wall squat | Middle Eastern woman |
-| Bent-over dumbbell reverse fly | White man |
-| Lying floor leg raise | Latino man |
+| Dead bug | Middle Eastern man |
+| Superman | White woman |
+| Stability-ball plank | South Asian / Indian woman |
+| Single-leg foam-pad balance | East Asian man |
+| Straight-arm cable pulldown | Black woman |
 
-Each model is consistent across the two panels. The five final 640 × 960 PNGs were individually visually inspected. Each also has a 192 × 288 thumbnail; browser screenshots verify their card and enlarged views. Built-in generation prompts and master paths are recorded in artifacts/illustration-reviews.json. Pillow only normalizes/resizes the reviewed artwork.
+All five final 640 × 960 PNGs were individually visually inspected. The dead-bug draft was corrected to show opposite arm and leg extension. Each original has a 192 × 288 thumbnail. Generation prompts, master paths and review notes are recorded in artifacts/illustration-reviews.json. Pillow only normalizes and resizes the generated artwork.
 
-## Coverage and sizes
+## Coverage and download sizes
+75 of 127 canonical exercises illustrated; 52 remaining: 44 ungenerated and 8 rejected drafts. Thumbnails are not additional exercises. The 21 shared collection appearances reuse their canonical assets.
 
-70 of 127 canonical IDs illustrated; 57 unresolved (49 ungenerated and 8 rejected drafts). Thumbnails do not count as additional exercises. There are 21 shared collection appearances; each canonical ID shares one original and one thumbnail. Full unresolved IDs, names, sources and reasons remain in public/assets/exercises/manifests/unresolved-exercise-assets.md.
+Originals total 15,085,895 bytes; mean 201,145 and median 200,968 bytes. Largest is library-supine-band-clam at 248,392 bytes; none exceed 250 KB. Thumbnails total 1,422,344 bytes, averaging 18,965 bytes (91% smaller).
 
-Full artwork totals 14,077,290 bytes. Mean 201,104; median 201,007.5; largest library-supine-band-clam.png at 248,392 bytes. No original exceeds 250 KB or 400 KB. Thumbnails total 1,326,053 bytes and average 18,944 bytes, about 91% smaller.
+Motion formats: 39 concentric/eccentric, 22 start/end and 14 setup/hold. Model briefs: 36 women and 39 men; Black 62, White 3, Middle Eastern 3, East Asian 3, South Asian/Indian 3 and Latino 1. These describe fictional creative briefs, not identities inferred from real people.
 
-Motion formats: 37 concentric/eccentric, 21 start/end, 12 setup/hold. Fictional model presentation: 33 women and 37 men; Black 61, White 2, East Asian 2, South Asian/Indian 2, Middle Eastern 2, Latino 1. These reflect the creative briefs, not inferred identities of real people.
-
-Initial offline download remains approximately 2.8 MB. Exact final measurements are in artifacts/illustration-audit-results.json. Both image sizes cache on demand: thumbnails as cards are browsed, originals after Enlarge. Offline availability depends on which size has loaded; each offers its own retry. App updates or browser cache eviction may require downloading again. External demos are not cached. Total source ZIP size is not the initial app download.
+Initial offline download remains approximately 2.8 MB. Exact final measurements are in artifacts/illustration-audit-results.json. Thumbnails download as cards are viewed; originals download on Enlarge. Each size caches independently for offline use after loading. Updates or browser cache eviction can require another download. External demos require internet. ZIP size is not the initial app download.
 
 ## Validation
+87 Node tests passed; 0 failed or skipped. 40 browser checks passed: 23 existing app checks and 17 illustration checks. TypeScript and production build passed. The existing Vite large-chunk warning remains nonfatal.
 
-87 Node tests passed; 0 failed or skipped. 39 browser checks passed: 23 existing app checks and 16 illustration checks. TypeScript and build passed. The preexisting Vite large-chunk warning is nonfatal. Existing dependencies and lockfile were unchanged.
-
-Checks include all five new thumbnails and enlarged images, original demos, card/full-image request separation, offline loading/retries, narrow layouts, keyboard interaction, update behavior and record preservation. The side-plank and wall-squat mobile screenshots were visually inspected. Tests use disposable Edge profiles. Physical iPhone and live Pages deployment were not tested.
+Checks cover all five new thumbnails and enlarged images, existing demo links, offline retries, separate image requests, narrow layouts, keyboard behavior and record preservation. Dead-bug and cable-pulldown mobile screenshots were visually inspected. Tests use disposable Edge profiles. Physical iPhone and live Pages deployment were not tested for this package.
 
 ## Upload and preview
+Extract this complete ZIP and copy its contents into your cloned repository root, replacing matching files and preserving folders including .github. Keep the repository's .git folder. In GitHub Desktop, review changes, commit and Push origin. Upload the extracted contents, not the ZIP or an enclosing folder. Older packages can be skipped.
 
-Extract the latest ZIP and upload its contents into the repository root, preserving folders including .github and replacing matching files. Do not upload the ZIP itself or nest the files inside another folder. Skip older packages; this one includes them. Wait for the deployment workflow to pass, then accept Update & reload in the app if shown. Do not clear your browser data.
+Keep Settings → Pages → Source set to GitHub Actions. Wait for Test and deploy GitHub Pages to succeed, then accept Update & reload if offered. Do not clear browser data.
 
 Local preview: pnpm build, then pnpm preview --port 4180. Open http://127.0.0.1:4180/ → Get Started → More → Exercise library. Search any new exercise and select Enlarge.
 
-No remote push, deployment or PR was performed. Prepared on feature/full-exercise-illustration-library; GitHub authentication remains unavailable for PR publication.
+This package was prepared locally on feature/full-exercise-illustration-library. No remote push, deployment or PR was performed.
 
-## Changed files and preserved behavior
+## Files changed
+- Five originals in public/assets/exercises/strength-library/ and five matching thumbnails.
+- Updated illustration manifest, inventory CSV and unresolved report.
+- artifacts/illustration-reviews.json: prompts, master paths and visual reviews.
+- scripts/illustration-browser-qa.mjs: coverage of the five additions.
+- Batch 5 screenshots and test/audit results; Batch 4 screenshots are also included as review evidence.
+- This guide, the public asset audit and asset README.
 
-- Five new full PNGs in public/assets/exercises/strength-library/ and five matching files in thumbnails/.
-- Regenerated manifest, inventory CSV and unresolved list.
-- artifacts/illustration-reviews.json: prompts, source paths, representation and visual review.
-- scripts/illustration-browser-qa.mjs: checks all five additions and uses another unresolved exercise for fallback coverage.
-- artifacts/illustration-batch4-*.png and result/audit JSON: review evidence.
-- This guide and the current asset audit: coverage, validation and complete-upload instructions.
-
-Source inventory remains src/data/catalog.js, src/data/exerciseLibrary.js and src/data/movementRoutines.json: 21 prescribed, 93 strength appearances including those 21, and 34 movement entries. Illustrated primary ownership is 15 prescribed, 26 strength-library, 29 movement-library. Sport groups without canonical exercise IDs remain unresolved scope boundaries.
-
-Clinical rules, restrictions, progression, prescribed-session authority, original demo metadata, IndexedDB records and backup schemaVersion 2 were unchanged. Thumbnail dimensions and approved on-demand caching behavior were preserved. Earlier batch documents are historical; this guide and the current machine-readable audit describe the latest package.
+Clinical rules, restrictions, progression, prescriptions, demo metadata, IndexedDB records and backup schemaVersion 2 remain unchanged. Source inventory remains 21 prescribed, 93 strength appearances including those 21, and 34 movement entries. Illustrated primary ownership is 15 prescribed, 31 strength-library and 29 movement-library. Sport groups without canonical exercise IDs remain outside this inventory. Earlier batch documents are historical.

@@ -1,4 +1,4 @@
-Current mobile-thumbnail update: each of the 65 full-size illustrations has a separate 192 x 288 PNG preview. Cards load previews; Enlarge loads the 640 x 960 original. Thumbnails average 19 KB (91% smaller). Both sizes cache on demand. See MOBILE_THUMBNAILS.md and the current machine-readable audit. Validation: 87 Node tests and 38 browser checks passed.
+Current batch 5: each of the 75 full-size illustrations has a separate 192 x 288 PNG preview. Cards load previews; Enlarge loads the 640 x 960 original. Thumbnails average 19 KB (91% smaller). Both sizes cache on demand. See ILLUSTRATION_REVIEW.md and the current machine-readable audit. Validation: 87 Node tests and 40 browser checks passed.
 
 # Exercise illustrations
 
