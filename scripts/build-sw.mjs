@@ -16,6 +16,7 @@ async function list(directory, prefix = "") {
 }
 const files = (await list(fileURLToPath(root))).sort();
 const illustrations = files.filter(file => /^assets\/exercises\/(prescribed|strength-library|movement-library|thumbnails)\/[^/]+\.png$/.test(file));
+illustrations.push(...files.filter(file => /^assets\/daily-brand\/day-\d+\.webp$/.test(file)));
 const coreFiles = files.filter(file => !illustrations.includes(file));
 const hash = createHash("sha256");
 for (const file of files) hash.update(await readFile(new URL(file, root)));

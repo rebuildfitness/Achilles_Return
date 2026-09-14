@@ -57,7 +57,8 @@ function currentTab(): Tab {
 }
 
 export function App() {
-  const [intro, setIntro] = useState(true);
+  const [intro, setIntro] = useState(false);
+  const welcomeChecked = useRef(false);
   const [movementDate, setMovementDate] = useState(dayKey());
   const [movementType, setMovementType] = useState("");
   const [tab, setTab] = useState<Tab>(currentTab);
@@ -179,6 +180,12 @@ export function App() {
         setCheckIn(record);
         setSessions(saved);
         setProgram(loadedProgram);
+        if (!welcomeChecked.current) {
+          welcomeChecked.current = true;
+          setIntro(!loadedProgram.welcomed);
+          setTab("Today");
+          location.hash = "Today";
+        }
         setLog(draft);
         logRef.current = draft;
         setLoaded(true);
@@ -429,6 +436,7 @@ export function App() {
       anchor.href = url;
       anchor.download = `achilles-rehab-backup-${date}.json`;
       anchor.click();
+      await put("settings", { id: "backup-status", requestedAt: new Date().toISOString() });
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch (e) {
       report(e);
@@ -605,6 +613,7 @@ export function App() {
           ) : tab === "Today" ? (
             <>
               <Today
+                hasDraft={Object.values(log).some(item => item.sets.some(set => set && Object.keys(set).length > 0))}
                 onRecovery={(type = "") => {
                   setMovementType(type);
                   setMovementDate(date);
@@ -679,6 +688,8 @@ export function App() {
             />
           ) : (
             <MoreScreen
+              onWelcome={() => setIntro(true)}
+              prescribedIds={[...new Set(week.flatMap(d => d.workout?.items.map((ex: { id: string }) => ex.id) || []))]}
               onMovement={() => {
                 setMovementType("");
                 setMovementDate(date);

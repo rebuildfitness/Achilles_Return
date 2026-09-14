@@ -1,3 +1,4 @@
+import { optionalAccessory, sessionEstimate } from "../data/sessionPresentation.js";
 import { useState } from "react";
 import { RestTimer } from "../components/RestTimer";
 import { dayKey } from "../data/provisionalWeek.js";
@@ -36,7 +37,9 @@ export function WorkoutScreen({
   const [rest, setRest] = useState<{ seconds: number; at: number } | null>(
     null,
   );
-  const total = workout.items.reduce((n, ex) => n + ex.sets, 0);
+  const [shortSession, setShortSession] = useState(false);
+  const visibleItems = workout.items.filter(ex => !shortSession || !optionalAccessory(ex) || log[ex.id]?.sets.some(s => s && Object.values(s).some(Boolean)));
+  const total = visibleItems.reduce((n, ex) => n + ex.sets, 0);
   const completed = workout.items.reduce(
     (n, ex) =>
       n +
@@ -55,6 +58,9 @@ export function WorkoutScreen({
       <div className="screen-heading">
         <h1>Full Workout</h1>
         <p>{workout.title}</p>
+        <p className="helper">{sessionEstimate(visibleItems)}</p>
+        <label><input type="checkbox" checked={shortSession} onChange={e => setShortSession(e.target.checked)} /> Shorter session: hide optional accessories</label>
+        <p className="helper">Rehab and primary strength remain. Hidden exercises stay uncompleted in your original plan; completed sets are never removed. Restore the full list at any time.</p>
       </div>
       <div className="session-dashboard">
         <div className="section-heading">
@@ -90,7 +96,7 @@ export function WorkoutScreen({
           </p>
         ))}
       </details>
-      {workout.items.map((exercise) => {
+      {visibleItems.map((exercise) => {
         const previous = [...sessions]
           .filter(
             (s) => s.status === "TOLERATED" && s.exerciseLog?.[exercise.id],
@@ -99,6 +105,7 @@ export function WorkoutScreen({
           ?.exerciseLog[exercise.id];
         return (
           <ExerciseCard key={exercise.id} exercise={exercise} online={online}>
+            <p className="eyebrow">{optionalAccessory(exercise) ? "OPTIONAL ACCESSORY" : "SESSION PRIORITY"}</p>
             <ExerciseGuidance
               exercise={exercise}
               sessions={sessions}

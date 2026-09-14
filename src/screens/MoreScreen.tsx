@@ -1,3 +1,4 @@
+import { DataHealth } from "../components/DataHealth";
 import { useState } from "react";
 import { Card, PrimaryButton } from "../components/ui";
 import { DataField } from "./Baseline";
@@ -16,12 +17,16 @@ export function MoreScreen({
   onExport,
   onReload,
   initialSection = "",
+  prescribedIds = [],
+  onWelcome,
 }: {
   onMovement: () => void;
   profile?: Profile;
   onExport: () => void;
   onReload: () => Promise<void>;
   initialSection?: string;
+  prescribedIds?: string[];
+  onWelcome?: () => void;
 }) {
   const [section, setSection] = useState(initialSection),
     [search, setSearch] = useState(""),
@@ -50,6 +55,7 @@ export function MoreScreen({
     <>
       <div className="screen-heading">
         <h1>More</h1>
+        {onWelcome && <button className="text-button" onClick={onWelcome}>Replay welcome hero</button>}
         <p>Your plan, your data, your device.</p>
       </div>
       {section && (
@@ -63,6 +69,7 @@ export function MoreScreen({
           ← All settings
         </button>
       )}
+      {!section && <DataHealth onExport={onExport} />}
       {!section && (
         <Card>
           <div className="menu-list">
@@ -177,6 +184,7 @@ export function MoreScreen({
       )}
       {section === "library" && (
         <ExerciseLibrary
+          prescribedIds={prescribedIds}
           onMovement={onMovement}
           equipment={profile?.equipment}
         />

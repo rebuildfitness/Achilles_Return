@@ -1,3 +1,4 @@
+import { MeasurementJournal } from "../components/MeasurementJournal";
 import { MovementProgress } from "../components/MovementProgress";
 import { SectionSwitch } from "../components/SectionSwitch";
 import {
@@ -68,7 +69,7 @@ export function ProgressScreen({
         <TrainingOverview sessions={sessions} onView={setView} />
       )}
       {view === "movement" && <MovementProgress onOpen={onMovement} sessions={sessions} />}
-      {view === "baseline" && <AssessmentProgress assessments={assessments} />}
+      {view === "baseline" && <><AssessmentProgress assessments={assessments} /><MeasurementJournal /></>}
       {!assessment && (
         <Card>
           <h2>Start with your baseline</h2>

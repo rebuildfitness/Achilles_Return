@@ -18,6 +18,7 @@ export function TrainingOverview({
   onView: (view: string) => void;
 }) {
   const [recovery, setRecovery] = useState<any[]>([]);
+  const [historyLimit, setHistoryLimit] = useState(10);
   const [error, setError] = useState("");
   useEffect(() => {
     let active = true;
@@ -101,7 +102,7 @@ export function TrainingOverview({
         </div>
       </Card>
       <Card>
-        <h2>Recent activity</h2>
+        <h2>Your training history</h2>
         {!sessions.length && !recovery.length && (
           <p>Your first saved session or recovery activity will appear here.</p>
         )}
@@ -120,7 +121,7 @@ export function TrainingOverview({
           })),
         ]
           .sort((a, b) => b.date.localeCompare(a.date))
-          .slice(0, 10)
+          .slice(0, historyLimit)
           .map((r) => (
             <div className="activity-row" key={r.id}>
               <time>{r.date}</time>
@@ -128,6 +129,7 @@ export function TrainingOverview({
               <small>{r.detail}</small>
             </div>
           ))}
+        {sessions.length + recovery.length > historyLimit && <button className="text-button" onClick={() => setHistoryLimit(historyLimit + 20)}>Show earlier activity</button>}
       </Card>
     </>
   );

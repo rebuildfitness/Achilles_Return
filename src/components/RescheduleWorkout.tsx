@@ -35,6 +35,9 @@ export function RescheduleWorkout({
       d.date <= now &&
       !sessions.some((s) => !s.domain && s.date === d.date),
   );
+  let preview: { from: string; to: string; kind: string }[] = [];
+  let previewError = "";
+  if (from) { try { preview = rescheduleWorkout(days, sessions, from, to, now); } catch(e) { previewError = e instanceof Error ? e.message : String(e); } }
   return (
     <Card>
       <h2>Move an unfinished workout</h2>
@@ -68,9 +71,10 @@ export function RescheduleWorkout({
           onChange={(e) => setTo(e.target.value)}
         />
       </label>
+      {from && <div className="notice"><strong>Schedule preview</strong>{previewError ? <p>{previewError}</p> : preview.map(m => <p key={m.from}>{m.from} → {m.to}</p>)}</div>}
       <button
         className="secondary-button"
-        disabled={!from || busy}
+        disabled={!from || busy || !!previewError}
         onClick={async () => {
           setBusy(true);
           setMessage("");

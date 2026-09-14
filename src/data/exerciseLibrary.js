@@ -1,3 +1,4 @@
+import { CALF_PATHWAY } from "./calfPathway.js";
 import { CATALOG, EQUIPMENT_LABELS } from "./catalog.js";
 const M = "https://www.muscleandstrength.com/exercises/";
 const P = "https://library.theprehabguys.com/vimeo-video/";
@@ -540,6 +541,7 @@ const inferMuscle = (ex) => {
   return "Legs";
 };
 export const EXERCISE_LIBRARY = [
+  ...CALF_PATHWAY,
   ...additional,
   ...Object.values(CATALOG).map((ex) => ({
     id: ex.id,

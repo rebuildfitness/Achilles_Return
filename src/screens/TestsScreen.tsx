@@ -1,3 +1,4 @@
+import { MeasurementJournal } from "../components/MeasurementJournal";
 import { useState, type FormEvent } from "react";
 import { Card, PrimaryButton } from "../components/ui";
 import { AssessmentResult } from "./Baseline";
@@ -93,6 +94,7 @@ export function TestsScreen({
               : "Start Baseline"}
         </PrimaryButton>
       </Card>
+      <MeasurementJournal editable />
       {assessment && (
         <details className="detail-section">
           <summary>Current entry criteria</summary>

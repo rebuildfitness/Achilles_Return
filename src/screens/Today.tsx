@@ -1,3 +1,5 @@
+import { DailyBrand } from "../components/DailyBrand";
+import { sessionEstimate } from "../data/sessionPresentation.js";
 import { Card, Icon, PrimaryButton, StatusCard } from "../components/ui";
 import { readinessLabel } from "../rules/readiness.js";
 import type { Assessment, Readiness, Session, Workout } from "../types";
@@ -5,6 +7,7 @@ import { baselineResult } from "../rules/baseline.js";
 import { dayKey } from "../data/provisionalWeek.js";
 
 export function Today({
+  hasDraft = false,
   onRecovery,
   completed,
   readiness,
@@ -19,6 +22,7 @@ export function Today({
   workoutNote,
   onResponse,
 }: {
+  hasDraft?: boolean;
   onRecovery: (type?: string) => void;
   completed: boolean;
   readiness: Readiness | null;
@@ -39,6 +43,15 @@ export function Today({
   const pending = sessions.filter(
     (s) => s.status === "PENDING_NEXT_DAY_RESPONSE",
   );
+  const responseDue = pending.find(s => s.date < dayKey());
+  const nextAction = red
+    ? { label: "Review check-in", run: onCheckIn }
+    : !assessment ? { label: "Start Baseline", run: onTests }
+    : responseDue ? { label: "Record next-morning response", run: () => onResponse(responseDue) }
+    : !readiness ? { label: "Check In", run: onCheckIn }
+    : completed || recovery ? { label: "Log recovery", run: () => onRecovery() }
+    : canOpenWorkout ? { label: hasDraft ? "Resume Workout" : "Open Workout", run: onWorkout }
+    : { label: "Review Tests", run: onTests };
   return (
     <>
       <div className="screen-heading">
@@ -70,11 +83,13 @@ export function Today({
           <div className="eyebrow">DAILY CHECK-IN</div>
           <h2>How is your Achilles today?</h2>
           <p>A quick check-in helps guide today’s loading.</p>
-          <PrimaryButton onClick={onCheckIn}>
-            Check In <span aria-hidden="true">→</span>
-          </PrimaryButton>
+          {nextAction.run !== onCheckIn && <button className="text-button" onClick={onCheckIn}>Check In</button>}
         </Card>
       )}
+      <Card className="next-action-card">
+        <div className="eyebrow">YOUR NEXT ACTION</div>
+        <PrimaryButton onClick={nextAction.run}>{nextAction.label} <span aria-hidden="true">→</span></PrimaryButton>
+      </Card>
       {pending.length > 0 && (
         <Card className="pending-card">
           <Icon name="clock" />
@@ -122,6 +137,7 @@ export function Today({
                 <p>{workout.phase}</p>
               </div>
             </div>
+            {!recovery && !completed && <p className="helper">{sessionEstimate(workout.items)}</p>}
             <div className="workout-meta">
               <span className="pill">
                 {assessment ? "Criteria-based plan" : "Baseline first"}
@@ -134,30 +150,9 @@ export function Today({
                     : `${workout.items.length} exercises`}
               </span>
             </div>
-            <PrimaryButton
-              onClick={
-                !assessment
-                  ? onTests
-                  : completed || recovery
-                    ? () => onRecovery()
-                    : !readiness
-                      ? onCheckIn
-                      : canOpenWorkout
-                        ? onWorkout
-                        : onTests
-              }
-            >
-              {!assessment
-                ? "Start Baseline"
-                : completed || recovery
-                  ? "Log recovery"
-                  : !readiness
-                    ? "Check In to Train"
-                    : canOpenWorkout
-                      ? "Open Workout"
-                      : "Review Tests"}{" "}
-              <span aria-hidden="true">→</span>
-            </PrimaryButton>
+
+            {responseDue && assessment && readiness && canOpenWorkout && !completed && !recovery && <button className="text-button" onClick={onWorkout}>{hasDraft ? "Resume Workout" : "Open Workout"}</button>}
+            {responseDue && assessment && readiness && (completed || recovery) && <button className="text-button" onClick={() => onRecovery()}>Log recovery</button>}
             <div className="workout-preview">
               {!completed &&
                 workout.items.map((ex) => (
@@ -180,6 +175,13 @@ export function Today({
           </Card>
         </>
       )}
+      <Card>
+        <h2>Training and progression</h2>
+        <p><strong>Today:</strong> {red ? "Achilles loading is stopped." : !assessment ? "Record your baseline to establish a starting plan." : readiness ? readiness.action : "Check in to determine today's loading."}</p>
+        <p><strong>Your session:</strong> {workout.title}.</p>
+        <p><strong>Next step:</strong> {pending.length ? "Record the required next-morning response before increasing demand." : "Use your recorded performance and relevant capacity reviews to guide progression."}</p>
+        <p className="helper">A sport requirement is specific to that activity; it is not a score for your entire rehabilitation.</p>
+      </Card>
       <Card className="milestone-card">
         <div className="eyebrow">NEXT MILESTONE</div>
         <h3>
@@ -232,6 +234,7 @@ export function Today({
           ))}
         </div>
       </Card>
+      <DailyBrand />
       <p className="local-note">
         <Icon name="lock" size={13} /> Your progress stays on this device.
       </p>

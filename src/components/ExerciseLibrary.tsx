@@ -1,6 +1,8 @@
+import { CALF_PATHWAY } from "../data/calfPathway.js";
+import { get, put } from "../db.js";
 import { MovementLibrary } from "./MovementLibrary";
 import { ExerciseIllustration } from "./ExerciseIllustration";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "./ui";
 import { EQUIPMENT } from "../data/catalog.js";
 import {
@@ -13,16 +15,32 @@ import {
 export function ExerciseLibrary({
   onMovement,
   equipment: ownedEquipment = EQUIPMENT,
+  prescribedIds = [],
 }: {
   onMovement?: () => void;
   equipment?: string[];
+  prescribedIds?: string[];
 }) {
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [collection, setCollection] = useState("plan");
+  const [saveError, setSaveError] = useState("");
+  const [saving, setSaving] = useState(false);
+  useEffect(() => { get("settings", "exercise-favorites").then((r: any) => setFavorites(r?.ids || [])).catch(() => setSaveError("Favorites could not be loaded.")); }, []);
+  async function favorite(id: string) {
+    setSaving(true);
+    const next = favorites.includes(id) ? favorites.filter(x => x !== id) : [...favorites, id];
+    try { await put("settings", { id: "exercise-favorites", ids: next }); setFavorites(next); setSaveError(""); }
+    catch { setSaveError("Favorite could not be saved. Try again."); }
+    finally { setSaving(false); }
+  }
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
   const [equipment, setEquipment] = useState("");
   const [muscle, setMuscle] = useState("");
   const [limit, setLimit] = useState(20);
-  const matches = filterLibrary({ search, equipment, muscle });
+  const matches = filterLibrary({ search, equipment, muscle }).filter(ex =>
+    (category !== "Achilles" || ex.muscle === "Calf & ankle") &&
+    (search || category === "Achilles" || collection === "all" || (collection === "favorites" ? favorites.includes(ex.id) : prescribedIds.includes(ex.id))));
   function reset() {
     setSearch("");
     setEquipment("");
@@ -48,7 +66,7 @@ export function ExerciseLibrary({
           ),
         )}
       </div>
-      {!["All", "Strength"].includes(category) ? (
+      {!["All", "Strength", "Achilles"].includes(category) ? (
         <MovementLibrary
           key={category}
           category={category}
@@ -59,6 +77,10 @@ export function ExerciseLibrary({
         <>
           <Card className="exercise-library-card">
             <h2>Your exercise library</h2>
+            <div className="movement-chips" aria-label="Your library collections">
+              {[["plan", "In your plan"], ["favorites", "Favorites"], ["all", "All exercises"]].map(([id, label]) => <button key={id} aria-pressed={collection === id} onClick={() => {setCollection(id); setLimit(20);}}>{label}</button>)}
+            </div>
+            {saveError && <p role="alert">{saveError}</p>}
             {onMovement && (
               <button className="text-button" onClick={onMovement}>
                 Movement routines & logging →
@@ -180,7 +202,7 @@ export function ExerciseLibrary({
               <button
                 className="secondary-button"
                 type="button"
-                onClick={reset}
+                onClick={() => { reset(); setCollection("all"); }}
               >
                 Show all exercises
               </button>
@@ -190,6 +212,7 @@ export function ExerciseLibrary({
             <Card key={ex.id} className="exercise-library-card">
               <ExerciseIllustration exerciseId={ex.id} name={ex.name}>
               <h3>{ex.name}</h3>
+              <button className="text-button" disabled={saving} aria-pressed={favorites.includes(ex.id)} aria-label={`Favorite: ${ex.name}`} onClick={() => favorite(ex.id)}>{favorites.includes(ex.id) ? "Saved favorite" : "Add favorite"}</button>
               <p className="helper">
                 {ex.muscle} ·{" "}
                 {ex.equipment.map(equipmentLabel).join(" + ") || "Bodyweight"}
@@ -206,6 +229,7 @@ export function ExerciseLibrary({
               <details>
                 <summary>Setup & guidance</summary>
                 <p>{ex.setup}</p>
+                {CALF_PATHWAY.find(c => c.id === ex.id) && <p className="helper">Easier: {CALF_PATHWAY.find(c => c.id === ex.id)!.easier}. Next review: {CALF_PATHWAY.find(c => c.id === ex.id)!.harder}.</p>}
                 <p className="helper">{ex.review}</p>
                 <p className="helper">
                   {ex.libraryOnly

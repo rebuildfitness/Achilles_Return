@@ -118,6 +118,7 @@ export function loadGuidance(exercise, sessions = [], readiness = "GREEN") {
     loads.some((load) => load >= OWNED_LOADS.beltSquatReviewLb);
   const reviewReady = squatReview && decision.action === "PROPOSE_SMALL_INCREMENT";
   return {
+    evidence: latest ? `Based on ${latest.date}: ${sets.filter(s => s?.complete).length} completed sets; response ${latest.status.replaceAll("_", " ").toLowerCase()}. This variation keeps its own history.` : "No previous session for this variation.",
     starting:
       loads.length && latest.status === "TOLERATED"
         ? `Last tolerated load: ${Math.min(...loads)}${Math.min(...loads) !== Math.max(...loads) ? "–" + Math.max(...loads) : ""} lb${perDumbbell ? " per dumbbell" : ""}. Warm up below this; repeat only if today feels comparable.`

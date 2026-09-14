@@ -28,10 +28,11 @@ export function ExerciseGuidance({
       <p>{guide.starting}</p>
       <p>{guide.cadence}</p>
       <p>{guide.overload}</p>
+      <p className="helper">{guide.evidence}</p>
       <p>{guide.transition}</p>
       {(exercise.originalId || exercise.id) === "db-bench" && (
         <p>
-          Progression route: incline dumbbells → Smith incline press →
+          Your preferred equipment route (not a ranking): incline dumbbells → Smith incline press →
           Olympic-bar bench press with your B52 rack safeties. Each change needs
           its own warm-up and starting-load assessment.
         </p>

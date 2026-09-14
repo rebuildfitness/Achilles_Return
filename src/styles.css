@@ -1253,3 +1253,9 @@ pre {
 .movement-feedback .text-button { min-height:44px; margin-right:16px; padding:8px 0; }
 .movement-summary .text-button { min-height:44px; padding:8px; }
 .movement-editor details > summary { min-height:44px; padding:12px 0; cursor:pointer; }
+
+.daily-brand { margin: 24px 0; position: relative; overflow: hidden; border-radius: 16px; background: #1E2633; aspect-ratio: 3 / 2; }
+.daily-brand img { display:block; width:100%; height:100%; object-fit:cover; }
+.daily-brand figcaption { position:absolute; bottom:0; left:0; right:0; padding:40px 20px 20px; color:white; background:linear-gradient(transparent,rgba(21,27,36,.92)); display:grid; gap:6px; }
+.daily-brand strong { font-size:24px; }
+.daily-brand span { font-size:15px; }

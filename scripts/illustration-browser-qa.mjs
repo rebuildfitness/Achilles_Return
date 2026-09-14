@@ -62,7 +62,22 @@ try{
  assert.equal(await row.locator('.illustration-detail').count(),0);
  assert.equal(await row.getByRole('button',{name:/View illustration/}).evaluate(e=>document.activeElement===e),true);
  pass('Strength thumbnail, enlarged view, Escape/focus restoration and original demo');
- await search.fill('');await page.getByRole('button',{name:'Show 20 more exercises'}).click();
+ const calfReferences = (await import('../src/data/calfPathway.js')).CALF_PATHWAY;
+ for (const calf of calfReferences) {
+  await search.fill(calf.name);
+  const card=page.locator(`[data-exercise-id="${calf.id}"]`);
+  await card.locator('img').scrollIntoViewIfNeeded();
+  await card.locator('img').evaluate(img=>img.decode());
+  assert.equal(await card.locator('img').evaluate(img=>img.naturalWidth),192);
+  assert.equal(await card.getByRole('link',{name:/Short Demo/}).getAttribute('href'),calf.videoUrl);
+  await card.getByRole('button',{name:/View illustration/}).click();
+  await card.locator('.illustration-detail img').evaluate(img=>img.decode());
+  assert.equal(await card.locator('.illustration-detail img').evaluate(img=>img.naturalWidth),640);
+  await card.screenshot({path:resolve(out,`${calf.id}-library.png`)});
+  await card.getByRole('button',{name:'Close illustration'}).click();
+ }
+ pass('All six calf reference thumbnails and enlarged illustrations load with original demos');
+ await search.fill('');await page.getByRole('button',{name:'All exercises',exact:true}).click();await page.getByRole('button',{name:'Show 20 more exercises'}).click();
  assert((await page.locator('[data-exercise-id]').count())>=40);pass('Pagination retains stable exercise IDs');
  await search.fill('Seated unilateral');
  const hamstring=page.locator('[data-exercise-id="library-seated-unilateral-cable-hamstring-curl"]');
@@ -167,7 +182,7 @@ try{
  // Explicitly remove this exercise from this disposable browser cache so this
  // remains an uncached-image test when the entire library has artwork.
  await page.evaluate(async()=>{for(const key of await caches.keys()){const cache=await caches.open(key);for(const request of await cache.keys())if(request.url.includes('library-stability-ball-crunch.png'))await cache.delete(request);}});
- await context.setOffline(true);await page.reload();await page.getByRole('button',{name:/Get Started/}).click();
+ await context.setOffline(true);await page.reload();await page.getByRole('heading',{name:'Today',exact:true}).waitFor();
  await page.getByRole('button',{name:'More',exact:true}).click();await page.getByRole('button',{name:'Exercise library',exact:true}).click();
  await page.getByRole('button',{name:'Mobility',exact:true}).click();await page.locator('[data-exercise-id="wall-slides"]').scrollIntoViewIfNeeded();
  await page.waitForFunction(()=>document.querySelector('[data-exercise-id="wall-slides"] img')?.naturalWidth===192);

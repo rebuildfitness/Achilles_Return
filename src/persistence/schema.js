@@ -1,6 +1,7 @@
+import { validateMeasurement } from "../data/measurements.js";
 import { validateMovement } from "../data/movement.js";
 export const VERSIONS = Object.freeze({
-  appVersion: "1.2.0",
+  appVersion: "1.3.0",
   databaseVersion: 2,
   rulesetVersion: "1.1.0",
   exerciseLibraryVersion: "1.0.0",
@@ -50,6 +51,10 @@ export function migrateBackup(input) {
     if (new Set(rows.map((row) => row.id)).size !== rows.length)
       throw new Error(`Duplicate record IDs in ${name}`);
     for (const row of rows) {
+      if (row.measurementRecordVersion !== undefined) {
+        if (row.measurementRecordVersion !== 1) throw new Error("Unsupported measurement version.");
+        validateMeasurement(row, "9999-12-31");
+      }
       if (row.movementRecordSchemaVersion !== undefined) validateMovement(row);
       if (
         row.values !== undefined &&

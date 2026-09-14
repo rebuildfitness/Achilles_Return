@@ -1172,6 +1172,333 @@
     "pilot": true
   },
   {
+    "exerciseId": "calf-assisted",
+    "exerciseName": "Front-foot-supported calf raise",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Calf & ankle",
+    "bodyRegions": [
+      "Calf & ankle"
+    ],
+    "position": "Standing",
+    "equipment": [
+      "adjustable-bench"
+    ],
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/calf-assisted.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 183557,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": "/assets/exercises/thumbnails/calf-assisted.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 16967,
+    "altText": "Front-foot-supported calf raise: start end panels. Keep the assisting front foot on a stable elevated support while raising and lowering the rear heel on level ground.",
+    "panelDescription": "Keep the assisting front foot on a stable elevated support while raising and lowering the rear heel on level ground.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "White",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Use a stable elevated support for the assisting front foot. The rear working foot stays on the floor; use the front leg to reduce demand. Keep the working knee straight and record the assistance used.",
+        "existingDemoUrl": "https://library.theprehabguys.com/vimeo-video/front-foot-supported-single-leg-heel-raise-foot-supported/",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Individual generated artwork inspected for title, panels, working limb, heel position, support, anatomy and equipment. Supplemental illustration; existing setup and demos remain authoritative.",
+    "pilot": false
+  },
+  {
+    "exerciseId": "calf-dumbbell-single",
+    "exerciseName": "Dumbbell-loaded single-leg calf raise",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Calf & ankle",
+    "bodyRegions": [
+      "Calf & ankle"
+    ],
+    "position": "Standing",
+    "equipment": [
+      "dumbbells"
+    ],
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/calf-dumbbell-single.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 184362,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": "/assets/exercises/thumbnails/calf-dumbbell-single.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 16656,
+    "altText": "Dumbbell-loaded single-leg calf raise: start end panels. With hand support and one dumbbell, raise the working heel while keeping the opposite foot lifted; lower under control.",
+    "panelDescription": "With hand support and one dumbbell, raise the working heel while keeping the opposite foot lifted; lower under control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Use stable hand support and one dumbbell. Prioritize controlled heel height; use only your reviewed range. Record the dumbbell load separately from bodyweight.",
+        "existingDemoUrl": "https://www.muscleandstrength.com/exercises/standing-one-leg-calf-raise-with-dumbbell.html",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Individual generated artwork inspected for title, panels, working limb, heel position, support, anatomy and equipment. Supplemental illustration; existing setup and demos remain authoritative.",
+    "pilot": false
+  },
+  {
+    "exerciseId": "calf-smith",
+    "exerciseName": "Smith standing calf raise",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Calf & ankle",
+    "bodyRegions": [
+      "Calf & ankle"
+    ],
+    "position": "Standing",
+    "equipment": [
+      "smith-machine"
+    ],
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/calf-smith.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 218891,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": "/assets/exercises/thumbnails/calf-smith.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 23320,
+    "altText": "Smith standing calf raise: start end panels. With the guided bar across the upper back and safety stops set, raise both heels from level ground, then lower under control.",
+    "panelDescription": "With the guided bar across the upper back and safety stops set, raise both heels from level ground, then lower under control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Asian",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Set the Smith safety stops and use a stable footing setup. Establish the effective bar resistance before loading. Record added plates and your range; never assume a deep heel drop is required.",
+        "existingDemoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-calf-raise.html",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Individual generated artwork inspected for title, panels, working limb, heel position, support, anatomy and equipment. Supplemental illustration; existing setup and demos remain authoritative.",
+    "pilot": false
+  },
+  {
+    "exerciseId": "calf-seated-single",
+    "exerciseName": "Single-leg seated calf raise",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Calf & ankle",
+    "bodyRegions": [
+      "Calf & ankle"
+    ],
+    "position": "Seated",
+    "equipment": [
+      "adjustable-bench",
+      "dumbbells"
+    ],
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/calf-seated-single.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 209436,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": "/assets/exercises/thumbnails/calf-seated-single.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 19135,
+    "altText": "Single-leg seated calf raise: start end panels. Sit with the load supported on one thigh. Raise that heel while the opposite foot stays flat, then lower under control.",
+    "panelDescription": "Sit with the load supported on one thigh. Raise that heel while the opposite foot stays flat, then lower under control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Indian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Sit on a stable bench with the working knee near 90 degrees. Support any load securely on the thigh. Keep the opposite foot resting; record each side and load separately.",
+        "existingDemoUrl": "https://www.benjiphysio.co.uk/video-library/v/seated-calf-raise-single-leg",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Individual generated artwork inspected for title, panels, working limb, heel position, support, anatomy and equipment. Supplemental illustration; existing setup and demos remain authoritative.",
+    "pilot": false
+  },
+  {
+    "exerciseId": "calf-bent-standing",
+    "exerciseName": "Bilateral bent-knee calf raise",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Calf & ankle",
+    "bodyRegions": [
+      "Calf & ankle"
+    ],
+    "position": "Standing",
+    "equipment": [],
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/calf-bent-standing.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 183741,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": "/assets/exercises/thumbnails/calf-bent-standing.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 16550,
+    "altText": "Bilateral bent-knee calf raise: start end panels. Maintain the knee bend and stable hand support as both heels rise from level ground and lower again.",
+    "panelDescription": "Maintain the knee bend and stable hand support as both heels rise from level ground and lower again.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Middle Eastern",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Use stable support, maintain the knee bend and raise both heels under control. Avoid straightening the knees to finish the movement.",
+        "existingDemoUrl": "https://www.youtube.com/watch?v=gbeqYEPQZlU",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Individual generated artwork inspected for title, panels, working limb, heel position, support, anatomy and equipment. Supplemental illustration; existing setup and demos remain authoritative.",
+    "pilot": false
+  },
+  {
+    "exerciseId": "calf-isometric-single",
+    "exerciseName": "Single-leg calf isometric hold",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Calf & ankle",
+    "bodyRegions": [
+      "Calf & ankle"
+    ],
+    "position": "Standing",
+    "equipment": [],
+    "motionFormat": "setup_hold",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/calf-isometric-single.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 182141,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": "/assets/exercises/thumbnails/calf-isometric-single.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 16122,
+    "altText": "Single-leg calf isometric hold: setup hold panels. With hand support and the opposite foot lifted, raise the working heel to the reviewed position and hold still.",
+    "panelDescription": "With hand support and the opposite foot lifted, raise the working heel to the reviewed position and hold still.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Use stable support and the heel position, assistance and hold duration established for you. A step is not required by default. This is a hold, not a repetition-based replacement.",
+        "existingDemoUrl": "https://vimeo.com/1142364179",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Individual generated artwork inspected for title, panels, working limb, heel position, support, anatomy and equipment. Supplemental illustration; existing setup and demos remain authoritative.",
+    "pilot": false
+  },
+  {
     "exerciseId": "library-seated-unilateral-cable-hamstring-curl",
     "exerciseName": "Seated unilateral cable hamstring curl",
     "sourceCollections": [

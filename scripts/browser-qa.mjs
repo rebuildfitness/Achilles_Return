@@ -90,11 +90,14 @@ try {
     console.error("Browser error:", e.message);
   });
   const url = `http://127.0.0.1:4174${scope}`;
+  let lastTab = "Today";
+  const originalReload = page.reload.bind(page);
+  page.reload = (...args) => { lastTab = new URL(page.url()).hash.slice(1) || "Today"; return originalReload(...args); };
   const enterIntro = async (target = page, restoreTab = true) => {
-    const oldHash = new URL(target.url()).hash.slice(1);
-    await target
-      .getByRole("button", { name: "Get Started", exact: true })
-      .click();
+    const oldHash = lastTab;
+    await target.getByRole("button", { name: "Get Started", exact: true }).or(target.getByRole("heading", { name: "Today", exact: true })).waitFor();
+    const start = target.getByRole("button", { name: "Get Started", exact: true });
+    if (await start.isVisible()) await start.click();
     await target.getByRole("heading", { name: "Today", exact: true }).waitFor();
     if (restoreTab && oldHash && oldHash !== "Today")
       await target
@@ -103,6 +106,7 @@ try {
         .click();
   };
   const nav = async (tab) => {
+    lastTab = tab;
     await page
       .getByRole("navigation")
       .getByRole("button", { name: tab, exact: true })
@@ -276,7 +280,7 @@ try {
     path: resolve(artifacts, "today-ready-mobile.png"),
     fullPage: true,
   });
-  await page.getByRole("button", { name: "Open Workout" }).click();
+  await page.getByRole("button", { name: /^(Open|Resume) Workout$/ }).click();
   assert.equal(await page.locator(".exercise-card").count(), 9);
   assert.equal(
     await page.getByRole("link", { name: "Short Demo", exact: true }).count(),
@@ -284,6 +288,13 @@ try {
   );
   const load = "Single-Leg Calf Raise set 1 load",
     reps = "Single-Leg Calf Raise set 1 reps";
+  const fullCardCount = await page.locator(".exercise-card").count();
+  await page.getByRole("checkbox", {name:/Shorter session/}).check();
+  assert.ok(await page.locator(".exercise-card").count() < fullCardCount);
+  await page.getByRole("spinbutton", {name:load,exact:true}).waitFor();
+  await page.getByRole("checkbox", {name:/Shorter session/}).uncheck();
+  assert.equal(await page.locator(".exercise-card").count(),fullCardCount);
+  pass("Shorter session hides optional accessories and restores the original full workout");
   await page.getByRole("spinbutton", { name: load, exact: true }).fill("20");
   await page.getByRole("spinbutton", { name: reps, exact: true }).fill("10");
   await page
@@ -306,7 +317,7 @@ try {
   });
   await page.reload();
   await enterIntro();
-  await page.getByRole("button", { name: "Open Workout" }).click();
+  await page.getByRole("button", { name: /^(Open|Resume) Workout$/ }).click();
   assert.equal(
     await page
       .getByRole("spinbutton", { name: load, exact: true })
@@ -373,7 +384,7 @@ try {
   await context.setOffline(true);
   await page.reload();
   await enterIntro();
-  await page.getByRole("button", { name: "Open Workout" }).click();
+  await page.getByRole("button", { name: /^(Open|Resume) Workout$/ }).click();
   await page
     .getByText("Video requires internet", { exact: true })
     .first()
@@ -382,7 +393,7 @@ try {
   await page.getByRole("button", { name: "← Today", exact: true }).click();
   for (const tab of ["Plan", "Progress", "Tests", "More", "Today"])
     await nav(tab);
-  await page.getByRole("button", { name: "Open Workout" }).click();
+  await page.getByRole("button", { name: /^(Open|Resume) Workout$/ }).click();
   assert.equal(
     await page
       .getByRole("spinbutton", { name: load, exact: true })
@@ -400,7 +411,7 @@ try {
   assert.equal(saved.status, "PENDING_NEXT_DAY_RESPONSE");
   assert.equal(saved.exerciseLog["single-calf"].sets[0].load, "25");
   assert.equal(
-    await page.getByRole("button", { name: "Open Workout" }).count(),
+    await page.getByRole("button", { name: /^(Open|Resume) Workout$/ }).count(),
     0,
   );
   await page
@@ -494,7 +505,7 @@ try {
   await page.getByRole("button", { name: "See Today’s Plan" }).click();
   await page.getByRole("heading", { name: "Stop Achilles Loading" }).waitFor();
   assert.equal(
-    await page.getByRole("button", { name: "Open Workout" }).count(),
+    await page.getByRole("button", { name: /^(Open|Resume) Workout$/ }).count(),
     0,
   );
   await page.screenshot({
@@ -578,7 +589,7 @@ try {
   await welcome.getByRole("heading", { name: "Today", exact: true }).waitFor();
   await fresh.close();
   pass(
-    "Approved hero artwork appears on every fresh launch and continues to Today",
+    "First-use hero continues to Today; returning launches open Today",
   );
   await page.clock.setFixedTime(new Date(2026, 8, 30, 12));
   await page.reload();
@@ -755,6 +766,7 @@ try {
   await page
     .getByRole("button", { name: "Clear filters", exact: true })
     .click();
+  await page.getByRole("button", { name: "All exercises", exact: true }).click();
   await page.getByLabel("Equipment", { exact: true }).selectOption("plyo-ball");
   assert.equal(
     await page.getByRole("link", { name: /Short Demo:/ }).count(),
@@ -804,7 +816,7 @@ try {
   await page.getByText("25 min · 7.5 miles", {exact:true}).waitFor();
   await page.getByRole("button", { name: "← Back", exact: true }).click();
   await checkin();
-  await page.getByRole("button", { name: "Open Workout", exact: true }).click();
+  await page.getByRole("button", { name: /^(Open|Resume) Workout$/, exact: true }).click();
   const press = page.locator(".exercise-card").filter({
     has: page.getByRole("heading", {
       name: "Incline Dumbbell Press",
@@ -836,7 +848,7 @@ try {
   await page.reload();
   await enterIntro(page, false);
   await checkin();
-  await page.getByRole("button", { name: "Open Workout", exact: true }).click();
+  await page.getByRole("button", { name: /^(Open|Resume) Workout$/, exact: true }).click();
   await page
     .getByRole("heading", { name: "Smith incline bench press", exact: true })
     .waitFor();
@@ -1050,6 +1062,45 @@ try {
   pass(
     "Movement edits preserve IDs; routine actual amounts autosave offline and appear in mobile Progress",
   );
+  await nav("Tests");
+  const assessmentsBefore = await readStore("assessments");
+  await page.getByLabel("Result (reps)").fill("0");
+  await page.getByLabel("Setup, assistance and repetitions").fill("Flat floor, fingertip balance");
+  await page.getByRole("button", {name:"Save measurement", exact:true}).click();
+  await page.getByText("Measurement saved on this device.", {exact:true}).waitFor();
+  await page.reload(); await enterIntro();
+  await page.getByText("1 recorded results", {exact:true}).click();
+  await page.getByText("0 reps", {exact:true}).waitFor();
+  assert.deepEqual(await readStore("assessments"), assessmentsBefore);
+  await page.screenshot({path:resolve(artifacts,"companion-measurements.png"),fullPage:true});
+  pass("Independent zero measurement survives reload without changing clinical assessments");
+  await nav("More");
+  await page.getByRole("button", {name:"Exercise library",exact:true}).click();
+  await page.getByLabel("Find an exercise").fill("Dumbbell Biceps Curl");
+  await page.getByRole("button", {name:"Favorite: Dumbbell Biceps Curl",exact:true}).click();
+  await page.getByText("Saved favorite",{exact:true}).waitFor();
+  await page.reload(); await enterIntro();
+  await page.getByRole("button", {name:"Exercise library",exact:true}).click();
+  await page.getByRole("button", {name:"Favorites",exact:true}).click();
+  await page.getByRole("button", {name:"Favorite: Dumbbell Biceps Curl",exact:true}).waitFor();
+  pass("Favorite exercise survives reload and appears in Favorites");
+  await nav("Today");
+  const brand = page.locator(".daily-brand img");
+  await brand.scrollIntoViewIfNeeded();
+  await brand.evaluate(img => img.decode());
+  const source = await brand.getAttribute("src");
+  assert.match(source,/daily-brand\/day-\d{2}\.webp$/);
+  await page.reload(); await enterIntro();
+  assert.equal(await page.locator(".daily-brand img").getAttribute("src"),source);
+  assert.equal(await page.getByRole("button",{name:"Get Started",exact:true}).count(),0);
+  await page.locator(".daily-brand img").scrollIntoViewIfNeeded();
+  await page.locator(".daily-brand img").evaluate(img => img.decode());
+  await page.screenshot({path:resolve(artifacts,"companion-today.png"),fullPage:true});
+  await nav("More");
+  await page.getByRole("heading",{name:"App & data status"}).waitFor();
+  await page.getByRole("button",{name:/Replay welcome/}).click();
+  await page.getByRole("button",{name:"Get Started",exact:true}).waitFor();
+  pass("Daily branding stays stable on refresh; returning launch and optional hero replay work");
   assert.deepEqual(errors, []);
   pass("No browser runtime errors");
   await writeFile(

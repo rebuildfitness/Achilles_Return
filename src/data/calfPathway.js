@@ -1,0 +1,28 @@
+// Exercise families already described in WORKOUT_TEMPLATES.md. These references
+// do not automatically replace the prescribed calf exercise or confer clearance.
+export const CALF_PATHWAY = [
+  { id: 'calf-assisted', name: 'Front-foot-supported calf raise', family: 'Straight knee', equipment: ['adjustable-bench'],
+    videoUrl: 'https://library.theprehabguys.com/vimeo-video/front-foot-supported-single-leg-heel-raise-foot-supported/', videoSource: '[P]rehab',
+    setup: 'Use a stable elevated support for the assisting front foot. The rear working foot stays on the floor; use the front leg to reduce demand. Keep the working knee straight and record the assistance used.',
+    easier: 'Bilateral standing calf raise', harder: 'Unassisted single-leg calf raise' },
+  { id: 'calf-dumbbell-single', name: 'Dumbbell-loaded single-leg calf raise', family: 'Straight knee', equipment: ['dumbbells'],
+    videoUrl: 'https://www.muscleandstrength.com/exercises/standing-one-leg-calf-raise-with-dumbbell.html', videoSource: 'Muscle & Strength',
+    setup: 'Use stable hand support and one dumbbell. Prioritize controlled heel height; use only your reviewed range. Record the dumbbell load separately from bodyweight.',
+    easier: 'Bodyweight single-leg calf raise', harder: 'Review a heavier load without sacrificing heel height' },
+  { id: 'calf-smith', name: 'Smith standing calf raise', family: 'Straight knee', equipment: ['smith-machine'],
+    videoUrl: 'https://www.muscleandstrength.com/exercises/smith-machine-calf-raise.html', videoSource: 'Muscle & Strength',
+    setup: 'Set the Smith safety stops and use a stable footing setup. Establish the effective bar resistance before loading. Record added plates and your range; never assume a deep heel drop is required.',
+    easier: 'Bilateral standing calf raise', harder: 'Review load or unilateral demand separately' },
+  { id: 'calf-seated-single', name: 'Single-leg seated calf raise', family: 'Bent knee / soleus', equipment: ['adjustable-bench', 'dumbbells'],
+    videoUrl: 'https://www.benjiphysio.co.uk/video-library/v/seated-calf-raise-single-leg', videoSource: 'Benji Physio',
+    setup: 'Sit on a stable bench with the working knee near 90 degrees. Support any load securely on the thigh. Keep the opposite foot resting; record each side and load separately.',
+    easier: 'Bilateral seated calf raise', harder: 'Review additional load with consistent heel height' },
+  { id: 'calf-bent-standing', name: 'Bilateral bent-knee calf raise', family: 'Bent knee / soleus', equipment: [],
+    videoUrl: 'https://www.youtube.com/watch?v=gbeqYEPQZlU', videoSource: 'Royal United Hospitals Bath NHS',
+    setup: 'Use stable support, maintain the knee bend and raise both heels under control. Avoid straightening the knees to finish the movement.',
+    easier: 'Seated calf raise', harder: 'Reviewed single-leg bent-knee variation' },
+  { id: 'calf-isometric-single', name: 'Single-leg calf isometric hold', family: 'Static hold', equipment: [],
+    videoUrl: 'https://vimeo.com/1142364179', videoSource: 'True Active Physiotherapy',
+    setup: 'Use stable support and the heel position, assistance and hold duration established for you. A step is not required by default. This is a hold, not a repetition-based replacement.',
+    easier: 'Reviewed bilateral supported hold', harder: 'Review hold position or load, one variable at a time' },
+].map(ex => ({ ...ex, muscle: 'Calf & ankle', review: 'Reference variation: confirm suitability, dose and setup before changing prescribed rehab. Library access is not clearance.', libraryOnly: true, verifiedAt: '2026-09-14', verification: 'Exercise-specific provider page/catalog checked; external playback may vary. Existing master-plan family; no new clinical threshold.' }));

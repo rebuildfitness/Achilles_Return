@@ -26,6 +26,7 @@ export type SetLog = {
 };
 export type WorkoutLog = Record<string, { sets: SetLog[] }>;
 export type Exercise = {
+  strengthModule?: boolean;
   originalId?: string;
   id: string;
   name: string;
