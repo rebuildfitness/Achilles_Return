@@ -1,40 +1,52 @@
-Current mobile-thumbnail update: each of the 65 full-size illustrations has a separate 192 x 288 PNG preview. Cards load previews; Enlarge loads the 640 x 960 original. Thumbnails average 19 KB (91% smaller). Both sizes cache on demand. See MOBILE_THUMBNAILS.md and the current machine-readable audit. Validation: 87 Node tests and 38 browser checks passed.
+# Illustration batch 4 — complete source package
 
-# Illustration batch 3 — complete source upload package
+September 13, 2026. This package supersedes prior upload packages and contains the complete app, all previous artwork and the mobile-thumbnail optimization.
 
-September 13, 2026. This package includes all previous source files and 65 reviewed illustrations for 127 canonical exercise IDs. 62 illustrations remain unresolved (54 ungenerated, 8 rejected drafts).
+## New illustrations
 
-New artwork: Barbell shrug (White woman), Dumbbell goblet squat (East Asian man), Dumbbell squat (South Asian/Indian woman), Bent-over dumbbell triceps kickback (Middle Eastern man), Supine band clam (Black woman). These are fictional model briefs, following the user's expanded representation request. The same model appears in both panels.
+| Exercise | Fictional model brief |
+|---|---|
+| Band pull-apart | East Asian woman |
+| Side plank | South Asian / Indian man |
+| Stability-ball wall squat | Middle Eastern woman |
+| Bent-over dumbbell reverse fly | White man |
+| Lying floor leg raise | Latino man |
 
-## Approved offline behavior
+Each model is consistent across the two panels. The five final 640 × 960 PNGs were individually visually inspected. Each also has a 192 × 288 thumbnail; browser screenshots verify their card and enlarged views. Built-in generation prompts and master paths are recorded in artifacts/illustration-reviews.json. Pillow only normalizes/resizes the reviewed artwork.
 
-The user approved downloading illustrations when viewed. The app shell and logging still install for offline use immediately. Only successful bundled PNG responses are cached; external demos are not cached. Viewed images work offline. Unviewed images need internet; the fallback preserves setup/demo actions and offers Retry. App updates replace the build cache, so images may need downloading again after an update; browser storage eviction can also remove them.
+## Coverage and sizes
 
-The former eager payload was 15,854,059 bytes. The new initial payload is approximately 2.80 MB; exact current measurements are in artifacts/illustration-audit-results.json. All 13,088,860 bytes of PNG assets remain in the source package. Lazy image loading may fetch nearby cards as you scroll.
+70 of 127 canonical IDs illustrated; 57 unresolved (49 ungenerated and 8 rejected drafts). Thumbnails do not count as additional exercises. There are 21 shared collection appearances; each canonical ID shares one original and one thumbnail. Full unresolved IDs, names, sources and reasons remain in public/assets/exercises/manifests/unresolved-exercise-assets.md.
 
-## Upload
+Full artwork totals 14,077,290 bytes. Mean 201,104; median 201,007.5; largest library-supine-band-clam.png at 248,392 bytes. No original exceeds 250 KB or 400 KB. Thumbnails total 1,326,053 bytes and average 18,944 bytes, about 91% smaller.
 
-Extract the complete ZIP and upload its contents into the repository root, preserving folders including .github and replacing matching files. Do not upload the ZIP itself or create a nested package folder. Commit and wait for the deployment workflow to pass. After deployment, accept Update & reload if shown. Do not clear app storage or delete your records.
+Motion formats: 37 concentric/eccentric, 21 start/end, 12 setup/hold. Fictional model presentation: 33 women and 37 men; Black 61, White 2, East Asian 2, South Asian/Indian 2, Middle Eastern 2, Latino 1. These reflect the creative briefs, not inferred identities of real people.
 
-This work has not been deployed or pushed remotely. A PR was not published because GitHub authentication is unavailable.
+Initial offline download remains approximately 2.8 MB. Exact final measurements are in artifacts/illustration-audit-results.json. Both image sizes cache on demand: thumbnails as cards are browsed, originals after Enlarge. Offline availability depends on which size has loaded; each offers its own retry. App updates or browser cache eviction may require downloading again. External demos are not cached. Total source ZIP size is not the initial app download.
 
-## Preview and verification
+## Validation
 
-Run pnpm install --frozen-lockfile, pnpm build, then pnpm preview --port 4180. Open http://127.0.0.1:4180/ and navigate Get Started → More → Exercise library. Search one of the new names and tap Enlarge. This preview origin has separate local records.
+87 Node tests passed; 0 failed or skipped. 39 browser checks passed: 23 existing app checks and 16 illustration checks. TypeScript and build passed. The preexisting Vite large-chunk warning is nonfatal. Existing dependencies and lockfile were unchanged.
 
-Frozen install, TypeScript and build passed. 87 Node tests, 23 existing browser checks and 15 illustration browser checks passed. The existing Vite large-chunk warning is nonfatal. Disposable Edge tests covered mobile layout, enlargement, demos, installation without images, viewed images offline, unviewed-image fallback/retry and update/data preservation. Physical iPhone and live Pages deployment remain untested.
+Checks include all five new thumbnails and enlarged images, original demos, card/full-image request separation, offline loading/retries, narrow layouts, keyboard interaction, update behavior and record preservation. The side-plank and wall-squat mobile screenshots were visually inspected. Tests use disposable Edge profiles. Physical iPhone and live Pages deployment were not tested.
 
-## Files and purpose
+## Upload and preview
 
-- public/assets/exercises/: 65 individual 640 × 960 monochrome PNGs plus the full manifest, CSV and unresolved list.
-- src/components/ExerciseIllustration.tsx: shared thumbnail/detail, offline explanation and Retry.
-- scripts/build-sw.mjs and sw.js: separate initial core assets from allowlisted on-demand illustrations.
-- scripts/inventory-illustrations.mjs: per-image fictional model representation metadata.
-- scripts/audit-illustrations.mjs: measures actual core manifest bytes separately from all production assets.
-- tests/illustration-cache.test.mjs: verifies reuse offline and rejection of failed/non-image responses.
-- scripts/illustration-browser-qa.mjs: library and offline behavior checks.
-- artifacts/illustration-reviews.json: built-in generation prompts, original master paths and final review notes.
-- artifacts/illustration-batch3-*.png: mobile review screenshots.
-- artifacts/illustration-audit-results.json: final measured coverage, size and representation counts.
+Extract the latest ZIP and upload its contents into the repository root, preserving folders including .github and replacing matching files. Do not upload the ZIP itself or nest the files inside another folder. Skip older packages; this one includes them. Wait for the deployment workflow to pass, then accept Update & reload in the app if shown. Do not clear your browser data.
 
-Clinical rules, restrictions, progression, prescribed workouts, original demo metadata, IndexedDB records and backup schemaVersion 2 were preserved.
+Local preview: pnpm build, then pnpm preview --port 4180. Open http://127.0.0.1:4180/ → Get Started → More → Exercise library. Search any new exercise and select Enlarge.
+
+No remote push, deployment or PR was performed. Prepared on feature/full-exercise-illustration-library; GitHub authentication remains unavailable for PR publication.
+
+## Changed files and preserved behavior
+
+- Five new full PNGs in public/assets/exercises/strength-library/ and five matching files in thumbnails/.
+- Regenerated manifest, inventory CSV and unresolved list.
+- artifacts/illustration-reviews.json: prompts, source paths, representation and visual review.
+- scripts/illustration-browser-qa.mjs: checks all five additions and uses another unresolved exercise for fallback coverage.
+- artifacts/illustration-batch4-*.png and result/audit JSON: review evidence.
+- This guide and the current asset audit: coverage, validation and complete-upload instructions.
+
+Source inventory remains src/data/catalog.js, src/data/exerciseLibrary.js and src/data/movementRoutines.json: 21 prescribed, 93 strength appearances including those 21, and 34 movement entries. Illustrated primary ownership is 15 prescribed, 26 strength-library, 29 movement-library. Sport groups without canonical exercise IDs remain unresolved scope boundaries.
+
+Clinical rules, restrictions, progression, prescribed-session authority, original demo metadata, IndexedDB records and backup schemaVersion 2 were unchanged. Thumbnail dimensions and approved on-demand caching behavior were preserved. Earlier batch documents are historical; this guide and the current machine-readable audit describe the latest package.

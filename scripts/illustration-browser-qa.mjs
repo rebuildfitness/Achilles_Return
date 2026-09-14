@@ -82,6 +82,17 @@ try{
   await card.screenshot({path:resolve(out,`illustration-batch3-${id}.png`),style:'.bottom-nav {visibility:hidden}'});
  }
  pass('All five diverse batch-3 illustrations enlarge with original demos');
+ for(const [id,name] of [['library-band-pull-apart','Band pull-apart'],['library-side-plank','Side plank'],['library-stability-ball-wall-squat','Stability-ball wall squat'],['library-bent-over-dumbbell-reverse-fly','Bent-over dumbbell reverse fly'],['library-lying-floor-leg-raise','Lying floor leg raise']]){
+  await search.fill(name);const card=page.locator(`[data-exercise-id="${id}"]`);
+  await card.scrollIntoViewIfNeeded();await card.locator('.illustration-thumbnail img').evaluate(img=>img.decode());
+  assert.equal(await card.locator('.illustration-thumbnail img').evaluate(img=>img.naturalWidth),192);
+  assert(await card.getByRole('link',{name:/Short Demo/}).isVisible());
+  await card.getByRole('button',{name:/View illustration/}).click();
+  await card.locator('.illustration-detail img').evaluate(img=>img.decode());
+  assert.equal(await card.locator('.illustration-detail img').evaluate(img=>img.naturalWidth),640);
+  await card.screenshot({path:resolve(out,`illustration-batch4-${id}.png`),style:'.bottom-nav {visibility:hidden}'});
+ }
+ pass('All five batch-4 thumbnails, enlarged images and existing demos');
  await search.fill('Cable face pull');
  assert(await page.locator('.illustration-unavailable').first().isVisible());
  assert(await page.getByRole('link',{name:/Short Demo:/}).isVisible());
@@ -115,8 +126,8 @@ try{
  await page.waitForFunction(()=>document.querySelector('[data-exercise-id="wall-slides"] img')?.naturalWidth===192);
  pass('Project-subpath service-worker install and offline images');
  await page.getByRole('button',{name:'Strength',exact:true}).click();
- await page.getByRole('searchbox').fill('Stability-ball wall squat');
- const unviewed=page.locator('[data-exercise-id="library-stability-ball-wall-squat"]');
+ await page.getByRole('searchbox').fill('Stability-ball crunch');
+ const unviewed=page.locator('[data-exercise-id="library-stability-ball-crunch"]');
  await unviewed.locator('.illustration-unavailable').waitFor();
  assert(await unviewed.getByRole('link',{name:/Short Demo/}).isVisible());
  pass('Offline unavailable artwork preserves exercise and demo actions');

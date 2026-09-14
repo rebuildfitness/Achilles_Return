@@ -962,5 +962,70 @@
     "prompt": "One scientific educational exercise illustration. Portrait 2:3, white background, crisp black line art and light gray shading, exact title at top, two vertically stacked full-body panels separated by thin line. Consistent adult Black athlete in modest neutral athletic clothing in both panels. No logos, colored elements, scenery, prescriptions or extra text. Correct anatomy and equipment, generous margins, labels large and legible.  Plain unbranded footwear without swooshes, stripes, symbols or markings. Exterior body only, no anatomical cutaways. Never add punctuation to the title. Exact title: Supine band clam. Adult Black woman t-shirt leggings. Full body lying on back on thin mat, head relaxed arms at sides, knees bent and feet flat. Loop resistance band around thighs just ABOVE knees. Camera elevated front three-quarter from feet so separation visible. Top mandatory label Concentric: knees open outward against taut band with both feet staying planted, pelvis still. Bottom mandatory label Eccentric: knees returned to hip-width apart with control, same planted feet and pelvis. No bridge: pelvis stays ON mat both panels. Band remains visible above knees. No other equipment.",
     "batch": 3,
     "review": "Normalized 640 × 960 PNG visually inspected for exact title, phase labels, anatomy, equipment, composition and enlarged readability. Representation follows the user-approved diverse fictional model brief; supplemental illustration only."
+  },
+  {
+    "id": "library-band-pull-apart",
+    "race": "East Asian",
+    "gender": "woman",
+    "motionFormat": "concentric_eccentric",
+    "position": "Standing",
+    "bodyRegion": "Shoulders",
+    "panelDescription": "Pull the band apart at shoulder height, then return the hands forward under control.",
+    "source": "C:\\Users\\jwalk\\.codex\\generated_images\\01a0912b-a122-7951-a4cc-8af99692a2c5\\exec-9619bea4-53a3-42a1-86e6-1a7eb34fe98f.png",
+    "prompt": "One scientific educational exercise illustration. Portrait 2:3, white background, crisp black line art and light gray shading, exact title at top, two vertically stacked full-body panels separated by thin line. Consistent adult East Asian woman in modest neutral athletic clothing in both panels. No logos, colored elements, scenery, prescriptions or extra text. Correct anatomy and equipment, generous margins, labels large and legible.  Plain unbranded footwear without swooshes, stripes, symbols or markings. Exterior body only, no anatomical cutaways. Never add punctuation to the title. Exact title: Band pull-apart. Adult East Asian woman plain t-shirt leggings full-body front three-quarter view. Both hands grasp a single flat rehab band, arms held at shoulder height with soft nearly straight elbows. Top mandatory label Concentric: arms spread out wide in horizontal T, band stretched horizontally across upper chest. Bottom mandatory label Eccentric: arms reaching forward shoulder-width apart at shoulder height, band less stretched between hands. Quiet torso feet flat, same model and stance; no anchor or machine.",
+    "batch": 4,
+    "review": "Final 640 × 960 PNG individually visually inspected for exact exercise title, anatomy, equipment, movement phases, margins and legibility. Supplemental illustration; existing demo and prescription remain authoritative."
+  },
+  {
+    "id": "library-side-plank",
+    "race": "South Asian / Indian",
+    "gender": "man",
+    "motionFormat": "setup_hold",
+    "position": "Side lying",
+    "bodyRegion": "Core",
+    "panelDescription": "Place the supporting elbow below the shoulder, then lift the hips and hold a straight body line while breathing.",
+    "source": "C:\\Users\\jwalk\\.codex\\generated_images\\01a0912b-a122-7951-a4cc-8af99692a2c5\\exec-fc2fbaa9-9ece-430b-bc4c-35dbfa4c9a15.png",
+    "prompt": "One scientific educational exercise illustration. Portrait 2:3, white background, crisp black line art and light gray shading, exact title at top, two vertically stacked full-body panels separated by thin line. Consistent adult South Asian Indian man in modest neutral athletic clothing in both panels. No logos, colored elements, scenery, prescriptions or extra text. Correct anatomy and equipment, generous margins, labels large and legible.  Plain unbranded footwear without swooshes, stripes, symbols or markings. Exterior body only, no anatomical cutaways. Never add punctuation to the title. Exact title: Side plank. Athletic adult Indian man in plain t-shirt shorts, full body in side view facing viewer. Top required label Setup: lying on anatomical LEFT side, left forearm on mat elbow directly under shoulder, both legs STRAIGHT extended rightward feet stacked, hip on mat, right hand on right hip. Bottom label Hold: same left forearm and outer left foot supporting, pelvis lifted to straight diagonal head-shoulder-hip-ankle line, right hand still on hip. Shoulders hips stacked, head neutral. No bent-knee version, no motion arrows or phase labels. Entire body fits generous margins.",
+    "batch": 4,
+    "review": "Final 640 × 960 PNG individually visually inspected for exact exercise title, anatomy, equipment, movement phases, margins and legibility. Supplemental illustration; existing demo and prescription remain authoritative."
+  },
+  {
+    "id": "library-stability-ball-wall-squat",
+    "race": "Middle Eastern",
+    "gender": "woman",
+    "motionFormat": "concentric_eccentric",
+    "position": "Standing",
+    "bodyRegion": "Legs",
+    "panelDescription": "Stand while maintaining ball contact with the wall, then lower through a controlled squat range with feet planted.",
+    "source": "C:\\Users\\jwalk\\.codex\\generated_images\\01a0912b-a122-7951-a4cc-8af99692a2c5\\exec-a749a4e7-7996-47df-800d-d6169a4f157d.png",
+    "prompt": "One scientific educational exercise illustration. Portrait 2:3, white background, crisp black line art and light gray shading, exact title at top, two vertically stacked full-body panels separated by thin line. Consistent adult Middle Eastern woman in modest neutral athletic clothing in both panels. No logos, colored elements, scenery, prescriptions or extra text. Correct anatomy and equipment, generous margins, labels large and legible.  Plain unbranded footwear without swooshes, stripes, symbols or markings. Exterior body only, no anatomical cutaways. Never add punctuation to the title. Exact title: Stability-ball wall squat. Fit adult Middle Eastern woman plain t-shirt leggings, full-body SIDE view facing IMAGE LEFT; vertical wall at IMAGE RIGHT. Large smooth inflatable stability ball BETWEEN lower/mid BACK and WALL, continuously contacting both. Feet flat hip-width about two feet forward from wall. Top mandatory label Concentric: standing tall, knees almost straight, body lightly leaning backward into ball. Bottom mandatory label Eccentric: squat thighs near horizontal and shins near vertical, ball rolling down wall behind torso, same feet position. Arms crossed on chest both panels, neutral spine, no weights. Entire person ball and wall-floor boundary visible.",
+    "batch": 4,
+    "review": "Final 640 × 960 PNG individually visually inspected for exact exercise title, anatomy, equipment, movement phases, margins and legibility. Supplemental illustration; existing demo and prescription remain authoritative."
+  },
+  {
+    "id": "library-bent-over-dumbbell-reverse-fly",
+    "race": "White",
+    "gender": "man",
+    "motionFormat": "concentric_eccentric",
+    "position": "Standing hip hinge",
+    "bodyRegion": "Shoulders",
+    "panelDescription": "Raise the dumbbells out to the sides with softly bent elbows, then lower under control while maintaining the hip hinge.",
+    "source": "C:\\Users\\jwalk\\.codex\\generated_images\\01a0912b-a122-7951-a4cc-8af99692a2c5\\exec-6d554967-b676-4897-a7ec-048f8ae39e86.png",
+    "prompt": "One scientific educational exercise illustration. Portrait 2:3, white background, crisp black line art and light gray shading, exact title at top, two vertically stacked full-body panels separated by thin line. Consistent adult White man in modest neutral athletic clothing in both panels. No logos, colored elements, scenery, prescriptions or extra text. Correct anatomy and equipment, generous margins, labels large and legible.  Plain unbranded footwear without swooshes, stripes, symbols or markings. Exterior body only, no anatomical cutaways. Never add punctuation to the title. Exact title: Bent-over dumbbell reverse fly. Adult White man in plain t-shirt shorts, full-body FRONT three-quarter view. Stable hip hinge flat back torso nearly horizontal, soft knees, feet flat shoulder width. TWO separate dumbbells, neutral grips. Top panel label exactly Concentric: arms spread wide out to sides at shoulder level, elbows softly bent fifteen degrees, forming broad wings, weights far outside body. Bottom label exactly Eccentric: both arms hang downward below chest, dumbbells separated below shoulders. Same hinge angle and quiet torso both panels. This is a reverse fly, not a row: elbows never bent ninety degrees. No extra text or arrows.",
+    "batch": 4,
+    "review": "Final 640 × 960 PNG individually visually inspected for exact exercise title, anatomy, equipment, movement phases, margins and legibility. Supplemental illustration; existing demo and prescription remain authoritative."
+  },
+  {
+    "id": "library-lying-floor-leg-raise",
+    "race": "Latino",
+    "gender": "man",
+    "motionFormat": "concentric_eccentric",
+    "position": "Supine",
+    "bodyRegion": "Core",
+    "panelDescription": "Raise both legs with the torso supported, then lower only through a range that maintains trunk control.",
+    "source": "C:\\Users\\jwalk\\.codex\\generated_images\\01a0912b-a122-7951-a4cc-8af99692a2c5\\exec-5a12110b-0ada-4ebf-960d-b411b6f65235.png",
+    "prompt": "One scientific educational exercise illustration. Portrait 2:3, white background, crisp black line art and light gray shading, exact title at top, two vertically stacked full-body panels separated by thin line. Consistent adult Latino man in modest neutral athletic clothing in both panels. No logos, colored elements, scenery, prescriptions or extra text. Correct anatomy and equipment, generous margins, labels large and legible.  Plain unbranded footwear without swooshes, stripes, symbols or markings. Exterior body only, no anatomical cutaways. Never add punctuation to the title. Exact title: Lying floor leg raise. Athletic adult Latino man t-shirt shorts. Full body SIDE view lying supine on a thin mat with head on IMAGE LEFT and feet to RIGHT. Head, shoulders and pelvis remain supported on mat; arms at sides palms down. Top mandatory label Concentric: both straight legs together raised vertically above hips, feet pointing ceiling. Bottom mandatory label Eccentric: both straight legs together lowered only to forty-five degrees above floor, heels airborne. Show controlled range without lumbar arch or lifting head, knees softly straight not locked. Same model mat and viewpoint. Whole legs and feet visible both panels. No arrows or extra text.",
+    "batch": 4,
+    "review": "Final 640 × 960 PNG individually visually inspected for exact exercise title, anatomy, equipment, movement phases, margins and legibility. Supplemental illustration; existing demo and prescription remain authoritative."
   }
 ]
