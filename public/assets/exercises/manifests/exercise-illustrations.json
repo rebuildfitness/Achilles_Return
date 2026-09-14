@@ -570,28 +570,38 @@
     "primaryCollection": "prescribed",
     "primaryCategory": "strength",
     "bodyRegions": [
-      "Unclassified"
+      "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "belt-squat"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/prescribed/belt-squat.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 222729,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/belt-squat.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 22841,
+    "altText": "Belt Squat: concentric eccentric panels. Stand with the hip belt attached to the rack-mounted lever, then lower into a controlled squat.",
+    "panelDescription": "Stand with the hip belt attached to the rack-mounted lever, then lower into a controlled squat.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "white",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing Plan and readiness rules unchanged",
@@ -603,7 +613,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative. Simplified rack-mounted lever illustration, not a manufacturer assembly diagram; retain the Mammoth setup instructions.",
     "pilot": false
   },
   {
@@ -672,28 +682,38 @@
     "primaryCollection": "prescribed",
     "primaryCategory": "strength",
     "bodyRegions": [
-      "Unclassified"
+      "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "adjustable-bench"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/prescribed/bench-step-up.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 195836,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/bench-step-up.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 18409,
+    "altText": "Step-Up: concentric eccentric panels. Extend the working leg on the step, then lower the other foot to the floor with control.",
+    "panelDescription": "Extend the working leg on the step, then lower the other foot to the floor with control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "White",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing Plan and readiness rules unchanged",
@@ -705,7 +725,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -718,26 +738,36 @@
     "primaryCollection": "prescribed",
     "primaryCategory": "strength",
     "bodyRegions": [
-      "Unclassified"
+      "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Supine",
     "equipment": [],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/prescribed/bridge.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 203087,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/bridge.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 18676,
+    "altText": "Bridge / Hip Thrust: concentric eccentric panels. Lift the hips from the floor, then lower with control.",
+    "panelDescription": "Lift the hips from the floor, then lower with control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing Plan and readiness rules unchanged",
@@ -749,7 +779,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -762,28 +792,38 @@
     "primaryCollection": "prescribed",
     "primaryCategory": "strength",
     "bodyRegions": [
-      "Unclassified"
+      "Core"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/prescribed/cable-pallof-press.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 191317,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/cable-pallof-press.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 19515,
+    "altText": "Standing Cable Pallof Press: start end panels. Press the handle forward while resisting the cable's sideways pull, then return.",
+    "panelDescription": "Press the handle forward while resisting the cable's sideways pull, then return.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "East Asian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing Plan and readiness rules unchanged",
@@ -795,7 +835,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -862,28 +902,38 @@
     "primaryCollection": "prescribed",
     "primaryCategory": "strength",
     "bodyRegions": [
-      "Unclassified"
+      "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "weighted-wagon"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/prescribed/weighted-wagon-backward-drag.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 207538,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/weighted-wagon-backward-drag.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 19852,
+    "altText": "Weighted Wagon Backward Drag: start end panels. Walk backward in short controlled steps while pulling the weighted wagon.",
+    "panelDescription": "Walk backward in short controlled steps while pulling the weighted wagon.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Middle Eastern",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing Plan and readiness rules unchanged",
@@ -895,7 +945,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -908,28 +958,38 @@
     "primaryCollection": "prescribed",
     "primaryCategory": "strength",
     "bodyRegions": [
-      "Unclassified"
+      "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Prone",
     "equipment": [
       "rehab-bands"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/prescribed/band-hamstring.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 195278,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/band-hamstring.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 17437,
+    "altText": "Prone Band Hamstring Curl: concentric eccentric panels. Bend the knee against the secured band, then lower slowly.",
+    "panelDescription": "Bend the knee against the secured band, then lower slowly.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "South Asian / Indian",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing Plan and readiness rules unchanged",
@@ -941,7 +1001,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1343,26 +1403,36 @@
     "bodyRegions": [
       "Arms"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-overhead-rope-cable-triceps-extension.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 199580,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-overhead-rope-cable-triceps-extension.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 19460,
+    "altText": "Overhead rope cable triceps extension: concentric eccentric panels. Extend the elbows overhead, then bend under control.",
+    "panelDescription": "Extend the elbows overhead, then bend under control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Latino",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1374,7 +1444,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1386,28 +1456,38 @@
     "primaryCollection": "strength-library",
     "primaryCategory": "Shoulders",
     "bodyRegions": [
-      "Shoulders"
+      "Back"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-cable-face-pull.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 208649,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-cable-face-pull.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 19919,
+    "altText": "Cable face pull: concentric eccentric panels. Pull the rope toward the face with elbows out, then return slowly.",
+    "panelDescription": "Pull the rope toward the face with elbows out, then return slowly.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "White",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1419,7 +1499,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1431,28 +1511,38 @@
     "primaryCollection": "strength-library",
     "primaryCategory": "Shoulders",
     "bodyRegions": [
-      "Shoulders"
+      "Back"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-cable-reverse-fly.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 204846,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-cable-reverse-fly.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 20630,
+    "altText": "Cable reverse fly: concentric eccentric panels. Open the arms out to the sides, then return under control.",
+    "panelDescription": "Open the arms out to the sides, then return under control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1464,7 +1554,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1478,26 +1568,36 @@
     "bodyRegions": [
       "Shoulders"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-two-arm-cable-lateral-raise.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 221679,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-two-arm-cable-lateral-raise.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 22997,
+    "altText": "Two-arm cable lateral raise: concentric eccentric panels. Raise both arms out to shoulder height, then lower slowly.",
+    "panelDescription": "Raise both arms out to shoulder height, then lower slowly.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "East Asian",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1509,7 +1609,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1523,26 +1623,36 @@
     "bodyRegions": [
       "Shoulders"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-cable-external-rotation.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 199922,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-cable-external-rotation.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 18607,
+    "altText": "Cable external rotation: concentric eccentric panels. Rotate the forearm outward while keeping the elbow beside the ribs.",
+    "panelDescription": "Rotate the forearm outward while keeping the elbow beside the ribs.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Middle Eastern",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1554,7 +1664,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1568,26 +1678,36 @@
     "bodyRegions": [
       "Chest"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-standing-cable-fly.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 215143,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-standing-cable-fly.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 21629,
+    "altText": "Standing cable fly: concentric eccentric panels. Bring the handles together in front of the chest, then open slowly.",
+    "panelDescription": "Bring the handles together in front of the chest, then open slowly.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "South Asian / Indian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1599,7 +1719,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1668,26 +1788,36 @@
     "bodyRegions": [
       "Core"
     ],
-    "position": "Unreviewed",
+    "position": "Kneeling",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-kneeling-cable-crunch.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 210217,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-kneeling-cable-crunch.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 20146,
+    "altText": "Kneeling cable crunch: concentric eccentric panels. Curl the ribs toward the pelvis, then return with control.",
+    "panelDescription": "Curl the ribs toward the pelvis, then return with control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Latina",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1699,7 +1829,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1713,26 +1843,36 @@
     "bodyRegions": [
       "Core"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-cable-wood-chop.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 189289,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-cable-wood-chop.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 18394,
+    "altText": "Cable wood chop: concentric eccentric panels. Draw the handle diagonally across the body, then return under control.",
+    "panelDescription": "Draw the handle diagonally across the body, then return under control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "White",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1744,7 +1884,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1758,26 +1898,36 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-standing-cable-hamstring-curl.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 196849,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-standing-cable-hamstring-curl.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 19835,
+    "altText": "Standing cable hamstring curl: concentric eccentric panels. Bend one knee to curl the heel behind you, then lower slowly.",
+    "panelDescription": "Bend one knee to curl the heel behind you, then lower slowly.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1789,7 +1939,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1803,26 +1953,36 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "cable-station"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-cable-hip-abduction.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 183970,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-cable-hip-abduction.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 18174,
+    "altText": "Cable hip abduction: concentric eccentric panels. Move the leg sideways away from the body, then return slowly.",
+    "panelDescription": "Move the leg sideways away from the body, then return slowly.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "East Asian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -1834,7 +1994,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1904,29 +2064,35 @@
     "bodyRegions": [
       "Chest"
     ],
-    "position": "Bench-supported",
+    "position": "Supine",
     "equipment": [
       "dumbbells",
       "adjustable-bench"
     ],
     "motionFormat": "concentric_eccentric",
-    "assetStatus": "needs_product_review",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-dumbbell-fly.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 222233,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": "Dumbbell fly: concentric eccentric panels. Supine on flat bench. Softly bent elbows remain same angle. Top dumbbells meet above sternum; lower arms open to sides only at torso height with palms facing ceiling/inward, modest range. Feet flat.",
-    "panelDescription": "Supine on flat bench. Softly bent elbows remain same angle. Top dumbbells meet above sternum; lower arms open to sides only at torso height with palms facing ceiling/inward, modest range. Feet flat.",
+    "thumbnailPath": "/assets/exercises/thumbnails/library-dumbbell-fly.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 21499,
+    "altText": "Dumbbell fly: concentric eccentric panels. Bring the dumbbells together above the chest with a soft fixed elbow bend, then open slowly.",
+    "panelDescription": "Bring the dumbbells together above the chest with a soft fixed elbow bend, then open slowly.",
     "modelRepresentation": {
-      "raceEthnicityPresentation": "Black",
-      "genderPresentation": "woman",
+      "raceEthnicityPresentation": "Indian",
+      "genderPresentation": "man",
       "ageGroup": "adult"
     },
     "illustrationVersion": "1.0.0",
@@ -1940,7 +2106,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Draft flexes elbows markedly in the lower panel, resembling a press instead of a fly.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -1954,29 +2120,35 @@
     "bodyRegions": [
       "Chest"
     ],
-    "position": "Bench-supported",
+    "position": "Supine",
     "equipment": [
       "dumbbells",
       "adjustable-bench"
     ],
     "motionFormat": "concentric_eccentric",
-    "assetStatus": "needs_product_review",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-close-grip-dumbbell-press.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 217410,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": "Close-grip dumbbell press: concentric eccentric panels. Supine flat bench head and back supported feet flat. Palms face one another, TWO dumbbells gently touching side-by-side centrally. Top arms extend above sternum; bottom elbows tuck beside torso as touching dumbbells lower to chest.",
-    "panelDescription": "Supine flat bench head and back supported feet flat. Palms face one another, TWO dumbbells gently touching side-by-side centrally. Top arms extend above sternum; bottom elbows tuck beside torso as touching dumbbells lower to chest.",
+    "thumbnailPath": "/assets/exercises/thumbnails/library-close-grip-dumbbell-press.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 21663,
+    "altText": "Close-grip dumbbell press: concentric eccentric panels. Press the two dumbbells upward together, then lower close to the chest.",
+    "panelDescription": "Press the two dumbbells upward together, then lower close to the chest.",
     "modelRepresentation": {
-      "raceEthnicityPresentation": "Black",
-      "genderPresentation": "man",
+      "raceEthnicityPresentation": "Middle Eastern",
+      "genderPresentation": "woman",
       "ageGroup": "adult"
     },
     "illustrationVersion": "1.0.0",
@@ -1990,7 +2162,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Draft does not clearly show two separate dumbbells and neutral grip; requires a clearer camera angle.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -2059,27 +2231,37 @@
     "bodyRegions": [
       "Chest"
     ],
-    "position": "Unreviewed",
+    "position": "Supine",
     "equipment": [
       "dumbbells",
       "adjustable-bench"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-dumbbell-pullover.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 212213,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-dumbbell-pullover.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 19697,
+    "altText": "Dumbbell pullover: concentric eccentric panels. Bring the dumbbell above the chest, then lower it behind the head within a controlled range.",
+    "panelDescription": "Bring the dumbbell above the chest, then lower it behind the head within a controlled range.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -2091,7 +2273,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -2604,28 +2786,34 @@
     "bodyRegions": [
       "Arms"
     ],
-    "position": "Bench-supported",
+    "position": "Supine",
     "equipment": [
       "dumbbells",
       "adjustable-bench"
     ],
     "motionFormat": "concentric_eccentric",
-    "assetStatus": "needs_product_review",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-lying-dumbbell-triceps-extension.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 229011,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": "Lying dumbbell triceps extension: concentric eccentric panels. Supine flat bench, feet flat. Upper arms point vertically above shoulders, remain fixed. Top elbows straighten with TWO dumbbells above shoulders; bottom elbows flex lowering dumbbells beside temples. Neutral palms facing each other, no pullover.",
-    "panelDescription": "Supine flat bench, feet flat. Upper arms point vertically above shoulders, remain fixed. Top elbows straighten with TWO dumbbells above shoulders; bottom elbows flex lowering dumbbells beside temples. Neutral palms facing each other, no pullover.",
+    "thumbnailPath": "/assets/exercises/thumbnails/library-lying-dumbbell-triceps-extension.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 21620,
+    "altText": "Lying dumbbell triceps extension: concentric eccentric panels. Straighten the elbows, then lower the dumbbells beside the head while keeping the upper arms steady.",
+    "panelDescription": "Straighten the elbows, then lower the dumbbells beside the head while keeping the upper arms steady.",
     "modelRepresentation": {
-      "raceEthnicityPresentation": "Black",
+      "raceEthnicityPresentation": "white",
       "genderPresentation": "woman",
       "ageGroup": "adult"
     },
@@ -2640,7 +2828,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Side-view draft does not clearly show both dumbbells or their independent grips; regenerate a three-quarter view. Generation limit prevented correction.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -2819,26 +3007,36 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "dumbbells"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-dumbbell-reverse-lunge.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 183318,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-dumbbell-reverse-lunge.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 16549,
+    "altText": "Dumbbell reverse lunge: concentric eccentric panels. Return to standing from a backward step, then lower into the next controlled lunge.",
+    "panelDescription": "Return to standing from a backward step, then lower into the next controlled lunge.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -2850,7 +3048,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -2864,27 +3062,37 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "dumbbells",
       "adjustable-bench"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-dumbbell-bulgarian-split-squat.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 205098,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-dumbbell-bulgarian-split-squat.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 20889,
+    "altText": "Dumbbell Bulgarian split squat: concentric eccentric panels. Rise on the front leg, then lower with the rear foot supported.",
+    "panelDescription": "Rise on the front leg, then lower with the rear foot supported.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Asian",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -2896,7 +3104,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -2910,27 +3118,37 @@
     "bodyRegions": [
       "Chest"
     ],
-    "position": "Unreviewed",
+    "position": "Seated incline",
     "equipment": [
       "smith-machine",
       "adjustable-bench"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-smith-incline-bench-press.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 213358,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-smith-incline-bench-press.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 21508,
+    "altText": "Smith incline bench press: concentric eccentric panels. Press the guided bar above the upper chest, then lower with control.",
+    "panelDescription": "Press the guided bar above the upper chest, then lower with control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Indian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -2942,7 +3160,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -2956,27 +3174,37 @@
     "bodyRegions": [
       "Shoulders"
     ],
-    "position": "Unreviewed",
+    "position": "Seated",
     "equipment": [
       "smith-machine",
       "adjustable-bench"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-smith-seated-shoulder-press.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 205524,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-smith-seated-shoulder-press.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 20892,
+    "altText": "Smith seated shoulder press: concentric eccentric panels. Press the guided bar overhead, then lower in front to a controlled depth.",
+    "panelDescription": "Press the guided bar overhead, then lower in front to a controlled depth.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Middle Eastern",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -2988,7 +3216,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3002,26 +3230,36 @@
     "bodyRegions": [
       "Back"
     ],
-    "position": "Unreviewed",
+    "position": "Standing hinge",
     "equipment": [
       "smith-machine"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-smith-bent-over-row.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 203738,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-smith-bent-over-row.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 20771,
+    "altText": "Smith bent-over row: concentric eccentric panels. Pull the guided bar toward the lower ribs, then lower without changing the hip hinge.",
+    "panelDescription": "Pull the guided bar toward the lower ribs, then lower without changing the hip hinge.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3033,7 +3271,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3047,26 +3285,36 @@
     "bodyRegions": [
       "Back"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "smith-machine"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-smith-shrug.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 212078,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-smith-shrug.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 22338,
+    "altText": "Smith shrug: concentric eccentric panels. Raise the shoulders with straight arms, then lower them without rolling or bending the elbows.",
+    "panelDescription": "Raise the shoulders with straight arms, then lower them without rolling or bending the elbows.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "East Asian",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3078,7 +3326,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final 640 × 960 PNG visually inspected: title, phase labels, anatomy, equipment and distinct movement positions reviewed.",
     "pilot": false
   },
   {
@@ -3092,26 +3340,36 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "smith-machine"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-smith-wide-stance-squat.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 215855,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-smith-wide-stance-squat.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 22425,
+    "altText": "Smith wide-stance squat: concentric eccentric panels. Stand from the squat, then lower with control within your comfortable range.",
+    "panelDescription": "Stand from the squat, then lower with control within your comfortable range.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "white",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3123,7 +3381,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3137,26 +3395,36 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "smith-machine"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-smith-deadlift.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 212911,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-smith-deadlift.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 21818,
+    "altText": "Smith deadlift: concentric eccentric panels. Stand with the guided bar, then hinge and bend the knees to lower.",
+    "panelDescription": "Stand with the guided bar, then hinge and bend the knees to lower.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3168,7 +3436,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3294,27 +3562,37 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "olympic-barbell",
       "weight-plates"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-barbell-deadlift.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 212672,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-barbell-deadlift.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 20500,
+    "altText": "Barbell deadlift: concentric eccentric panels. Stand with the bar close to the legs, then return it under control.",
+    "panelDescription": "Stand with the bar close to the legs, then return it under control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Asian",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3326,7 +3604,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3396,28 +3674,38 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Supine incline",
     "equipment": [
       "olympic-barbell",
       "adjustable-bench",
       "weight-plates"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-barbell-hip-thrust.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 239786,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-barbell-hip-thrust.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 23037,
+    "altText": "Barbell hip thrust: concentric eccentric panels. Lift the hips with the upper back supported on the bench, then lower slowly.",
+    "panelDescription": "Lift the hips with the upper back supported on the bench, then lower slowly.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Indian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3429,7 +3717,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3443,27 +3731,37 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Supine",
     "equipment": [
       "olympic-barbell",
       "weight-plates"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-barbell-glute-bridge.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 235862,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-barbell-glute-bridge.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 22595,
+    "altText": "Barbell glute bridge: concentric eccentric panels. Lift the hips with the shoulders on the floor and feet planted, then lower under control.",
+    "panelDescription": "Lift the hips with the shoulders on the floor and feet planted, then lower under control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Middle Eastern",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3475,7 +3773,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final 640 × 960 PNG visually inspected: title, phase labels, anatomy, equipment and distinct movement positions reviewed.",
     "pilot": false
   },
   {
@@ -3489,27 +3787,37 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "trap-hex-bar",
       "weight-plates"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-trap-bar-deadlift.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 207719,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-trap-bar-deadlift.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 20314,
+    "altText": "Trap-bar deadlift: concentric eccentric panels. Stand inside the trap bar and lift, then lower with control.",
+    "panelDescription": "Stand inside the trap bar and lift, then lower with control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Middle Eastern",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3521,7 +3829,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3535,26 +3843,36 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Supine",
     "equipment": [
       "plyo-ball"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-stability-ball-hamstring-curl.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 212930,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-stability-ball-hamstring-curl.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 20443,
+    "altText": "Stability-ball hamstring curl: concentric eccentric panels. Draw the ball toward you with the heels, then roll it away under control.",
+    "panelDescription": "Draw the ball toward you with the heels, then roll it away under control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3566,7 +3884,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3635,26 +3953,36 @@
     "bodyRegions": [
       "Core"
     ],
-    "position": "Unreviewed",
+    "position": "Supine",
     "equipment": [
       "plyo-ball"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-stability-ball-crunch.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 224575,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-stability-ball-crunch.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 21788,
+    "altText": "Stability-ball crunch: concentric eccentric panels. Curl the ribs toward the pelvis, then return gently over the ball.",
+    "panelDescription": "Curl the ribs toward the pelvis, then return gently over the ball.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "white",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3666,7 +3994,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3680,26 +4008,36 @@
     "bodyRegions": [
       "Core"
     ],
-    "position": "Unreviewed",
+    "position": "Prone support",
     "equipment": [
       "plyo-ball"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-stability-ball-stir-the-pot.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 238041,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-stability-ball-stir-the-pot.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 22695,
+    "altText": "Stability-ball stir the pot: start end panels. Make a small circle with the forearms while holding the trunk steady.",
+    "panelDescription": "Make a small circle with the forearms while holding the trunk steady.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3711,7 +4049,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3780,26 +4118,36 @@
     "bodyRegions": [
       "Core"
     ],
-    "position": "Unreviewed",
+    "position": "Supine",
     "equipment": [
       "plyo-ball"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-stability-ball-dead-bug.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 214794,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-stability-ball-dead-bug.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 20022,
+    "altText": "Stability-ball dead bug: start end panels. Keep the ball supported while extending one arm and the opposite leg.",
+    "panelDescription": "Keep the ball supported while extending one arm and the opposite leg.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Asian",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3811,7 +4159,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -3825,26 +4173,36 @@
     "bodyRegions": [
       "Chest"
     ],
-    "position": "Unreviewed",
+    "position": "Supported upright",
     "equipment": [
       "dip-bars"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-chest-dip.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 184194,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-chest-dip.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 16901,
+    "altText": "Chest dip: concentric eccentric panels. Press up on the parallel bars, then bend the elbows to lower with control.",
+    "panelDescription": "Press up on the parallel bars, then bend the elbows to lower with control.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Indian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -3856,7 +4214,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -4135,28 +4493,38 @@
     "primaryCollection": "strength-library",
     "primaryCategory": "Calf & ankle",
     "bodyRegions": [
-      "Calf & ankle"
+      "Ankle"
     ],
-    "position": "Unreviewed",
+    "position": "Seated",
     "equipment": [
       "rehab-bands"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-seated-band-ankle-eversion.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 246602,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-seated-band-ankle-eversion.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 26154,
+    "altText": "Seated band ankle eversion: concentric eccentric panels. Turn the working forefoot outward against the band, then return to neutral.",
+    "panelDescription": "Turn the working forefoot outward against the band, then return to neutral.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Middle Eastern",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4168,7 +4536,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -4180,28 +4548,38 @@
     "primaryCollection": "strength-library",
     "primaryCategory": "Calf & ankle",
     "bodyRegions": [
-      "Calf & ankle"
+      "Ankle"
     ],
-    "position": "Unreviewed",
+    "position": "Seated",
     "equipment": [
       "rehab-bands"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-seated-band-ankle-inversion.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 247343,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-seated-band-ankle-inversion.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 25040,
+    "altText": "Seated band ankle inversion: concentric eccentric panels. Turn the working forefoot inward against the band, then return to neutral.",
+    "panelDescription": "Turn the working forefoot inward against the band, then return to neutral.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4213,7 +4591,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -4227,26 +4605,36 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Seated",
     "equipment": [
       "rehab-bands"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-seated-band-knee-extension.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 199443,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-seated-band-knee-extension.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 19500,
+    "altText": "Seated band knee extension: concentric eccentric panels. Straighten one knee against the secured band, then bend it back under control while keeping the thigh supported.",
+    "panelDescription": "Straighten one knee against the secured band, then bend it back under control while keeping the thigh supported.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "White",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4258,7 +4646,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final 640 × 960 PNG visually inspected: title, phase labels, anatomy, equipment and distinct movement positions reviewed.",
     "pilot": false
   },
   {
@@ -4382,26 +4770,36 @@
     "bodyRegions": [
       "Balance"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "balance-pad"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-foam-pad-balance-with-head-turns.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 197191,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-foam-pad-balance-with-head-turns.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 18411,
+    "altText": "Foam-pad balance with head turns: start end panels. Stand on the foam pad beside hand support and gently turn the head while keeping the body still.",
+    "panelDescription": "Stand on the foam pad beside hand support and gently turn the head while keeping the body still.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "South Asian / Indian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4413,7 +4811,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final 640 × 960 PNG visually inspected: title, phase labels, anatomy, equipment and distinct movement positions reviewed.",
     "pilot": false
   },
   {
@@ -4427,26 +4825,36 @@
     "bodyRegions": [
       "Core"
     ],
-    "position": "Unreviewed",
+    "position": "Prone support",
     "equipment": [
       "bosu-ball"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "setup_hold",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-bosu-tall-plank.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 221621,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-bosu-tall-plank.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 20965,
+    "altText": "BOSU tall plank: setup hold panels. Place the hands on the flat BOSU platform, then extend the legs and hold steady.",
+    "panelDescription": "Place the hands on the flat BOSU platform, then extend the legs and hold steady.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "white",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4458,7 +4866,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -4472,26 +4880,36 @@
     "bodyRegions": [
       "Core"
     ],
-    "position": "Unreviewed",
+    "position": "Prone support",
     "equipment": [
       "bosu-ball"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-bosu-tall-plank-circles.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 225663,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-bosu-tall-plank-circles.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 22183,
+    "altText": "BOSU tall-plank circles: start end panels. Maintain a tall plank while making small controlled circles through the BOSU.",
+    "panelDescription": "Maintain a tall plank while making small controlled circles through the BOSU.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4503,7 +4921,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -4517,29 +4935,39 @@
     "bodyRegions": [
       "Chest"
     ],
-    "position": "Unreviewed",
+    "position": "Supine",
     "equipment": [
       "olympic-barbell",
       "smith-machine",
       "weight-plates",
       "adjustable-bench"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-barbell-bench-press.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 203945,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-barbell-bench-press.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 21016,
+    "altText": "Barbell bench press: concentric eccentric panels. Press the bar above the chest, then lower with control inside the rack safeties.",
+    "panelDescription": "Press the bar above the chest, then lower with control inside the rack safeties.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Asian",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4551,7 +4979,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -4565,28 +4993,38 @@
     "bodyRegions": [
       "Legs"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "olympic-barbell",
       "smith-machine",
       "weight-plates"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "concentric_eccentric",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-barbell-back-squat.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 224447,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-barbell-back-squat.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 22813,
+    "altText": "Barbell back squat: concentric eccentric panels. Stand from the squat, then lower under control within the rack safeties.",
+    "panelDescription": "Stand from the squat, then lower under control within the rack safeties.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Indian",
+      "genderPresentation": "man",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4598,7 +5036,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -4612,26 +5050,36 @@
     "bodyRegions": [
       "Conditioning"
     ],
-    "position": "Unreviewed",
+    "position": "Seated",
     "equipment": [
       "exercise-bike"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "setup_hold",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-stationary-cycling.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 194773,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-stationary-cycling.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 18768,
+    "altText": "Stationary cycling: setup hold panels. Set the saddle for a comfortable knee bend, then pedal smoothly while seated.",
+    "panelDescription": "Set the saddle for a comfortable knee bend, then pedal smoothly while seated.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Middle Eastern",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4643,7 +5091,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -4657,26 +5105,36 @@
     "bodyRegions": [
       "Conditioning"
     ],
-    "position": "Unreviewed",
+    "position": "Standing",
     "equipment": [
       "incline-treadmill"
     ],
-    "motionFormat": null,
-    "assetStatus": "not_generated",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "start_end",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/library-treadmill-walking.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 217176,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": null,
-    "panelDescription": null,
-    "modelRepresentation": null,
+    "thumbnailPath": "/assets/exercises/thumbnails/library-treadmill-walking.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 23554,
+    "altText": "Treadmill walking: start end panels. Walk from heel contact into a supported mid-stance, keeping a comfortable stride and the safety-stop clip attached.",
+    "panelDescription": "Walk from heel contact into a supported mid-stance, keeping a comfortable stride and the safety-stop clip attached.",
+    "modelRepresentation": {
+      "raceEthnicityPresentation": "Black",
+      "genderPresentation": "woman",
+      "ageGroup": "adult"
+    },
     "illustrationVersion": "1.0.0",
     "existingDemoStatus": "external_reference",
     "clinicalRuleReference": "Existing restrictions unchanged",
@@ -4688,7 +5146,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "notes": "Final 640 × 960 PNG visually inspected: title, phase labels, anatomy, equipment and distinct movement positions reviewed.",
     "pilot": false
   },
   {
@@ -4806,25 +5264,31 @@
     "primaryCollection": "movement-library",
     "primaryCategory": "mobility",
     "bodyRegions": [
-      "Whole body"
+      "Hips"
     ],
-    "position": "Floor",
+    "position": "Seated",
     "equipment": [],
     "motionFormat": "start_end",
-    "assetStatus": "needs_product_review",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/movement-library/90-90-hip-switches.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 216584,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": "90/90 hip switches: start end panels. Sit with both knees bent and hands behind you for support. Rotate both knees toward one side, then slowly toward the other side. Controlled range",
-    "panelDescription": "Sit with both knees bent and hands behind you for support. Rotate both knees toward one side, then slowly toward the other side. Controlled range",
+    "thumbnailPath": "/assets/exercises/thumbnails/90-90-hip-switches.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 22516,
+    "altText": "90/90 hip switches: start end panels. Rotate both bent knees together from one seated 90/90 position to the other.",
+    "panelDescription": "Rotate both bent knees together from one seated 90/90 position to the other.",
     "modelRepresentation": {
       "raceEthnicityPresentation": "Black",
       "genderPresentation": "woman",
@@ -4841,7 +5305,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "End panel appears side-sitting with both legs folded together, not clear opposing 90/90 hip positions. Regenerate clear front-leg/back-leg hip switch.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -5173,27 +5637,33 @@
     "primaryCollection": "movement-library",
     "primaryCategory": "mobility",
     "bodyRegions": [
-      "Lower leg & hips"
+      "Ankle"
     ],
-    "position": "Floor",
+    "position": "Standing",
     "equipment": [],
     "motionFormat": "start_end",
-    "assetStatus": "needs_product_review",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/movement-library/knee-to-wall-dorsiflexion-mobility.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 178740,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": "Knee-to-wall dorsiflexion mobility: start end panels. Face a wall with one foot near it and use the wall for support. Move the knee toward the wall while keeping the heel down; do not force the range. Respect active restrictions",
-    "panelDescription": "Face a wall with one foot near it and use the wall for support. Move the knee toward the wall while keeping the heel down; do not force the range. Respect active restrictions",
+    "thumbnailPath": "/assets/exercises/thumbnails/knee-to-wall-dorsiflexion-mobility.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 17119,
+    "altText": "Knee-to-wall dorsiflexion mobility: start end panels. Move the knee toward the wall while keeping the heel down.",
+    "panelDescription": "Move the knee toward the wall while keeping the heel down.",
     "modelRepresentation": {
-      "raceEthnicityPresentation": "Black",
+      "raceEthnicityPresentation": "white",
       "genderPresentation": "woman",
       "ageGroup": "adult"
     },
@@ -5208,7 +5678,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Remove recognizable footwear swoosh in both panels.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -5434,25 +5904,31 @@
     "primaryCollection": "movement-library",
     "primaryCategory": "mobility",
     "bodyRegions": [
-      "Lower leg & hips"
+      "Hips"
     ],
-    "position": "Standing",
+    "position": "Standing hinge",
     "equipment": [],
     "motionFormat": "start_end",
-    "assetStatus": "needs_product_review",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/movement-library/supported-hip-airplane.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 222151,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": "Supported hip airplane: start end panels. Hold a stable support and hinge forward slightly on one leg. Slowly turn the pelvis open and closed while keeping control of the standing leg. Use wall/rack; prioritize control",
-    "panelDescription": "Hold a stable support and hinge forward slightly on one leg. Slowly turn the pelvis open and closed while keeping control of the standing leg. Use wall/rack; prioritize control",
+    "thumbnailPath": "/assets/exercises/thumbnails/supported-hip-airplane.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 21824,
+    "altText": "Supported hip airplane: start end panels. Rotate the pelvis gently over the standing leg while using hand support.",
+    "panelDescription": "Rotate the pelvis gently over the standing leg while using hand support.",
     "modelRepresentation": {
       "raceEthnicityPresentation": "Black",
       "genderPresentation": "man",
@@ -5469,7 +5945,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Draft shows hip abduction rather than pelvic rotation.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -5966,29 +6442,35 @@
     "primaryCollection": "movement-library",
     "primaryCategory": "core_stability",
     "bodyRegions": [
-      "Lower leg & hips"
+      "Core"
     ],
     "position": "Standing",
     "equipment": [
       "dumbbells"
     ],
-    "motionFormat": "locomotion_cycle",
-    "assetStatus": "needs_product_review",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "motionFormat": "setup_walk",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/movement-library/suitcase-carry.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 193846,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": "Suitcase carry: locomotion cycle panels. Hold one dumbbell at your side. Walk with an upright trunk and controlled steps without leaning toward or away from the weight. Must comply with gait/Achilles restrictions",
-    "panelDescription": "Hold one dumbbell at your side. Walk with an upright trunk and controlled steps without leaning toward or away from the weight. Must comply with gait/Achilles restrictions",
+    "thumbnailPath": "/assets/exercises/thumbnails/suitcase-carry.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 18985,
+    "altText": "Suitcase carry: setup walk panels. Stand upright with one dumbbell at your side, then walk with level shoulders.",
+    "panelDescription": "Stand upright with one dumbbell at your side, then walk with level shoulders.",
     "modelRepresentation": {
-      "raceEthnicityPresentation": "Black",
+      "raceEthnicityPresentation": "Asian",
       "genderPresentation": "woman",
       "ageGroup": "adult"
     },
@@ -6003,7 +6485,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Both panels show the same lead leg; revise to show alternating gait phases.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {
@@ -6280,28 +6762,34 @@
     "primaryCollection": "movement-library",
     "primaryCategory": "balance_movement_control",
     "bodyRegions": [
-      "Lower leg & hips"
+      "Legs"
     ],
     "position": "Standing",
     "equipment": [],
     "motionFormat": "start_end",
-    "assetStatus": "needs_product_review",
-    "assetPath": null,
-    "assetDimensions": null,
-    "assetFormat": null,
-    "assetFileSizeBytes": null,
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/movement-library/controlled-step-down.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 183732,
     "optimizedFor": [
       "mobile_library_thumbnail",
       "exercise_detail_view"
     ],
-    "thumbnailPath": null,
-    "thumbnailDimensions": null,
-    "thumbnailFileSizeBytes": null,
-    "altText": "Controlled step-down: start end panels. Use a low stable step next to fixed support. Slowly lower the opposite heel toward the floor, then return, keeping the supporting knee controlled. Prioritize alignment/control",
-    "panelDescription": "Use a low stable step next to fixed support. Slowly lower the opposite heel toward the floor, then return, keeping the supporting knee controlled. Prioritize alignment/control",
+    "thumbnailPath": "/assets/exercises/thumbnails/controlled-step-down.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 16930,
+    "altText": "Controlled step-down: start end panels. Bend the supporting knee to lower the opposite heel toward the floor, then return.",
+    "panelDescription": "Bend the supporting knee to lower the opposite heel toward the floor, then return.",
     "modelRepresentation": {
-      "raceEthnicityPresentation": "Black",
-      "genderPresentation": "woman",
+      "raceEthnicityPresentation": "Indian",
+      "genderPresentation": "man",
       "ageGroup": "adult"
     },
     "illustrationVersion": "1.0.0",
@@ -6315,7 +6803,7 @@
         "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
       }
     ],
-    "notes": "Draft swaps the supporting leg between panels. Needs correction before shipping.",
+    "notes": "Final batch: individually generated with the built-in image tool and visually reviewed for title, anatomy, distinct phases and equipment continuity. Existing setup, restrictions and Short Demo remain authoritative.",
     "pilot": false
   },
   {

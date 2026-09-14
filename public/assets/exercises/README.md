@@ -1,4 +1,4 @@
-Current batch 5: each of the 75 full-size illustrations has a separate 192 x 288 PNG preview. Cards load previews; Enlarge loads the 640 x 960 original. Thumbnails average 19 KB (91% smaller). Both sizes cache on demand. See ILLUSTRATION_REVIEW.md and the current machine-readable audit. Validation: 87 Node tests and 40 browser checks passed.
+Complete library: all 127 exercises have a 640 × 960 illustration and 192 × 288 preview. Previews average 19.6 KB (90% smaller). Both sizes cache on demand. Validation: 88 Node tests and 42 browser checks passed; production build passed. See ILLUSTRATION_REVIEW.md and artifacts/illustration-audit-results.json.
 
 # Exercise illustrations
 
@@ -10,7 +10,7 @@ Each canonical exercise ID has one record in `manifests/exercise-illustrations.j
 
 - Individual monochrome PNGs are exactly 640 × 960. Target below 250,000 bytes; review anything above 400,000 bytes.
 - Folders identify primary ownership: `prescribed/`, `strength-library/`, and `movement-library/`. Each filename is its canonical ID plus `.png`.
-- Concentric/Eccentric panels describe resistance phases. Setup/Hold describes static positioning; Start/End describes mobility and other movement endpoints. These labels never prescribe a dose or grant clearance.
+- Concentric/Eccentric panels describe resistance phases. Setup/Hold describes static positioning; Start/End describes mobility and other movement endpoints. Setup/Walk describes the suitcase carry. These labels never prescribe a dose or grant clearance.
 - Generated adult women and men represent diverse backgrounds, including Black, White, East Asian, South Asian/Indian and Middle Eastern models. Metadata describes intended fictional characters, following the user's expanded brief.
 - The shared `ExerciseIllustration` component renders a 72–88px left thumbnail and accessible inline enlarged view up to 320px wide. HTML names, setup and demos remain available. Escape or Close returns focus to the thumbnail.
 - The JSON manifest is bundled with the application, not fetched at runtime. `illustrationUrl` joins `/assets/...` paths to Vite's base URL; relative deployment and `/Achilles_Return/` work.

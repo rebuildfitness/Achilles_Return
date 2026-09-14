@@ -91,17 +91,29 @@ export function MoreScreen({
       {section === "profile" && (
         <Card>
           <h2>Profile & schedule</h2>
-          <p>
-            Belt squat: {OWNED_LOADS.beltSquatModel}. Available Olympic plates:
-            {" "}{OWNED_LOADS.olympicPlatesLb} lb, plus your {OWNED_LOADS.olympicBarLb} lb bar.
-            Your 225 lb belt-squat milestone prompts a transition review toward
-            Smith squats, then barbell back squats. Each variation needs its own
-            starting load and readiness review.
-          </p>
-          <p>
-            Basketball is the primary goal. Surgery and clinical details are
-            recorded in Tests.
-          </p>
+          <p>Your goal: return to basketball while rebuilding strength.</p>
+          <details>
+            <summary>Your equipment & squat goal</summary>
+            <ul>
+              <li>Belt squat: {OWNED_LOADS.beltSquatModel}.</li>
+              <li>Olympic weight plates: {OWNED_LOADS.olympicPlatesLb} lb total.</li>
+              <li>Olympic barbell: {OWNED_LOADS.olympicBarLb} lb, separate from the plates.</li>
+            </ul>
+            <p>
+              Your squat goal: belt squats → Smith-machine squats → barbell back squats.
+            </p>
+            <p>
+              When you can belt squat {OWNED_LOADS.beltSquatReviewLb} lb with controlled
+              form and a tolerated next-morning Achilles response, consider trying
+              Smith-machine squats. The app will remind you; it will not switch
+              exercises automatically.
+            </p>
+            <p>
+              Start each new squat variation with a light load and build up again.
+              A 225 lb belt squat does not mean using 225 lb on the Smith machine
+              or barbell.
+            </p>
+          </details>
           <DataField
             field={{
               id: "availableDays",
