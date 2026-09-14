@@ -4,6 +4,7 @@
     "Baseline autosaves and resumes after exit and reload",
     "All baseline sections validate, calculate measured results and activate the plan",
     "Shorter session hides optional accessories and restores the original full workout",
+    "Workout thumbnail and enlarged artwork preserve logged sets; close and Escape restore focus",
     "Rest timer starts on a completed set, survives reload, and supports extending and clearing",
     "Nine exercise cards include 5×5, specific demos and inline sets that survive reload",
     "Inline workout usable at 320–1280px and with 200% text",

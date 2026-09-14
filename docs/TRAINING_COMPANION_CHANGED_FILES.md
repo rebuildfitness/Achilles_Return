@@ -151,3 +151,9 @@
 - artifacts/calf-illustration-generation.json (built-in generation prompts and review metadata)
 - artifacts/illustration-reviews.json and exercise manifests (133 illustrated, zero unresolved)
 - scripts/illustration-browser-qa.mjs (six-reference verification)
+
+## Workout illustration update
+
+- src/components/ui.tsx — reuse the shared illustration component in workout headers.
+- scripts/browser-qa.mjs — verify thumbnail/detail dimensions, preserved logged values, Close and Escape.
+- artifacts/workout-thumbnail.png and artifacts/workout-illustration.png — mobile previews using disposable test records.

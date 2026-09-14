@@ -1,3 +1,4 @@
+import { ExerciseIllustration } from "./ExerciseIllustration";
 import { useState, type ButtonHTMLAttributes, type ReactNode } from "react";
 import type { Exercise, SetLog, Tab } from "../types";
 import { dayKey } from "../data/provisionalWeek.js";
@@ -416,30 +417,32 @@ export function ExerciseCard({
 }) {
   return (
     <Card className="exercise-card">
-      <h3>{exercise.name}</h3>
-      <p className="exercise-prescription">
-        {exercise.sets} × {exercise.reps}{" "}
-        <span>
-          · RPE {exercise.rpe} ·{" "}
-          {exercise.restSec ? `${exercise.restSec}s rest` : "Continuous"}
-        </span>
-      </p>
-      <div className="exercise-actions">
-        {exercise.videoUrl && online ? (
-          <a href={exercise.videoUrl} target="_blank" rel="noopener noreferrer">
-            <Icon name="play" size={15} /> Short Demo
-          </a>
-        ) : (
-          <span className="muted">
-            {online ? "Short Demo unavailable" : "Video requires internet"}
+      <ExerciseIllustration key={exercise.id} exerciseId={exercise.id} name={exercise.name}>
+        <h3>{exercise.name}</h3>
+        <p className="exercise-prescription">
+          {exercise.sets} × {exercise.reps}{" "}
+          <span>
+            · RPE {exercise.rpe} ·{" "}
+            {exercise.restSec ? `${exercise.restSec}s rest` : "Continuous"}
           </span>
-        )}
-        <details>
-          <summary>Why?</summary>
-          <p>{exercise.purpose}</p>
-          <p>{exercise.evidence}</p>
-        </details>
-      </div>
+        </p>
+        <div className="exercise-actions">
+          {exercise.videoUrl && online ? (
+            <a href={exercise.videoUrl} target="_blank" rel="noopener noreferrer">
+              <Icon name="play" size={15} /> Short Demo
+            </a>
+          ) : (
+            <span className="muted">
+              {online ? "Short Demo unavailable" : "Video requires internet"}
+            </span>
+          )}
+          <details>
+            <summary>Why?</summary>
+            <p>{exercise.purpose}</p>
+            <p>{exercise.evidence}</p>
+          </details>
+        </div>
+      </ExerciseIllustration>
       {exercise.adjustment && (
         <p className="adjustment">{exercise.adjustment}</p>
       )}

@@ -28,7 +28,7 @@ Approved product update, September 14, 2026. Clinical thresholds and database sc
 
 ## Validation
 
-92 automated tests; production TypeScript/Vite/service-worker build; 27 app browser checks and 20 illustration browser checks. Coverage includes offline logging, red overrides, next-morning tolerance, existing-record update/restore, responsive layout, first-use/returning welcome behavior, measurement persistence without changing assessments, favorites and daily branding.
+92 automated tests; production TypeScript/Vite/service-worker build; 28 app browser checks and 20 illustration browser checks. Coverage includes offline logging, red overrides, next-morning tolerance, existing-record update/restore, responsive layout, first-use/returning welcome behavior, measurement persistence without changing assessments, favorites and daily branding.
 
 ## Upload
 
@@ -39,3 +39,7 @@ Screenshots in artifacts/companion-today.png and artifacts/companion-measurement
 ## Calf artwork addendum
 
 The six missing illustrations are included in the with-calf-illustrations upload archive. Built-in image generation was used; prompts and review records are in artifacts/calf-illustration-generation.json. Artwork lives under public/assets/exercises/strength-library/calf-*.png, with mobile copies under public/assets/exercises/thumbnails/. Smith safety-stop placement was corrected during visual review. No prescription, exercise demo, or clinical criterion changed.
+
+## Workout illustration update
+
+Workout cards now reuse the same exercise thumbnails and expandable illustrations as the library. The image is selected using the actual current exercise ID, including substitutions. The thumbnail appears beside the name, prescription, Short Demo and Why. Set logging stays full width below it. Enlarged artwork is collapsed by default; Close illustration and Escape restore focus to the thumbnail without navigating away or modifying recorded sets. Offline image fallback and on-demand caching are inherited from the shared illustration component. No protocol or clinical rule was changed.
