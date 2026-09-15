@@ -1,5 +1,9 @@
 # Achilles Return to Basketball App — Master Plan v1.0
 
+## Latest workout experience update
+
+Accurate hybrid-program naming, persistent workout duration, first-set feedback shortcuts and AI-coach Markdown export are now included. See `docs/WORKOUT_EXPERIENCE_UPDATE.md` for usage and upload instructions, and `docs/WORKOUT_EXPERIENCE_CHANGED_FILES.md` for the changed files.
+
 This repository contains the React + TypeScript + Vite application, the retained legacy prototype, and the frozen rehabilitation/product specification.
 
 The approved Today design now connects to a resumable baseline, Strength A/B/C planning, six independent exposure ladders, next-morning responses, capacity reviews, evidence, history and backup/restore. See `IMPLEMENTATION_B_G.md` for validation, assumptions and remaining release restrictions.

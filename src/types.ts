@@ -17,6 +17,8 @@ export type CheckIn = {
   rulesetVersion?: string;
 };
 export type SetLog = {
+  inheritedFields?: string[];
+  feedbackConfirmed?: boolean;
   load?: string;
   reps?: string;
   complete?: boolean;
@@ -55,6 +57,12 @@ export type Workout = {
   omitted?: { id: string; name: string; reason: string }[];
 };
 export type Session = {
+  durationMs?: number;
+  startedAt?: string;
+  finishedAt?: string;
+  workoutTimer?: any;
+  coachingContext?: any;
+  originalPlan?: Exercise[];
   id: string;
   date: string;
   createdAt: string;

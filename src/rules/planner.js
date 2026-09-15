@@ -5,7 +5,7 @@ import { resumeAfterMissedSessions } from "./workout.js";
 import { swapExercise } from "./trainingFlexibility.js";
 const clone = (value) => structuredClone(value);
 export const STRENGTH_STYLES = [
-  ["hybrid", "Rehab + 5×5 & hypertrophy"],
+  ["hybrid", "Rehab + Strength & Hypertrophy"],
   ["hypertrophy", "Rehab + hypertrophy"],
   ["rehab", "Original rehab template"],
 ];
@@ -75,7 +75,7 @@ export function strengthTemplate(kind, values, style = "hybrid") {
   const expanded = style !== "rehab";
   return {
     id: `strength-${kind}`,
-    title: `Strength ${kind}${expanded ? (kind === "C" || style === "hypertrophy" ? " · Hypertrophy" : " · 5×5 + accessories") : ""}`,
+    title: `Strength ${kind}${expanded ? (kind === "C" || style === "hypertrophy" ? " · Hypertrophy" : " · Strength & Hypertrophy") : ""}`,
     phase: baselineResult(values).phase,
     items: clone([
       ...templates[kind],

@@ -35,8 +35,8 @@
   "thumbnailBytes": 2620717,
   "meanThumbnailBytes": 19558,
   "thumbnailSavingsPercent": 90,
-  "productionBytes": 33820192,
-  "initialPrecacheBytes": 2911514,
+  "productionBytes": 33831755,
+  "initialPrecacheBytes": 2923077,
   "onDemandImageBytes": 29988720,
   "initialPrecacheBudgetBytes": 15000000,
   "cacheDecisionRequired": false

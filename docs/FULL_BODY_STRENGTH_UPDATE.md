@@ -64,3 +64,7 @@ or clearance test. Added exercise metadata identifies this distinction.
 
 Plan rule IDs: template.strength-A/B/C.full-body.v1; existing clinical rules
 and strength progression criteria are retained. Data stays local in IndexedDB.
+
+## Naming clarification — user-approved workout feedback
+
+The visible hybrid style is now Rehab + Strength & Hypertrophy, not the StrongLifts program. The selected 5×5 exercise prescriptions above remain unchanged. See WORKOUT_EXPERIENCE_UPDATE.md for the session timer, feedback shortcuts and coaching export.

@@ -1,3 +1,5 @@
+import { WorkoutTimer } from "../components/WorkoutTimer";
+import { carryFeedback, confirmFeedback, feedbackFields, timerKey } from "../data/workoutExperience.js";
 import { ExerciseSwap, type SwapAction } from "../components/ExerciseSwap";
 import { optionalAccessory, sessionEstimate } from "../data/sessionPresentation.js";
 import { useState } from "react";
@@ -10,6 +12,8 @@ import type { FormEvent } from "react";
 import type { Session, SetLog, Workout, WorkoutLog } from "../types";
 export function WorkoutScreen({
   workout,
+  date,
+  onFeedback,
   log,
   sessions,
   online,
@@ -22,6 +26,8 @@ export function WorkoutScreen({
   readiness = "GREEN",
 }: {
   workout: Workout;
+  date: string;
+  onFeedback: (id: string, sets: SetLog[]) => void;
   log: WorkoutLog;
   sessions: Session[];
   online: boolean;
@@ -62,6 +68,7 @@ export function WorkoutScreen({
         <label><input type="checkbox" checked={shortSession} onChange={e => setShortSession(e.target.checked)} /> Shorter session: hide optional accessories</label>
         <p className="helper">Rehab and primary strength remain. Hidden exercises stay uncompleted in your original plan; completed sets are never removed. Restore the full list at any time.</p>
       </div>
+      <WorkoutTimer key={timerKey(date,workout.id)} storageKey={timerKey(date,workout.id)} />
       <div className="session-dashboard">
         <div className="section-heading">
           <strong>Session progress</strong>
@@ -118,6 +125,7 @@ export function WorkoutScreen({
               <p className="notice">{exercise.skipReason ? "Remaining sets skipped: " + exercise.skipReason : "Equipment marked unavailable today. Swap or skip the remaining sets."}</p>
               <RecordedSets exercise={exercise} log={log} onChange={onChange} />
             </> : <>
+            <div className="feedback-carry"><button className="text-button" disabled={!feedbackFields.some(field => (log[exercise.id]?.sets[0] as any)?.[field])} onClick={() => onFeedback(exercise.id, carryFeedback(log[exercise.id]?.sets || [], exercise.sets))}>Use first-set feedback for remaining sets</button><p className="helper">Copies RPE, quality and symptoms into blank fields. Change any set as needed.</p></div>
             <div className="set-row set-header" aria-hidden="true">
               <span>SET</span>
               <span>PREVIOUS</span>
@@ -151,6 +159,7 @@ export function WorkoutScreen({
                 }}
               />
             ))}
+            {log[exercise.id]?.sets.some(set => set?.complete && set.inheritedFields?.length && !set.feedbackConfirmed) && <button className="secondary-button" onClick={() => onFeedback(exercise.id, confirmFeedback(log[exercise.id].sets))}>Confirm carried feedback for completed sets</button>}
             </>}
             {(log[exercise.id]?.sets.length || 0) > exercise.sets && <details><summary>Earlier entries outside the remaining dose</summary><RecordedSets exercise={exercise} log={log} onChange={onChange} start={exercise.sets} /></details>}
           </ExerciseCard>

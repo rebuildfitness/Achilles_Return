@@ -1,3 +1,4 @@
+import { formatDuration } from "../data/workoutExperience.js";
 import type { Session } from "../types";
 
 export function History({ sessions }: { sessions: Session[] }) {
@@ -27,6 +28,7 @@ export function History({ sessions }: { sessions: Session[] }) {
                 Immediate Achilles response:{" "}
                 {s.immediateAchillesResponse || "Not recorded"}
               </p>
+              {s.durationMs != null && <p>Workout time: {formatDuration(s.durationMs)}</p>}
               {!!s.nextDayResponse && (
                 <details>
                   <summary>Next-morning details</summary>
@@ -45,6 +47,7 @@ export function History({ sessions }: { sessions: Session[] }) {
                       {set.rpe ? ` · RPE ${set.rpe}` : ""}
                       {set.quality ? ` · ${set.quality} quality` : ""}
                       {set.symptoms ? ` · symptoms: ${set.symptoms}` : ""}
+                      {!!set.inheritedFields?.length && ` · Carried ${set.inheritedFields.join(", ")}: ${set.feedbackConfirmed ? "confirmed" : "unconfirmed"}`}
                     </p>
                   ))}
                 </div>

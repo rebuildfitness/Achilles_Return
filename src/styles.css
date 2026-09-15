@@ -1268,3 +1268,11 @@ pre {
 .exercise-swap button { margin: 8px 8px 0 0; }
 
 .exercise-swap .helper { text-align: left; }
+
+.workout-timer { border-top: 1px solid var(--line200); padding-top: 8px; margin-top: 8px; }
+.workout-timer > div { display: flex; justify-content: space-between; gap: 12px; }
+.workout-timer output { font-variant-numeric: tabular-nums; }
+.workout-timer small { display: block; color: var(--ink500); }
+.coaching-review { width: 100%; margin: 12px 0; }
+.coaching-review textarea { width: 100%; min-height: 180px; font: inherit; padding: 12px; border: 1px solid var(--line200); border-radius: var(--radius-input); }
+.feedback-carry .helper { text-align: left; }

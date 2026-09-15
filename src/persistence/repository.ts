@@ -50,6 +50,7 @@ export const saveSession = (session: Session) =>
       value: { ...session, rulesetVersion: VERSIONS.rulesetVersion },
     },
     { store: "settings", value: { id: `draft-${session.date}`, log: {} } },
+    ...(session.workoutTimer ? [{ store: "settings", value: session.workoutTimer }] : []),
   ]);
 export async function loadProgram() {
   const [all, draft, profile, checkpoints, welcome] = await Promise.all([

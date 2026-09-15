@@ -8,7 +8,7 @@ export const EVIDENCE = [
       "Supportive for general strength; indirect for Achilles rehabilitation",
     type: "General resistance-training guidance / product programming",
     summary:
-      "General training guidance supports strength and muscle development. The 5×5 option is a user-requested programming choice, not an Achilles clearance criterion or a uniquely validated rehabilitation dose.",
+      "General training guidance supports strength and muscle development. The hybrid program’s selected 5×5 exercises are a user-requested programming choice, not an Achilles clearance criterion or a uniquely validated rehabilitation dose.",
   },
   {
     id: "running-consensus",

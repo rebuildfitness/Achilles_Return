@@ -282,6 +282,19 @@ try {
   });
   await page.getByRole("button", { name: /^(Open|Resume) Workout$/ }).click();
   assert.equal(await page.locator(".exercise-card").count(), 9);
+  assert.equal(await page.getByLabel('Workout elapsed time',{exact:true}).innerText(),'00:00:00');
+  await page.getByRole('button',{name:'Start workout timer',exact:true}).click();
+  await page.clock.setFixedTime(new Date(2026,8,7,12,1));
+  await page.getByLabel('Workout elapsed time',{exact:true}).filter({hasText:'00:01:00'}).waitFor();
+  await page.getByRole('button',{name:'Pause workout timer',exact:true}).click();
+  await page.clock.setFixedTime(new Date(2026,8,7,12,2));
+  assert.equal(await page.getByLabel('Workout elapsed time',{exact:true}).innerText(),'00:01:00');
+  await page.getByRole('button',{name:'Resume workout timer',exact:true}).click();
+  await page.clock.setFixedTime(new Date(2026,8,7,12,3));
+  await page.getByLabel('Workout elapsed time',{exact:true}).filter({hasText:'00:02:00'}).waitFor();
+  await page.locator('.workout-timer').screenshot({path:resolve(artifacts,'workout-duration.png')});
+  pass('Workout timer starts explicitly, includes rest and excludes paused time');
+
   assert.equal(
     await page.getByRole("link", { name: "Short Demo", exact: true }).count(),
     9,
@@ -295,6 +308,23 @@ try {
   await page.getByRole("checkbox", {name:/Shorter session/}).uncheck();
   assert.equal(await page.locator(".exercise-card").count(),fullCardCount);
   pass("Shorter session hides optional accessories and restores the original full workout");
+  const feedbackCard=page.locator('.exercise-card').filter({has:page.getByRole('heading',{name:'Single-Leg Calf Raise',exact:true})});
+  await feedbackCard.getByText('Set 1 · RPE, quality & symptoms',{exact:true}).click();
+  await feedbackCard.getByLabel('Single-Leg Calf Raise set 1 RPE',{exact:true}).fill('7');
+  await feedbackCard.getByLabel('Single-Leg Calf Raise set 1 quality',{exact:true}).selectOption('good');
+  await feedbackCard.getByLabel('Single-Leg Calf Raise set 1 symptoms',{exact:true}).selectOption('none');
+  await feedbackCard.getByRole('button',{name:'Use first-set feedback for remaining sets',exact:true}).click();
+  await feedbackCard.getByText('Set 2 · RPE, quality & symptoms',{exact:true}).click();
+  assert.equal(await feedbackCard.getByLabel('Single-Leg Calf Raise set 2 RPE',{exact:true}).inputValue(),'7');
+  await feedbackCard.getByLabel('Single-Leg Calf Raise set 2 RPE',{exact:true}).fill('8');
+  await feedbackCard.getByLabel('Single-Leg Calf Raise set 2 reps',{exact:true}).fill('10');
+  await feedbackCard.getByRole('button',{name:'Single-Leg Calf Raise set 2 complete',exact:true}).click();
+  await feedbackCard.getByRole('button',{name:'Confirm carried feedback for completed sets',exact:true}).click();
+  await feedbackCard.getByText('Carried feedback confirmed: quality, symptoms',{exact:true}).waitFor();
+  await feedbackCard.screenshot({path:resolve(artifacts,'workout-feedback.png'),style:'.session-dashboard, .bottom-nav {visibility:hidden;}'});
+  await feedbackCard.getByRole('button',{name:'Single-Leg Calf Raise set 2 complete',exact:true}).click();
+  pass('First-set feedback prefills blank fields, allows overrides and confirms only completed sets');
+
   await page.getByRole("spinbutton", { name: load, exact: true }).fill("20");
   await page.getByRole("spinbutton", { name: reps, exact: true }).fill("10");
   await page
@@ -462,6 +492,23 @@ try {
   const saved = (await readStore("sessions")).find((s) => s.id !== "legacy");
   assert.equal(saved.status, "PENDING_NEXT_DAY_RESPONSE");
   assert.equal(saved.exerciseLog["single-calf"].sets[0].load, "25");
+  assert.equal(saved.durationMs,120000);
+  assert.equal(saved.exerciseLog['single-calf'].sets[1].rpe,'8');
+  assert.equal(saved.exerciseLog['single-calf'].sets[2].feedbackConfirmed,false);
+  await page.getByText('AI coaching review',{exact:true}).click();
+  const coachText=await page.getByLabel('Coaching report',{exact:true}).inputValue();
+  assert.ok(coachText.includes('00:02:00') && coachText.includes('PENDING') && coachText.includes('UNCONFIRMED'));
+  const downloadEvent=page.waitForEvent('download');
+  await page.getByRole('button',{name:'Download Markdown',exact:true}).click();
+  const downloaded=await downloadEvent;
+  assert.equal(await readFile(await downloaded.path(),'utf8'),coachText);
+  await context.grantPermissions(['clipboard-read','clipboard-write']);
+  await page.getByRole('button',{name:'Copy coaching report',exact:true}).click();
+  await page.getByText('Coaching report copied.',{exact:true}).waitFor();
+  assert.equal((await page.evaluate(()=>navigator.clipboard.readText())).replaceAll('\r\n','\n'),coachText);
+  await page.locator('.coaching-review').screenshot({path:resolve(artifacts,'coaching-review.png'),style:'.bottom-nav {visibility:hidden;}'});
+  pass('Timer and feedback survive reload and offline finish; coach report downloads and copies exact saved data');
+
   assert.equal(
     await page.getByRole("button", { name: /^(Open|Resume) Workout$/ }).count(),
     0,
@@ -487,7 +534,7 @@ try {
     .getByRole("button", { name: "2026-09-07, saved workout", exact: true })
     .click();
   await page.locator(".history-row summary").first().click();
-  await page.getByText("Set 1: 25 lb × 10 ✓", { exact: true }).waitFor();
+  await page.getByText("Set 1: 25 lb × 10 ✓ · RPE 7 · good quality · symptoms: none", { exact: true }).waitFor();
   await page.getByRole("button", { name: "Previous month" }).click();
   await page.getByRole("button", { name: "Next month" }).click();
   await page.screenshot({

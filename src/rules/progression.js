@@ -501,6 +501,7 @@ export function strengthDecision(exercise, sets, status, readiness = "GREEN") {
       .every(
         (s) =>
           s?.complete &&
+          (!s.inheritedFields?.length || s.feedbackConfirmed === true) &&
           Number(s.reps) >= top &&
           Number(s.rpe) > 0 &&
           Number(s.rpe) <= 8 &&

@@ -1,3 +1,5 @@
+import { CoachingReview } from "./CoachingReview";
+import { formatDuration } from "../data/workoutExperience.js";
 import {
   movementRecords,
   movementTitle,
@@ -127,6 +129,8 @@ export function TrainingOverview({
               <time>{r.date}</time>
               <strong>{r.title}</strong>
               <small>{r.detail}</small>
+              {sessions.find(s => s.id === r.id)?.durationMs != null && <small>Workout time: {formatDuration(sessions.find(s => s.id === r.id)!.durationMs!)}</small>}
+              {sessions.find(s => s.id === r.id) && <CoachingReview session={sessions.find(s => s.id === r.id)!} sessions={sessions} />}
               {!!sessions.find(s => s.id === r.id)?.exerciseChanges?.length && <details><summary>Exercise changes</summary>{sessions.find(s => s.id === r.id)!.exerciseChanges!.map((change, i) => <p key={i}>{change.fromName} → {change.toName || "Skipped remaining sets"} · {change.reason} · {change.scope === "future" ? "Future preference saved" : "This session"}</p>)}</details>}
             </div>
           ))}

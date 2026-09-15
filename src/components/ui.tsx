@@ -367,6 +367,7 @@ export function SetRow({
           <Icon name="check" size={19} />
         </button>
       </div>
+      {!!value.inheritedFields?.length && <p className="helper">{value.feedbackConfirmed ? "Carried feedback confirmed" : "Carried feedback — unconfirmed"}: {value.inheritedFields.join(", ")}</p>}
       <details className="set-quality">
         <summary>Set {index + 1} · RPE, quality & symptoms</summary>
         <div className="quality-fields">
@@ -385,6 +386,7 @@ export function SetRow({
           <label>
             Quality
             <select
+              aria-label={`${exercise.name} set ${index + 1} quality`}
               value={value.quality || ""}
               onChange={(e) => onChange({ ...value, quality: e.target.value })}
             >
@@ -396,6 +398,7 @@ export function SetRow({
           <label>
             Symptoms
             <select
+              aria-label={`${exercise.name} set ${index + 1} symptoms`}
               value={value.symptoms || ""}
               onChange={(e) => onChange({ ...value, symptoms: e.target.value })}
             >

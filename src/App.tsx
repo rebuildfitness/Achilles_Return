@@ -1,3 +1,5 @@
+import { CoachingReview } from "./components/CoachingReview";
+import { editFeedback, timerKey, timerTransition } from "./data/workoutExperience.js";
 import { useEffect, useRef, useState } from "react";
 import { AppShell, Card } from "./components/ui";
 import { Today } from "./screens/Today";
@@ -59,6 +61,7 @@ function currentTab(): Tab {
 }
 
 export function App() {
+  const [savedReviewId, setSavedReviewId] = useState("");
   const [intro, setIntro] = useState(false);
   const welcomeChecked = useRef(false);
   const [movementDate, setMovementDate] = useState(dayKey());
@@ -278,7 +281,13 @@ export function App() {
   function changeSet(id: string, index: number, value: SetLog) {
     const next = structuredClone(logRef.current);
     next[id] ||= { sets: [] };
-    next[id].sets[index] = value;
+    next[id].sets[index] = editFeedback(next[id].sets[index], value);
+    persistLog(next);
+  }
+  function changeFeedback(id: string, sets: SetLog[]) {
+    const next = structuredClone(logRef.current); next[id] = {sets}; persistLog(next);
+  }
+  function persistLog(next: WorkoutLog) {
     logRef.current = next;
     setLog(next);
     queue.current = queue.current
@@ -314,8 +323,16 @@ export function App() {
             },
           ]),
       );
+      const sessionId = crypto.randomUUID();
+      const finishedAt = new Date().toISOString();
+      const runningTimer = await get("settings", timerKey(date, workout.id));
+      const timer = runningTimer?.startedAt ? timerTransition(runningTimer, "finish", Date.now()) : undefined;
       await saveSession({
-        id: crypto.randomUUID(),
+        id: sessionId,
+        finishedAt,
+        ...(timer ? { durationMs: timer.accumulatedMs, startedAt: timer.startedAt, workoutTimer: timer } : {}),
+        originalPlan: baseWorkout.items,
+        coachingContext: { phase: workout.phase, equipment: program.profile?.equipment || EQUIPMENT, checkIn: checkIn?.answers, clinical: Object.fromEntries(["surgeryDate", "repairSide", "restrictions", "complications"].map(key => [key, program.assessment?.values[key] ?? "Not recorded"])) },
         date,
         createdAt: new Date().toISOString(),
         workoutId: workout.id,
@@ -327,6 +344,7 @@ export function App() {
         ...details,
         status: "PENDING_NEXT_DAY_RESPONSE",
       });
+      setSavedReviewId(sessionId);
       setLog({});
       logRef.current = {};
       setSessions(await loadSessions());
@@ -574,6 +592,8 @@ export function App() {
           ) : flow === "workout" && canOpenWorkout ? (
             <WorkoutScreen
               workout={workout}
+              date={date}
+              onFeedback={changeFeedback}
               log={log}
               sessions={sessions}
               online={online}
@@ -614,6 +634,7 @@ export function App() {
             />
           ) : tab === "Today" ? (
             <>
+              {savedReviewId && sessions.find(s => s.id === savedReviewId) && <Card><h2>Workout saved</h2><CoachingReview session={sessions.find(s => s.id === savedReviewId)!} sessions={sessions} /></Card>}
               <Today
                 hasDraft={Object.values(log).some(item => item.sets.some(set => set && Object.keys(set).length > 0))}
                 onRecovery={(type = "") => {

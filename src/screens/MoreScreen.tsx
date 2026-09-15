@@ -150,8 +150,8 @@ export function MoreScreen({
             onChange={(id, v) => setValues({ ...values, [id]: v })}
           />
           <p className="helper">
-            5×5 adds an incline dumbbell press on Strength A and a supported row
-            on Strength B. Strength C adds higher-rep shoulder, back and arm
+            The hybrid program uses 5×5 for an incline dumbbell press on Strength A and a supported row
+            on Strength B. This is not the StrongLifts program. Strength C adds higher-rep shoulder, back and arm
             work. Rehab stays first. Use lighter warm-up sets, keep 2–4 reps in
             reserve, and let the next-morning response guide progression.
           </p>
