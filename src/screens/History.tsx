@@ -1,3 +1,5 @@
+import { SessionEditor } from "../components/SessionEditor";
+import { responseLines, statusLabel } from "../data/responsePresentation.js";
 import { formatDuration } from "../data/workoutExperience.js";
 import type { Session } from "../types";
 
@@ -13,7 +15,7 @@ export function History({ sessions }: { sessions: Session[] }) {
             <details className="history-row" key={s.id}>
               <summary>
                 {s.workoutTitle || s.workoutId}{" "}
-                <small>{s.status.replaceAll("_", " ").toLowerCase()}</small>
+                <small>{statusLabel(s.status)}</small>
               </summary>
               {s.domain && (
                 <p>
@@ -32,7 +34,7 @@ export function History({ sessions }: { sessions: Session[] }) {
               {!!s.nextDayResponse && (
                 <details>
                   <summary>Next-morning details</summary>
-                  <pre>{JSON.stringify(s.nextDayResponse, null, 2)}</pre>
+                  {responseLines(s.nextDayResponse).map((line, index) => <p key={index}>{line}</p>)}
                 </details>
               )}
               {Object.entries(s.exerciseLog || {}).map(([id, entry]) => (
@@ -53,6 +55,7 @@ export function History({ sessions }: { sessions: Session[] }) {
                 </div>
               ))}
               {s.notes && <p>{s.notes}</p>}
+              <SessionEditor session={s} />
               <small>
                 Saved {new Date(s.createdAt).toLocaleString()} · Rules{" "}
                 {s.rulesetVersion || "legacy"}

@@ -55,8 +55,8 @@ test('Coach report includes actual sets, previous same-exercise history, unknown
  const session={id:'current',date:'2026-09-14',createdAt:'2026-09-14',status:'PENDING_NEXT_DAY_RESPONSE',durationMs:120000,workoutTitle:'Strength A',plannedItems:[{id:'press',name:'Press',sets:2,reps:'5',unit:'reps'}],exerciseLog:{press:{sets:[{complete:true,load:'0',reps:'5',rpe:'7',inheritedFields:['rpe'],feedbackConfirmed:false}]}},exerciseChanges:[{fromName:'Pull-Up',toName:'Lat pulldown',reason:'difficulty',scope:'session'}]};
  const prior={id:'older',date:'2026-09-10',createdAt:'2026-09-10',status:'TOLERATED',exerciseLog:{press:{sets:[{complete:true,load:'10',reps:'5'}]}}};
  const report=coachingReport(session,[prior,session]);
- for(const phrase of ['00:02:00','load 0 lb','UNCONFIRMED','10 lb × 5','Pull-Up → Lat pulldown','PENDING','Not recorded','clinical clearance']) assert.ok(report.includes(phrase),phrase);
+ for(const phrase of ['00:02:00','load 0 lb','UNCONFIRMED','10 lb × 5','Pull-Up → Lat pulldown','Awaiting next-morning response','Not recorded','clinical clearance']) assert.ok(report.includes(phrase),phrase);
  const updated=coachingReport({...session,status:'TOLERATED',nextDayResponse:{change:'baseline'}},[prior]);
- assert.match(updated,/"change":"baseline"/);
- assert.doesNotMatch(updated,/PENDING \/ NOT RECORDED/);
+ assert.match(updated,/Symptoms compared with usual: Back to usual baseline/);
+ assert.doesNotMatch(updated,/Next-morning response not recorded/);
 });

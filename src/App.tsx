@@ -1,3 +1,4 @@
+import { SessionRefresh } from "./components/SessionEditor";
 import { CoachingReview } from "./components/CoachingReview";
 import { editFeedback, timerKey, timerTransition } from "./data/workoutExperience.js";
 import { useEffect, useRef, useState } from "react";
@@ -332,7 +333,7 @@ export function App() {
         finishedAt,
         ...(timer ? { durationMs: timer.accumulatedMs, startedAt: timer.startedAt, workoutTimer: timer } : {}),
         originalPlan: baseWorkout.items,
-        coachingContext: { phase: workout.phase, equipment: program.profile?.equipment || EQUIPMENT, checkIn: checkIn?.answers, clinical: Object.fromEntries(["surgeryDate", "repairSide", "restrictions", "complications"].map(key => [key, program.assessment?.values[key] ?? "Not recorded"])) },
+        coachingContext: { weeklyPlan: week.map(d => ({date:d.date,title:d.title,items:d.workout?.items.map((e: import("./types").Exercise)=>({name:e.name,sets:e.sets,reps:e.reps})) || []})), phase: workout.phase, equipment: program.profile?.equipment || EQUIPMENT, checkIn: checkIn?.answers, clinical: Object.fromEntries(["surgeryDate", "repairSide", "restrictions", "complications"].map(key => [key, program.assessment?.values[key] ?? "Not recorded"])) },
         date,
         createdAt: new Date().toISOString(),
         workoutId: workout.id,
@@ -501,7 +502,7 @@ export function App() {
       />
     );
   return (
-    <AppShell tab={tab} onSelect={select}>
+    <SessionRefresh.Provider value={reloadProgram}><AppShell tab={tab} onSelect={select}>
       {update && !flow && (
         <p className="notice">
           An app update is ready.{" "}
@@ -726,6 +727,6 @@ export function App() {
           )}
         </>
       )}
-    </AppShell>
+    </AppShell></SessionRefresh.Provider>
   );
 }

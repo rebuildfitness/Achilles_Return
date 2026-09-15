@@ -15,6 +15,8 @@
     "Offline app shell, all tabs, logging and finish work; no same-day catch-up workout",
     "Finished session preserves original sets, replacement sets and recorded skips",
     "Seven-day plan expands and calendar displays actual stored sets across month navigation",
+    "Saved next-morning details and coaching export show plain-language answers with original notes",
+    "Completed session corrections persist, cancel leaves data unchanged, original and tolerance are preserved, report refreshes",
     "Run exposure draft survives reload; saved dose remains pending and prevents advancement",
     "Versioned export and validated restore preserve data and avoid duplicate sessions",
     "Red symptoms override readiness and remove loading actions",

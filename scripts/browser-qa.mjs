@@ -157,6 +157,7 @@ try {
     await page.locator("#field-change").selectOption("baseline");
     await page.locator("#field-functionChange").selectOption("no");
     await page.locator("#field-repeatedWorsening").selectOption("no");
+    await page.locator("#field-notes").fill("My Achilles feels better than usual.");
     await page
       .getByRole("button", { name: "Save next-morning response" })
       .click();
@@ -497,7 +498,7 @@ try {
   assert.equal(saved.exerciseLog['single-calf'].sets[2].feedbackConfirmed,false);
   await page.getByText('AI coaching review',{exact:true}).click();
   const coachText=await page.getByLabel('Coaching report',{exact:true}).inputValue();
-  assert.ok(coachText.includes('00:02:00') && coachText.includes('PENDING') && coachText.includes('UNCONFIRMED'));
+  assert.ok(coachText.includes('00:02:00') && coachText.includes('Awaiting next-morning response') && coachText.includes('UNCONFIRMED'));
   const downloadEvent=page.waitForEvent('download');
   await page.getByRole('button',{name:'Download Markdown',exact:true}).click();
   const downloaded=await downloadEvent;
@@ -551,6 +552,50 @@ try {
   await enterIntro();
   await nav("Today");
   await response();
+  await nav("Progress");
+  await page.getByRole('button',{name:'Overview',exact:true}).click();
+  const readableReview=page.locator('.coaching-review').first();
+  await readableReview.getByText('AI coaching review',{exact:true}).click();
+  const readableReport=await readableReview.getByLabel('Coaching report',{exact:true}).inputValue();
+  assert.ok(readableReport.includes('Next-morning review: Session tolerated'));
+  assert.ok(readableReport.includes('Your notes: My Achilles feels better than usual.'));
+  assert.ok(!/TOLERATED|functionChange|repeatedWorsening|\{"/.test(readableReport));
+  await readableReview.screenshot({path:resolve(artifacts,'readable-coaching-review.png'),style:'.bottom-nav {visibility:hidden;}'});
+  await nav('Plan');
+  await page.getByRole('button',{name:'Calendar',exact:true}).click();
+  await page.getByRole('button',{name:'2026-09-07, saved workout',exact:true}).click();
+  await page.locator('.history-row > summary').first().click();
+  await page.getByText('Next-morning details',{exact:true}).click();
+  await page.getByText('Symptoms compared with usual: Back to usual baseline',{exact:true}).waitFor();
+  await page.getByText('Walking or daily function worse?: No',{exact:true}).waitFor();
+  await page.getByText('Your notes: My Achilles feels better than usual.',{exact:true}).waitFor();
+  assert.equal(await page.locator('.history-row pre').count(),0);
+  await page.locator('.history-row').first().screenshot({path:resolve(artifacts,'readable-next-morning.png'),style:'.bottom-nav {visibility:hidden;}'});
+  pass('Saved next-morning details and coaching export show plain-language answers with original notes');
+  const beforeCorrection=(await readStore('sessions')).find(s=>s.date==='2026-09-07' && !s.domain);
+  const editor=page.locator('.history-row .session-editor').first();
+  await editor.getByRole('button',{name:'Edit session',exact:true}).click();
+  await editor.getByLabel('Session notes',{exact:true}).fill('Cancelled note');
+  await editor.getByRole('button',{name:'Cancel',exact:true}).click();
+  assert.deepEqual((await readStore('sessions')).find(s=>s.id===beforeCorrection.id),beforeCorrection);
+  await editor.getByRole('button',{name:'Edit session',exact:true}).click();
+  await editor.locator('details > summary').first().click();
+  await editor.getByLabel(/set 1 load$/).first().fill('0');
+  await editor.getByLabel('Session notes',{exact:true}).fill('Corrected setup: load is per hand.');
+  await editor.getByLabel('Correction reason',{exact:true}).fill('Corrected load and setup');
+  await editor.screenshot({path:resolve(artifacts,'completed-session-editor.png'),style:'.bottom-nav {visibility:hidden;}'});
+  await editor.getByRole('button',{name:'Save corrections',exact:true}).click();
+  await editor.getByText('Corrections saved. Charts and coaching reports use the updated record.',{exact:true}).waitFor();
+  const corrected=(await readStore('sessions')).find(s=>s.id===beforeCorrection.id);
+  assert.equal(corrected.revision,1); assert.deepEqual(corrected.correctionHistory[0].original,beforeCorrection);
+  assert.deepEqual(corrected.nextDayResponse,beforeCorrection.nextDayResponse); assert.equal(corrected.status,beforeCorrection.status);
+  await page.reload(); await enterIntro(); await nav('Progress');
+  await page.getByRole('button',{name:'Overview',exact:true}).click();
+  await page.locator('.coaching-review').first().getByText('AI coaching review',{exact:true}).click();
+  const revisedText=await page.locator('.coaching-review').first().getByLabel('Coaching report',{exact:true}).inputValue();
+  assert.ok(revisedText.includes('Corrected setup: load is per hand.') && revisedText.includes('Weekly training context'));
+  pass('Completed session corrections persist, cancel leaves data unchanged, original and tolerance are preserved, report refreshes');
+  await nav('Today');
   await checkin();
   await nav("Progress");
   await page.getByRole("button", { name: "Sport", exact: true }).click();
@@ -1000,7 +1045,7 @@ try {
     })
     .waitFor();
   await page.getByText(/Recorded sets/).click();
-  await page.getByText("25 lb × 10", { exact: true }).waitFor();
+  await page.getByText("0 lb × 10", { exact: true }).waitFor();
   await nav("Tests");
   await page.screenshot({ path: resolve(artifacts, "rebuild-tests.png") });
   await nav("More");

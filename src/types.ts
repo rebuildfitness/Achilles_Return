@@ -57,6 +57,9 @@ export type Workout = {
   omitted?: { id: string; name: string; reason: string }[];
 };
 export type Session = {
+  revision?: number;
+  updatedAt?: string;
+  correctionHistory?: any[];
   durationMs?: number;
   startedAt?: string;
   finishedAt?: string;

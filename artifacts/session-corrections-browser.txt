@@ -1,0 +1,35 @@
+PASS Migration preserves legacy history; check-in never fabricates next-morning tolerance
+PASS Baseline autosaves and resumes after exit and reload
+PASS All baseline sections validate, calculate measured results and activate the plan
+PASS Workout timer starts explicitly, includes rest and excludes paused time
+PASS Shorter session hides optional accessories and restores the original full workout
+PASS First-set feedback prefills blank fields, allows overrides and confirms only completed sets
+PASS Workout thumbnail and enlarged artwork preserve logged sets; close and Escape restore focus
+PASS Rest timer starts on a completed set, survives reload, and supports extending and clearing
+PASS Nine exercise cards include 5×5, specific demos and inline sets that survive reload
+PASS Inline workout usable at 320–1280px and with 200% text
+PASS Every card offers swap; pull-up replacement, separate loads, unavailable equipment and skip survive reload
+PASS Timer and feedback survive reload and offline finish; coach report downloads and copies exact saved data
+PASS Offline app shell, all tabs, logging and finish work; no same-day catch-up workout
+PASS Finished session preserves original sets, replacement sets and recorded skips
+PASS Seven-day plan expands and calendar displays actual stored sets across month navigation
+PASS Saved next-morning details and coaching export show plain-language answers with original notes
+PASS Completed session corrections persist, cancel leaves data unchanged, original and tolerance are preserved, report refreshes
+PASS Run exposure draft survives reload; saved dose remains pending and prevents advancement
+PASS Versioned export and validated restore preserve data and avoid duplicate sessions
+PASS Red symptoms override readiness and remove loading actions
+PASS Service-worker updates preserve records and remove only obsolete app caches
+PASS All five main screens fit 320px and enlarged text
+PASS Keyboard skip link focuses content without changing the current screen
+PASS First-use hero continues to Today; returning launches open Today
+PASS Monthly finishing retest preserves starting data and pain-free answers; separated exercise inputs and charts render
+PASS Four-step baseline resumes, saves partial measurements and preserves history and strength preference
+PASS Exercise library search, combined filters, demo link, empty state and pagination work on mobile
+PASS Recovery distance persists, press swaps persist, and a moved workout opens on its make-up day
+PASS Focused destinations keep forms out of Today, combine recovery and training history, and show recorded strength loads
+PASS Movement drafts survive reload; scoped Undo removes only its saved walk
+PASS Movement edits preserve IDs; routine actual amounts autosave offline and appear in mobile Progress
+PASS Independent zero measurement survives reload without changing clinical assessments
+PASS Favorite exercise survives reload and appears in Favorites
+PASS Daily branding stays stable on refresh; returning launch and optional hero replay work
+PASS No browser runtime errors
