@@ -1,3 +1,4 @@
+import { displayDate } from "../data/displayDates.js";
 import { SectionSwitch } from "../components/SectionSwitch";
 import { useState } from "react";
 import { Card, PrimaryButton, CalendarCard } from "../components/ui";
@@ -89,10 +90,11 @@ export function PlanScreen({
             </button>
           </div>
           {days.map((day) => (
-            <Card key={day.date}>
+            <Card key={day.date} className={`plan-day-card ${day.date === dayKey() ? "is-today" : ""}`}>
               <details className="plan-day">
                 <summary>
-                  <strong>
+                  <span className="plan-date" aria-hidden="true"><span>{day.dateObj.toLocaleDateString(undefined,{weekday:"short"})}</span><b>{day.dateObj.getDate()}</b></span>
+                  <div><strong>
                     {day.dateObj.toLocaleDateString(undefined, {
                       weekday: "short",
                       month: "short",
@@ -106,9 +108,9 @@ export function PlanScreen({
                       : day.workout
                         ? `${day.workout.items.length} exercises · ${day.focus}`
                         : day.focus}
-                  </small>
+                  </small>{day.date===dayKey() && <span className="pill">Today</span>}</div>
                 </summary>
-                <p className="plan-context">{day.note}</p>
+                <p className="plan-context">{day.note}</p>{assessment && day.workout && <button className="text-button" onClick={()=>setView("schedule")}>Reschedule workout →</button>}
                 {day.date <= dayKey() && (
                   <button
                     className="text-button"
@@ -174,7 +176,7 @@ export function PlanScreen({
                 className="secondary-button"
                 onClick={() => onMovement(selected)}
               >
-                View / log movement · {selected}
+                View / log movement · {displayDate(selected)}
               </button>
             </Card>
           )}
@@ -185,7 +187,7 @@ export function PlanScreen({
                 day: "numeric",
               })}
             </h2>
-            <History sessions={sessions.filter((s) => s.date === selected)} />
+            <History sessions={sessions.filter((s) => s.date === selected)} allSessions={sessions} />
           </Card>
         </>
       )}

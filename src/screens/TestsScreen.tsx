@@ -1,3 +1,4 @@
+import { displayDate } from "../data/displayDates.js";
 import { MeasurementJournal } from "../components/MeasurementJournal";
 import { useState, type FormEvent } from "react";
 import { Card, PrimaryButton } from "../components/ui";
@@ -56,6 +57,7 @@ export function TestsScreen({
         <p>Measure what matters. Retest with the same setup.</p>
       </div>
       <Card>
+        <p className="eyebrow">{displayDate(monthlyStatus(assessments).month,true)}</p>
         <h2>
           {assessment ? "Baseline & reassessment" : "Establish your baseline"}
         </h2>
@@ -83,8 +85,8 @@ export function TestsScreen({
           </span>
         </div>
         <p className="helper">
-          {monthlyStatus(assessments).month} · Record finishing data near{" "}
-          {monthlyStatus(assessments).finishDate}.
+          Record finishing data near{" "}
+          {displayDate(monthlyStatus(assessments).finishDate)}.
         </p>
         <PrimaryButton onClick={onBaseline}>
           {Object.keys(draft?.values || {}).length

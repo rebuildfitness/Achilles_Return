@@ -57,7 +57,7 @@ export function WorkoutScreen({
     item.sets.some((set) => set?.complete),
   );
   return (
-    <>
+    <div className="workout-screen">
       <button className="text-button page-back" onClick={onBack}>
         ← Today
       </button>
@@ -65,11 +65,12 @@ export function WorkoutScreen({
         <h1>Full Workout</h1>
         <p>{workout.title}</p>
         <p className="helper">{sessionEstimate(visibleItems)}</p>
+        <details className="workout-options"><summary>Session options</summary>
         <label><input type="checkbox" checked={shortSession} onChange={e => setShortSession(e.target.checked)} /> Shorter session: hide optional accessories</label>
-        <p className="helper">Rehab and primary strength remain. Hidden exercises stay uncompleted in your original plan; completed sets are never removed. Restore the full list at any time.</p>
+        <p className="helper">Rehab and primary strength remain. Hidden exercises stay uncompleted in your original plan; completed sets are never removed. Restore the full list at any time.</p></details>
       </div>
-      <WorkoutTimer key={timerKey(date,workout.id)} storageKey={timerKey(date,workout.id)} />
       <div className="session-dashboard">
+        <WorkoutTimer key={timerKey(date,workout.id)} storageKey={timerKey(date,workout.id)} />
         <div className="section-heading">
           <strong>Session progress</strong>
           <span>
@@ -86,23 +87,6 @@ export function WorkoutScreen({
           signal={rest}
         />
       </div>
-      <details className="detail-section">
-        <summary>Session guidance</summary>
-        <p className="notice">
-          {workout.phase} · Keep quality and symptoms in view. Your next-morning
-          response determines tolerance.
-        </p>
-        {workout.notes?.map((note) => (
-          <p className="helper" key={note}>
-            {note}
-          </p>
-        ))}
-        {workout.omitted?.map((ex) => (
-          <p className="helper" key={ex.id}>
-            {ex.name} omitted: {ex.reason}
-          </p>
-        ))}
-      </details>
       {visibleItems.map((exercise) => {
         const previous = [...sessions]
           .filter(
@@ -112,20 +96,12 @@ export function WorkoutScreen({
           ?.exerciseLog[exercise.id];
         return (
           <ExerciseCard key={exercise.id} exercise={exercise} online={online}>
-            <p className="eyebrow">{optionalAccessory(exercise) ? "OPTIONAL ACCESSORY" : "SESSION PRIORITY"}</p>
-            <ExerciseGuidance
-              exercise={exercise}
-              sessions={sessions}
-              readiness={readiness}
-              equipment={equipment}
-            />
             {onSwap && <ExerciseSwap exercise={exercise} equipment={equipment} unavailable={unavailable} workoutIds={workout.items.map(ex => ex.id)} onSwap={onSwap} />}
             {exercise.sets === 0 && <p className="helper">All planned sets were already completed. This change adds no extra sets today.</p>}
             {exercise.skipReason || exercise.equipment?.some(id => unavailable.includes(id)) ? <>
               <p className="notice">{exercise.skipReason ? "Remaining sets skipped: " + exercise.skipReason : "Equipment marked unavailable today. Swap or skip the remaining sets."}</p>
               <RecordedSets exercise={exercise} log={log} onChange={onChange} />
             </> : <>
-            <div className="feedback-carry"><button className="text-button" disabled={!feedbackFields.some(field => (log[exercise.id]?.sets[0] as any)?.[field])} onClick={() => onFeedback(exercise.id, carryFeedback(log[exercise.id]?.sets || [], exercise.sets))}>Use first-set feedback for remaining sets</button><p className="helper">Copies RPE, quality and symptoms into blank fields. Change any set as needed.</p></div>
             <div className="set-row set-header" aria-hidden="true">
               <span>SET</span>
               <span>PREVIOUS</span>
@@ -159,12 +135,37 @@ export function WorkoutScreen({
                 }}
               />
             ))}
+            <details className="feedback-carry"><summary>First-set feedback shortcut</summary><button className="text-button" disabled={!feedbackFields.some(field => (log[exercise.id]?.sets[0] as any)?.[field])} onClick={() => onFeedback(exercise.id, carryFeedback(log[exercise.id]?.sets || [], exercise.sets))}>Use first-set feedback for remaining sets</button><p className="helper">Copies RPE, quality and symptoms into blank fields. Change any set as needed.</p></details>
             {log[exercise.id]?.sets.some(set => set?.complete && set.inheritedFields?.length && !set.feedbackConfirmed) && <button className="secondary-button" onClick={() => onFeedback(exercise.id, confirmFeedback(log[exercise.id].sets))}>Confirm carried feedback for completed sets</button>}
             </>}
+            <p className="eyebrow">{optionalAccessory(exercise) ? "OPTIONAL ACCESSORY" : "SESSION PRIORITY"}</p>
+            <ExerciseGuidance
+              exercise={exercise}
+              sessions={sessions}
+              readiness={readiness}
+              equipment={equipment}
+            />
             {(log[exercise.id]?.sets.length || 0) > exercise.sets && <details><summary>Earlier entries outside the remaining dose</summary><RecordedSets exercise={exercise} log={log} onChange={onChange} start={exercise.sets} /></details>}
           </ExerciseCard>
         );
       })}
+      <details className="detail-section">
+        <summary>Session guidance</summary>
+        <p className="notice">
+          {workout.phase} · Keep quality and symptoms in view. Your next-morning
+          response determines tolerance.
+        </p>
+        {workout.notes?.map((note) => (
+          <p className="helper" key={note}>
+            {note}
+          </p>
+        ))}
+        {workout.omitted?.map((ex) => (
+          <p className="helper" key={ex.id}>
+            {ex.name} omitted: {ex.reason}
+          </p>
+        ))}
+      </details>
       {!!workout.retained?.length && <section className="detail-section"><h2>Recorded before a swap</h2><p className="helper">These entries stay with their original exercise and are included when you save.</p>{workout.retained.map(ex => <div key={ex.id}><h3>{ex.name}</h3><RecordedSets exercise={ex} log={log} onChange={onChange} /></div>)}</section>}
       <PrimaryButton disabled={!hasSets} onClick={onFinish}>
         Finish Workout
@@ -174,7 +175,7 @@ export function WorkoutScreen({
           ? "Set entries save automatically on this device."
           : "Mark a set complete before finishing."}
       </p>
-    </>
+    </div>
   );
 }
 function RecordedSets({ exercise, log, onChange, start = 0 }: { exercise: import("../types").Exercise; log: WorkoutLog; start?: number; onChange: (id: string, index: number, value: SetLog) => void }) {

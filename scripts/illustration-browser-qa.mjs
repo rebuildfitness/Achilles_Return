@@ -43,7 +43,7 @@ try{
  }
  await library(page);
  const search=page.getByRole('searchbox');
- await search.fill('Dumbbell Biceps Curl');
+ await page.keyboard.press('Escape'); await search.fill('Dumbbell Biceps Curl');
  const row=page.locator('[data-exercise-id="db-curl"]');
  await row.locator('img').scrollIntoViewIfNeeded();
  await page.waitForFunction(()=>document.querySelector('[data-exercise-id="db-curl"] img')?.naturalWidth===192);
@@ -64,7 +64,7 @@ try{
  pass('Strength thumbnail, enlarged view, Escape/focus restoration and original demo');
  const calfReferences = (await import('../src/data/calfPathway.js')).CALF_PATHWAY;
  for (const calf of calfReferences) {
-  await search.fill(calf.name);
+  await page.keyboard.press('Escape'); await search.fill(calf.name);
   const card=page.locator(`[data-exercise-id="${calf.id}"]`);
   await card.locator('img').scrollIntoViewIfNeeded();
   await card.locator('img').evaluate(img=>img.decode());
@@ -77,9 +77,9 @@ try{
   await card.getByRole('button',{name:'Close illustration'}).click();
  }
  pass('All six calf reference thumbnails and enlarged illustrations load with original demos');
- await search.fill('');await page.getByRole('button',{name:'All exercises',exact:true}).click();await page.getByRole('button',{name:'Show 20 more exercises'}).click();
+ await page.keyboard.press('Escape'); await search.fill('');await page.getByRole('button',{name:'All exercises',exact:true}).click();await page.getByRole('button',{name:'Show 20 more exercises'}).click();
  assert((await page.locator('[data-exercise-id]').count())>=40);pass('Pagination retains stable exercise IDs');
- await search.fill('Seated unilateral');
+ await page.keyboard.press('Escape'); await search.fill('Seated unilateral');
  const hamstring=page.locator('[data-exercise-id="library-seated-unilateral-cable-hamstring-curl"]');
  await hamstring.scrollIntoViewIfNeeded();
  await page.waitForFunction(()=>document.querySelector('[data-exercise-id="library-seated-unilateral-cable-hamstring-curl"] img')?.naturalWidth===192);
@@ -88,7 +88,7 @@ try{
  await hamstring.screenshot({path:resolve(out,'illustration-batch2-hamstring.png'),style:'.bottom-nav {visibility:hidden}'});
  pass('Batch 2 unilateral hamstring illustration and existing demo');
  for(const [id,name] of [['library-barbell-shrug','Barbell shrug'],['library-dumbbell-goblet-squat','Dumbbell goblet squat'],['library-dumbbell-squat','Dumbbell squat'],['library-bent-over-dumbbell-triceps-kickback','Bent-over dumbbell triceps kickback'],['library-supine-band-clam','Supine band clam']]){
-  await search.fill(name);
+  await page.keyboard.press('Escape'); await search.fill(name);
   const card=page.locator(`[data-exercise-id="${id}"]`);
   await card.scrollIntoViewIfNeeded();
   await card.locator('img').evaluate(img=>img.decode());
@@ -100,7 +100,7 @@ try{
  }
  pass('All five diverse batch-3 illustrations enlarge with original demos');
  for(const [id,name] of [['library-band-pull-apart','Band pull-apart'],['library-side-plank','Side plank'],['library-stability-ball-wall-squat','Stability-ball wall squat'],['library-bent-over-dumbbell-reverse-fly','Bent-over dumbbell reverse fly'],['library-lying-floor-leg-raise','Lying floor leg raise']]){
-  await search.fill(name);const card=page.locator(`[data-exercise-id="${id}"]`);
+  await page.keyboard.press('Escape'); await search.fill(name);const card=page.locator(`[data-exercise-id="${id}"]`);
   await card.scrollIntoViewIfNeeded();await card.locator('.illustration-thumbnail img').evaluate(img=>img.decode());
   assert.equal(await card.locator('.illustration-thumbnail img').evaluate(img=>img.naturalWidth),192);
   assert(await card.getByRole('link',{name:/Short Demo/}).isVisible());
@@ -111,7 +111,7 @@ try{
  }
   pass('All five batch-4 thumbnails, enlarged images and existing demos');
   for(const [id,name] of [["library-dead-bug","Dead bug"],["library-superman","Superman"],["library-stability-ball-plank","Stability-ball plank"],["library-single-leg-foam-pad-balance","Single-leg foam-pad balance"],["library-straight-arm-cable-pulldown","Straight-arm cable pulldown"]]){
-   await search.fill(name);const card=page.locator(`[data-exercise-id="${id}"]`);
+   await page.keyboard.press('Escape'); await search.fill(name);const card=page.locator(`[data-exercise-id="${id}"]`);
    await card.scrollIntoViewIfNeeded();await card.locator('.illustration-thumbnail img').evaluate(img=>img.decode());
    assert.equal(await card.locator('.illustration-thumbnail img').evaluate(img=>img.naturalWidth),192);
    assert(await card.getByRole('link',{name:/Short Demo/}).isVisible());
@@ -122,7 +122,7 @@ try{
   }
   pass('All five batch-5 thumbnails, enlarged images and existing demos');
   for(const [id,name] of [["library-smith-shrug","Smith shrug"],["library-barbell-glute-bridge","Barbell glute bridge"],["library-seated-band-knee-extension","Seated band knee extension"],["library-foam-pad-balance-with-head-turns","Foam-pad balance with head turns"],["library-treadmill-walking","Treadmill walking"]]){
-   await search.fill(name);const card=page.locator(`[data-exercise-id="${id}"]`);
+   await page.keyboard.press('Escape'); await search.fill(name);const card=page.locator(`[data-exercise-id="${id}"]`);
    await card.scrollIntoViewIfNeeded();await card.locator('.illustration-thumbnail img').evaluate(img=>img.decode());
    assert.equal(await card.locator('.illustration-thumbnail img').evaluate(img=>img.naturalWidth),192);
    assert(await card.getByRole('link',{name:/Short Demo/}).isVisible());
@@ -135,9 +135,9 @@ try{
  for(const record of inventory.filter(r=>finalIds.has(r.exerciseId))){
   if(record.primaryCollection==='movement-library'){
    const category=record.primaryCategory==='mobility'?'Mobility':record.primaryCategory==='core_stability'?'Core':'Balance';
-   await page.getByRole('button',{name:category,exact:true}).click();
+   await page.keyboard.press('Escape'); await page.locator('.library-category-menu').evaluate(el => el.open = true); await page.getByRole('button',{name:category,exact:true}).click();
   }else{
-   await page.getByRole('button',{name:'Strength',exact:true}).click();
+   await page.keyboard.press('Escape'); await page.locator('.library-category-menu').evaluate(el => el.open = true); await page.getByRole('button',{name:'Strength',exact:true}).click();
    await page.getByRole('searchbox').fill(record.exerciseName);
   }
   const card=page.locator(`[data-exercise-id="${record.exerciseId}"]`);
@@ -151,12 +151,12 @@ try{
   await card.getByRole('button',{name:'Close illustration'}).click();
  }
  assert.equal(finalIds.size,47);pass('All 47 final-batch thumbnails and enlarged images load through their library cards');
- await page.getByRole('button',{name:'Strength',exact:true}).click();
- await search.fill('Cable face pull');
+ await page.keyboard.press('Escape'); await page.locator('.library-category-menu').evaluate(el => el.open = true); await page.getByRole('button',{name:'Strength',exact:true}).click();
+ await page.keyboard.press('Escape'); await search.fill('Cable face pull');
  await page.locator('[data-exercise-id="library-cable-face-pull"] img').evaluate(img=>img.decode());
  assert(await page.getByRole('link',{name:/Short Demo:/}).isVisible());
  pass('Completed cable artwork preserves demo and setup');
- await page.getByRole('button',{name:'Mobility',exact:true}).click();
+ await page.locator('.library-category-menu > summary').click(); await page.keyboard.press('Escape'); await page.locator('.library-category-menu').evaluate(el => el.open = true); await page.getByRole('button',{name:'Mobility',exact:true}).click();
  const mobility=page.locator('[data-exercise-id="wall-slides"]');
  await mobility.scrollIntoViewIfNeeded();
  await page.waitForFunction(()=>document.querySelector('[data-exercise-id="wall-slides"] img')?.naturalWidth===192);
@@ -184,10 +184,10 @@ try{
  await page.evaluate(async()=>{for(const key of await caches.keys()){const cache=await caches.open(key);for(const request of await cache.keys())if(request.url.includes('library-stability-ball-crunch.png'))await cache.delete(request);}});
  await context.setOffline(true);await page.reload();await page.getByRole('heading',{name:'Today',exact:true}).waitFor();
  await page.getByRole('button',{name:'More',exact:true}).click();await page.getByRole('button',{name:'Exercise library',exact:true}).click();
- await page.getByRole('button',{name:'Mobility',exact:true}).click();await page.locator('[data-exercise-id="wall-slides"]').scrollIntoViewIfNeeded();
+ await page.locator('.library-category-menu > summary').click(); await page.keyboard.press('Escape'); await page.locator('.library-category-menu').evaluate(el => el.open = true); await page.getByRole('button',{name:'Mobility',exact:true}).click();await page.locator('[data-exercise-id="wall-slides"]').scrollIntoViewIfNeeded();
  await page.waitForFunction(()=>document.querySelector('[data-exercise-id="wall-slides"] img')?.naturalWidth===192);
  pass('Project-subpath service-worker install and offline images');
- await page.getByRole('button',{name:'Strength',exact:true}).click();
+ await page.keyboard.press('Escape'); await page.locator('.library-category-menu').evaluate(el => el.open = true); await page.getByRole('button',{name:'Strength',exact:true}).click();
  await page.getByRole('searchbox').fill('Stability-ball crunch');
  const unviewed=page.locator('[data-exercise-id="library-stability-ball-crunch"]');
  await unviewed.locator('.illustration-unavailable').waitFor();
@@ -221,7 +221,7 @@ try{
  await broken.route('**/assets/exercises/**/*.png',r=>r.abort());
  const bp=await broken.newPage();await library(bp);await bp.getByRole('searchbox').fill('Dumbbell Biceps Curl');
  const br=bp.locator('[data-exercise-id="db-curl"]');await br.scrollIntoViewIfNeeded();await br.locator('.illustration-unavailable').waitFor();assert.equal(await br.locator('img').count(),0);assert(await br.getByRole('link',{name:/Short Demo/}).isVisible());
- await bp.getByRole('button',{name:'Mobility',exact:true}).click();const bm=bp.locator('[data-exercise-id="wall-slides"]');await bm.scrollIntoViewIfNeeded();await bm.locator('.illustration-unavailable').waitFor();assert.equal(await bm.locator('img').count(),0);
+ await bp.keyboard.press('Escape'); await bp.locator('.library-category-menu').evaluate(el => el.open = true); await bp.getByRole('button',{name:'Mobility',exact:true}).click();const bm=bp.locator('[data-exercise-id="wall-slides"]');await bm.scrollIntoViewIfNeeded();await bm.locator('.illustration-unavailable').waitFor();assert.equal(await bm.locator('img').count(),0);
  pass('Failed image requests fall back in both libraries without broken icons');
  await writeFile(resolve(out,'illustration-browser-results.json'),JSON.stringify({passed},null,2));
 }finally{await browser?.close();server.close();}

@@ -1,9 +1,10 @@
+import { CoachingReview } from "../components/CoachingReview";
 import { SessionEditor } from "../components/SessionEditor";
 import { responseLines, statusLabel } from "../data/responsePresentation.js";
 import { formatDuration } from "../data/workoutExperience.js";
 import type { Session } from "../types";
 
-export function History({ sessions }: { sessions: Session[] }) {
+export function History({ sessions, allSessions = sessions }: { sessions: Session[]; allSessions?: Session[] }) {
   return (
     <>
       {sessions.length === 0 ? (
@@ -55,7 +56,9 @@ export function History({ sessions }: { sessions: Session[] }) {
                 </div>
               ))}
               {s.notes && <p>{s.notes}</p>}
+              {!!s.exerciseChanges?.length && <details><summary>Exercise changes</summary>{s.exerciseChanges.map((change,i)=><p key={i}>{change.fromName} → {change.toName || "Skipped remaining sets"} · {change.reason}</p>)}</details>}
               <SessionEditor session={s} />
+              <CoachingReview session={s} sessions={allSessions} />
               <small>
                 Saved {new Date(s.createdAt).toLocaleString()} · Rules{" "}
                 {s.rulesetVersion || "legacy"}

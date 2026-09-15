@@ -1,0 +1,20 @@
+PASS Fresh installation precaches no exercise illustrations
+PASS Cards request small thumbnails; full artwork is requested only on Enlarge
+PASS Strength thumbnail, enlarged view, Escape/focus restoration and original demo
+PASS All six calf reference thumbnails and enlarged illustrations load with original demos
+PASS Pagination retains stable exercise IDs
+PASS Batch 2 unilateral hamstring illustration and existing demo
+PASS All five diverse batch-3 illustrations enlarge with original demos
+PASS All five batch-4 thumbnails, enlarged images and existing demos
+PASS All five batch-5 thumbnails, enlarged images and existing demos
+PASS All five batch-6 thumbnails, enlarged images and existing demos
+PASS All 47 final-batch thumbnails and enlarged images load through their library cards
+PASS Completed cable artwork preserves demo and setup
+PASS Movement thumbnail/detail and external demo remain available
+PASS Movement filters retain image mapping
+PASS 320px mobile layout and enlarged text reflow
+PASS Project-subpath service-worker install and offline images
+PASS Offline unavailable artwork preserves exercise and demo actions
+PASS Uncached enlarged image keeps the thumbnail and retries independently
+PASS Unviewed illustration fails gracefully offline and retries after reconnecting
+PASS Failed image requests fall back in both libraries without broken icons

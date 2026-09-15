@@ -1,4 +1,5 @@
-import { CoachingReview } from "./CoachingReview";
+import { History } from "../screens/History";
+import { displayDate } from "../data/displayDates.js";
 import { formatDuration } from "../data/workoutExperience.js";
 import {
   movementRecords,
@@ -49,9 +50,9 @@ export function TrainingOverview({
         <div className="eyebrow">LAST 28 DAYS</div>
         <h2>Your training, together</h2>
         <div className="training-stats">
-          <div>
+          <div><button className="stat-link" onClick={()=>onView("strength")} aria-label="View strength trends">
             <strong>{recent.filter((s) => !s.domain).length}</strong>
-            <span>Strength sessions</span>
+            <span>Strength sessions</span></button>
           </div>
           <div>
             <strong>{recent.filter((s) => !!s.domain).length}</strong>
@@ -73,35 +74,6 @@ export function TrainingOverview({
           Saved sessions count as training. Next-morning response determines
           tolerance.
         </p>
-      </Card>
-      <Card>
-        <div className="menu-list">
-          {[
-            [
-              "strength",
-              "Strength trends",
-              "Loads, repetitions and progression",
-            ],
-            [
-              "baseline",
-              "Rehab measurements",
-              "Monthly starting and finishing data",
-            ],
-            [
-              "sport",
-              "Return to sport",
-              "Your current levels and next criteria",
-            ],
-          ].map(([id, title, description]) => (
-            <button key={id} onClick={() => onView(id)}>
-              <span>
-                <strong>{title}</strong>
-                <small>{description}</small>
-              </span>
-              <span aria-hidden="true">›</span>
-            </button>
-          ))}
-        </div>
       </Card>
       <Card>
         <h2>Your training history</h2>
@@ -126,12 +98,8 @@ export function TrainingOverview({
           .slice(0, historyLimit)
           .map((r) => (
             <div className="activity-row" key={r.id}>
-              <time>{r.date}</time>
-              <strong>{r.title}</strong>
-              <small>{r.detail}</small>
-              {sessions.find(s => s.id === r.id)?.durationMs != null && <small>Workout time: {formatDuration(sessions.find(s => s.id === r.id)!.durationMs!)}</small>}
-              {sessions.find(s => s.id === r.id) && <CoachingReview session={sessions.find(s => s.id === r.id)!} sessions={sessions} />}
-              {!!sessions.find(s => s.id === r.id)?.exerciseChanges?.length && <details><summary>Exercise changes</summary>{sessions.find(s => s.id === r.id)!.exerciseChanges!.map((change, i) => <p key={i}>{change.fromName} → {change.toName || "Skipped remaining sets"} · {change.reason} · {change.scope === "future" ? "Future preference saved" : "This session"}</p>)}</details>}
+              <time dateTime={r.date}>{displayDate(r.date)}</time>
+              {sessions.find(s => s.id === r.id) ? <History sessions={[sessions.find(s => s.id === r.id)!]} allSessions={sessions} /> : <><strong>{r.title}</strong><small>{r.detail}</small></>}
             </div>
           ))}
         {sessions.length + recovery.length > historyLimit && <button className="text-button" onClick={() => setHistoryLimit(historyLimit + 20)}>Show earlier activity</button>}
@@ -175,6 +143,7 @@ export function StrengthHistory({ sessions }: { sessions: Session[] }) {
             <p>No completed sets with a recorded load for this exercise.</p>
           ) : (
             <>
+              <div className="metric-summary"><div><span>Latest recorded load</span><strong>{points.at(-1)!.load} lb</strong><small>{displayDate(points.at(-1)!.date)}</small></div>{points.length>1 && <div><span>Observed load change</span><strong>{(points.at(-1)!.load-points.at(-2)!.load).toFixed(1)} lb</strong><small>Check reps and setup before comparing.</small></div>}</div>
               <svg
                 className="assessment-chart"
                 viewBox="0 0 350 180"

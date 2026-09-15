@@ -49,7 +49,7 @@ export function ExerciseLibrary({
   }
   return (
     <>
-      <div
+      <details className="library-category-menu"><summary>Browse categories · {category}</summary>      <div
         className="movement-chips"
         role="group"
         aria-label="Library categories"
@@ -66,6 +66,7 @@ export function ExerciseLibrary({
           ),
         )}
       </div>
+      </details>
       {!["All", "Strength", "Achilles"].includes(category) ? (
         <MovementLibrary
           key={category}
@@ -76,25 +77,11 @@ export function ExerciseLibrary({
       ) : (
         <>
           <Card className="exercise-library-card">
-            <h2>Your exercise library</h2>
+            <h2 className="sr-only">Your exercise library</h2>
             <div className="movement-chips" aria-label="Your library collections">
               {[["plan", "In your plan"], ["favorites", "Favorites"], ["all", "All exercises"]].map(([id, label]) => <button key={id} aria-pressed={collection === id} onClick={() => {setCollection(id); setLimit(20);}}>{label}</button>)}
             </div>
             {saveError && <p role="alert">{saveError}</p>}
-            {onMovement && (
-              <button className="text-button" onClick={onMovement}>
-                Movement routines & logging →
-              </button>
-            )}
-            <p>
-              {EXERCISE_LIBRARY.length} exercises across your home-gym
-              equipment.
-            </p>
-            <p className="helper">
-              Browse strength, muscle-building, core and rehab movements. Your
-              Plan selects the exercises and doses appropriate to your current
-              stage.
-            </p>
             <label className="form-field">
               Find an exercise
               <input
@@ -107,7 +94,7 @@ export function ExerciseLibrary({
                 }}
               />
             </label>
-            <div
+            <details className="library-filters"><summary>Filters{equipment || muscle ? ' · Active' : ''}</summary>            <div
               className="library-shortcuts"
               aria-label="Common strength movements"
             >
@@ -166,6 +153,8 @@ export function ExerciseLibrary({
                 ))}
               </select>
             </label>
+            </details>
+            {(equipment || muscle) && <p className="active-filters">{[equipment && equipmentLabel(equipment),muscle].filter(Boolean).join(' · ')}</p>}
             <p role="status">{matches.length} exercises found</p>
             {(search || equipment || muscle) && (
               <button
@@ -176,21 +165,7 @@ export function ExerciseLibrary({
                 Clear filters
               </button>
             )}
-            <details>
-              <summary>About the demos and equipment</summary>
-              <p className="helper">
-                Demo links open a single-exercise video or the provider’s
-                exercise page. Most new provider pages have been checked, but
-                not every video’s playback or length. Videos need an internet
-                connection. Check each setup for required cable handles, padding
-                and supports.
-              </p>
-              <p className="helper">
-                Your stability ball is a yoga ball, not a medicine ball.
-                Inflatable-cushion and vibration-plate demo coverage is still
-                being curated; no mismatched demonstration is substituted.
-              </p>
-            </details>
+
           </Card>
           {!matches.length && (
             <Card className="exercise-library-card">
@@ -253,6 +228,35 @@ export function ExerciseLibrary({
               Show 20 more exercises
             </button>
           )}
+            <details>
+              <summary>About the demos and equipment</summary>            {onMovement && (
+              <button className="text-button" onClick={onMovement}>
+                Movement routines & logging →
+              </button>
+            )}
+            <p>
+              {EXERCISE_LIBRARY.length} exercises across your home-gym
+              equipment.
+            </p>
+            <p className="helper">
+              Browse strength, muscle-building, core and rehab movements. Your
+              Plan selects the exercises and doses appropriate to your current
+              stage.
+            </p>
+
+              <p className="helper">
+                Demo links open a single-exercise video or the provider’s
+                exercise page. Most new provider pages have been checked, but
+                not every video’s playback or length. Videos need an internet
+                connection. Check each setup for required cable handles, padding
+                and supports.
+              </p>
+              <p className="helper">
+                Your stability ball is a yoga ball, not a medicine ball.
+                Inflatable-cushion and vibration-plate demo coverage is still
+                being curated; no mismatched demonstration is substituted.
+              </p>
+            </details>
           {category === "All" && (
             <details className="detail-section">
               <summary>Movement routine library</summary>

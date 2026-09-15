@@ -1,6 +1,6 @@
 import { DailyBrand } from "../components/DailyBrand";
 import { sessionEstimate } from "../data/sessionPresentation.js";
-import { Card, Icon, PrimaryButton, StatusCard } from "../components/ui";
+import { Card, Icon, PrimaryButton } from "../components/ui";
 import { readinessLabel } from "../rules/readiness.js";
 import type { Assessment, Readiness, Session, Workout } from "../types";
 import { baselineResult } from "../rules/baseline.js";
@@ -64,56 +64,17 @@ export function Today({
           })}
         </p>
       </div>
-      {readiness ? (
-        <>
-          <StatusCard
-            tone={
-              red ? "stop" : readiness.level === "GREEN" ? "ready" : "modified"
-            }
-            title={readinessLabel(readiness.level)}
-          >
-            {readiness.reason}
-          </StatusCard>
-          <button className="text-button update-checkin" onClick={onCheckIn}>
-            Update check-in
-          </button>
-        </>
-      ) : (
-        <Card className="checkin-card">
-          <div className="eyebrow">DAILY CHECK-IN</div>
-          <h2>How is your Achilles today?</h2>
-          <p>A quick check-in helps guide today’s loading.</p>
-          {nextAction.run !== onCheckIn && <button className="text-button" onClick={onCheckIn}>Check In</button>}
-        </Card>
-      )}
-      <Card className="next-action-card">
-        <div className="eyebrow">YOUR NEXT ACTION</div>
+      <Card className={`today-action ${red ? 'tone-stop' : responseDue ? 'tone-pending' : readiness?.level === 'GREEN' ? 'tone-ready' : readiness ? 'tone-pending' : ''}`}>
+        <div className="eyebrow">TODAY’S STATUS</div>
+        <h2>{red ? readinessLabel(readiness!.level) : responseDue ? 'Next-morning review due' : readiness ? readinessLabel(readiness.level) : 'How is your Achilles today?'}</h2>
+        <p>{readiness ? readiness.reason : 'A quick check-in helps guide today’s loading.'}</p>
+        {!!pending.length && <p className="response-context">Previous training: {pending.length} {pending.length === 1 ? 'session awaits' : 'sessions await'} a next-morning response before progression.</p>}
         <PrimaryButton onClick={nextAction.run}>{nextAction.label} <span aria-hidden="true">→</span></PrimaryButton>
+        {responseDue && nextAction.label !== "Record next-morning response" && <button className="text-button" onClick={()=>onResponse(responseDue)}>Record next-morning response</button>}
+        {readiness && <button className="text-button update-checkin" onClick={onCheckIn}>Update check-in</button>}
+        {!readiness && nextAction.run !== onCheckIn && <button className="text-button" onClick={onCheckIn}>Check In</button>}
+        {pending.filter(s=>s.date < dayKey()).length > 1 && <details><summary>Other outstanding responses</summary>{pending.filter(s=>s.date < dayKey() && s.id !== responseDue?.id).map(s=><button className="text-button" key={s.id} onClick={()=>onResponse(s)}>Record response · {new Date(s.date+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'})}</button>)}</details>}
       </Card>
-      {pending.length > 0 && (
-        <Card className="pending-card">
-          <Icon name="clock" />
-          <div>
-            <h3>Next-morning response</h3>
-            <p>
-              {pending.length} saved{" "}
-              {pending.length === 1 ? "session needs" : "sessions need"} a
-              next-morning response before progression.
-            </p>
-            {pending
-              .filter((s) => s.date < dayKey())
-              .map((s) => (
-                <button
-                  className="text-button"
-                  key={s.id}
-                  onClick={() => onResponse(s)}
-                >
-                  Record response · {s.date}
-                </button>
-              ))}
-          </div>
-        </Card>
-      )}
       {red ? (
         <Card>
           <h2>No Achilles workout today</h2>
@@ -153,7 +114,7 @@ export function Today({
 
             {responseDue && assessment && readiness && canOpenWorkout && !completed && !recovery && <button className="text-button" onClick={onWorkout}>{hasDraft ? "Resume Workout" : "Open Workout"}</button>}
             {responseDue && assessment && readiness && (completed || recovery) && <button className="text-button" onClick={() => onRecovery()}>Log recovery</button>}
-            <div className="workout-preview">
+            <details className="workout-preview" hidden={!workout.items.length || completed}><summary>View exercise list</summary>
               {!completed &&
                 workout.items.map((ex) => (
                   <div className="preview-row" key={ex.id}>
@@ -164,7 +125,7 @@ export function Today({
                     </span>
                   </div>
                 ))}
-            </div>
+            </details>
 
             {!readiness && !recovery && !completed && (
               <p className="helper">
@@ -175,13 +136,6 @@ export function Today({
           </Card>
         </>
       )}
-      <Card>
-        <h2>Training and progression</h2>
-        <p><strong>Today:</strong> {red ? "Achilles loading is stopped." : !assessment ? "Record your baseline to establish a starting plan." : readiness ? readiness.action : "Check in to determine today's loading."}</p>
-        <p><strong>Your session:</strong> {workout.title}.</p>
-        <p><strong>Next step:</strong> {pending.length ? "Record the required next-morning response before increasing demand." : "Use your recorded performance and relevant capacity reviews to guide progression."}</p>
-        <p className="helper">A sport requirement is specific to that activity; it is not a score for your entire rehabilitation.</p>
-      </Card>
       <Card className="milestone-card">
         <div className="eyebrow">NEXT MILESTONE</div>
         <h3>
@@ -199,7 +153,7 @@ export function Today({
           View Tests <Icon name="arrow" size={15} />
         </button>
       </Card>
-      <Card className="movement-support">
+      <section className="movement-support supporting-section">
         <div className="section-heading">
           <h2>Movement support</h2>
           <button className="text-button" onClick={() => onRecovery()}>
@@ -233,7 +187,7 @@ export function Today({
             </button>
           ))}
         </div>
-      </Card>
+      </section>
       <DailyBrand />
       <p className="local-note">
         <Icon name="lock" size={13} /> Your progress stays on this device.

@@ -147,11 +147,11 @@ try {
     }))
       await page.locator(`input[name="${name}"][value="${value}"]`).check();
     await page.getByRole("button", { name: "See Today’s Plan" }).click();
-    await page.getByRole("heading", { name: "Ready to Train" }).waitFor();
+    await page.getByRole("heading", { name: /Ready to Train|Next-morning review due/ }).waitFor();
   };
   const response = async () => {
     await page
-      .getByRole("button", { name: /Record response/ })
+      .getByRole("button", { name: /Record next-morning response|Record response/ })
       .first()
       .click();
     await page.locator("#field-change").selectOption("baseline");
@@ -302,7 +302,13 @@ try {
   );
   const load = "Single-Leg Calf Raise set 1 load",
     reps = "Single-Leg Calf Raise set 1 reps";
+  await page.evaluate(()=>window.scrollTo(0,0));
+  await page.screenshot({path:resolve(artifacts,'design-workout-mobile.png')});
+  const firstRow=await page.getByLabel('Single-Leg Calf Raise set 1 load',{exact:true}).boundingBox();
+  assert.ok(firstRow && firstRow.y+firstRow.height < 780,'First logging row above bottom navigation');
+  pass('Compact workout reaches the first logging row in the initial phone view');
   const fullCardCount = await page.locator(".exercise-card").count();
+  await page.getByText("Session options",{exact:true}).click();
   await page.getByRole("checkbox", {name:/Shorter session/}).check();
   assert.ok(await page.locator(".exercise-card").count() < fullCardCount);
   await page.getByRole("spinbutton", {name:load,exact:true}).waitFor();
@@ -314,6 +320,7 @@ try {
   await feedbackCard.getByLabel('Single-Leg Calf Raise set 1 RPE',{exact:true}).fill('7');
   await feedbackCard.getByLabel('Single-Leg Calf Raise set 1 quality',{exact:true}).selectOption('good');
   await feedbackCard.getByLabel('Single-Leg Calf Raise set 1 symptoms',{exact:true}).selectOption('none');
+  await feedbackCard.getByText('First-set feedback shortcut',{exact:true}).click();
   await feedbackCard.getByRole('button',{name:'Use first-set feedback for remaining sets',exact:true}).click();
   await feedbackCard.getByText('Set 2 · RPE, quality & symptoms',{exact:true}).click();
   assert.equal(await feedbackCard.getByLabel('Single-Leg Calf Raise set 2 RPE',{exact:true}).inputValue(),'7');
@@ -354,8 +361,8 @@ try {
   await illustrationTrigger.click();
   await illustratedCalf.locator('.illustration-detail img').evaluate(img=>img.decode());
   assert.equal(await illustratedCalf.locator('.illustration-detail img').evaluate(img=>img.naturalWidth),640);
-  assert.equal(await page.getByRole('spinbutton',{name:load,exact:true}).inputValue(),'20');
-  assert.equal(await page.getByRole('spinbutton',{name:reps,exact:true}).inputValue(),'10');
+  assert.equal(await page.locator('input[aria-label="'+load+'"]').inputValue(),'20');
+  assert.equal(await page.locator('input[aria-label="'+reps+'"]').inputValue(),'10');
   await illustratedCalf.screenshot({path:resolve(artifacts,'workout-illustration.png'),style:'.session-dashboard, .bottom-nav { visibility: hidden; }'});
   await illustratedCalf.getByRole('button',{name:'Close illustration'}).click();
   assert.equal(await illustrationTrigger.evaluate(el=>el===document.activeElement),true);
@@ -554,6 +561,7 @@ try {
   await response();
   await nav("Progress");
   await page.getByRole('button',{name:'Overview',exact:true}).click();
+  await page.locator('.history-row > summary').first().click();
   const readableReview=page.locator('.coaching-review').first();
   await readableReview.getByText('AI coaching review',{exact:true}).click();
   const readableReport=await readableReview.getByLabel('Coaching report',{exact:true}).inputValue();
@@ -591,6 +599,7 @@ try {
   assert.deepEqual(corrected.nextDayResponse,beforeCorrection.nextDayResponse); assert.equal(corrected.status,beforeCorrection.status);
   await page.reload(); await enterIntro(); await nav('Progress');
   await page.getByRole('button',{name:'Overview',exact:true}).click();
+  await page.locator('.history-row > summary').first().click();
   await page.locator('.coaching-review').first().getByText('AI coaching review',{exact:true}).click();
   const revisedText=await page.locator('.coaching-review').first().getByLabel('Coaching report',{exact:true}).inputValue();
   assert.ok(revisedText.includes('Corrected setup: load is per hand.') && revisedText.includes('Weekly training context'));
@@ -918,6 +927,7 @@ try {
     .getByRole("button", { name: "Clear filters", exact: true })
     .click();
   await page.getByRole("button", { name: "All exercises", exact: true }).click();
+  await page.locator(".library-filters > summary").click();
   await page.getByLabel("Equipment", { exact: true }).selectOption("plyo-ball");
   assert.equal(
     await page.getByRole("link", { name: /Short Demo:/ }).count(),
@@ -1253,6 +1263,18 @@ try {
   await page.getByRole("button",{name:/Replay welcome/}).click();
   await page.getByRole("button",{name:"Get Started",exact:true}).waitFor();
   pass("Daily branding stays stable on refresh; returning launch and optional hero replay work");
+  await page.getByRole('button',{name:'Get Started',exact:true}).click();
+  await nav('Today');
+  for(const width of [320,390,1440]) {
+    await page.setViewportSize({width,height:900}); await page.evaluate(()=>window.scrollTo(0,0));
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+    await page.screenshot({path:resolve(artifacts,`design-today-${width}.png`),fullPage:true});
+  }
+  const img=page.locator('.daily-brand img'); await img.evaluate(i=>i.decode());
+  assert.equal(await img.evaluate(i=>getComputedStyle(i).objectFit),'contain');
+  assert.equal(await page.locator('.daily-brand figcaption').evaluate(e=>getComputedStyle(e).position),'static');
+  assert.ok((await page.locator('.app-shell').boundingBox()).width<=720);
+  pass('Phone and desktop layouts reflow; daily photo is uncropped and caption stays below; desktop retains 720px shell');
   assert.deepEqual(errors, []);
   pass("No browser runtime errors");
   await writeFile(

@@ -4,6 +4,7 @@
     "Baseline autosaves and resumes after exit and reload",
     "All baseline sections validate, calculate measured results and activate the plan",
     "Workout timer starts explicitly, includes rest and excludes paused time",
+    "Compact workout reaches the first logging row in the initial phone view",
     "Shorter session hides optional accessories and restores the original full workout",
     "First-set feedback prefills blank fields, allows overrides and confirms only completed sets",
     "Workout thumbnail and enlarged artwork preserve logged sets; close and Escape restore focus",
@@ -34,6 +35,7 @@
     "Independent zero measurement survives reload without changing clinical assessments",
     "Favorite exercise survives reload and appears in Favorites",
     "Daily branding stays stable on refresh; returning launch and optional hero replay work",
+    "Phone and desktop layouts reflow; daily photo is uncropped and caption stays below; desktop retains 720px shell",
     "No browser runtime errors"
   ],
   "failed": 0,

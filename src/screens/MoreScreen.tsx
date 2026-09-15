@@ -54,8 +54,8 @@ export function MoreScreen({
   return (
     <>
       <div className="screen-heading">
-        <h1>More</h1>
-        {onWelcome && <button className="text-button" onClick={onWelcome}>Replay welcome hero</button>}
+        <h1>{({library:"Exercise library",profile:"Profile & schedule",evidence:"Evidence & rules",backup:"Backup & restore",about:"About & install"} as Record<string,string>)[section] || "More"}</h1>
+        {onWelcome && !section && <button className="text-button" onClick={onWelcome}>Replay welcome hero</button>}
         <p>Your plan, your data, your device.</p>
       </div>
       {section && (

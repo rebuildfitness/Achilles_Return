@@ -1,3 +1,4 @@
+import { displayDate } from "../data/displayDates.js";
 import { useState } from "react";
 import { Card } from "./ui";
 import type { Assessment } from "../types";
@@ -62,10 +63,54 @@ export function AssessmentProgress({
           </option>
         ))}
       </select>
+      <label htmlFor="trend-month">Comparison month</label>
+      <select
+        id="trend-month"
+        value={month}
+        onChange={(e) => setMonth(e.target.value)}
+      >
+        {months.map((m) => (
+          <option key={m} value={m}>{displayDate(m,true)}</option>
+        ))}
+      </select>
+      <div className="assessment-table">
+        <table>
+          <caption>
+            {definition.label} · {displayDate(month,true)}
+          </caption>
+          <thead>
+            <tr>
+              <th>Series</th>
+              <th>Starting</th>
+              <th>Finishing</th>
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            {definition.keys.map((_, side) => {
+              const start = trendValue(pair.start, definition, side),
+                end = trendValue(pair.finish, definition, side);
+              return (
+                <tr key={side}>
+                  <th>{labels[side]}</th>
+                  <td>{show(start)}</td>
+                  <td>{show(end)}</td>
+                  <td>
+                    {start === null || end === null
+                      ? "Not recorded"
+                      : `${end - start > 0 ? "+" : ""}${Math.round((end - start) * 100) / 100} ${definition.unit}`}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
       {!records.length ? (
         <p>No measurements yet. Save your starting baseline in Tests.</p>
       ) : (
         <>
+          <div className="metric-summary">{definition.keys.map((_,side)=>{const values=records.map(a=>({value:trendValue(a,definition,side),date:assessmentDate(a)})).filter(x=>x.value!==null); const latest=values.at(-1); return <div key={side}><span>{labels[side]}</span><strong>{show(latest?.value ?? null)}</strong><small>{latest ? displayDate(latest.date) : 'No measurements yet'}</small></div>;})}</div>
           <svg
             className="assessment-chart"
             viewBox="0 0 360 210"
@@ -132,49 +177,6 @@ export function AssessmentProgress({
           </p>
         </>
       )}
-      <label htmlFor="trend-month">Comparison month</label>
-      <select
-        id="trend-month"
-        value={month}
-        onChange={(e) => setMonth(e.target.value)}
-      >
-        {months.map((m) => (
-          <option key={m}>{m}</option>
-        ))}
-      </select>
-      <div className="assessment-table">
-        <table>
-          <caption>
-            {definition.label} · {month}
-          </caption>
-          <thead>
-            <tr>
-              <th>Series</th>
-              <th>Starting</th>
-              <th>Finishing</th>
-              <th>Change</th>
-            </tr>
-          </thead>
-          <tbody>
-            {definition.keys.map((_, side) => {
-              const start = trendValue(pair.start, definition, side),
-                end = trendValue(pair.finish, definition, side);
-              return (
-                <tr key={side}>
-                  <th>{labels[side]}</th>
-                  <td>{show(start)}</td>
-                  <td>{show(end)}</td>
-                  <td>
-                    {start === null || end === null
-                      ? "Not recorded"
-                      : `${end - start > 0 ? "+" : ""}${Math.round((end - start) * 100) / 100} ${definition.unit}`}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
       <p className="helper">
         Missing values leave a gap; they are never plotted as zero. Compare
         strength loads alongside repetitions, symptoms and the same
@@ -196,7 +198,7 @@ export function AssessmentProgress({
             <tbody>
               {records.map((a) => (
                 <tr key={a.id}>
-                  <td>{assessmentDate(a)}</td>
+                  <td>{displayDate(assessmentDate(a))}</td>
                   <td>{String(a.values.assessmentSlot || "Historical")}</td>
                   {definition.keys.map((_, side) => (
                     <td key={side}>{show(trendValue(a, definition, side))}</td>

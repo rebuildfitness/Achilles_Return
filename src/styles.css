@@ -1276,3 +1276,5 @@ pre {
 .coaching-review { width: 100%; margin: 12px 0; }
 .coaching-review textarea { width: 100%; min-height: 180px; font: inherit; padding: 12px; border: 1px solid var(--line200); border-radius: var(--radius-input); }
 .feedback-carry .helper { text-align: left; }
+
+/* Design refinements loaded after the base component styles. */
