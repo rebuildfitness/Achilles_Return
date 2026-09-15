@@ -13,8 +13,8 @@ export function Welcome({
       <AppHeader onProfile={() => onStart(true)} />
       <main className="welcome-content">
         <img
-          src={`${import.meta.env.BASE_URL}assets/daily-brand/day-01.webp`}
-          alt="Athlete training toward a return to sport"
+          src={`${import.meta.env.BASE_URL}assets/hero-reference.png`}
+          alt="Achilles Return artwork featuring a man shooting a basketball"
           className="welcome-art"
         />
         <div className="welcome-copy">

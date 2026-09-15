@@ -12,7 +12,7 @@ This cumulative package contains the application source, all existing exercise a
 - Progress promotes recorded chart values and monthly comparison tables, distinguishes missing observations from zero, and uses scrolling destination controls.
 - Session history shares view, edit and coaching-export controls across Plan and Progress.
 - Exercise images open in a native modal; closing restores focus, logging data and timer state.
-- Welcome uses an existing athlete photograph with live interface text. Today photographs retain their natural aspect ratio with branding below the image.
+- Welcome restores the original basketball-shooting hero artwork at the user's request; the updated layout and live controls remain. Today photographs retain their natural aspect ratio with branding below the image.
 - Desktop deliberately retains the approved centered 720px shell. No separate desktop data store or application is introduced.
 - Existing capability milestone presentation and shared icon set are retained. No clinical thresholds or clearance model were changed for this release.
 
@@ -153,3 +153,7 @@ The agreed responsive design uses one local-first app on phone and desktop. Exis
 - `src/screens/Welcome.tsx`
 - `src/screens/Workout.tsx`
 - `src/styles.css`
+
+## Welcome image preference update
+
+Restored public/assets/hero-reference.png in src/screens/Welcome.tsx. The original artwork includes its own branding and phone mockups; this user preference supersedes the prior photograph-only treatment. TypeScript and production build passed after this one-image change. The full regression results above apply to the preceding design release.
