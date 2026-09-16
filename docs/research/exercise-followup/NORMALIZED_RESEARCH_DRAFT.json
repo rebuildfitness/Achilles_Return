@@ -1,0 +1,3723 @@
+{
+  "schemaVersion": "research-handoff-1",
+  "appContextVersion": "1.4.0",
+  "preparedAt": "2026-09-16",
+  "browsingAvailable": true,
+  "sources": [
+    {
+      "id": "src-marrone-2024",
+      "title": "Rehabilitation and Return to Sports after Achilles Tendon Repair",
+      "authorsOrOrganization": "Marrone W, Andrews R, Reynolds A, et al.",
+      "year": 2024,
+      "url": "https://ijspt.scholasticahq.com/article/122643-rehabilitation-and-return-to-sports-after-achilles-tendon-repair",
+      "doiOrPmid": "doi:10.26603/001c.122643; PMID:39246413",
+      "evidenceType": "clinical commentary",
+      "population": "Adults after surgical Achilles tendon repair; recommendations synthesize literature and clinical practice.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Not a trial or a surgeon-specific protocol. Exercise timing, loading and return-to-sport decisions still require individual assessment; cited healthy-adult biomechanics are indirect."
+    },
+    {
+      "id": "src-gaspar-2026",
+      "title": "Return to running after Achilles tendon rupture: an international Delphi consensus",
+      "authorsOrOrganization": "Gaspar and international Delphi panel",
+      "year": 2026,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42503592/",
+      "doiOrPmid": "PMID:42503592",
+      "evidenceType": "expert consensus (Delphi)",
+      "population": "Return-to-running decisions after Achilles tendon rupture.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Consensus criteria require prospective validation and do not make a single exercise, elapsed time or 90% symmetry a universal clearance rule."
+    },
+    {
+      "id": "src-revak-2017",
+      "title": "Achilles Tendon Loading During Heel-Raising and -Lowering Exercises",
+      "authorsOrOrganization": "Revak A, Diers K, Kernozek TW",
+      "year": 2017,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28145739/",
+      "doiOrPmid": "doi:10.4085/1062-6050-52.1.04; PMID:28145739",
+      "evidenceType": "laboratory biomechanics study",
+      "population": "Healthy younger adults performing heel-raise and heel-lowering variations.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Estimates relative tendon loading; it does not establish postoperative readiness, safety, dose, range or progression timing.",
+      "developerCorrection": "Author list corrected from original PMC article."
+    },
+    {
+      "id": "src-bohm-2022",
+      "title": "Human Achilles tendon adaptation in response to exercise: a systematic review and meta-analysis",
+      "authorsOrOrganization": "Bohm and colleagues",
+      "year": 2022,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36278501/",
+      "doiOrPmid": "PMID:36278501",
+      "evidenceType": "systematic review and meta-analysis",
+      "population": "Primarily healthy participants in tendon-loading studies.",
+      "accessedAt": "2026-09-16",
+      "limitations": "General tendon adaptation evidence is not a postoperative prescription and does not validate any candidate's starting load or eligibility.",
+      "verificationStatus": "quarantined",
+      "eligibleForClinicalClaims": false
+    },
+    {
+      "id": "src-acsm-2026",
+      "title": "Resistance Training Prescription for Muscle Function, Hypertrophy, and Physical Performance in Healthy Adults: An Overview of Reviews",
+      "authorsOrOrganization": "American College of Sports Medicine; Currier and colleagues",
+      "year": 2026,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41843416/",
+      "doiOrPmid": "doi:10.1249/MSS.0000000000003897; PMID:41843416",
+      "evidenceType": "position stand / overview of reviews",
+      "population": "Healthy adults performing resistance training.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Supports general resistance-training principles only; not Achilles repair clearance, exercise-specific dosing, or equivalence among machines and free weights."
+    },
+    {
+      "id": "src-cheng-2024",
+      "title": "Effects of short foot training on foot posture in patients with flatfeet: A systematic review and meta-analysis",
+      "authorsOrOrganization": "Cheng and colleagues",
+      "year": 2024,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38517769/",
+      "doiOrPmid": "doi:10.3233/BMR-230226; PMID:38517769",
+      "evidenceType": "systematic review and meta-analysis",
+      "population": "People with flat feet; studies varied in symptoms and intervention duration.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Indirect to surgically repaired Achilles tendons; does not show that this drill is required, safe now, or superior to current rehabilitation.",
+      "developerVerification": "Title reconciled; PMID pairing still requires verification."
+    },
+    {
+      "id": "src-backward-walk-2025",
+      "title": "Effects of backward walking exercise on knee osteoarthritis: a systematic review and meta-analysis of randomized trials",
+      "authorsOrOrganization": "Authors indexed in PubMed",
+      "year": 2025,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40924430/",
+      "doiOrPmid": "PMID:40924430",
+      "evidenceType": "systematic review and meta-analysis of randomized trials",
+      "population": "Adults with knee osteoarthritis.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Wrong clinical population for postoperative Achilles decisions; does not verify treadmill compatibility or establish a safe speed, grade, dose or progression."
+    },
+    {
+      "id": "src-fringe-mammoth-2026",
+      "title": "Mammoth Belt Squat product page",
+      "authorsOrOrganization": "Fringe Sport",
+      "year": 2026,
+      "url": "https://www.fringesport.com/collections/squat-rack-attachments/products/mammoth-belt-squat",
+      "doiOrPmid": null,
+      "evidenceType": "manufacturer product information",
+      "population": "Equipment users; not a clinical population.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Supports only advertised equipment use. It is not clinical evidence, does not confirm the user's exact attachment/configuration, and does not confer readiness."
+    },
+    {
+      "id": "src-aaos-foot-ankle",
+      "title": "Foot and Ankle Conditioning Program",
+      "authorsOrOrganization": "American Academy of Orthopaedic Surgeons",
+      "year": null,
+      "url": "https://orthoinfo.aaos.org/en/recovery/foot-and-ankle-conditioning-program/",
+      "doiOrPmid": null,
+      "evidenceType": "patient education / conditioning guidance",
+      "population": "General foot and ankle conditioning audience.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Generic instruction, not a postoperative Achilles protocol, individualized clearance or validation of candidate-specific loading."
+    },
+    {
+      "id": "src-nsca-rdl",
+      "title": "Romanian Deadlift (RDL)",
+      "authorsOrOrganization": "National Strength and Conditioning Association",
+      "year": null,
+      "url": "https://www.nsca.com/education/articles/kinetic-select/romanian-deadlift-rdl/",
+      "doiOrPmid": null,
+      "evidenceType": "professional technique education",
+      "population": "General strength-training audience.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Technique reference only; not specific to a trap bar, Smith machine, surgical Achilles rehabilitation, or personalized loading."
+    }
+  ],
+  "candidates": [
+    {
+      "candidateNumber": 1,
+      "proposedId": "library-tibialis-raise",
+      "name": "Tibialis raise",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "No exact record was found. Add as optional anterior lower-leg reference content, not as an Achilles progression criterion.",
+      "existingMatches": [],
+      "aliases": [
+        "anterior tibialis raise",
+        "wall tib raise"
+      ],
+      "equipmentIds": [],
+      "additionalSetupRequirements": [],
+      "equipmentFeasibility": "verified-bodyweight",
+      "purpose": "Anterior lower-leg strength and ankle dorsiflexion control.",
+      "movementPattern": "standing ankle dorsiflexion",
+      "muscles": [
+        "tibialis anterior"
+      ],
+      "laterality": "bilateral or unilateral",
+      "setupSteps": [
+        "Stand with upper back against a wall and feet slightly forward.",
+        "Keep heels planted and begin with toes relaxed on the floor."
+      ],
+      "executionCues": [
+        "Lift the forefeet toward the shins without rocking onto the heels.",
+        "Lower under control while the heels stay down."
+      ],
+      "commonErrors": [
+        "Bending the knees to create the motion.",
+        "Rocking the whole body instead of moving at the ankles.",
+        "Letting the feet roll outward."
+      ],
+      "loggingFields": [
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "External load",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "assistance",
+          "label": "Assistance",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Bodyweight; record no numeric load unless an independently reviewed resistance setup is used.",
+      "achillesConsiderations": [
+        "Catalog inclusion does not establish current tolerance for repeated ankle motion.",
+        "Stop and apply the existing symptom/red-flag process if symptoms change."
+      ],
+      "existingPrerequisiteReferences": [],
+      "unresolvedPrerequisites": [
+        "Current ankle range and symptom response are not supplied."
+      ],
+      "regressions": [
+        {
+          "name": "Seated toe lift",
+          "existingId": null,
+          "rationale": "Reduces balance demand while preserving active dorsiflexion; still requires review.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Single-leg tibialis raise",
+          "existingId": null,
+          "rationale": "Adds unilateral demand and is not an automatic progression.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "movement-support candidate",
+      "approvedForAutomaticScheduling": false,
+      "demos": [
+        {
+          "url": "https://www.hingehealth.com/resources/articles/tibialis-raises/",
+          "sourcePage": "https://www.hingehealth.com/resources/articles/tibialis-raises/",
+          "title": "Tibialis Raises: Exercise Guide",
+          "provider": "Hinge Health",
+          "durationSeconds": null,
+          "startSeconds": null,
+          "endSeconds": null,
+          "access": "public",
+          "pageVerified": true,
+          "playbackVerified": false,
+          "exactMovementVerified": true,
+          "verifiedAt": "2026-09-16",
+          "verificationNotes": "Public page and exact written wall-raise sequence verified; embedded video playback was not checked."
+        }
+      ],
+      "claims": [],
+      "illustrationBrief": {
+        "startPosition": "Adult standing with back against a wall, heels down and toes on floor.",
+        "endPosition": "Same stance with forefeet lifted toward shins.",
+        "equipment": "Wall",
+        "importantAnatomyAndAlignment": "Heels remain planted; motion occurs at ankles.",
+        "cameraAngle": "Three-quarter side view showing feet and shins.",
+        "avoid": "Do not show heel lift, deep knee bend, or a loaded device."
+      },
+      "reviewQuestions": [
+        "Should this remain optional movement support or be reviewed for a specific training slot?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 2,
+      "proposedId": "library-banded-ankle-dorsiflexion",
+      "name": "Banded ankle dorsiflexion",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "Knee-to-wall dorsiflexion mobility exists, but resisted dorsiflexion does not; the resistance intent is materially different.",
+      "existingMatches": [
+        {
+          "collection": "movementExercises",
+          "id": "knee-to-wall-dorsiflexion-mobility",
+          "name": "Knee-to-wall dorsiflexion mobility",
+          "relationship": "related",
+          "reason": "Existing item trains mobility; candidate adds external dorsiflexion resistance."
+        }
+      ],
+      "aliases": [
+        "resisted ankle dorsiflexion"
+      ],
+      "equipmentIds": [
+        "rehab-bands"
+      ],
+      "additionalSetupRequirements": [
+        "Stable low anchor that cannot release",
+        "Band with known identifier/condition"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Resisted ankle dorsiflexion control.",
+      "movementPattern": "seated resisted ankle dorsiflexion",
+      "muscles": [
+        "tibialis anterior",
+        "ankle dorsiflexors"
+      ],
+      "laterality": "unilateral",
+      "setupSteps": [
+        "Sit with the working heel supported and the band anchored in front of the foot.",
+        "Place the band across the forefoot without compressing the toes."
+      ],
+      "executionCues": [
+        "Draw the forefoot toward the shin while the heel stays still.",
+        "Return slowly without letting the band pull the foot inward or outward."
+      ],
+      "commonErrors": [
+        "Moving the whole leg.",
+        "Band slipping across the toes.",
+        "Using an unverified anchor or excessive stretch."
+      ],
+      "loggingFields": [
+        {
+          "key": "side",
+          "label": "Side",
+          "unit": "left/right",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "band",
+          "label": "Band identifier",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "anchor",
+          "label": "Anchor setup",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record the band identifier/color and anchor distance; do not convert band resistance to pounds.",
+      "achillesConsiderations": [
+        "This is not equivalent to dorsiflexion range clearance.",
+        "Band tension and ankle range require individual setup review."
+      ],
+      "existingPrerequisiteReferences": [
+        "knee-to-wall-dorsiflexion-mobility"
+      ],
+      "unresolvedPrerequisites": [
+        "Safe anchor, band resistance and permitted ankle range are not confirmed."
+      ],
+      "regressions": [
+        {
+          "name": "Active seated dorsiflexion",
+          "existingId": null,
+          "rationale": "Removes external resistance; still monitor symptoms and range.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Higher band tension",
+          "existingId": null,
+          "rationale": "Changes load and requires separate review rather than automatic progression.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "movement-support candidate",
+      "approvedForAutomaticScheduling": false,
+      "demos": [
+        {
+          "url": "https://www.cornell.edu/video/ankle-dorsiflexion-with-band",
+          "sourcePage": "https://www.cornell.edu/video/ankle-dorsiflexion-with-band",
+          "title": "Ankle Dorsiflexion with Band",
+          "provider": "Cornell Physical Therapy",
+          "durationSeconds": null,
+          "startSeconds": null,
+          "endSeconds": null,
+          "access": "unknown",
+          "pageVerified": false,
+          "playbackVerified": false,
+          "exactMovementVerified": false,
+          "verifiedAt": null,
+          "verificationNotes": "Exercise-specific result was located, but direct page access returned 403; neither movement nor playback was verified."
+        }
+      ],
+      "claims": [],
+      "illustrationBrief": {
+        "startPosition": "Seated adult with heel supported, band anchored in front and looped over forefoot.",
+        "endPosition": "Forefoot drawn toward shin while heel remains fixed.",
+        "equipment": "Rehab band and stable low anchor",
+        "importantAnatomyAndAlignment": "Knee and heel remain still; foot stays neutral.",
+        "cameraAngle": "Side view centered on lower leg and anchor.",
+        "avoid": "Do not show band around the toes, an unsecured anchor, or forced end range."
+      },
+      "reviewQuestions": [
+        "Which band and anchor configuration should the developer document?",
+        "What ankle range is currently permitted for resisted dorsiflexion?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 3,
+      "proposedId": "library-short-foot",
+      "name": "Short-foot / arch-dome exercise",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "No exact intrinsic-foot-control drill was found. Evidence is indirect from flat-foot populations, so position it as optional movement support.",
+      "existingMatches": [],
+      "aliases": [
+        "foot doming",
+        "arch lift"
+      ],
+      "equipmentIds": [],
+      "additionalSetupRequirements": [],
+      "equipmentFeasibility": "verified-bodyweight",
+      "purpose": "Intrinsic foot control without curling the toes.",
+      "movementPattern": "foot doming",
+      "muscles": [
+        "intrinsic foot muscles"
+      ],
+      "laterality": "bilateral or unilateral",
+      "setupSteps": [
+        "Sit or stand with heel, base of the great toe and base of the little toe contacting the floor.",
+        "Relax the toes before beginning."
+      ],
+      "executionCues": [
+        "Gently shorten the foot by drawing the ball of the foot toward the heel.",
+        "Keep all three contact points and the toes long."
+      ],
+      "commonErrors": [
+        "Curling or gripping the toes.",
+        "Rolling to the outside edge.",
+        "Lifting the heel or forefoot."
+      ],
+      "loggingFields": [
+        {
+          "key": "side",
+          "label": "Side",
+          "unit": "left/right",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "durationSeconds",
+          "label": "Hold time",
+          "unit": "seconds",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "position",
+          "label": "Position",
+          "unit": "seated/standing",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": null,
+      "achillesConsiderations": [
+        "Indirect evidence does not establish postoperative need or timing.",
+        "Standing versions add weight-bearing demand and require their own eligibility check."
+      ],
+      "existingPrerequisiteReferences": [],
+      "unresolvedPrerequisites": [
+        "Whether seated or standing weight-bearing is appropriate is not documented."
+      ],
+      "regressions": [
+        {
+          "name": "Seated short-foot",
+          "existingId": null,
+          "rationale": "Reduces weight-bearing and balance demand.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Standing short-foot",
+          "existingId": null,
+          "rationale": "Adds weight-bearing demand and requires separate review.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "movement-support candidate",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [
+        {
+          "text": "Short-foot exercise has been studied for arch and lower-extremity outcomes in people with flat feet.",
+          "sourceIds": [
+            "src-cheng-2024"
+          ],
+          "evidenceType": "systematic review and meta-analysis",
+          "applicabilityToPostSurgicalAchilles": "indirect",
+          "uncertainty": "The population and target condition differ from postoperative Achilles rehabilitation; no readiness conclusion follows."
+        }
+      ],
+      "illustrationBrief": {
+        "startPosition": "Seated adult with bare foot flat, tripod contact points visible.",
+        "endPosition": "Arch gently lifted while toes remain long and on floor.",
+        "equipment": "None",
+        "importantAnatomyAndAlignment": "Heel and metatarsal contact retained; no toe curl.",
+        "cameraAngle": "Low front three-quarter view of foot.",
+        "avoid": "Do not exaggerate arch height or show clawed toes."
+      },
+      "reviewQuestions": [
+        "Should the initial content show seated only, pending weight-bearing review?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 4,
+      "proposedId": "library-toe-yoga",
+      "name": "Toe yoga / independent great-toe control",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "No exact toe-dissociation exercise was found. Add as optional coordination content with no claim that it advances Achilles readiness.",
+      "existingMatches": [],
+      "aliases": [
+        "great-toe dissociation",
+        "independent toe control"
+      ],
+      "equipmentIds": [],
+      "additionalSetupRequirements": [],
+      "equipmentFeasibility": "verified-bodyweight",
+      "purpose": "Independent great-toe and lesser-toe coordination.",
+      "movementPattern": "toe dissociation",
+      "muscles": [
+        "intrinsic foot muscles",
+        "toe flexors and extensors"
+      ],
+      "laterality": "bilateral or unilateral",
+      "setupSteps": [
+        "Sit or stand with the foot supported and all toes relaxed.",
+        "Keep the heel and ball of the foot in contact."
+      ],
+      "executionCues": [
+        "Lift the great toe while the lesser toes stay down.",
+        "Then press the great toe down while lifting the lesser toes; move only as far as control allows."
+      ],
+      "commonErrors": [
+        "Rolling the foot to create the motion.",
+        "Clawing the toes.",
+        "Forcing motion or cramping through repeated attempts."
+      ],
+      "loggingFields": [
+        {
+          "key": "side",
+          "label": "Side",
+          "unit": "left/right",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "reps",
+          "label": "Controlled cycles",
+          "unit": "count",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "position",
+          "label": "Position",
+          "unit": "seated/standing",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": null,
+      "achillesConsiderations": [
+        "Foot coordination is not a clearance test or automatic prerequisite.",
+        "Standing adds weight-bearing demand."
+      ],
+      "existingPrerequisiteReferences": [],
+      "unresolvedPrerequisites": [
+        "Appropriate seated versus standing start is not confirmed."
+      ],
+      "regressions": [
+        {
+          "name": "Seated assisted toe dissociation",
+          "existingId": null,
+          "rationale": "Allows light hand guidance and reduces balance demand.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Standing toe yoga",
+          "existingId": null,
+          "rationale": "Adds weight-bearing and must be reviewed separately.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "movement-support candidate",
+      "approvedForAutomaticScheduling": false,
+      "demos": [
+        {
+          "url": "https://www.sharp.com/health-news/relieving-plantar-fasciitis-pain-with-toe-yoga-video",
+          "sourcePage": "https://www.sharp.com/health-news/relieving-plantar-fasciitis-pain-with-toe-yoga-video",
+          "title": "Relieving plantar fasciitis pain with toe yoga",
+          "provider": "Sharp HealthCare",
+          "durationSeconds": null,
+          "startSeconds": null,
+          "endSeconds": null,
+          "access": "public",
+          "pageVerified": true,
+          "playbackVerified": false,
+          "exactMovementVerified": true,
+          "verifiedAt": "2026-09-16",
+          "verificationNotes": "Public page and written toe-yoga sequence verified; embedded video playback was not checked. Page is plantar-fasciitis education, not Achilles evidence."
+        }
+      ],
+      "claims": [],
+      "illustrationBrief": {
+        "startPosition": "Supported foot with all toes resting on floor.",
+        "endPosition": "Two small panels: great toe up/lesser toes down, then great toe down/lesser toes up.",
+        "equipment": "None",
+        "importantAnatomyAndAlignment": "Foot tripod stays in contact; ankle remains neutral.",
+        "cameraAngle": "Top-front close view of foot.",
+        "avoid": "Do not show foot rolling, toe clawing, or unsupported balance."
+      },
+      "reviewQuestions": [
+        "Should the first version be seated only?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 5,
+      "proposedId": "library-two-up-one-down-calf-raise",
+      "name": "Straight-knee 2-up/1-down calf raise",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "No exact bilateral-up/unilateral-down record was found. Existing calf raises are related, but this lowering strategy changes tendon demand and must not be auto-unlocked.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "bilateral-calf",
+          "name": "Bilateral calf raise",
+          "relationship": "related",
+          "reason": "Both phases are bilateral in the existing item."
+        },
+        {
+          "collection": "activeCatalog",
+          "id": "single-calf",
+          "name": "Single-leg calf raise",
+          "relationship": "related",
+          "reason": "Both phases are unilateral in the existing item."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "calf-assisted",
+          "name": "Assisted single-leg calf raise",
+          "relationship": "related",
+          "reason": "Assistance differs from bilateral ascent and unilateral lowering."
+        }
+      ],
+      "aliases": [
+        "double-up single-down calf raise",
+        "bilateral-up unilateral-down heel raise"
+      ],
+      "equipmentIds": [],
+      "additionalSetupRequirements": [],
+      "equipmentFeasibility": "review-required",
+      "purpose": "Controlled plantarflexor loading with shared ascent and unilateral lowering.",
+      "movementPattern": "straight-knee heel raise with unilateral lowering",
+      "muscles": [
+        "gastrocnemius",
+        "soleus",
+        "plantarflexors"
+      ],
+      "laterality": "unilateral lowering",
+      "setupSteps": [
+        "Use a stable support and stand on a flat floor; keep both feet fully supported.",
+        "Rise with both legs before shifting only enough to lower on the selected side."
+      ],
+      "executionCues": [
+        "Keep the working knee straight but not locked.",
+        "Lower only to floor level under control; do not drop the heel below the floor."
+      ],
+      "commonErrors": [
+        "Stepping onto an edge or adding below-floor dorsiflexion.",
+        "Dropping quickly.",
+        "Pushing primarily through the arms or twisting the pelvis."
+      ],
+      "loggingFields": [
+        {
+          "key": "side",
+          "label": "Lowering side",
+          "unit": "left/right",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "reps",
+          "label": "Controlled lowerings",
+          "unit": "count",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "External load",
+          "unit": "lb",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "assistance",
+          "label": "Hand support",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "range",
+          "label": "Lowering endpoint",
+          "unit": "floor-level",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Bodyweight by default; if separately cleared for external load, record total external load without inferring tendon load.",
+      "achillesConsiderations": [
+        "Floor-level is mandatory in this candidate content unless additional dorsiflexion has specifically been cleared.",
+        "The floor-level constraint does not establish readiness for eccentric loading.",
+        "Healthy-adult biomechanics show setup-dependent loading; postoperative eligibility remains a clinical decision."
+      ],
+      "existingPrerequisiteReferences": [
+        "bilateral-calf",
+        "single-calf",
+        "calf-assisted",
+        "calf-dumbbell-single",
+        "calf-smith"
+      ],
+      "unresolvedPrerequisites": [
+        "Readiness for unilateral eccentric lowering and acceptable range are not documented."
+      ],
+      "regressions": [
+        {
+          "name": "Bilateral calf raise",
+          "existingId": "bilateral-calf",
+          "rationale": "Keeps ascent and descent bilateral; eligibility still follows existing rules.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Loaded 2-up/1-down calf raise",
+          "existingId": null,
+          "rationale": "Adds load and requires a separate starting-load assessment.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "active-program candidate requiring review",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [
+        {
+          "text": "In healthy younger adults, unilateral portions of heel-raising/lowering tasks produced higher estimated Achilles loading than seated or bilateral variants.",
+          "sourceIds": [
+            "src-revak-2017"
+          ],
+          "evidenceType": "laboratory biomechanics study",
+          "applicabilityToPostSurgicalAchilles": "indirect",
+          "uncertainty": "This does not establish postoperative safety, eligibility, depth, load, dose or timing."
+        }
+      ],
+      "illustrationBrief": {
+        "startPosition": "Adult on flat floor using light fingertip support at the top of a bilateral heel raise.",
+        "endPosition": "One foot lifted slightly while the other heel lowers only to floor level.",
+        "equipment": "Stable support; flat floor",
+        "importantAnatomyAndAlignment": "Working knee straight, heel aligned, pelvis level.",
+        "cameraAngle": "Rear three-quarter view showing both feet and support.",
+        "avoid": "Do not show a step, heel below floor, loaded bar, or loss of balance."
+      },
+      "reviewQuestions": [
+        "Has unilateral eccentric lowering been specifically reviewed?",
+        "Should the library enforce the floor-level endpoint in text and illustration metadata?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 6,
+      "proposedId": "library-bent-knee-soleus-isometric",
+      "name": "Seated bent-knee soleus isometric",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "Existing seated and bent-knee calf exercises are dynamic, and the existing isometric is straight-knee. This is a distinct static bent-knee variation.",
+      "existingMatches": [
+        {
+          "collection": "exerciseLibrary",
+          "id": "calf-isometric-single",
+          "name": "Single-leg calf isometric",
+          "relationship": "related",
+          "reason": "Existing isometric uses a straight-knee single-leg setup."
+        },
+        {
+          "collection": "activeCatalog",
+          "id": "seated-calf",
+          "name": "Seated calf raise",
+          "relationship": "related",
+          "reason": "Existing bent-knee work is dynamic."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "calf-bent-standing",
+          "name": "Bent-knee standing calf raise",
+          "relationship": "related",
+          "reason": "Existing bent-knee work is dynamic."
+        }
+      ],
+      "aliases": [
+        "seated soleus isometric",
+        "bent-knee calf hold"
+      ],
+      "equipmentIds": [],
+      "additionalSetupRequirements": [],
+      "equipmentFeasibility": "review-required",
+      "purpose": "Sustained plantarflexor loading with the knee flexed.",
+      "movementPattern": "bent-knee plantarflexion isometric",
+      "muscles": [
+        "soleus",
+        "plantarflexors"
+      ],
+      "laterality": "bilateral or unilateral",
+      "setupSteps": [
+        "Seated on a stable seat with forefoot supported. Range and external loading remain subject to existing review."
+      ],
+      "executionCues": [
+        "Create a heel-rise effort and hold the chosen static position.",
+        "Keep pressure centered through the forefoot and avoid bouncing."
+      ],
+      "commonErrors": [
+        "Drifting into a straight-knee position.",
+        "Bouncing through the hold.",
+        "Using an unreviewed knee angle, external load or ankle range."
+      ],
+      "loggingFields": [
+        {
+          "key": "side",
+          "label": "Side",
+          "unit": "left/right",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "durationSeconds",
+          "label": "Hold time",
+          "unit": "seconds",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "External load",
+          "unit": "lb",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "position",
+          "label": "Setup",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "heelHeight",
+          "label": "Heel-height note",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Bodyweight or external load only after setup review; record the external load and setup separately.",
+      "achillesConsiderations": [
+        "Knee angle, heel height, ankle range and external load all change the task.",
+        "A clinical commentary depicts flexed-knee plantarflexion isometrics but does not prescribe this candidate's dose or eligibility."
+      ],
+      "existingPrerequisiteReferences": [
+        "seated-calf",
+        "calf-bent-standing",
+        "calf-isometric-single"
+      ],
+      "unresolvedPrerequisites": [
+        "Seated versus standing setup, knee angle, heel height, unilateral status and starting load are unresolved."
+      ],
+      "regressions": [
+        {
+          "name": "Seated calf raise",
+          "existingId": "seated-calf",
+          "rationale": "Existing dynamic bent-knee calf work; not automatically interchangeable with an isometric.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Bent-knee standing calf raise",
+          "existingId": "calf-bent-standing",
+          "rationale": "Existing dynamic alternative with different balance and loading demands.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "active-program candidate requiring review",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [
+        {
+          "text": "A postoperative Achilles repair clinical commentary includes flexed-knee plantarflexion isometric loading among staged rehabilitation examples.",
+          "sourceIds": [
+            "src-marrone-2024"
+          ],
+          "evidenceType": "clinical commentary",
+          "applicabilityToPostSurgicalAchilles": "direct but non-prescriptive",
+          "uncertainty": "It is not a surgeon-specific protocol and does not establish the user's current eligibility, position, dose or load."
+        }
+      ],
+      "illustrationBrief": null,
+      "reviewQuestions": [
+        "Which position and knee angle should be the canonical entry?",
+        "Has a plantarflexion isometric at that range/load been reviewed?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 7,
+      "proposedId": "library-banded-terminal-knee-extension",
+      "name": "Banded terminal knee extension",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "No exact terminal knee extension record was found. Cable and band versions need separate setup notes even if they share movement intent.",
+      "existingMatches": [],
+      "aliases": [
+        "TKE",
+        "standing band knee extension"
+      ],
+      "equipmentIds": [
+        "rehab-bands"
+      ],
+      "additionalSetupRequirements": [
+        "Stable band anchor or cable position",
+        "Hand support"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Controlled final-range knee extension in standing.",
+      "movementPattern": "standing knee extension",
+      "muscles": [
+        "quadriceps"
+      ],
+      "laterality": "unilateral",
+      "setupSteps": [
+        "Confirm band contact and anchor direction against an exact demo before publication."
+      ],
+      "executionCues": [
+        "Straighten the knee by tightening the thigh without shifting the trunk.",
+        "Return to the small bend under control."
+      ],
+      "commonErrors": [
+        "Hyperextending forcefully.",
+        "Rocking the pelvis or lifting the heel.",
+        "Treating cable and band resistance as equivalent."
+      ],
+      "loggingFields": [
+        {
+          "key": "side",
+          "label": "Side",
+          "unit": "left/right",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "resistanceMode",
+          "label": "Resistance mode",
+          "unit": "band/cable",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Cable stack setting",
+          "unit": "displayed setting",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "band",
+          "label": "Band identifier",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "For cable, record displayed stack setting and setup; for band, record band identifier and anchor distance. Do not convert between them.",
+      "achillesConsiderations": [
+        "Standing support and ankle comfort must be checked.",
+        "This does not establish gait, running or sport readiness."
+      ],
+      "existingPrerequisiteReferences": [],
+      "unresolvedPrerequisites": [
+        "Permitted knee range, preferred band/cable setup and stable anchor are not confirmed."
+      ],
+      "regressions": [
+        {
+          "name": "Seated knee extension",
+          "existingId": null,
+          "rationale": "Reduces standing demand but is not an exact equivalent and requires review.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Cable terminal knee extension",
+          "existingId": null,
+          "rationale": "Adds machine-specific resistance and requires an independent starting-load check.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "movement-support candidate",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [],
+      "illustrationBrief": null,
+      "reviewQuestions": [
+        "Should band and cable be separate content records?",
+        "Which attachment is approved behind the knee?"
+      ],
+      "implementationStatus": "research-only",
+      "separateVariantRequired": "Cable terminal knee extension needs a suitable knee strap, distinct setup, logging and demo. Never bare cable against knee.",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 8,
+      "proposedId": "library-cable-hip-adduction",
+      "name": "Cable hip adduction",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "The catalog contains cable hip abduction, not adduction. Add as a distinct frontal-plane direction with cuff setup review.",
+      "existingMatches": [
+        {
+          "collection": "exerciseLibrary",
+          "id": "library-cable-hip-abduction",
+          "name": "Cable hip abduction",
+          "relationship": "related",
+          "reason": "Opposite frontal-plane direction; not a duplicate."
+        }
+      ],
+      "aliases": [
+        "standing cable hip adduction"
+      ],
+      "equipmentIds": [
+        "cable-station"
+      ],
+      "additionalSetupRequirements": [
+        "Cable ankle cuff",
+        "Stable hand support",
+        "Pulley low enough for the intended line of pull"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Standing hip adduction strength using an ankle cuff.",
+      "movementPattern": "standing cable hip adduction",
+      "muscles": [
+        "hip adductors"
+      ],
+      "laterality": "unilateral",
+      "setupSteps": [
+        "Attach the cuff to the working ankle with the cable coming from the side away from the stance leg.",
+        "Use stable support and begin with the working leg slightly out to the side."
+      ],
+      "executionCues": [
+        "Move the working leg inward without rotating the pelvis.",
+        "Return under control while the stance foot remains planted."
+      ],
+      "commonErrors": [
+        "Leaning the trunk.",
+        "Crossing far past neutral.",
+        "Turning the toes or pelvis to escape the cable line."
+      ],
+      "loggingFields": [
+        {
+          "key": "side",
+          "label": "Working side",
+          "unit": "left/right",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Cable stack setting",
+          "unit": "displayed setting",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "pulley",
+          "label": "Pulley/attachment setup",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "assistance",
+          "label": "Hand support",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record displayed stack setting, pulley position and cuff setup; pulley ratio is unknown, so do not convert to free-weight pounds.",
+      "achillesConsiderations": [
+        "The stance leg bears the balance demand; this is not an Achilles clearance test.",
+        "Cable path and cuff placement must not destabilize the user."
+      ],
+      "existingPrerequisiteReferences": [],
+      "unresolvedPrerequisites": [
+        "Cable ratio, lowest pulley geometry, cuff fit, stance tolerance and safe starting resistance are not confirmed."
+      ],
+      "regressions": [
+        {
+          "name": "Supported side-lying hip adduction",
+          "existingId": null,
+          "rationale": "Removes cable and standing-balance demands but is a different setup.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Greater cable resistance",
+          "existingId": null,
+          "rationale": "Requires its own starting-load assessment and is not automatic.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [],
+      "illustrationBrief": {
+        "startPosition": "Adult standing side-on to low cable with cuff on far ankle and hand support.",
+        "endPosition": "Cuffed leg moved inward toward neutral without crossing.",
+        "equipment": "Cable station, ankle cuff, stable support",
+        "importantAnatomyAndAlignment": "Pelvis level, trunk quiet, stance foot flat.",
+        "cameraAngle": "Front three-quarter view showing cable direction.",
+        "avoid": "Do not show trunk lean, crossed legs, or unsupported balance."
+      },
+      "reviewQuestions": [
+        "Is the cuff comfortable and secure for medial cable pull?",
+        "What support position preserves balance without contacting the cable?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 9,
+      "proposedId": "library-cable-resisted-march",
+      "name": "Cable resisted march / hip flexion",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "Existing seated marches are not standing cable-resisted hip flexion. Add as a distinct cuff exercise pending stance and cable setup review.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "seated-march",
+          "name": "Seated march",
+          "relationship": "related",
+          "reason": "Seated and unresisted; lower stance demand."
+        },
+        {
+          "collection": "movementExercises",
+          "id": "seated-core-march",
+          "name": "Seated core march",
+          "relationship": "related",
+          "reason": "Trunk-control exercise rather than standing cable hip flexion."
+        }
+      ],
+      "aliases": [
+        "standing cable hip flexion",
+        "cable march"
+      ],
+      "equipmentIds": [
+        "cable-station"
+      ],
+      "additionalSetupRequirements": [
+        "Cable ankle cuff",
+        "Stable hand support",
+        "Low pulley clearance"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Controlled standing hip flexion against cable resistance.",
+      "movementPattern": "standing cable hip flexion",
+      "muscles": [
+        "hip flexors",
+        "trunk stabilizers"
+      ],
+      "laterality": "unilateral",
+      "setupSteps": [
+        "Face away from a low pulley with the cuff on the working ankle and use stable hand support.",
+        "Stand tall with both feet controlled before taking up cable tension."
+      ],
+      "executionCues": [
+        "Lift the working knee without leaning back.",
+        "Lower the foot under control and reset balance before the next repetition."
+      ],
+      "commonErrors": [
+        "Using momentum.",
+        "Leaning or arching the trunk.",
+        "Letting the cable pull the stance ankle or crossing the line of support."
+      ],
+      "loggingFields": [
+        {
+          "key": "side",
+          "label": "Working side",
+          "unit": "left/right",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Cable stack setting",
+          "unit": "displayed setting",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "pulley",
+          "label": "Pulley/attachment setup",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "assistance",
+          "label": "Hand support",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record displayed stack setting, pulley position and cuff setup; do not infer true external force from the stack label.",
+      "achillesConsiderations": [
+        "The stance leg and lowering step create balance and Achilles demands.",
+        "Do not treat a seated march as proof of standing cable readiness."
+      ],
+      "existingPrerequisiteReferences": [
+        "seated-march",
+        "seated-core-march"
+      ],
+      "unresolvedPrerequisites": [
+        "Stance tolerance, cuff fit, pulley geometry, permitted hip height and starting resistance are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Seated march",
+          "existingId": "seated-march",
+          "rationale": "Existing lower-balance-demand hip-flexion pattern; not a resisted equivalent.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Higher cable resistance",
+          "existingId": null,
+          "rationale": "Changes stance and cable forces and needs separate review.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [],
+      "illustrationBrief": {
+        "startPosition": "Adult facing away from low cable, cuff on one ankle, upright with hand support.",
+        "endPosition": "Cuffed knee lifted to a modest height while stance foot stays planted.",
+        "equipment": "Cable station, ankle cuff, stable support",
+        "importantAnatomyAndAlignment": "Pelvis level, trunk upright, stance heel controlled.",
+        "cameraAngle": "Side view showing cable behind working leg.",
+        "avoid": "Do not show sprint posture, backward lean, or unsupported single-leg balance."
+      },
+      "reviewQuestions": [
+        "What stance support and knee-lift range are approved?",
+        "Should the name use 'hip flexion' to avoid implying gait-speed training?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 10,
+      "proposedId": "sled-push",
+      "name": "Sled push",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "Canonical training-sled content can proceed independently of wagon specifications. Exact demo/setup review pending.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "weighted-wagon-backward-drag",
+          "name": "Weighted-wagon backward drag",
+          "relationship": "related",
+          "reason": "Same substitute device but opposite travel direction and different attachment/body position."
+        }
+      ],
+      "aliases": [
+        "wagon push"
+      ],
+      "equipmentIds": [
+        "training-sled"
+      ],
+      "additionalSetupRequirements": [
+        "Verified fixed pushing interface",
+        "Level non-slip route with wheel clearance",
+        "Verified wagon load/stability information"
+      ],
+      "equipmentFeasibility": "canonical-class-only",
+      "purpose": "Potential horizontal pushing and marching task, contingent on equipment feasibility.",
+      "movementPattern": "forward resisted locomotion",
+      "muscles": [
+        "lower body",
+        "trunk",
+        "shoulder girdle"
+      ],
+      "laterality": "bilateral alternating",
+      "setupSteps": [
+        "Purpose-built training sled; exact exercise setup and demo remain under review."
+      ],
+      "executionCues": [
+        "Do not perform from this research record."
+      ],
+      "commonErrors": [
+        "Using an unstable or steerable handle as a fixed sled post.",
+        "Loading a slope or surface with unpredictable rolling resistance.",
+        "Placing hands or feet near wheels."
+      ],
+      "loggingFields": [
+        {
+          "key": "distance",
+          "label": "Distance",
+          "unit": "m",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "durationSeconds",
+          "label": "Duration",
+          "unit": "seconds",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Wagon payload",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "surface",
+          "label": "Surface/route",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "If ever approved, record payload separately from rolling resistance; payload is not equivalent to sled force.",
+      "achillesConsiderations": [
+        "Forward pushing can impose substantial ankle and propulsion demands that are not quantified here.",
+        "Ownership does not establish suitability or readiness."
+      ],
+      "existingPrerequisiteReferences": [
+        "weighted-wagon-backward-drag"
+      ],
+      "unresolvedPrerequisites": [
+        "Manufacturer/model, handle geometry, brake behavior, load rating, wheel containment, surface, slope and clinical eligibility are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Existing weighted-wagon backward drag",
+          "existingId": "weighted-wagon-backward-drag",
+          "rationale": "Existing content is directionally different and remains governed by its current rules.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Purpose-built sled push",
+          "existingId": null,
+          "rationale": "Would require different equipment ownership and an independent review.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [],
+      "illustrationBrief": {
+        "startPosition": "Not prepared pending hardware verification.",
+        "endPosition": "Not prepared pending hardware verification.",
+        "equipment": "Weighted wagon",
+        "importantAnatomyAndAlignment": "Must show the actual verified handle, wheel path and body position if approved.",
+        "cameraAngle": "Undetermined",
+        "avoid": "Do not depict a purpose-built sled as if it were the owned wagon."
+      },
+      "reviewQuestions": [
+        "Verify exact sled setup and demo before active use."
+      ],
+      "implementationStatus": "research-only",
+      "originalUserSubstituteName": "Weighted-wagon forward push",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 11,
+      "proposedId": "forward-sled-drag",
+      "name": "Forward sled drag / resisted march",
+      "priority": 1,
+      "recommendation": "add",
+      "decisionReason": "Canonical training-sled content can proceed independently of wagon specifications. Exact demo/setup review pending.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "weighted-wagon-backward-drag",
+          "name": "Weighted-wagon backward drag",
+          "relationship": "related",
+          "reason": "Same substitute device but different travel direction, attachment and propulsion demand."
+        }
+      ],
+      "aliases": [
+        "wagon pull",
+        "resisted forward march"
+      ],
+      "equipmentIds": [
+        "training-sled"
+      ],
+      "additionalSetupRequirements": [
+        "Rated attachment point",
+        "Reviewed tether or belt with release",
+        "Level route and roll-away control"
+      ],
+      "equipmentFeasibility": "canonical-class-only",
+      "purpose": "Potential forward marching against rearward wagon resistance, contingent on equipment feasibility.",
+      "movementPattern": "forward resisted locomotion with trailing load",
+      "muscles": [
+        "lower body",
+        "trunk"
+      ],
+      "laterality": "bilateral alternating",
+      "setupSteps": [
+        "Purpose-built training sled; exact exercise setup and demo remain under review."
+      ],
+      "executionCues": [
+        "Do not perform from this research record."
+      ],
+      "commonErrors": [
+        "Attaching a tether to an unverified point.",
+        "Allowing the wagon to roll into the user.",
+        "Using slopes, traffic areas or uneven terrain."
+      ],
+      "loggingFields": [
+        {
+          "key": "distance",
+          "label": "Distance",
+          "unit": "m",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "durationSeconds",
+          "label": "Duration",
+          "unit": "seconds",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Wagon payload",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "attachment",
+          "label": "Attachment setup",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "surface",
+          "label": "Surface/route",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "If ever approved, record payload and attachment separately; neither establishes actual horizontal resistance.",
+      "achillesConsiderations": [
+        "Marching changes single-leg stance and propulsion demands.",
+        "No assumption of readiness follows from existing backward-drag use."
+      ],
+      "existingPrerequisiteReferences": [
+        "weighted-wagon-backward-drag"
+      ],
+      "unresolvedPrerequisites": [
+        "Manufacturer/model, rated hitch point, tether/belt, emergency release, braking, rolling resistance, route and clinical eligibility are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Existing weighted-wagon backward drag",
+          "existingId": "weighted-wagon-backward-drag",
+          "rationale": "Existing backward task is not equivalent but retains its current reviewed setup.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Unresisted supported march",
+          "existingId": null,
+          "rationale": "Removes wagon resistance but remains a different task requiring review.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [],
+      "illustrationBrief": {
+        "startPosition": "Not prepared pending attachment verification.",
+        "endPosition": "Not prepared pending attachment verification.",
+        "equipment": "Weighted wagon and unknown tether",
+        "importantAnatomyAndAlignment": "Must show the actual verified hitch, release and clearance if approved.",
+        "cameraAngle": "Undetermined",
+        "avoid": "Do not depict a sled harness or invent an attachment."
+      },
+      "reviewQuestions": [
+        "Verify exact sled setup and demo before active use."
+      ],
+      "implementationStatus": "research-only",
+      "originalUserSubstituteName": "Weighted-wagon forward pull / march",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 12,
+      "proposedId": null,
+      "name": "Backward treadmill walk",
+      "priority": 1,
+      "recommendation": "defer",
+      "decisionReason": "Backward walking evidence found was not postoperative Achilles evidence, and the treadmill model/manual, controls and supervision setup are unknown.",
+      "existingMatches": [],
+      "aliases": [
+        "retro treadmill walking"
+      ],
+      "equipmentIds": [
+        "incline-treadmill"
+      ],
+      "additionalSetupRequirements": [],
+      "equipmentFeasibility": "unverified",
+      "purpose": "Potential controlled backward gait exposure, pending manufacturer and clinical review.",
+      "movementPattern": "backward gait",
+      "muscles": [
+        "lower body"
+      ],
+      "laterality": "bilateral alternating",
+      "setupSteps": [
+        "No setup is approved until the exact treadmill manual and supervised start/stop method are reviewed."
+      ],
+      "executionCues": [
+        "Do not perform from this research record."
+      ],
+      "commonErrors": [
+        "Stepping onto a moving belt.",
+        "Using unverified speed or incline.",
+        "Relying on handrails without a safe stop plan."
+      ],
+      "loggingFields": [
+        {
+          "key": "durationSeconds",
+          "label": "Duration",
+          "unit": "seconds",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "speed",
+          "label": "Displayed speed",
+          "unit": "treadmill units",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "incline",
+          "label": "Displayed incline",
+          "unit": "treadmill units",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "support",
+          "label": "Support/supervision",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record the treadmill's displayed speed and incline without treating them as equivalent across models.",
+      "achillesConsiderations": [
+        "Backward gait is not a substitute for a validated Achilles loading progression.",
+        "No safe speed, incline, dose or entry criterion is established here."
+      ],
+      "existingPrerequisiteReferences": [],
+      "unresolvedPrerequisites": [
+        "Device-specific backward-use authorization and existing clinical readiness."
+      ],
+      "regressions": [
+        {
+          "name": "Level backward stepping off-treadmill",
+          "existingId": null,
+          "rationale": "Different environment and still requires balance/clinical review.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Forward treadmill walk",
+          "existingId": null,
+          "rationale": "Different gait direction; follow existing tolerated walking guidance.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [
+        {
+          "text": "Backward walking has randomized-trial evidence in adults with knee osteoarthritis.",
+          "sourceIds": [
+            "src-backward-walk-2025"
+          ],
+          "evidenceType": "systematic review and meta-analysis",
+          "applicabilityToPostSurgicalAchilles": "not directly applicable",
+          "uncertainty": "The population is not postoperative Achilles repair, and the evidence does not validate this user's treadmill or a safe dose."
+        }
+      ],
+      "illustrationBrief": {
+        "startPosition": "Not prepared pending exact treadmill and safety setup.",
+        "endPosition": "Not prepared pending exact treadmill and safety setup.",
+        "equipment": "Incline treadmill",
+        "importantAnatomyAndAlignment": "If approved, show handrail reach, belt direction and emergency stop clearly.",
+        "cameraAngle": "Undetermined",
+        "avoid": "Do not imply a speed, incline, hands-free balance or unsupervised start."
+      },
+      "reviewQuestions": [
+        "What treadmill make/model and manual language applies to backward use?",
+        "Can emergency stop and belt start/stop be managed without stepping onto a moving belt?",
+        "Has backward treadmill walking been clinically reviewed?"
+      ],
+      "implementationStatus": "research-only",
+      "device": {
+        "name": "ProForm Performance 300i",
+        "model": "PFTL39715.1",
+        "backwardUseAuthorization": "unverified"
+      },
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 13,
+      "proposedId": "library-trap-bar-romanian-deadlift",
+      "name": "Trap-bar Romanian deadlift",
+      "priority": 2,
+      "recommendation": "add",
+      "decisionReason": "Trap-bar deadlift and dumbbell/barbell RDL records exist, but no exact trap-bar RDL was found; bar path and start position are distinct.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "dumbbell-romanian-deadlift",
+          "name": "Dumbbell Romanian deadlift",
+          "relationship": "related",
+          "reason": "Same hinge family with different implement and load position."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "library-barbell-romanian-deadlift",
+          "name": "Barbell Romanian deadlift",
+          "relationship": "related",
+          "reason": "Same named hinge with different bar geometry."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "library-trap-bar-deadlift",
+          "name": "Trap-bar deadlift",
+          "relationship": "related",
+          "reason": "Trap-bar floor-start deadlift is not an RDL."
+        }
+      ],
+      "aliases": [
+        "hex-bar RDL"
+      ],
+      "equipmentIds": [
+        "trap-hex-bar",
+        "weight-plates"
+      ],
+      "additionalSetupRequirements": [
+        "Verified empty bar weight and handle choice",
+        "Clear lifting area"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Hip-hinge strength using a trap/hex bar.",
+      "movementPattern": "loaded hip hinge",
+      "muscles": [
+        "hamstrings",
+        "gluteals",
+        "spinal erectors",
+        "grip"
+      ],
+      "laterality": "bilateral",
+      "setupSteps": [
+        "Stand centered in the trap bar with the selected handles and safeties/space verified.",
+        "Begin from a controlled standing lockout using a separately reviewed start load."
+      ],
+      "executionCues": [
+        "Push the hips back while keeping the bar close to the body's center.",
+        "Stop the descent at the reviewed range and stand by extending the hips."
+      ],
+      "commonErrors": [
+        "Turning the movement into a squat.",
+        "Reaching for extra depth by rounding.",
+        "Using high handles/low handles interchangeably without recording them."
+      ],
+      "loggingFields": [
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Total external load",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "handle",
+          "label": "Handle height",
+          "unit": "high/low",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "range",
+          "label": "Range/endpoint",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record total external load including the verified empty bar weight; handle height and plate setup remain separate fields. Empty bar weight is currently unknown.",
+      "achillesConsiderations": [
+        "Loaded hinging adds whole-body load and may change ankle stabilization demands.",
+        "General RDL technique and strength evidence do not establish postoperative eligibility or starting load."
+      ],
+      "existingPrerequisiteReferences": [],
+      "unresolvedPrerequisites": [
+        "Trap-bar empty weight, handle heights, plate clearance, floor protection, start load and permitted hinge range are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Dumbbell Romanian deadlift",
+          "existingId": "dumbbell-romanian-deadlift",
+          "rationale": "Existing hinge with known dumbbell ownership; load is not equivalent.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Trap-bar deadlift",
+          "existingId": "library-trap-bar-deadlift",
+          "rationale": "Existing floor-start pattern; not an automatic progression from the RDL.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [
+        {
+          "url": "https://www.muscleandstrength.com/content/trap-bar-romanian-deadlift",
+          "sourcePage": "https://www.muscleandstrength.com/content/trap-bar-romanian-deadlift",
+          "title": "Trap Bar Romanian Deadlift",
+          "provider": "Muscle & Strength",
+          "durationSeconds": null,
+          "startSeconds": null,
+          "endSeconds": null,
+          "access": "public",
+          "pageVerified": true,
+          "playbackVerified": false,
+          "exactMovementVerified": true,
+          "verifiedAt": "2026-09-16",
+          "verificationNotes": "Public exercise-specific page and written movement match verified; embedded video playback was not checked. Provider is a general fitness source, not clinical evidence."
+        }
+      ],
+      "claims": [
+        {
+          "text": "The RDL is a hip-hinge exercise used in general strength training.",
+          "sourceIds": [
+            "src-nsca-rdl",
+            "src-acsm-2026"
+          ],
+          "evidenceType": "professional technique education plus position stand",
+          "applicabilityToPostSurgicalAchilles": "indirect",
+          "uncertainty": "Neither source validates a trap-bar-specific postoperative starting load or readiness.",
+          "developerScope": "General training context only; not proof of exercise-specific cues, configuration or Achilles eligibility."
+        }
+      ],
+      "illustrationBrief": {
+        "startPosition": "Adult standing centered inside trap bar, arms long and knees softly bent.",
+        "endPosition": "Hips shifted back with neutral trunk and bar hanging vertically inside frame.",
+        "equipment": "Trap/hex bar and plates",
+        "importantAnatomyAndAlignment": "Feet flat, bar centered, spine neutral, shins nearly vertical.",
+        "cameraAngle": "Side three-quarter view showing bar geometry.",
+        "avoid": "Do not show floor-start deadlift, maximal depth, or a stated plate load."
+      },
+      "reviewQuestions": [
+        "What is the empty bar weight and which handle height will be canonical?",
+        "Is the walking/lifting area large enough for safe setup and plate clearance?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 14,
+      "proposedId": "library-trap-bar-farmer-carry",
+      "name": "Trap-bar farmer carry",
+      "priority": 2,
+      "recommendation": "add",
+      "decisionReason": "No exact loaded trap-bar carry was found. Existing suitcase carry is unilateral and therefore not equivalent.",
+      "existingMatches": [
+        {
+          "collection": "movementExercises",
+          "id": "suitcase-carry",
+          "name": "Suitcase carry",
+          "relationship": "related",
+          "reason": "Unilateral load and different trunk demand."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "library-trap-bar-deadlift",
+          "name": "Trap-bar deadlift",
+          "relationship": "related",
+          "reason": "Shares pickup equipment but does not include loaded walking."
+        }
+      ],
+      "aliases": [
+        "trap-bar carry",
+        "hex-bar farmer walk"
+      ],
+      "equipmentIds": [
+        "trap-hex-bar",
+        "weight-plates"
+      ],
+      "additionalSetupRequirements": [
+        "Level route with adequate bar-width clearance",
+        "Verified empty bar weight and handle choice"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Bilateral loaded carry inside a trap bar.",
+      "movementPattern": "loaded carry",
+      "muscles": [
+        "grip",
+        "trunk",
+        "lower body"
+      ],
+      "laterality": "bilateral",
+      "setupSteps": [
+        "Set the trap bar on a level route with verified clearance and a reviewed load.",
+        "Stand inside, lift to a stable tall position, then confirm the route is clear before walking."
+      ],
+      "executionCues": [
+        "Take controlled steps and keep the bar from swinging.",
+        "Turn only with adequate space and set down under control."
+      ],
+      "commonErrors": [
+        "Walking without route clearance.",
+        "Fast or pivoting turns.",
+        "Letting the frame contact the legs or floor."
+      ],
+      "loggingFields": [
+        {
+          "key": "distance",
+          "label": "Distance",
+          "unit": "m",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "durationSeconds",
+          "label": "Duration",
+          "unit": "seconds",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "External load",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "turns",
+          "label": "Turns",
+          "unit": "count",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record total external load including verified empty bar weight; do not compare directly with dumbbell carries.",
+      "achillesConsiderations": [
+        "Loaded walking adds repeated stance and propulsion demands.",
+        "Carry readiness is separate from static trap-bar lifting readiness."
+      ],
+      "existingPrerequisiteReferences": [],
+      "unresolvedPrerequisites": [
+        "Empty bar weight, handle height, route width/length, turning method, floor clearance and starting load are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Farmer carry",
+          "existingId": "library-farmer-carry",
+          "rationale": "Dumbbells reduce frame width but create a different load distribution.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Suitcase carry",
+          "existingId": "suitcase-carry",
+          "rationale": "Existing unilateral carry has different trunk and stance demands.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [
+        {
+          "url": "https://www.muscleandstrength.com/exercises/trap-bar-farmers-carry",
+          "sourcePage": "https://www.muscleandstrength.com/exercises/trap-bar-farmers-carry",
+          "title": "Trap Bar Farmer's Carry",
+          "provider": "Muscle & Strength",
+          "durationSeconds": null,
+          "startSeconds": null,
+          "endSeconds": null,
+          "access": "public",
+          "pageVerified": true,
+          "playbackVerified": false,
+          "exactMovementVerified": true,
+          "verifiedAt": "2026-09-16",
+          "verificationNotes": "Public exercise-specific page and written movement match verified; embedded video playback was not checked. Not clinical evidence."
+        }
+      ],
+      "claims": [
+        {
+          "text": "Loaded carries are general resistance-training tasks; load and volume should be individualized.",
+          "sourceIds": [
+            "src-acsm-2026"
+          ],
+          "evidenceType": "position stand / overview of reviews",
+          "applicabilityToPostSurgicalAchilles": "indirect",
+          "uncertainty": "The source does not establish a postoperative Achilles carry prescription or trap-bar readiness.",
+          "developerScope": "General training context only; not proof of exercise-specific cues, configuration or Achilles eligibility."
+        }
+      ],
+      "illustrationBrief": {
+        "startPosition": "Adult standing inside trap bar on a clear level lane after lifting it.",
+        "endPosition": "Controlled short step with bar level and arms long.",
+        "equipment": "Trap/hex bar and plates",
+        "importantAnatomyAndAlignment": "Upright trunk, level bar, clear foot path.",
+        "cameraAngle": "Front three-quarter view showing route clearance.",
+        "avoid": "Do not show running, tight turns, clutter, or an asserted load."
+      },
+      "reviewQuestions": [
+        "What clear walking distance and turn strategy are available?",
+        "What is the empty bar weight and reviewed pickup method?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 15,
+      "proposedId": "library-smith-romanian-deadlift",
+      "name": "Smith Romanian deadlift",
+      "priority": 2,
+      "recommendation": "add",
+      "decisionReason": "Smith deadlift and barbell/dumbbell RDL records are related, but no exact Smith RDL exists. Fixed bar path and machine setup require distinct content.",
+      "existingMatches": [
+        {
+          "collection": "exerciseLibrary",
+          "id": "library-smith-deadlift",
+          "name": "Smith deadlift",
+          "relationship": "related",
+          "reason": "Floor-start deadlift differs from standing RDL."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "library-barbell-romanian-deadlift",
+          "name": "Barbell Romanian deadlift",
+          "relationship": "related",
+          "reason": "Same hinge family with free bar path."
+        },
+        {
+          "collection": "activeCatalog",
+          "id": "dumbbell-romanian-deadlift",
+          "name": "Dumbbell Romanian deadlift",
+          "relationship": "related",
+          "reason": "Different implement and loading geometry."
+        }
+      ],
+      "aliases": [
+        "Smith-machine RDL"
+      ],
+      "equipmentIds": [
+        "smith-machine"
+      ],
+      "additionalSetupRequirements": [
+        "Verified Smith bar path and safety settings"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Hip-hinge strength using the Smith machine.",
+      "movementPattern": "fixed-path loaded hip hinge",
+      "muscles": [
+        "hamstrings",
+        "gluteals",
+        "spinal erectors",
+        "grip"
+      ],
+      "laterality": "bilateral",
+      "setupSteps": [
+        "Set the Smith safeties and bar start height for a reviewed standing setup.",
+        "Choose foot position relative to the fixed bar path before unracking."
+      ],
+      "executionCues": [
+        "Push the hips back while keeping the bar path close to the legs.",
+        "Stop at the reviewed range and stand without bouncing off the safeties."
+      ],
+      "commonErrors": [
+        "Standing where the fixed path pulls balance forward or backward.",
+        "Rounding to gain depth.",
+        "Assuming Smith load equals free-weight load."
+      ],
+      "loggingFields": [
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Added plates",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "barStart",
+          "label": "Bar/safety setting",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "footPosition",
+          "label": "Foot position",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record added plates plus machine identity/setup. Effective starting resistance is unknown; do not report added plates as equivalent free-weight load.",
+      "achillesConsiderations": [
+        "Machine path and stance can change balance/ankle demands.",
+        "A separate start-load and range assessment is required."
+      ],
+      "existingPrerequisiteReferences": [],
+      "unresolvedPrerequisites": [
+        "Smith effective resistance, bar path orientation, safety positions, foot placement, start load and hinge range are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Dumbbell Romanian deadlift",
+          "existingId": "dumbbell-romanian-deadlift",
+          "rationale": "Existing free-moving implement option; not load-equivalent.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Smith deadlift",
+          "existingId": "library-smith-deadlift",
+          "rationale": "Existing floor-start pattern; not the same range or start position.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [
+        {
+          "url": "https://www.zing.coach/exercises/smith-machine-romanian-deadlifts",
+          "sourcePage": "https://www.zing.coach/exercises/smith-machine-romanian-deadlifts",
+          "title": "Smith Machine Romanian Deadlifts",
+          "provider": "Zing Coach",
+          "durationSeconds": null,
+          "startSeconds": null,
+          "endSeconds": null,
+          "access": "public",
+          "pageVerified": true,
+          "playbackVerified": false,
+          "exactMovementVerified": true,
+          "verifiedAt": "2026-09-16",
+          "verificationNotes": "Public exercise-specific page and written movement match verified; video playback was not checked. General fitness source, not clinical evidence."
+        }
+      ],
+      "claims": [
+        {
+          "text": "The RDL is a general hip-hinge strength exercise.",
+          "sourceIds": [
+            "src-nsca-rdl",
+            "src-acsm-2026"
+          ],
+          "evidenceType": "professional technique education plus position stand",
+          "applicabilityToPostSurgicalAchilles": "indirect",
+          "uncertainty": "Neither source validates the user's Smith setup, postoperative eligibility or starting resistance.",
+          "developerScope": "General training context only; not proof of exercise-specific cues, configuration or Achilles eligibility."
+        }
+      ],
+      "illustrationBrief": {
+        "startPosition": "Adult holding Smith bar at thighs with safeties visible and feet positioned for the machine path.",
+        "endPosition": "Hips shifted back, bar following fixed rail close to legs.",
+        "equipment": "Smith machine",
+        "importantAnatomyAndAlignment": "Feet flat, neutral trunk, soft knees, safeties set.",
+        "cameraAngle": "Side view showing rail angle and foot placement.",
+        "avoid": "Do not show free bar path, floor-start deadlift, or a claimed bar weight."
+      },
+      "reviewQuestions": [
+        "What is the Smith rail direction and effective starting resistance?",
+        "Which safety and start positions allow a controlled unrack/rerack?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 16,
+      "proposedId": "library-smith-hip-thrust",
+      "name": "Smith hip thrust",
+      "priority": 2,
+      "recommendation": "add",
+      "decisionReason": "Existing bridge/hip-thrust and barbell hip-thrust records are related, but no exact Smith setup exists. Bench compatibility and fixed path are material differences.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "bridge",
+          "name": "Bridge / Hip Thrust",
+          "relationship": "related",
+          "reason": "Movement family overlaps, but equipment and setup are broader/simpler."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "library-barbell-hip-thrust",
+          "name": "Barbell hip thrust",
+          "relationship": "related",
+          "reason": "Free bar versus fixed Smith path."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "library-barbell-glute-bridge",
+          "name": "Barbell glute bridge",
+          "relationship": "related",
+          "reason": "Floor bridge has different range and bench setup."
+        }
+      ],
+      "aliases": [
+        "Smith-machine hip thrust"
+      ],
+      "equipmentIds": [
+        "smith-machine",
+        "adjustable-bench"
+      ],
+      "additionalSetupRequirements": [
+        "Bench secured against movement",
+        "Suitable bar pad",
+        "Verified Smith safeties and entry/exit"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Hip extension strength using a Smith bar and bench.",
+      "movementPattern": "loaded hip extension",
+      "muscles": [
+        "gluteals",
+        "hamstrings",
+        "trunk"
+      ],
+      "laterality": "bilateral",
+      "setupSteps": [
+        "Secure a compatible bench so it cannot slide and set Smith safeties for entry/exit.",
+        "Use a reviewed bar pad and foot position; begin only after a no-load setup check."
+      ],
+      "executionCues": [
+        "Drive through both feet and extend the hips without overextending the low back.",
+        "Pause in the reviewed top position and lower under control."
+      ],
+      "commonErrors": [
+        "Unsecured bench.",
+        "Bar contacting the pelvis without suitable padding.",
+        "Feet placed where the fixed path shifts pressure unpredictably."
+      ],
+      "loggingFields": [
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Added plates",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "bench",
+          "label": "Bench/setup",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "barStart",
+          "label": "Bar/safety setting",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record added plates and the exact Smith/bench setup; effective bar resistance is unknown and not equivalent to barbell loading.",
+      "achillesConsiderations": [
+        "Foot pressure and entry/exit can load the ankle despite a hip-extension emphasis.",
+        "Bench, safety and starting-load review are prerequisites."
+      ],
+      "existingPrerequisiteReferences": [
+        "bridge",
+        "library-barbell-hip-thrust",
+        "library-barbell-glute-bridge"
+      ],
+      "unresolvedPrerequisites": [
+        "Bench height/capacity, anti-slip method, bar pad, Smith path, safeties, entry/exit and starting resistance are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Bridge / Hip Thrust",
+          "existingId": "bridge",
+          "rationale": "Existing simpler setup; its current rules remain authoritative.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Barbell hip thrust",
+          "existingId": "library-barbell-hip-thrust",
+          "rationale": "Free-bar setup differs and is not an automatic substitute.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [
+        {
+          "url": "https://repfitness.com/blogs/guides/smith-machine-hip-thrust",
+          "sourcePage": "https://repfitness.com/blogs/guides/smith-machine-hip-thrust",
+          "title": "How to Do a Smith Machine Hip Thrust",
+          "provider": "REP Fitness",
+          "durationSeconds": null,
+          "startSeconds": null,
+          "endSeconds": null,
+          "access": "public",
+          "pageVerified": true,
+          "playbackVerified": false,
+          "exactMovementVerified": true,
+          "verifiedAt": "2026-09-16",
+          "verificationNotes": "Public exercise-specific page and written movement match verified; embedded video playback was not checked. Equipment-company instruction is not clinical evidence."
+        }
+      ],
+      "claims": [
+        {
+          "text": "Hip thrusts are general resistance-training exercises; exercise selection and load remain individualized.",
+          "sourceIds": [
+            "src-acsm-2026"
+          ],
+          "evidenceType": "position stand / overview of reviews",
+          "applicabilityToPostSurgicalAchilles": "indirect",
+          "uncertainty": "The source does not validate this machine setup or postoperative Achilles readiness.",
+          "developerScope": "General training context only; not proof of exercise-specific cues, configuration or Achilles eligibility."
+        }
+      ],
+      "illustrationBrief": {
+        "startPosition": "Adult seated on floor with upper back against secured bench, padded Smith bar across hip crease.",
+        "endPosition": "Hips extended to a neutral trunk-thigh line while feet remain planted.",
+        "equipment": "Smith machine, secured bench, bar pad",
+        "importantAnatomyAndAlignment": "Bench stable, shins near vertical at top, ribs controlled.",
+        "cameraAngle": "Side view showing bench, safeties and rail.",
+        "avoid": "Do not show an unsecured bench, bare bar on pelvis, or lumbar hyperextension."
+      },
+      "reviewQuestions": [
+        "Can the bench be positively secured and is its height/capacity appropriate?",
+        "What pad and safety settings permit safe entry and exit?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 17,
+      "proposedId": "library-belt-squat-calf-raise",
+      "name": "Belt-squat calf raise",
+      "priority": 2,
+      "recommendation": "add",
+      "decisionReason": "Manufacturer material advertises calf raises, and no exact catalog record exists. The user's exact handle/attachment and stance setup are still unverified.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "bilateral-calf",
+          "name": "Bilateral calf raise",
+          "relationship": "related",
+          "reason": "Same broad joint action without belt-squat resistance."
+        },
+        {
+          "collection": "activeCatalog",
+          "id": "belt-squat",
+          "name": "Belt squat",
+          "relationship": "related",
+          "reason": "Same device but different movement."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "calf-smith",
+          "name": "Smith calf raise",
+          "relationship": "related",
+          "reason": "Loaded calf raise using a different machine path."
+        }
+      ],
+      "aliases": [
+        "lever belt-squat calf raise"
+      ],
+      "equipmentIds": [
+        "belt-squat",
+        "weight-plates"
+      ],
+      "additionalSetupRequirements": [
+        "Manufacturer-compatible calf-raise handle or reviewed alternative",
+        "Stable hand support",
+        "Non-slip flat foot surface"
+      ],
+      "equipmentFeasibility": "partially-verified",
+      "purpose": "Calf raising with belt-squat resistance and reduced hand loading.",
+      "movementPattern": "loaded heel raise",
+      "muscles": [
+        "gastrocnemius",
+        "soleus",
+        "plantarflexors"
+      ],
+      "laterality": "bilateral",
+      "setupSteps": [],
+      "executionCues": [],
+      "commonErrors": [
+        "Improvising an unverified handle/attachment.",
+        "Using a step to add below-floor heel drop without clearance.",
+        "Treating the user's 225 lb review milestone or available plates as a start load."
+      ],
+      "loggingFields": [
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Added plates",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "setup",
+          "label": "Handle/attachment setup",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "range",
+          "label": "Foot surface/range",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record added plates and exact lever/handle setup; do not equate lever loading with free weights. Neither 225 lb nor 380 lb is a candidate start load or readiness threshold.",
+      "achillesConsiderations": [
+        "Flat-floor default avoids inventing additional dorsiflexion.",
+        "Manufacturer compatibility does not establish clinical readiness, load or range."
+      ],
+      "existingPrerequisiteReferences": [
+        "bilateral-calf",
+        "belt-squat",
+        "calf-smith"
+      ],
+      "unresolvedPrerequisites": [
+        "Exact handle/attachment, hand support, foot surface, lever clearance, start load and clinical eligibility are unresolved."
+      ],
+      "regressions": [
+        {
+          "name": "Bilateral calf raise",
+          "existingId": "bilateral-calf",
+          "rationale": "Existing bodyweight pattern with less equipment complexity.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Smith calf raise",
+          "existingId": "calf-smith",
+          "rationale": "Existing loaded machine option with different mechanics and start-load assessment.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "active-program candidate requiring review",
+      "approvedForAutomaticScheduling": false,
+      "demos": [
+        {
+          "url": "https://www.fringesport.com/collections/squat-rack-attachments/products/mammoth-belt-squat",
+          "sourcePage": "https://www.fringesport.com/collections/squat-rack-attachments/products/mammoth-belt-squat",
+          "title": "Mammoth Belt Squat product page",
+          "provider": "Fringe Sport",
+          "durationSeconds": null,
+          "startSeconds": null,
+          "endSeconds": null,
+          "access": "public",
+          "pageVerified": true,
+          "playbackVerified": false,
+          "exactMovementVerified": false,
+          "verifiedAt": "2026-09-16",
+          "verificationNotes": "Page verified and it advertises calf raises by changing the handle attachment. No exact exercise demo or playback was verified, and the user's attachment configuration is unknown."
+        }
+      ],
+      "claims": [
+        {
+          "text": "The Mammoth product page advertises calf raises as a supported use when the belt is exchanged for another handle attachment.",
+          "sourceIds": [
+            "src-fringe-mammoth-2026"
+          ],
+          "evidenceType": "manufacturer product information",
+          "applicabilityToPostSurgicalAchilles": "equipment-only",
+          "uncertainty": "Does not confirm the user's exact attachment, stance, range, load, eligibility or safe execution."
+        }
+      ],
+      "illustrationBrief": null,
+      "reviewQuestions": [
+        "Resolve belt versus handle configuration against manufacturer instructions and exact demo."
+      ],
+      "implementationStatus": "blocked-configuration",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 18,
+      "proposedId": "library-belt-squat-isometric",
+      "name": "Belt-squat isometric",
+      "priority": 2,
+      "recommendation": "add",
+      "decisionReason": "No exact static belt-squat hold exists. The current belt squat is dynamic; a hold changes bailout, duration and positional demands.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "belt-squat",
+          "name": "Belt squat",
+          "relationship": "related",
+          "reason": "Dynamic repetitions differ from a sustained hold and bailout needs."
+        }
+      ],
+      "aliases": [
+        "belt squat hold",
+        "belt-squat squat isometric"
+      ],
+      "equipmentIds": [
+        "belt-squat",
+        "weight-plates"
+      ],
+      "additionalSetupRequirements": [
+        "Verified hold position and lever stop",
+        "Safe entry/exit and bailout",
+        "Stable support"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Static knee/hip loading in a belt-squat position.",
+      "movementPattern": "lower-body isometric hold",
+      "muscles": [
+        "quadriceps",
+        "gluteals",
+        "trunk"
+      ],
+      "laterality": "bilateral",
+      "setupSteps": [
+        "Set up the belt squat only after a specific hold position, load, support and bailout method are reviewed.",
+        "Confirm the lever can be safely entered and exited without relying on fatigue tolerance."
+      ],
+      "executionCues": [
+        "Hold the reviewed position without bouncing or drifting deeper.",
+        "End the hold before position or control changes and use the planned bailout."
+      ],
+      "commonErrors": [
+        "Using an arbitrary squat depth.",
+        "Holding to failure.",
+        "No safe rerack/bailout plan.",
+        "Importing the 225 lb milestone or plate inventory as a load target."
+      ],
+      "loggingFields": [
+        {
+          "key": "durationSeconds",
+          "label": "Hold time",
+          "unit": "seconds",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Added plates",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "position",
+          "label": "Hold position",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "support",
+          "label": "Support/bailout setup",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record added plates, lever setup and hold position. Do not equate lever load to free weights or use 225/380 lb as a start load.",
+      "achillesConsiderations": [
+        "Static does not mean low demand; ankle, knee and hip demand depend on depth and stance.",
+        "No manufacturer or clinical source verified this exact isometric setup."
+      ],
+      "existingPrerequisiteReferences": [
+        "belt-squat"
+      ],
+      "unresolvedPrerequisites": [
+        "Hold depth, stance, load, duration, support, lever stop/bailout and clinical eligibility are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Belt squat",
+          "existingId": "belt-squat",
+          "rationale": "Existing dynamic record; not automatically interchangeable with a hold.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Bodyweight supported squat hold",
+          "existingId": null,
+          "rationale": "Removes external load but still requires depth and symptom review.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [],
+      "illustrationBrief": {
+        "startPosition": "Adult in a verified partial belt-squat position with support and lever stop visible.",
+        "endPosition": "Same static position with hold symbol and no motion arrow.",
+        "equipment": "Mammoth belt squat and verified safety setup",
+        "importantAnatomyAndAlignment": "Knees track over feet; torso controlled; lever path clear.",
+        "cameraAngle": "Side-front view showing depth and bailout hardware.",
+        "avoid": "Do not imply a depth, duration or load before review; do not omit the safety stop."
+      },
+      "reviewQuestions": [
+        "What exact hold position and bailout method are feasible on the Mammoth?",
+        "Has that position and static loading been clinically reviewed?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 19,
+      "proposedId": "library-slant-board-squat",
+      "name": "Slant-board squat",
+      "priority": 2,
+      "recommendation": "add",
+      "decisionReason": "No exact slant-board or heel-elevated squat was found. Existing squat patterns are related, but the board changes ankle/knee geometry.",
+      "existingMatches": [
+        {
+          "collection": "movementExercises",
+          "id": "box-squat-pattern",
+          "name": "Box squat pattern",
+          "relationship": "related",
+          "reason": "Provides a depth target without a slant board."
+        },
+        {
+          "collection": "activeCatalog",
+          "id": "belt-squat",
+          "name": "Belt squat",
+          "relationship": "related",
+          "reason": "Loaded squat family but different ankle geometry and equipment."
+        }
+      ],
+      "aliases": [
+        "heel-elevated squat",
+        "wedge squat"
+      ],
+      "equipmentIds": [
+        "slant-board"
+      ],
+      "additionalSetupRequirements": [
+        "Verified board angle/dimensions/rating",
+        "Non-slip floor and optional support"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Squat pattern with heels supported on a slant board.",
+      "movementPattern": "heel-elevated squat",
+      "muscles": [
+        "quadriceps",
+        "gluteals",
+        "trunk"
+      ],
+      "laterality": "bilateral",
+      "setupSteps": [
+        "Place the board on a non-slip surface and verify its angle, width and rating.",
+        "Stand with both heels fully supported and use external support if reviewed."
+      ],
+      "executionCues": [
+        "Descend only through the reviewed range with knees tracking over the feet.",
+        "Keep the heels supported and stand under control."
+      ],
+      "commonErrors": [
+        "Using an unknown or unstable board angle.",
+        "Allowing heels to leave the board.",
+        "Assuming heel elevation reduces Achilles demand for this individual."
+      ],
+      "loggingFields": [
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "External load",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "boardAngle",
+          "label": "Board angle",
+          "unit": "degrees/setting",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "range",
+          "label": "Squat depth",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "assistance",
+          "label": "Support",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Bodyweight unless external load is separately reviewed; record board angle/setting and load independently.",
+      "achillesConsiderations": [
+        "Heel elevation changes ankle position and knee/hip mechanics but does not establish a safe range.",
+        "No direct postoperative Achilles evidence or exact demo was verified."
+      ],
+      "existingPrerequisiteReferences": [
+        "box-squat-pattern",
+        "belt-squat"
+      ],
+      "unresolvedPrerequisites": [
+        "Board angle, dimensions, rating, non-slip behavior, squat depth, support and eligibility are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Box squat pattern",
+          "existingId": "box-squat-pattern",
+          "rationale": "Existing depth target without the same heel-elevation geometry.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Belt squat",
+          "existingId": "belt-squat",
+          "rationale": "Existing externally loaded squat pattern with different setup.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [],
+      "illustrationBrief": {
+        "startPosition": "Adult standing with both heels fully supported on a slant board, toes on floor/platform.",
+        "endPosition": "Controlled reviewed-depth squat with heels remaining supported.",
+        "equipment": "Slant board and optional stable support",
+        "importantAnatomyAndAlignment": "Board stable; knees track with feet; weight distributed symmetrically.",
+        "cameraAngle": "Side three-quarter view clearly showing board angle.",
+        "avoid": "Do not label an angle, show deep range, or imply reduced tendon load."
+      },
+      "reviewQuestions": [
+        "What are the board's angle, width, surface and rating?",
+        "What squat depth and support are clinically appropriate?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 20,
+      "proposedId": "library-balance-cushion-single-leg-stance",
+      "name": "Balance-cushion single-leg stance",
+      "priority": 2,
+      "recommendation": "add",
+      "decisionReason": "Single-leg balance on floor and foam pad exists, but the owned inflatable cushion (`dyno-pad`) is a distinct unstable surface.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "single-balance",
+          "name": "Single-leg balance",
+          "relationship": "related",
+          "reason": "Existing floor-based balance lacks the inflatable surface."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "library-single-leg-foam-pad-balance",
+          "name": "Single-leg foam-pad balance",
+          "relationship": "related",
+          "reason": "Foam pad and inflatable cushion are distinct equipment."
+        },
+        {
+          "collection": "movementExercises",
+          "id": "supported-single-leg-stance",
+          "name": "Supported single-leg stance",
+          "relationship": "related",
+          "reason": "Stable-surface supported option."
+        }
+      ],
+      "aliases": [
+        "wobble-cushion single-leg stance",
+        "inflatable-disc balance"
+      ],
+      "equipmentIds": [
+        "dyno-pad"
+      ],
+      "additionalSetupRequirements": [
+        "Stable support within reach",
+        "Non-slip surface",
+        "Documented cushion inflation"
+      ],
+      "equipmentFeasibility": "review-required",
+      "purpose": "Single-leg balance on an inflatable cushion.",
+      "movementPattern": "unstable-surface single-leg stance",
+      "muscles": [
+        "foot and ankle stabilizers",
+        "hip stabilizers",
+        "trunk"
+      ],
+      "laterality": "unilateral",
+      "setupSteps": [
+        "Inflatable cushion beside stable support on a nonslip floor; use device manufacturer inflation instructions."
+      ],
+      "executionCues": [
+        "Stand tall with a soft knee and use support as needed.",
+        "Step off if the cushion shifts or alignment/control changes."
+      ],
+      "commonErrors": [
+        "Confusing the inflatable cushion with the foam balance pad.",
+        "Starting without hand support nearby.",
+        "Changing inflation without recording it."
+      ],
+      "loggingFields": [
+        {
+          "key": "side",
+          "label": "Side",
+          "unit": "left/right",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "durationSeconds",
+          "label": "Hold time",
+          "unit": "seconds",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "assistance",
+          "label": "Hand support",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "inflation",
+          "label": "Cushion inflation/setting",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "contacts",
+          "label": "Foot-down contacts",
+          "unit": "count",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Bodyweight; record cushion identity, inflation and support rather than an external load.",
+      "achillesConsiderations": [
+        "Unstable-surface balance is a capacity task, not an automatic Achilles progression criterion.",
+        "Floor or foam-pad balance does not prove readiness for an inflatable cushion."
+      ],
+      "existingPrerequisiteReferences": [
+        "single-balance",
+        "library-single-leg-foam-pad-balance",
+        "supported-single-leg-stance"
+      ],
+      "unresolvedPrerequisites": [
+        "Inflation guidance, non-slip behavior, step-on/off method, support level and current single-leg balance capacity are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Supported single-leg stance",
+          "existingId": "supported-single-leg-stance",
+          "rationale": "Existing stable-surface support option with lower instability.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Single-leg foam-pad balance",
+          "existingId": "library-single-leg-foam-pad-balance",
+          "rationale": "Existing foam surface; mechanically distinct from inflatable cushion.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "active-program candidate requiring review",
+      "approvedForAutomaticScheduling": false,
+      "demos": [
+        {
+          "url": "https://ca.physitrack.com/home-exercise-video/single-leg-balance-on-a-cushion",
+          "sourcePage": "https://ca.physitrack.com/home-exercise-video/single-leg-balance-on-a-cushion",
+          "title": "Single leg balance on a cushion",
+          "provider": "Physitrack",
+          "durationSeconds": null,
+          "startSeconds": null,
+          "endSeconds": null,
+          "access": "public",
+          "pageVerified": true,
+          "playbackVerified": false,
+          "exactMovementVerified": true,
+          "verifiedAt": "2026-09-16",
+          "verificationNotes": "Public page and exact written movement match verified; playback was not checked. Generic cushion instruction does not verify the user's Trideer device or clinical readiness."
+        }
+      ],
+      "claims": [],
+      "illustrationBrief": {
+        "startPosition": "Adult beside stable support with one foot centered on round inflatable cushion.",
+        "endPosition": "Upright single-leg stance with free foot slightly lifted and support hand hovering.",
+        "equipment": "Inflatable balance cushion and stable support",
+        "importantAnatomyAndAlignment": "Cushion flat on non-slip floor; knee softly aligned over foot.",
+        "cameraAngle": "Front three-quarter view showing cushion and support.",
+        "avoid": "Do not depict a foam pad, BOSU flat-up use, eyes closed, or hands far from support."
+      },
+      "reviewQuestions": [
+        "What inflation guidance and non-slip setup apply to the Trideer cushion?",
+        "What stable-surface balance prerequisite should gate this optional variant?"
+      ],
+      "implementationStatus": "blocked-device-demo-match",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 21,
+      "proposedId": "library-push-up",
+      "name": "Floor push-up",
+      "priority": 3,
+      "recommendation": "add",
+      "decisionReason": "No push-up record was found. Add as a general upper-body strength option that must not displace rehab volume.",
+      "existingMatches": [],
+      "aliases": [
+        "press-up"
+      ],
+      "equipmentIds": [],
+      "additionalSetupRequirements": [],
+      "equipmentFeasibility": "verified-bodyweight",
+      "purpose": "Horizontal pushing strength using bodyweight.",
+      "movementPattern": "closed-chain horizontal push",
+      "muscles": [
+        "pectorals",
+        "triceps",
+        "anterior deltoids",
+        "trunk"
+      ],
+      "laterality": "bilateral",
+      "setupSteps": [
+        "Hands on floor, supported through hands and toes. Incline and kneeling positions require separate records."
+      ],
+      "executionCues": [
+        "Lower the chest under control with elbows tracking comfortably.",
+        "Press away while keeping trunk and pelvis together."
+      ],
+      "commonErrors": [
+        "Sagging or piking through the trunk.",
+        "Hands on an unstable surface.",
+        "Using floor position when wrist/shoulder tolerance is unknown."
+      ],
+      "loggingFields": [
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "variation",
+          "label": "Variation/surface height",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "assistance",
+          "label": "Assistance",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Bodyweight; record the support height/variation because leverage changes demand.",
+      "achillesConsiderations": [
+        "Lower-limb loading is usually secondary but foot/ankle support position still matters.",
+        "Do not let added strength work displace essential rehabilitation or silently increase total volume."
+      ],
+      "existingPrerequisiteReferences": [],
+      "unresolvedPrerequisites": [
+        "Preferred entry variation and wrist/shoulder tolerance are not documented."
+      ],
+      "regressions": [
+        {
+          "name": "Incline push-up",
+          "existingId": null,
+          "rationale": "Reduces bodyweight leverage; surface height must be recorded and reviewed.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Floor push-up",
+          "existingId": null,
+          "rationale": "Greater leverage demand; not an automatic progression.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [
+        {
+          "text": "Push-ups are a general resistance-training option; variation and training volume should be individualized.",
+          "sourceIds": [
+            "src-acsm-2026"
+          ],
+          "evidenceType": "position stand / overview of reviews",
+          "applicabilityToPostSurgicalAchilles": "indirect",
+          "uncertainty": "Healthy-adult guidance does not determine the user's entry variation, total program volume or clinical readiness.",
+          "developerScope": "General training context only; not proof of exercise-specific cues, configuration or Achilles eligibility."
+        }
+      ],
+      "illustrationBrief": null,
+      "reviewQuestions": [
+        "Which initial support height/variation fits the full-body plan without displacing rehab?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 22,
+      "proposedId": "library-chin-up",
+      "name": "Chin-up",
+      "priority": 3,
+      "recommendation": "add",
+      "decisionReason": "A pull-up exists, but a supinated-grip chin-up is a distinct grip variation. Assistance and bar clearance still need verification.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "pull-up",
+          "name": "Pull-up",
+          "relationship": "related",
+          "reason": "Pronated versus supinated grip changes the exercise and assistance needs."
+        }
+      ],
+      "aliases": [
+        "supinated-grip pull-up"
+      ],
+      "equipmentIds": [
+        "pull-up-bar"
+      ],
+      "additionalSetupRequirements": [
+        "Verified step-up/step-down method",
+        "Reviewed assistance setup if used"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Vertical pulling strength with a supinated grip.",
+      "movementPattern": "vertical pull",
+      "muscles": [
+        "latissimus dorsi",
+        "elbow flexors",
+        "upper back",
+        "grip"
+      ],
+      "laterality": "bilateral",
+      "setupSteps": [
+        "Use a verified pull-up bar and supinated grip with clear foot space.",
+        "Choose a reviewed assistance method before hanging or stepping up."
+      ],
+      "executionCues": [
+        "Begin from the approved shoulder position and pull without swinging.",
+        "Lower under control and use the planned step-down."
+      ],
+      "commonErrors": [
+        "Kipping or using leg drive.",
+        "Dropping from the bar.",
+        "Treating existing pull-up performance as automatic chin-up eligibility."
+      ],
+      "loggingFields": [
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "assistance",
+          "label": "Assistance",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "grip",
+          "label": "Grip/width",
+          "unit": "text",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Added load",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Bodyweight plus/minus explicitly recorded assistance or added load; do not convert band assistance to pounds.",
+      "achillesConsiderations": [
+        "Step-up/step-down and hanging foot clearance may affect the lower limb.",
+        "Grip change is not an automatic progression from pull-up."
+      ],
+      "existingPrerequisiteReferences": [
+        "pull-up"
+      ],
+      "unresolvedPrerequisites": [
+        "Assistance method, bar height/clearance, shoulder/elbow tolerance and safe mounting/dismounting are not confirmed."
+      ],
+      "regressions": [
+        {
+          "name": "Pull-up",
+          "existingId": "pull-up",
+          "rationale": "Existing pronated-grip vertical pull; not an exact equivalent.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Assisted chin-up",
+          "existingId": null,
+          "rationale": "May reduce pulling demand but assistance setup needs independent verification.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [
+        {
+          "text": "Chin-ups are a general resistance-training variation; grip and assistance should be recorded rather than assumed equivalent to pull-ups.",
+          "sourceIds": [
+            "src-acsm-2026"
+          ],
+          "evidenceType": "position stand / overview of reviews",
+          "applicabilityToPostSurgicalAchilles": "indirect",
+          "uncertainty": "The source does not specify this user's assistance, joint tolerance or postoperative integration.",
+          "developerScope": "General training context only; not proof of exercise-specific cues, configuration or Achilles eligibility."
+        }
+      ],
+      "illustrationBrief": {
+        "startPosition": "Adult at pull-up bar with palms facing toward the body and feet clear of floor.",
+        "endPosition": "Controlled top position without swinging, then indicated slow return.",
+        "equipment": "Pull-up bar and optional verified assistance",
+        "importantAnatomyAndAlignment": "Shoulders controlled, trunk quiet, no leg kick.",
+        "cameraAngle": "Front three-quarter view showing grip orientation.",
+        "avoid": "Do not show pronated grip, kipping, dropping, or an invented assistance device."
+      },
+      "reviewQuestions": [
+        "What assistance and step-up/step-down arrangement is available?",
+        "Should chin-up remain a separate variation rather than replace the current pull-up?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 23,
+      "proposedId": "library-single-arm-cable-row",
+      "name": "Standing single-arm cable row",
+      "priority": 3,
+      "recommendation": "add",
+      "decisionReason": "The library has several row variations, but no exact unilateral cable row. Unilateral stance/trunk demand and cable setup justify a separate record.",
+      "existingMatches": [
+        {
+          "collection": "activeCatalog",
+          "id": "supported-db-row",
+          "name": "Supported dumbbell row",
+          "relationship": "related",
+          "reason": "Unilateral row with different implement and support."
+        },
+        {
+          "collection": "exerciseLibrary",
+          "id": "library-rack-chest-supported-row",
+          "name": "Rack-mounted chest-supported cable row",
+          "relationship": "related",
+          "reason": "Cable row family, but supported and not a single-arm standing/seated record."
+        }
+      ],
+      "aliases": [
+        "unilateral cable row"
+      ],
+      "equipmentIds": [
+        "cable-station"
+      ],
+      "additionalSetupRequirements": [
+        "Single handle",
+        "Verified pulley height and stable body support"
+      ],
+      "equipmentFeasibility": "setup-unverified",
+      "purpose": "Unilateral horizontal pulling strength.",
+      "movementPattern": "single-arm horizontal pull",
+      "muscles": [
+        "upper back",
+        "latissimus dorsi",
+        "elbow flexors",
+        "trunk"
+      ],
+      "laterality": "unilateral",
+      "setupSteps": [
+        "Standing with single cable handle at torso height. Confirm stance and support against exact demo; seated version is separate."
+      ],
+      "executionCues": [
+        "Pull the handle toward the torso without rotating.",
+        "Return under control while maintaining the chosen body position."
+      ],
+      "commonErrors": [
+        "Twisting to move the load.",
+        "Shrugging the shoulder.",
+        "Using a staggered stance without reviewing lower-limb loading."
+      ],
+      "loggingFields": [
+        {
+          "key": "side",
+          "label": "Side",
+          "unit": "left/right",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "unit": "count",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "Cable stack setting",
+          "unit": "displayed setting",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "position",
+          "label": "Body position",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        },
+        {
+          "key": "attachment",
+          "label": "Handle/pulley setup",
+          "unit": "text",
+          "sideSpecific": true,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record displayed stack setting, side, pulley height and handle; cable ratio is unknown and loads are not equivalent to dumbbells.",
+      "achillesConsiderations": [
+        "Standing/staggered versions can add lower-limb stabilization; a seated supported version may be a different entry option.",
+        "Upper-body additions must not silently increase total program volume."
+      ],
+      "existingPrerequisiteReferences": [
+        "supported-db-row"
+      ],
+      "unresolvedPrerequisites": [
+        "Canonical seated versus standing position, cable ratio, handle, pulley height and starting resistance are unknown."
+      ],
+      "regressions": [
+        {
+          "name": "Supported dumbbell row",
+          "existingId": "supported-db-row",
+          "rationale": "Existing supported unilateral row with different load path.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Seated single-arm cable row",
+          "existingId": null,
+          "rationale": "Reduces standing demand but needs bench/cable geometry review.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [],
+      "claims": [
+        {
+          "text": "Rows are general resistance-training exercises; implement and unilateral setup require individualized loading.",
+          "sourceIds": [
+            "src-acsm-2026"
+          ],
+          "evidenceType": "position stand / overview of reviews",
+          "applicabilityToPostSurgicalAchilles": "indirect",
+          "uncertainty": "The source does not establish this setup, starting stack setting or postoperative scheduling.",
+          "developerScope": "General training context only; not proof of exercise-specific cues, configuration or Achilles eligibility."
+        }
+      ],
+      "illustrationBrief": null,
+      "reviewQuestions": [
+        "Should the canonical version be seated to reduce stance demand?",
+        "Which handle and pulley height are intended?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    },
+    {
+      "candidateNumber": 24,
+      "proposedId": "library-farmer-carry",
+      "name": "Farmer carry",
+      "priority": 3,
+      "recommendation": "add",
+      "decisionReason": "The catalog has a unilateral suitcase carry, not a bilateral dumbbell farmer carry. Bilateral loading is a meaningful distinction.",
+      "existingMatches": [
+        {
+          "collection": "movementExercises",
+          "id": "suitcase-carry",
+          "name": "Suitcase carry",
+          "relationship": "related",
+          "reason": "Unilateral carry differs from bilateral dumbbell loading."
+        }
+      ],
+      "aliases": [
+        "dumbbell farmer carry",
+        "farmer walk"
+      ],
+      "equipmentIds": [
+        "dumbbells"
+      ],
+      "additionalSetupRequirements": [
+        "Two dumbbells of independently selected load",
+        "Clear level route"
+      ],
+      "equipmentFeasibility": "partially-verified",
+      "purpose": "Bilateral loaded carry with dumbbells.",
+      "movementPattern": "loaded carry",
+      "muscles": [
+        "grip",
+        "trunk",
+        "lower body"
+      ],
+      "laterality": "bilateral",
+      "setupSteps": [
+        "Choose two dumbbells and a clear, level route with a reviewed pickup method.",
+        "Stand tall with one dumbbell at each side before walking."
+      ],
+      "executionCues": [
+        "Take controlled steps while keeping both weights quiet.",
+        "Turn deliberately and set both dumbbells down under control."
+      ],
+      "commonErrors": [
+        "Rushing or pivoting turns.",
+        "Weights swinging into the legs.",
+        "Assuming two 50 lb dumbbells are an appropriate target because they are owned."
+      ],
+      "loggingFields": [
+        {
+          "key": "distance",
+          "label": "Distance",
+          "unit": "m",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "durationSeconds",
+          "label": "Duration",
+          "unit": "seconds",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "load",
+          "label": "External load",
+          "unit": "lb",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        },
+        {
+          "key": "turns",
+          "label": "Turns",
+          "unit": "count",
+          "sideSpecific": false,
+          "requiredForLogging": false
+        }
+      ],
+      "loadConvention": "Record load per dumbbell, not combined load, plus distance or duration and turn method. Owned maximum is not a target.",
+      "achillesConsiderations": [
+        "Loaded walking adds repeated stance and propulsion demands.",
+        "Bilateral carry is not automatically easier or harder than unilateral suitcase carry; it is different."
+      ],
+      "existingPrerequisiteReferences": [
+        "suitcase-carry"
+      ],
+      "unresolvedPrerequisites": [
+        "Clear route, turn method, pickup/set-down strategy, start load and current loaded-walking tolerance are not confirmed."
+      ],
+      "regressions": [
+        {
+          "name": "Suitcase carry",
+          "existingId": "suitcase-carry",
+          "rationale": "Existing unilateral load with different trunk demand.",
+          "reviewRequired": true
+        }
+      ],
+      "progressions": [
+        {
+          "name": "Shorter bilateral carry",
+          "existingId": null,
+          "rationale": "A dose change, not automatic eligibility; requires program review.",
+          "reviewRequired": true
+        }
+      ],
+      "educationalDose": null,
+      "proposedPlacement": "library-only",
+      "approvedForAutomaticScheduling": false,
+      "demos": [
+        {
+          "url": "https://barbend.com/farmers-carry/",
+          "sourcePage": "https://barbend.com/farmers-carry/",
+          "title": "How to Do the Farmer's Carry",
+          "provider": "BarBend",
+          "durationSeconds": null,
+          "startSeconds": null,
+          "endSeconds": null,
+          "access": "public",
+          "pageVerified": true,
+          "playbackVerified": false,
+          "exactMovementVerified": true,
+          "verifiedAt": "2026-09-16",
+          "verificationNotes": "Public written bilateral carry instructions were accessible; no video playback was verified. General fitness instruction, not clinical evidence."
+        }
+      ],
+      "claims": [
+        {
+          "text": "Loaded carries can be treated as general resistance training, but load and volume must be individualized.",
+          "sourceIds": [
+            "src-acsm-2026"
+          ],
+          "evidenceType": "position stand / overview of reviews",
+          "applicabilityToPostSurgicalAchilles": "indirect",
+          "uncertainty": "Healthy-adult guidance does not establish postoperative Achilles readiness, route, load or dose.",
+          "developerScope": "General training context only; not proof of exercise-specific cues, configuration or Achilles eligibility."
+        }
+      ],
+      "illustrationBrief": {
+        "startPosition": "Adult standing tall on a clear lane with one dumbbell in each hand.",
+        "endPosition": "Controlled walking step with weights quiet at sides.",
+        "equipment": "Two dumbbells",
+        "importantAnatomyAndAlignment": "Upright trunk, level shoulders, clear foot path.",
+        "cameraAngle": "Front three-quarter view showing both weights and route.",
+        "avoid": "Do not show running, a unilateral suitcase carry, clutter, or maximum dumbbells."
+      },
+      "reviewQuestions": [
+        "What clear route and turn method are available?",
+        "What starting load and total volume fit without displacing rehab?"
+      ],
+      "implementationStatus": "research-only",
+      "loggingContract": {
+        "requiredForCompletedSet": [
+          "appropriate movement reps or duration/distance",
+          "side for unilateral work",
+          "equipment/setup identifier for loaded work"
+        ],
+        "unknownValue": null,
+        "zeroIsMissing": false,
+        "progressionEvidence": false,
+        "status": "Map to app logging before a runnable entry is added."
+      }
+    }
+  ],
+  "developerReviewStatus": "Draft only; not imported into active catalog or planner."
+}

@@ -1,0 +1,5 @@
+PASS Unconfigured library opens populated; favorites explain emptiness; six new equipment entries have demos
+PASS Confirmed equipment is added to an existing profile once; later deselection survives reload
+PASS Guided response then check-in saves separate dated records without copying or auto-confirming answers
+PASS Journal review copies an explicitly confirmed zero into a draft without changing original measurement or assessment
+PASS No browser runtime errors

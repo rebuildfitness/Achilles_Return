@@ -1,5 +1,5 @@
 import { applyAutomaticPlan } from "./automaticPlan.js";
-import { CATALOG, activeExercise, EQUIPMENT } from "../data/catalog.js";
+import { CATALOG, activeExercise, EQUIPMENT, DEFAULT_EQUIPMENT } from "../data/catalog.js";
 import { baselineResult } from "./baseline.js";
 import { dayKey } from "../data/provisionalWeek.js";
 import { resumeAfterMissedSessions } from "./workout.js";
@@ -271,7 +271,7 @@ export function weeklyPlan(
           return swapExercise(
             ex,
             choice.id,
-            profile?.equipment || EQUIPMENT,
+            profile?.equipment || DEFAULT_EQUIPMENT,
             modifiedReadiness,
             "equipment",
           );
@@ -283,7 +283,7 @@ export function weeklyPlan(
       ? modifyWorkout(
           raw,
           modifiedReadiness,
-          profile?.equipment || EQUIPMENT,
+          profile?.equipment || DEFAULT_EQUIPMENT,
           key === actualToday ? reentry.reduction : 0,
         )
       : null;

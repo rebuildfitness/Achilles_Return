@@ -43,6 +43,7 @@ export function History({ sessions, allSessions = sessions }: { sessions: Sessio
                   <h3>
                     {s.plannedItems?.find((e) => e.id === id)?.name || id}
                   </h3>
+                  {id === "weighted-wagon-backward-drag" && <p className="helper">Recorded equipment: utility wagon · personal substitute. This historical entry is not sled use.</p>}
                   {entry.sets.filter(Boolean).map((set, i) => (
                     <p key={i}>
                       Set {i + 1}: {set.load || "—"} lb × {set.reps || "—"}{" "}

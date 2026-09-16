@@ -3,7 +3,7 @@ import { get, getAll, put, writeRecords } from "../db.js";
 import { VERSIONS } from "./schema.js";
 import { baselineResult } from "../rules/baseline.js";
 import { classifyTolerance } from "../rules/response.js";
-import { EQUIPMENT } from "../data/catalog.js";
+import { EQUIPMENT, DEFAULT_EQUIPMENT } from "../data/catalog.js";
 import type { Assessment, Profile, Values } from "../types";
 import { readinessAudit } from "../rules/audit.js";
 import type {
@@ -105,7 +105,7 @@ export async function completeBaseline(values: Values) {
       value: {
         ...profile,
         id: "athlete",
-        equipment: profile?.equipment || EQUIPMENT,
+        equipment: profile?.equipment || DEFAULT_EQUIPMENT,
         availableDays: values.availableDays,
         surgeryDate: values.surgeryDate,
       },

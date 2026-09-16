@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Card, PrimaryButton } from "../components/ui";
 import { DataField } from "./Baseline";
 import { ExerciseLibrary } from "../components/ExerciseLibrary";
-import { EQUIPMENT, EQUIPMENT_LABELS } from "../data/catalog.js";
+import { EQUIPMENT, DEFAULT_EQUIPMENT, EQUIPMENT_OPTIONS, EQUIPMENT_LABELS } from "../data/catalog.js";
 import { EVIDENCE, CLINICAL_COPY } from "../data/evidence.js";
 import { STRENGTH_STYLES } from "../rules/planner.js";
 import { OWNED_LOADS } from "../data/ownedLoads.js";
@@ -36,7 +36,7 @@ export function MoreScreen({
     [audit, setAudit] = useState<Record<string, unknown>[]>([]);
   const [values, setValues] = useState<Values>({
     availableDays: profile?.availableDays || ["1", "3", "5"],
-    equipment: profile?.equipment || EQUIPMENT,
+    equipment: profile?.equipment || DEFAULT_EQUIPMENT,
     strengthStyle: profile?.strengthStyle || "hybrid",
   });
   async function settings() {
@@ -161,7 +161,7 @@ export function MoreScreen({
               id: "equipment",
               label: "Available owned equipment",
               type: "checks",
-              options: EQUIPMENT.map((e) => [
+              options: [...EQUIPMENT_OPTIONS, ...(profile?.equipment?.includes("weighted-wagon") ? ["weighted-wagon"] : [])].map((e) => [
                 e,
                 EQUIPMENT_LABELS[e as keyof typeof EQUIPMENT_LABELS] ||
                   e.replaceAll("-", " "),
@@ -178,6 +178,8 @@ export function MoreScreen({
             vibration plate. These are equipment options; owning them does not
             unlock impact or unstable-surface work.
           </p>
+          <p className="helper">Recorded treadmill: ProForm Performance 300i · PFTL39715.1. Backward walking remains deferred pending device-use verification.</p>
+          {profile?.equipment?.includes("weighted-wagon") && <p className="helper">Your utility wagon is a personal substitute, not a training sled. It does not unlock sled exercises; cargo ratings are not exercise loads.</p>}
           <PrimaryButton disabled={busy} onClick={settings}>
             Save preferences
           </PrimaryButton>

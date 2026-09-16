@@ -4,7 +4,7 @@ import { MovementLibrary } from "./MovementLibrary";
 import { ExerciseIllustration } from "./ExerciseIllustration";
 import { useEffect, useState } from "react";
 import { Card } from "./ui";
-import { EQUIPMENT } from "../data/catalog.js";
+import { EQUIPMENT, DEFAULT_EQUIPMENT, EQUIPMENT_OPTIONS } from "../data/catalog.js";
 import {
   EXERCISE_LIBRARY,
   MUSCLE_GROUPS,
@@ -14,7 +14,7 @@ import {
 
 export function ExerciseLibrary({
   onMovement,
-  equipment: ownedEquipment = EQUIPMENT,
+  equipment: ownedEquipment = DEFAULT_EQUIPMENT,
   prescribedIds = [],
 }: {
   onMovement?: () => void;
@@ -39,6 +39,7 @@ export function ExerciseLibrary({
   const [muscle, setMuscle] = useState("");
   const [limit, setLimit] = useState(20);
   const matches = filterLibrary({ search, equipment, muscle }).filter(ex =>
+    (ex.id !== "weighted-wagon-backward-drag" || ownedEquipment.includes("weighted-wagon")) &&
     (category !== "Achilles" || ex.muscle === "Calf & ankle") &&
     (search || category === "Achilles" || collection === "all" || (collection === "favorites" ? favorites.includes(ex.id) : prescribedIds.includes(ex.id))));
   function reset() {
@@ -130,7 +131,7 @@ export function ExerciseLibrary({
               >
                 <option value="">All equipment</option>
                 <option value="bodyweight">Bodyweight</option>
-                {EQUIPMENT.map((id) => (
+                {[...EQUIPMENT_OPTIONS, ...(ownedEquipment.includes("weighted-wagon") ? ["weighted-wagon"] : [])].map((id) => (
                   <option key={id} value={id}>
                     {equipmentLabel(id)}
                   </option>
@@ -191,7 +192,7 @@ export function ExerciseLibrary({
                 {ex.muscle} ·{" "}
                 {ex.equipment.map(equipmentLabel).join(" + ") || "Bodyweight"}
               </p>
-              <a
+              {ex.videoUrl ? <a
                 className="demo-link"
                 href={ex.videoUrl}
                 target="_blank"
@@ -199,7 +200,8 @@ export function ExerciseLibrary({
                 aria-label={`Short Demo: ${ex.name}`}
               >
                 Short Demo ↗
-              </a>
+              </a> : <p className="helper">Demo pending verification · Reference only</p>}
+              {ex.id === "weighted-wagon-backward-drag" && <p className="helper">Your personal substitute for backward sled drag. Original wagon loads stay separate; this is not manufacturer-rated exercise equipment.</p>}
               <details>
                 <summary>Setup & guidance</summary>
                 <p>{ex.setup}</p>
@@ -211,7 +213,7 @@ export function ExerciseLibrary({
                     : "Included in the rehab exercise catalog."}
                 </p>
                 <p className="helper">
-                  {ex.videoSource} · Checked {ex.verifiedAt}
+                  {ex.verifiedAt ? `${ex.videoSource} · Checked ${ex.verifiedAt}` : "Setup and demo review pending"}
                 </p>
                 <p className="helper">{ex.verification}</p>
               </details>

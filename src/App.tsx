@@ -8,7 +8,7 @@ import { AppShell, Card } from "./components/ui";
 import { Today } from "./screens/Today";
 import { MovementScreen } from "./screens/Movement";
 import { applySessionChanges, emptySessionChanges, recordSessionChange, sessionItems } from "./rules/sessionChanges.js";
-import { EQUIPMENT } from "./data/catalog.js";
+import { EQUIPMENT, DEFAULT_EQUIPMENT } from "./data/catalog.js";
 import { swapExercise, addDays } from "./rules/trainingFlexibility.js";
 import { weeklyPlan } from "./rules/planner.js";
 import { baselineResult } from "./rules/baseline.js";
@@ -344,7 +344,7 @@ export function App() {
         finishedAt,
         ...(timer ? { durationMs: timer.accumulatedMs, startedAt: timer.startedAt, workoutTimer: timer } : {}),
         originalPlan: baseWorkout.items,
-        coachingContext: { weeklyPlan: week.map(d => ({date:d.date,title:d.title,items:d.workout?.items.map((e: import("./types").Exercise)=>({name:e.name,sets:e.sets,reps:e.reps})) || []})), phase: workout.phase, equipment: program.profile?.equipment || EQUIPMENT, checkIn: checkIn?.answers, clinical: Object.fromEntries(["surgeryDate", "repairSide", "restrictions", "complications"].map(key => [key, program.assessment?.values[key] ?? "Not recorded"])) },
+        coachingContext: { weeklyPlan: week.map(d => ({date:d.date,title:d.title,items:d.workout?.items.map((e: import("./types").Exercise)=>({name:e.name,sets:e.sets,reps:e.reps})) || []})), phase: workout.phase, equipment: program.profile?.equipment || DEFAULT_EQUIPMENT, checkIn: checkIn?.answers, clinical: Object.fromEntries(["surgeryDate", "repairSide", "restrictions", "complications"].map(key => [key, program.assessment?.values[key] ?? "Not recorded"])) },
         date,
         createdAt: new Date().toISOString(),
         workoutId: workout.id,
@@ -625,7 +625,7 @@ export function App() {
                 if (!canOpenWorkout || readiness?.level === "RED") throw new Error("Review today's check-in before changing the workout.");
                 swapping.current = true; setBusy(true);
                 try {
-                  const owned = program.profile?.equipment || EQUIPMENT;
+                  const owned = program.profile?.equipment || DEFAULT_EQUIPMENT;
                   const missing = unavailable.filter(key => owned.includes(key));
                   const replacement = id === exercise.id ? { ...exercise, skipReason: undefined } : id ? swapExercise(exercise, id, owned.filter(key => !missing.includes(key)), readiness?.level, reason) : null;
                   if (id !== exercise.id && workout.items.some(ex => ex.id === id)) throw new Error("That exercise is already in this workout.");

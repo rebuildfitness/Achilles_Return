@@ -1,0 +1,9 @@
+{
+  "passed": [
+    "Existing wagon ownership retained; exact treadmill displayed; sled not marked owned",
+    "Canonical sled references are searchable without an unverified demo button",
+    "Backward treadmill remains a deferred reference without a demo link",
+    "Exact model persisted locally with no browser runtime errors"
+  ],
+  "failed": 0
+}

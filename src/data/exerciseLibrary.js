@@ -1,3 +1,4 @@
+import { EQUIPMENT_REFERENCE_EXERCISES } from "./equipmentContext.js";
 import { NEW_EQUIPMENT_EXERCISES } from "./newEquipmentExercises.js";
 import { CALF_PATHWAY } from "./calfPathway.js";
 import { CATALOG, EQUIPMENT_LABELS } from "./catalog.js";
@@ -576,7 +577,7 @@ export function filterLibrary({
   muscle = "",
 } = {}) {
   const words = search.toLowerCase().trim().split(/\s+/).filter(Boolean);
-  return EXERCISE_LIBRARY.filter(
+  return [...EXERCISE_LIBRARY, ...EQUIPMENT_REFERENCE_EXERCISES].filter(
     (ex) =>
       (!equipment ||
         (equipment === "bodyweight"
@@ -584,7 +585,7 @@ export function filterLibrary({
           : ex.equipment.includes(equipment))) &&
       (!muscle || ex.muscle === muscle) &&
       words.every((word) =>
-        [ex.name, ex.muscle, ...ex.equipment.map(equipmentLabel), ex.setup]
+        [ex.name, ex.id === "weighted-wagon-backward-drag" ? "backward sled drag personal substitute" : "", ex.muscle, ...ex.equipment.map(equipmentLabel), ex.setup]
           .join(" ")
           .toLowerCase()
           .includes(word),

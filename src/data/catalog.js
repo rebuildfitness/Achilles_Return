@@ -1,7 +1,11 @@
 import { exercises as legacy } from "./exercises.js";
 import plan from "../../spec/rehab-plan-v1.json" with { type: "json" };
 export const EQUIPMENT = plan.equipmentWhitelist;
+export const DEFAULT_EQUIPMENT = EQUIPMENT.filter(id => id !== "weighted-wagon");
+export const EQUIPMENT_OPTIONS = [...EQUIPMENT.filter(id => id !== "weighted-wagon"), "training-sled"];
 export const EQUIPMENT_LABELS = {
+  "training-sled": "Training sled (push / pull)",
+  "weighted-wagon": "Utility wagon (personal substitute)",
   "landmine-station": "Landmine station",
   "rack-leg-extension": "Major Fitness rack-mounted leg extension",
   "bosu-ball": "BOSU-style half ball (VEVOR)",
@@ -271,7 +275,9 @@ export const CATALOG = {
       tags: ["conditioning"],
       rpe: "5–7",
       unit: "yards",
-      cue: "Smooth short backward steps. Wagon pounds are not equivalent to sled resistance.",
+      canonicalMovementId: "backward-sled-drag",
+      equipmentRole: "personal-substitute",
+      cue: "Personal utility-wagon substitute only. Smooth short backward steps. Wagon pounds are not equivalent to sled resistance; cargo ratings are not exercise ratings.",
     },
   ),
   // Unverified items are visible in the library but never selected into active sessions.

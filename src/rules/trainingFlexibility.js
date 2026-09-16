@@ -76,7 +76,7 @@ export function swapOptions(exercise, equipment = EQUIPMENT) {
         Object.values(CATALOG).find((e) => e.id === id) ||
         EXERCISE_LIBRARY.find((e) => e.id === id),
     )
-    .filter((e) => e && e.equipment.every((id) => equipment.includes(id)));
+    .filter((e) => e && !e.referenceOnly && e.equipment.every((id) => equipment.includes(id)));
 }
 export function swapExercise(exercise, id, equipment, readiness, reason) {
   const option = swapOptions(exercise, equipment).find((e) => e.id === id);
