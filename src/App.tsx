@@ -1,3 +1,5 @@
+import { automaticPlanSnapshot } from "./rules/automaticPlan.js";
+import { saveAutomaticPlanAudit } from "./persistence/automaticPlan.js";
 import { SessionRefresh } from "./components/SessionEditor";
 import { CoachingReview } from "./components/CoachingReview";
 import { editFeedback, timerKey, timerTransition } from "./data/workoutExperience.js";
@@ -130,8 +132,15 @@ export function App() {
     program.assessment,
     sessions,
     new Date(date + "T12:00:00"),
-    readiness?.level || "GREEN",
+    readiness?.level || "UNCHECKED",
+    program.checkpoints,
+    date,
   );
+  const planSnapshot = JSON.stringify(automaticPlanSnapshot(week, program.assessment, program.checkpoints, sessions, readiness?.level || "UNCHECKED", date));
+  useEffect(() => {
+    if (!loaded || !program.assessment) return;
+    void saveAutomaticPlanAudit(JSON.parse(planSnapshot)).catch(e => setError(`Could not save plan explanation: ${String(e)}`));
+  }, [loaded, planSnapshot]);
   const today = week.find((d) => d.date === date)!;
   const baseWorkout: Workout = today.workout || {
     id: "recovery",
@@ -644,6 +653,8 @@ export function App() {
             <>
               {savedReviewId && sessions.find(s => s.id === savedReviewId) && <Card><h2>Workout saved</h2><CoachingReview session={sessions.find(s => s.id === savedReviewId)!} sessions={sessions} /></Card>}
               <Today
+                exposure={today.exposure}
+                onExposure={(d) => { setDomain(d); open("exposure"); }}
                 hasDraft={Object.values(log).some(item => item.sets.some(set => set && Object.keys(set).length > 0))}
                 onRecovery={(type = "") => {
                   setMovementType(type);
@@ -680,6 +691,8 @@ export function App() {
             </>
           ) : tab === "Plan" ? (
             <PlanScreen
+              checkpoints={program.checkpoints}
+              onExposure={(d) => { setDomain(d); open("exposure"); }}
               onMovement={(d) => {
                 setMovementType("");
                 setMovementDate(d);
@@ -688,7 +701,7 @@ export function App() {
               sessions={sessions}
               profile={program.profile}
               assessment={program.assessment}
-              readiness={readiness?.level || "GREEN"}
+              readiness={readiness?.level || "UNCHECKED"}
               onTests={() => select("Tests")}
               onReload={reloadProgram}
             />

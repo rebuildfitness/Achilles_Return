@@ -28,6 +28,7 @@ export type SetLog = {
 };
 export type WorkoutLog = Record<string, { sets: SetLog[] }>;
 export type Exercise = {
+  progressionTarget?: { action: string; text: string; reason: string; sourceSessionId: string; previousLoad: number; ruleId: string; matrixVersion: string; sourceIds: string[] };
   equipment?: string[];
   skipReason?: string;
   strengthModule?: boolean;

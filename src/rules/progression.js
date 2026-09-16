@@ -414,8 +414,9 @@ export function exposureScheduling(
   isLoadingDay,
   retest = false,
   assessmentDate = "",
+  evidenceDate = today,
 ) {
-  const reentry = exposureReentry(domain, sessions, today, assessmentDate);
+  const reentry = exposureReentry(domain, sessions, evidenceDate, assessmentDate);
   if (reentry.retest)
     return {
       allowed: false,
@@ -518,3 +519,5 @@ export function strengthDecision(exercise, sets, status, readiness = "GREEN") {
     rulesetVersion: RULESET,
   };
 }
+
+

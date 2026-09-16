@@ -1,3 +1,4 @@
+import { applyAutomaticPlan } from "./automaticPlan.js";
 import { CATALOG, activeExercise, EQUIPMENT } from "../data/catalog.js";
 import { baselineResult } from "./baseline.js";
 import { dayKey } from "../data/provisionalWeek.js";
@@ -178,7 +179,10 @@ export function weeklyPlan(
   sessions = [],
   today = new Date(),
   readiness = "GREEN",
+  checkpoints = {},
+  actualToday = dayKey(today),
 ) {
+  sessions = sessions.filter(s => !s.date || s.date <= actualToday);
   const monday = new Date(
     today.getFullYear(),
     today.getMonth(),
@@ -207,20 +211,20 @@ export function weeklyPlan(
     )
       high.push(index);
   const prior = [...sessions]
-    .filter((s) => s.date && s.date <= dayKey(today))
+    .filter((s) => s.date && s.date <= actualToday)
     .sort((a, b) => b.date.localeCompare(a.date))[0];
   const daysMissed = prior
     ? Math.max(
         0,
         Math.floor(
-          (new Date(dayKey(today) + "T12:00:00").getTime() -
+          (new Date(actualToday + "T12:00:00").getTime() -
             new Date(prior.date + "T12:00:00").getTime()) /
             86400000,
         ) - 1,
       )
     : 0;
   const reentry = resumeAfterMissedSessions(daysMissed, readiness);
-  return Array.from({ length: 7 }, (_, index) => {
+  const days = Array.from({ length: 7 }, (_, index) => {
     const date = new Date(monday);
     date.setDate(date.getDate() + index);
     const key = dayKey(date);
@@ -244,7 +248,7 @@ export function weeklyPlan(
           profile?.strengthStyle || "hybrid",
         )
       : null;
-    const effectiveReadiness = key === dayKey(today) ? readiness : "GREEN";
+    const effectiveReadiness = key === actualToday && readiness !== "UNCHECKED" ? readiness : "GREEN";
     const responseReadiness =
       lastStrength?.status === "NOT_TOLERATED"
         ? "YELLOW_2"
@@ -280,7 +284,7 @@ export function weeklyPlan(
           raw,
           modifiedReadiness,
           profile?.equipment || EQUIPMENT,
-          key === dayKey(today) ? reentry.reduction : 0,
+          key === actualToday ? reentry.reduction : 0,
         )
       : null;
     return {
@@ -311,7 +315,7 @@ export function weeklyPlan(
         daysMissed > 10 &&
         (!assessment?.completedAt ||
           Math.floor(
-            (new Date(dayKey(today) + "T12:00:00").getTime() -
+            (new Date(actualToday + "T12:00:00").getTime() -
               new Date(
                 assessment.completedAt.slice(0, 10) + "T12:00:00",
               ).getTime()) /
@@ -319,4 +323,5 @@ export function weeklyPlan(
           ) > 10),
     };
   });
+  return applyAutomaticPlan(days, { assessment, checkpoints, sessions, readiness, today: actualToday });
 }

@@ -127,3 +127,8 @@ See docs/TRAINING_FLEXIBILITY_UPDATE.md for make-up scheduling, recovery logs, t
 ## Version 1.3.1 â€” workflow clarity and new equipment
 
 See [the release guide](docs/WORKFLOW_AND_EQUIPMENT_UPDATE.md) for the four workflow improvements, landmine station and Major Fitness rack attachment exercises, validation and upload instructions.
+
+
+## App 1.4.0 — automatic progression
+
+Today and Plan now automatically incorporate eligible exposure doses and exercise-specific next-load instructions from recorded criteria and tolerance. See [the progression matrix and release notes](docs/AUTOMATIC_PROGRESSION_MATRIX.md). Clinical thresholds and saved history remain intact.

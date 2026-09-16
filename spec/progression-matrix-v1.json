@@ -1,0 +1,143 @@
+{
+  "version": "1.0.0",
+  "clinicalRulesetVersion": "1.1.0",
+  "reviewedAt": "2026-09-16",
+  "domainOrder": [
+    "running",
+    "jumping",
+    "cod",
+    "speed",
+    "basketball",
+    "soccer"
+  ],
+  "implementation": "Existing rules/progression.js gate, levelGate, exposureDecision, exposureScheduling and strengthDecision remain authoritative. Rows describe those executable rules; they do not replace them.",
+  "evidenceCaution": "Research-informed programming, not validated automatic medical clearance. Exact ladders, spacing, repetition of exposures and numeric safety safeguards are product rules.",
+  "rows": [
+    {
+      "domain": "strength",
+      "criteria": "Completed prescribed sets at top of range, RPE 1\u20138, good quality, no symptoms, confirmed feedback, tolerated next morning, green readiness.",
+      "automaticAdjustment": "Prescribe smallest practical load increase; preserve sets/reps and load conventions.",
+      "sourceIds": [
+        "general-strength",
+        "product-v1"
+      ],
+      "evidenceType": "General resistance-training guidance",
+      "holdRules": [
+        "Red flags",
+        "Pending next-morning response",
+        "Modified readiness",
+        "Unmet prerequisites",
+        "Re-entry review or missing reviewed dose"
+      ],
+      "ruleModule": "src/rules/progression.js"
+    },
+    {
+      "domain": "running",
+      "criteria": "All seven consensus entry criteria; clearance/restrictions; two qualified tolerated exposures at current level before next level.",
+      "automaticAdjustment": "Insert next eligible R1\u2013R9 dose.",
+      "sourceIds": [
+        "running-consensus",
+        "product-v1"
+      ],
+      "evidenceType": "Expert consensus / rehabilitation guidance; product-defined dose ladder",
+      "holdRules": [
+        "Red flags",
+        "Pending next-morning response",
+        "Modified readiness",
+        "Unmet prerequisites",
+        "Re-entry review or missing reviewed dose"
+      ],
+      "ruleModule": "src/rules/progression.js"
+    },
+    {
+      "domain": "jumping",
+      "criteria": "Documented calf capacity and low elastic preparation; additional unilateral/reactive reviews at J3/J5.",
+      "automaticAdjustment": "Insert eligible J0\u2013J5 dose; retain contact-doubling hold.",
+      "sourceIds": [
+        "rehab-guidance",
+        "product-v1"
+      ],
+      "evidenceType": "Expert consensus / rehabilitation guidance; product-defined dose ladder",
+      "holdRules": [
+        "Red flags",
+        "Pending next-morning response",
+        "Modified readiness",
+        "Unmet prerequisites",
+        "Re-entry review or missing reviewed dose"
+      ],
+      "ruleModule": "src/rules/progression.js"
+    },
+    {
+      "domain": "speed",
+      "criteria": "Running and plyometric tolerance plus late-stage review; high-speed review and three S3/S4 tolerated exposures before S5+.",
+      "automaticAdjustment": "Insert eligible S1\u2013S6 dose; individualized doses remain review-dependent.",
+      "sourceIds": [
+        "rehab-guidance",
+        "product-v1"
+      ],
+      "evidenceType": "Expert consensus / rehabilitation guidance; product-defined dose ladder",
+      "holdRules": [
+        "Red flags",
+        "Pending next-morning response",
+        "Modified readiness",
+        "Unmet prerequisites",
+        "Re-entry review or missing reviewed dose"
+      ],
+      "ruleModule": "src/rules/progression.js"
+    },
+    {
+      "domain": "cod",
+      "criteria": "Tolerated running and braking review; planned-cut review for D3+, reactive review and D5 tolerance for D6+.",
+      "automaticAdjustment": "Insert eligible D1\u2013D7 dose.",
+      "sourceIds": [
+        "rehab-guidance",
+        "product-v1"
+      ],
+      "evidenceType": "Expert consensus / rehabilitation guidance; product-defined dose ladder",
+      "holdRules": [
+        "Red flags",
+        "Pending next-morning response",
+        "Modified readiness",
+        "Unmet prerequisites",
+        "Re-entry review or missing reviewed dose"
+      ],
+      "ruleModule": "src/rules/progression.js"
+    },
+    {
+      "domain": "basketball",
+      "criteria": "Stationary review; domain-specific running, jumping, cutting and speed prerequisites at later levels; B8 multi-domain review.",
+      "automaticAdjustment": "Insert eligible B1\u2013B8 dose; retain court caps and individual-dose review.",
+      "sourceIds": [
+        "rts-review",
+        "product-v1"
+      ],
+      "evidenceType": "Expert consensus / rehabilitation guidance; product-defined dose ladder",
+      "holdRules": [
+        "Red flags",
+        "Pending next-morning response",
+        "Modified readiness",
+        "Unmet prerequisites",
+        "Re-entry review or missing reviewed dose"
+      ],
+      "ruleModule": "src/rules/progression.js"
+    },
+    {
+      "domain": "soccer",
+      "criteria": "Explicitly enabled with ball/field; tolerated running; corresponding cutting prerequisites.",
+      "automaticAdjustment": "Insert eligible SC1\u2013SC6 dose only when enabled.",
+      "sourceIds": [
+        "rehab-guidance",
+        "product-v1"
+      ],
+      "evidenceType": "Expert consensus / rehabilitation guidance; product-defined dose ladder",
+      "holdRules": [
+        "Red flags",
+        "Pending next-morning response",
+        "Modified readiness",
+        "Unmet prerequisites",
+        "Re-entry review or missing reviewed dose"
+      ],
+      "ruleModule": "src/rules/progression.js"
+    }
+  ]
+}

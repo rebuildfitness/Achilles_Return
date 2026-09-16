@@ -1,3 +1,4 @@
+import { PlannedExposure } from "../components/PlannedExposure";
 import { DailyBrand } from "../components/DailyBrand";
 import { sessionEstimate } from "../data/sessionPresentation.js";
 import { Card, Icon, PrimaryButton } from "../components/ui";
@@ -7,6 +8,8 @@ import { baselineResult } from "../rules/baseline.js";
 import { dayKey } from "../data/provisionalWeek.js";
 
 export function Today({
+  exposure,
+  onExposure,
   hasDraft = false,
   onRecovery,
   completed,
@@ -22,6 +25,8 @@ export function Today({
   workoutNote,
   onResponse,
 }: {
+  exposure?: any;
+  onExposure: (domain: string) => void;
   hasDraft?: boolean;
   onRecovery: (type?: string) => void;
   completed: boolean;
@@ -133,6 +138,7 @@ export function Today({
               </p>
             )}
             <p className="helper">{workoutNote}</p>
+            <PlannedExposure exposure={exposure} onStart={onExposure} />
           </Card>
         </>
       )}

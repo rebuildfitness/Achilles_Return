@@ -1,0 +1,10 @@
+{
+  "passed": [
+    "Saving the next-morning response automatically inserts R2 into Today without manual advancement",
+    "Automatically prescribed session opens the existing exposure logger at the updated dose",
+    "Reload and future-week preview retain R2; future plans never invent successful R3 evidence",
+    "Changed readiness immediately removes the scheduled impact exposure",
+    "Offline reload retains the prescription and local decision evidence without runtime errors"
+  ],
+  "failed": 0
+}

@@ -101,6 +101,7 @@ export function WorkoutScreen({
               <RecordedSets exercise={exercise} log={log} onChange={onChange} />
             </> : <>
             <p className="helper workout-comparison">Today: {exercise.sets} × {exercise.reps}. Last recorded: {previousSession ? `${displayDate(previousSession.date)} · ${previousSession.status === "TOLERATED" ? "response tolerated" : previousSession.status === "PENDING_NEXT_DAY_RESPONSE" ? "response pending" : "response needs review"}` : "No earlier session"}.<br />{loadConvention(exercise)}</p>
+            {exercise.progressionTarget && <p className="notice">{exercise.progressionTarget.text}</p>}
             <div className="set-row set-header" aria-hidden="true">
               <span>SET</span>
               <span>LAST</span>

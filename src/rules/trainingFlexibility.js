@@ -96,6 +96,7 @@ export function swapExercise(exercise, id, equipment, readiness, reason) {
   return {
     ...exercise,
     ...option,
+    progressionTarget: undefined,
     originalId: exercise.originalId || exercise.id,
     sets: id === "bilateral-calf" ? Math.min(exercise.sets, option.sets) : exercise.sets,
     reps: id === "bilateral-calf" ? option.reps : /unilateral|one-arm/i.test(option.name) && !/side/.test(exercise.reps) ? `${exercise.reps} / side` : exercise.reps,

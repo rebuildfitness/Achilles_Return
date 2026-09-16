@@ -1,3 +1,4 @@
+import { PlannedExposure } from "../components/PlannedExposure";
 import { displayDate } from "../data/displayDates.js";
 import { SectionSwitch } from "../components/SectionSwitch";
 import { useState } from "react";
@@ -9,6 +10,8 @@ import type { Assessment, Profile, Session, Exercise } from "../types";
 import { History } from "./History";
 
 export function PlanScreen({
+  checkpoints,
+  onExposure,
   onMovement,
   profile,
   assessment,
@@ -17,6 +20,8 @@ export function PlanScreen({
   onTests,
   onReload,
 }: {
+  checkpoints: Record<string, any>;
+  onExposure: (domain: string) => void;
   onMovement: (date: string) => void;
   profile?: Profile;
   assessment?: Assessment;
@@ -30,12 +35,12 @@ export function PlanScreen({
   const [view, setView] = useState("week");
   const date = new Date();
   date.setDate(date.getDate() + offset * 7);
-  const days = weeklyPlan(profile, assessment, sessions, date, readiness);
+  const days = weeklyPlan(profile, assessment, sessions, date, readiness, checkpoints, dayKey());
   return (
     <>
       <div className="screen-heading">
         <h1>Plan</h1>
-        <p>Your full week. Capacity first, recovery built in.</p>
+        <p>Your full week. Capacity first, recovery built in.</p><p className="helper">The plan updates automatically when saved criteria and responses support the next dose. Future work remains provisional.</p>
       </div>
       <SectionSwitch
         label="Plan views"
@@ -130,15 +135,17 @@ export function PlanScreen({
                     <span className="exercise-bullet" />
                     <span>{ex.name}</span>
                     <span>
-                      {ex.sets} × {ex.reps}
+                      {ex.sets} × {ex.reps}{ex.progressionTarget && <small>{ex.progressionTarget.text}</small>}
                     </span>
                   </div>
                 ))}
+                <PlannedExposure exposure={day.exposure} onStart={onExposure} />
+                {day.progressionReviews.map((r: any) => <p className="helper" key={r.domain}>{r.level}: {r.reason}</p>)}
                 {day.high && (
                   <p className="helper">
                     Eligible running or sport work belongs on a loading day,
-                    before strength when appropriate. Choose one exposure in
-                    Progress; do not add separate catch-up sessions.
+                    before strength when appropriate. Your eligible dose is scheduled
+                    automatically; other options remain in Progress; do not add separate catch-up sessions.
                   </p>
                 )}
                 {day.workout?.notes?.map((note: string) => (
