@@ -1,3 +1,4 @@
+import { addConfirmedEquipment } from "../data/equipmentUpdate.js";
 import { get, getAll, put, writeRecords } from "../db.js";
 import { VERSIONS } from "./schema.js";
 import { baselineResult } from "../rules/baseline.js";
@@ -60,6 +61,8 @@ export async function loadProgram() {
     get("capabilityStates", "checkpoints"),
     get("settings", "onboarding"),
   ]);
+  const updatedProfile = addConfirmedEquipment(profile);
+  if (updatedProfile !== profile) await put("profile", updatedProfile);
   const assessments = (all as Assessment[])
     .filter((a) => a.completedAt && a.values)
     .sort((a, b) => b.completedAt!.localeCompare(a.completedAt!));
@@ -67,7 +70,7 @@ export async function loadProgram() {
     assessments,
     assessment: assessments[0] as Assessment | undefined,
     draft: draft as Assessment | undefined,
-    profile: profile as Profile | undefined,
+    profile: updatedProfile as Profile | undefined,
     checkpoints: (checkpoints as { values: Values } | undefined)?.values || {},
     welcomed: !!(welcome as { done: boolean } | undefined)?.done,
   };

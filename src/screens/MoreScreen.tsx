@@ -42,7 +42,7 @@ export function MoreScreen({
   async function settings() {
     setBusy(true);
     try {
-      await put("profile", { ...profile, id: "athlete", ...values });
+      await put("profile", { ...profile, id: "athlete", ...values, equipmentUpdate20260915: true });
       await onReload();
       setMessage("Preferences saved on this device.");
     } catch (e) {
@@ -56,7 +56,7 @@ export function MoreScreen({
       <div className="screen-heading">
         <h1>{({library:"Exercise library",profile:"Profile & schedule",evidence:"Evidence & rules",backup:"Backup & restore",about:"About & install"} as Record<string,string>)[section] || "More"}</h1>
         {onWelcome && !section && <button className="text-button" onClick={onWelcome}>Replay welcome hero</button>}
-        <p>Your plan, your data, your device.</p>
+        <p>{section === "library" ? "Find demos, setup guidance and exercises for your equipment." : "Your plan, your data, your device."}</p>
       </div>
       {section && (
         <button
@@ -101,6 +101,7 @@ export function MoreScreen({
           <p>Your goal: return to basketball while rebuilding strength.</p>
           <details>
             <summary>Your equipment & squat goal</summary>
+            <p>Your landmine station and Major Fitness rack-mounted leg extension are included. The rack attachment supports cable leg extensions, chest-supported rows and seated pulldowns. Counterweight the rack as specified by Major Fitness.</p>
             <ul>
               <li>Belt squat: {OWNED_LOADS.beltSquatModel}.</li>
               <li>Olympic weight plates: {OWNED_LOADS.olympicPlatesLb} lb total.</li>

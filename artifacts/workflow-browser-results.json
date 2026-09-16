@@ -1,0 +1,10 @@
+{
+  "passed": [
+    "Unconfigured library opens populated; favorites explain emptiness; six new equipment entries have demos",
+    "Confirmed equipment is added to an existing profile once; later deselection survives reload",
+    "Guided response then check-in saves separate dated records without copying or auto-confirming answers",
+    "Journal review copies an explicitly confirmed zero into a draft without changing original measurement or assessment",
+    "No browser runtime errors"
+  ],
+  "failed": 0
+}

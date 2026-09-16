@@ -1,3 +1,4 @@
+import { AssessmentMeasurementReview } from "../components/AssessmentMeasurementReview";
 import { useRef, useState, type ComponentProps } from "react";
 import { BaselineWizard as DetailedBaseline, DataField } from "./Baseline";
 import { Card, PrimaryButton } from "../components/ui";
@@ -298,6 +299,7 @@ export function BaselineWizard(props: Props) {
             Open a test to enter results. Leave the others as “Not tested.”
             Blank is different from a measured zero.
           </p>
+          <AssessmentMeasurementReview values={values} onApply={patch => persist({ ...current.current, ...patch })} />
           {SIMPLE_TESTS.map((s) => test(s, true))}
         </Card>
       )}

@@ -74,6 +74,8 @@ Only generate home-gym exercises using:
 - Inflatable balance cushion (Trideer; previously called dyno pad)
 - Stability/yoga ball (Trideer; previously called plyo ball)
 - Vibration plate (AXV)
+- Landmine station
+- Major Fitness rack-mounted leg extension / multifunctional pad
 
 User-approved full-body strength extension: see `docs/FULL_BODY_STRENGTH_UPDATE.md`.
 Equipment ownership does not itself unlock balance, impact or sport progressions.

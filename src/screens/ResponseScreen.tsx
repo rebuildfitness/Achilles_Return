@@ -1,3 +1,4 @@
+import { displayDate } from "../data/displayDates.js";
 import { useState } from "react";
 import { Card, PrimaryButton } from "../components/ui";
 import { DataField } from "./Baseline";
@@ -5,10 +6,14 @@ import type { Session, Values } from "../types";
 
 export function ResponseScreen({
   session,
+  continueToCheckIn = false,
+  onCheckInFirst,
   onSave,
   onBack,
 }: {
   session: Session;
+  continueToCheckIn?: boolean;
+  onCheckInFirst?: () => void;
   onSave: (v: Values) => Promise<void>;
   onBack: () => void;
 }) {
@@ -21,15 +26,17 @@ export function ResponseScreen({
         ← Today
       </button>
       <div className="screen-heading">
+        {continueToCheckIn && <p className="eyebrow">Step 1 of 2 · Previous workout</p>}
         <h1>Next-morning response</h1>
         <p>
-          {session.workoutTitle || session.workoutId} · {session.date}
+          {session.workoutTitle || session.workoutId} · {displayDate(session.date)}
         </p>
       </div>
+      {continueToCheckIn && onCheckInFirst && <button className="text-button" onClick={onCheckInFirst}>Check today’s symptoms first</button>}
       <Card>
         <p>
           Compare with your usual baseline. This response determines tolerance
-          of this specific session.
+          of this specific session. {continueToCheckIn && "Next, confirm how you feel today. These are saved separately; answers are not copied automatically."}
         </p>
         {[
           {

@@ -138,6 +138,7 @@ try {
     await page
       .getByRole("button", { name: /^(Check In|Update check-in)$/ })
       .click();
+    if (await page.getByRole('button',{name:'Check today’s symptoms first',exact:true}).isVisible()) await page.getByRole('button',{name:'Check today’s symptoms first',exact:true}).click();
     for (const [name, value] of Object.entries({
       pain: "none",
       stiffness: "normal",
@@ -147,7 +148,7 @@ try {
     }))
       await page.locator(`input[name="${name}"][value="${value}"]`).check();
     await page.getByRole("button", { name: "See Today’s Plan" }).click();
-    await page.getByRole("heading", { name: /Ready to Train|Next-morning review due/ }).waitFor();
+    await page.getByRole("heading", { name: /Ready to Train|Next-morning review due|Establish your starting point/ }).waitFor();
   };
   const response = async () => {
     await page
@@ -161,6 +162,8 @@ try {
     await page
       .getByRole("button", { name: "Save next-morning response" })
       .click();
+    await page.getByRole('heading',{name:'Daily Check-In',exact:true}).or(page.getByRole('heading',{name:'Today',exact:true})).waitFor();
+    if (await page.getByRole('heading',{name:'Daily Check-In',exact:true}).isVisible()) await page.getByRole('button',{name:'← Today',exact:true}).click();
     await page.getByRole("heading", { name: "Today", exact: true }).waitFor();
   };
   await page.goto("http://127.0.0.1:4174/seed");

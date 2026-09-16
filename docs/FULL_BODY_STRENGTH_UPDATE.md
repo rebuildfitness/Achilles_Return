@@ -68,3 +68,8 @@ and strength progression criteria are retained. Data stays local in IndexedDB.
 ## Naming clarification — user-approved workout feedback
 
 The visible hybrid style is now Rehab + Strength & Hypertrophy, not the StrongLifts program. The selected 5×5 exercise prescriptions above remain unchanged. See WORKOUT_EXPERIENCE_UPDATE.md for the session timer, feedback shortcuts and coaching export.
+
+
+## User-approved landmine and rack attachment update
+
+See [Workflow and equipment update](WORKFLOW_AND_EQUIPMENT_UPDATE.md) for the six reference entries, manufacturer setup requirements, demo sources and limits. These entries do not automatically enter the prescribed rehabilitation plan.

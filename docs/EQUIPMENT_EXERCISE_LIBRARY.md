@@ -105,3 +105,7 @@ Remaining coverage gaps: exact short demos for the inflatable Trideer cushion an
 | Knee-to-Wall Mobility | Legs | Bodyweight | Keep your heel down. Mobility is a functional measure, not range to force. | [[P]rehab](https://library.theprehabguys.com/vimeo-video/knee-to-wall-ankle-dorsiflexion-assessment/) |
 
 Validation: unit tests check inventory integrity, equipment whitelist, filter combinations and separation from prescribed workouts. Browser QA checks unilateral demo navigation, combined filters, empty state, pagination and mobile width. Existing clinical/storage/PWA tests remain required.
+
+## User-approved landmine and rack attachment update
+
+See [Workflow and equipment update](WORKFLOW_AND_EQUIPMENT_UPDATE.md) for the six reference entries, manufacturer setup requirements, demo sources and limits. These entries do not automatically enter the prescribed rehabilitation plan.

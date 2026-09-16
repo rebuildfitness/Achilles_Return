@@ -1,3 +1,5 @@
+import { loadConvention, previousExerciseSession } from "../data/workflowClarity.js";
+import { displayDate } from "../data/displayDates.js";
 import { WorkoutTimer } from "../components/WorkoutTimer";
 import { carryFeedback, confirmFeedback, feedbackFields, timerKey } from "../data/workoutExperience.js";
 import { ExerciseSwap, type SwapAction } from "../components/ExerciseSwap";
@@ -88,12 +90,8 @@ export function WorkoutScreen({
         />
       </div>
       {visibleItems.map((exercise) => {
-        const previous = [...sessions]
-          .filter(
-            (s) => s.status === "TOLERATED" && s.exerciseLog?.[exercise.id],
-          )
-          .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0]
-          ?.exerciseLog[exercise.id];
+        const previousSession = previousExerciseSession(sessions, exercise.id, date);
+        const previous = previousSession?.exerciseLog[exercise.id];
         return (
           <ExerciseCard key={exercise.id} exercise={exercise} online={online}>
             {onSwap && <ExerciseSwap exercise={exercise} equipment={equipment} unavailable={unavailable} workoutIds={workout.items.map(ex => ex.id)} onSwap={onSwap} />}
@@ -102,9 +100,10 @@ export function WorkoutScreen({
               <p className="notice">{exercise.skipReason ? "Remaining sets skipped: " + exercise.skipReason : "Equipment marked unavailable today. Swap or skip the remaining sets."}</p>
               <RecordedSets exercise={exercise} log={log} onChange={onChange} />
             </> : <>
+            <p className="helper workout-comparison">Today: {exercise.sets} × {exercise.reps}. Last recorded: {previousSession ? `${displayDate(previousSession.date)} · ${previousSession.status === "TOLERATED" ? "response tolerated" : previousSession.status === "PENDING_NEXT_DAY_RESPONSE" ? "response pending" : "response needs review"}` : "No earlier session"}.<br />{loadConvention(exercise)}</p>
             <div className="set-row set-header" aria-hidden="true">
               <span>SET</span>
-              <span>PREVIOUS</span>
+              <span>LAST</span>
               <span>WEIGHT</span>
               <span>
                 {exercise.unit === "yards"
@@ -120,7 +119,7 @@ export function WorkoutScreen({
                 key={index}
                 exercise={exercise}
                 index={index}
-                previous={previous?.sets[index]}
+                previous={previous?.sets[index]?.complete ? previous.sets[index] : undefined}
                 value={log[exercise.id]?.sets[index] || {}}
                 onChange={(value) => {
                   if (

@@ -1,3 +1,4 @@
+import { AssessmentMeasurementReview } from "../components/AssessmentMeasurementReview";
 import { useRef, useState } from "react";
 import {
   BASELINE_SECTIONS,
@@ -258,6 +259,7 @@ export function BaselineWizard({
       <Card>
         <h2>{section.title}</h2>
         <p>{section.instructions}</p>
+        {['heelrise','balance'].includes(section.id) && <AssessmentMeasurementReview values={values} onApply={patch=>{const next={...valuesRef.current,...patch};valuesRef.current=next;setValues(next);persist(next,step);}} />}
         {(section.id === "strength"
           ? []
           : BASELINE_DEMOS[section.id as keyof typeof BASELINE_DEMOS] || []

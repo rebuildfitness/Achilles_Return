@@ -335,7 +335,7 @@ export function SetRow({
       <div className={`set-row ${value.complete ? "set-complete" : ""}`}>
         <span>{index + 1}</span>
         <span className="previous">
-          {previous ? `${previous.load || "—"} × ${previous.reps || "—"}` : "—"}
+          {previous ? `${previous.load ?? "—"} × ${previous.reps ?? "—"}` : "—"}
         </span>
         <input
           aria-label={`${exercise.name} set ${index + 1} load`}

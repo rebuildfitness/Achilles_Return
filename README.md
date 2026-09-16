@@ -122,3 +122,8 @@ Open More > Exercise library for 90 searchable exercises with equipment and musc
 
 See docs/TRAINING_FLEXIBILITY_UPDATE.md for make-up scheduling, recovery logs, the every-launch hero, load/cadence guidance, persistent exercise alternatives and standing/seated core work.
 
+
+
+## Version 1.3.1 — workflow clarity and new equipment
+
+See [the release guide](docs/WORKFLOW_AND_EQUIPMENT_UPDATE.md) for the four workflow improvements, landmine station and Major Fitness rack attachment exercises, validation and upload instructions.

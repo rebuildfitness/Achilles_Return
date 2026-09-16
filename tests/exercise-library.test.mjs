@@ -12,9 +12,9 @@ test("Press and row groups include upper-body lifts without misclassifying Pallo
   assert.ok(chest.every((ex) => !/Pallof/.test(ex.name)));
   assert.equal(
     filterLibrary({ muscle: "Shoulders", search: "press" }).length,
-    4,
+    5,
   );
-  assert.equal(filterLibrary({ muscle: "Back", search: "row" }).length, 5);
+  assert.equal(filterLibrary({ muscle: "Back", search: "row" }).length, 7);
   assert.equal(filterLibrary({ muscle: "Core", search: "Pallof" }).length, 1);
 });
 

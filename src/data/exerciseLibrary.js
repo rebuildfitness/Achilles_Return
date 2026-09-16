@@ -1,3 +1,4 @@
+import { NEW_EQUIPMENT_EXERCISES } from "./newEquipmentExercises.js";
 import { CALF_PATHWAY } from "./calfPathway.js";
 import { CATALOG, EQUIPMENT_LABELS } from "./catalog.js";
 const M = "https://www.muscleandstrength.com/exercises/";
@@ -541,6 +542,7 @@ const inferMuscle = (ex) => {
   return "Legs";
 };
 export const EXERCISE_LIBRARY = [
+  ...NEW_EQUIPMENT_EXERCISES,
   { id: "library-lat-pulldown", name: "Lat pulldown", equipment: ["cable-station", "adjustable-bench"], muscle: "Back",
     videoUrl: "https://www.muscleandstrength.com/exercises/lat-pull-down.html", videoSource: "Muscle & Strength",
     setup: "Use the B52 high pulley with a stable bench and the manufacturer-approved thigh restraint. Pull the bar toward the upper chest in front of the head, then return under control. Start with light stack resistance; do not jump to reach the bar.",

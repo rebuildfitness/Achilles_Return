@@ -1,6 +1,6 @@
 {
   "name": "achilles-return-basketball-pwa",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "private": true,
   "packageManager": "pnpm@11.19.0",
   "type": "module",
@@ -11,7 +11,7 @@
     "build": "tsc --noEmit && vite build && node scripts/build-sw.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
-    "test:browser": "node scripts/browser-qa.mjs"
+    "test:browser": "node scripts/browser-qa.mjs && node scripts/workflow-browser-qa.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

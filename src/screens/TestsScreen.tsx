@@ -96,7 +96,7 @@ export function TestsScreen({
               : "Start Baseline"}
         </PrimaryButton>
       </Card>
-      <MeasurementJournal editable />
+      <MeasurementJournal editable onAssessment={onBaseline} />
       {assessment && (
         <details className="detail-section">
           <summary>Current entry criteria</summary>

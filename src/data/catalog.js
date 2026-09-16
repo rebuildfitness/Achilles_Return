@@ -2,6 +2,8 @@ import { exercises as legacy } from "./exercises.js";
 import plan from "../../spec/rehab-plan-v1.json" with { type: "json" };
 export const EQUIPMENT = plan.equipmentWhitelist;
 export const EQUIPMENT_LABELS = {
+  "landmine-station": "Landmine station",
+  "rack-leg-extension": "Major Fitness rack-mounted leg extension",
   "bosu-ball": "BOSU-style half ball (VEVOR)",
   "dyno-pad": "Inflatable balance cushion (Trideer)",
   "plyo-ball": "Stability / yoga ball (Trideer)",

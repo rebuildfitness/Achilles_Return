@@ -83,6 +83,8 @@ export function App() {
   });
   const [domain, setDomain] = useState("");
   const [restoreOnOpen, setRestoreOnOpen] = useState(false);
+  const [dailyReview, setDailyReview] = useState(false);
+  const [reviewedSession, setReviewedSession] = useState<Session>();
   const [responseSession, setResponseSession] = useState<Session>();
   const [log, setLog] = useState<WorkoutLog>({});
   const [sessionChanges, setSessionChanges] = useState<any>(emptySessionChanges(date));
@@ -562,11 +564,15 @@ export function App() {
           ) : flow === "response" && responseSession ? (
             <ResponseScreen
               session={responseSession}
+              continueToCheckIn={dailyReview}
+              onCheckInFirst={() => {setReviewedSession(undefined);open("checkin");}}
               onBack={() => open(null)}
               onSave={async (values) => {
                 await saveResponse(responseSession, values, date);
+                const refreshed = await loadSessions();
+                setReviewedSession(refreshed.find(s=>s.id===responseSession.id));
                 await reloadProgram();
-                open(null);
+                open(dailyReview ? "checkin" : null);
               }}
             />
           ) : flow === "recovery" ? (
@@ -586,6 +592,7 @@ export function App() {
           ) : flow === "checkin" ? (
             <CheckInScreen
               initial={checkIn?.answers}
+              reviewedSession={reviewedSession}
               busy={busy}
               onSubmit={submitCheckIn}
               onBack={() => !busy && open(null)}
@@ -654,13 +661,18 @@ export function App() {
                       : today.note
                 }
                 onResponse={(s) => {
+                  setDailyReview(!checkIn);
                   setResponseSession(s);
                   open("response");
                 }}
                 readiness={readiness}
                 workout={workout}
                 sessions={sessions}
-                onCheckIn={() => open("checkin")}
+                onCheckIn={() => {
+                  const pending = [...sessions].filter(s=>s.status === "PENDING_NEXT_DAY_RESPONSE" && s.date < date).sort((a,b)=>b.date.localeCompare(a.date))[0];
+                  setDailyReview(true);
+                  if (pending) {setResponseSession(pending);open("response");} else {setReviewedSession(undefined);open("checkin");}
+                }}
                 onWorkout={() => canOpenWorkout && open("workout")}
                 onPlan={() => select("Plan")}
                 onTests={() => select("Tests")}

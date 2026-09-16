@@ -22,7 +22,7 @@ export function ExerciseLibrary({
   prescribedIds?: string[];
 }) {
   const [favorites, setFavorites] = useState<string[]>([]);
-  const [collection, setCollection] = useState("plan");
+  const [collection, setCollection] = useState(prescribedIds.length ? "plan" : "all");
   const [saveError, setSaveError] = useState("");
   const [saving, setSaving] = useState(false);
   useEffect(() => { get("settings", "exercise-favorites").then((r: any) => setFavorites(r?.ids || [])).catch(() => setSaveError("Favorites could not be loaded.")); }, []);
@@ -171,8 +171,7 @@ export function ExerciseLibrary({
             <Card className="exercise-library-card">
               <h3>No matching exercises yet</h3>
               <p>
-                Try another filter. Some equipment is still awaiting a suitable
-                exercise-specific demo.
+                {collection === "favorites" && !favorites.length ? "You have not saved any favorites yet. Browse all exercises and tap Favorite." : collection === "plan" && !prescribedIds.length ? "Your plan has no exercises yet. Browse all exercises while you complete your baseline." : "No exercises match these filters. Clear a filter or browse all exercises."}
               </p>
               <button
                 className="secondary-button"

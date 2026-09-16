@@ -66,8 +66,8 @@ export function Today({
       </div>
       <Card className={`today-action ${red ? 'tone-stop' : responseDue ? 'tone-pending' : readiness?.level === 'GREEN' ? 'tone-ready' : readiness ? 'tone-pending' : ''}`}>
         <div className="eyebrow">TODAY’S STATUS</div>
-        <h2>{red ? readinessLabel(readiness!.level) : responseDue ? 'Next-morning review due' : readiness ? readinessLabel(readiness.level) : 'How is your Achilles today?'}</h2>
-        <p>{readiness ? readiness.reason : 'A quick check-in helps guide today’s loading.'}</p>
+        <h2>{red ? readinessLabel(readiness!.level) : !assessment ? 'Establish your starting point' : responseDue ? 'Next-morning review due' : readiness ? readinessLabel(readiness.level) : 'How is your Achilles today?'}</h2>
+        <p>{!assessment && !red ? 'Complete your starting assessment to build your personal plan. Unmeasured tests can stay blank.' : readiness ? readiness.reason : 'A quick check-in helps guide today’s loading.'}</p>
         {!!pending.length && <p className="response-context">Previous training: {pending.length} {pending.length === 1 ? 'session awaits' : 'sessions await'} a next-morning response before progression.</p>}
         <PrimaryButton onClick={nextAction.run}>{nextAction.label} <span aria-hidden="true">→</span></PrimaryButton>
         {responseDue && nextAction.label !== "Record next-morning response" && <button className="text-button" onClick={()=>onResponse(responseDue)}>Record next-morning response</button>}

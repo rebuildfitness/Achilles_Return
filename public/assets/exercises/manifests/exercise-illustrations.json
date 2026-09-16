@@ -1172,6 +1172,285 @@
     "pilot": true
   },
   {
+    "exerciseId": "library-landmine-half-kneeling-press",
+    "exerciseName": "Half-kneeling landmine shoulder press",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Shoulders",
+    "bodyRegions": [
+      "Shoulders"
+    ],
+    "position": "Unreviewed",
+    "equipment": [
+      "landmine-station",
+      "olympic-barbell",
+      "weight-plates"
+    ],
+    "motionFormat": null,
+    "assetStatus": "not_generated",
+    "assetPath": null,
+    "assetDimensions": null,
+    "assetFormat": null,
+    "assetFileSizeBytes": null,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": null,
+    "thumbnailDimensions": null,
+    "thumbnailFileSizeBytes": null,
+    "altText": null,
+    "panelDescription": null,
+    "modelRepresentation": null,
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Secure the bar in your landmine station. Use comfortable knee padding and an ankle position you tolerate. Press with one arm without leg drive or trunk rotation; return under control. Omit if kneeling or setup is uncomfortable.",
+        "existingDemoUrl": "https://library.theprehabguys.com/vimeo-video/half-kneeling-landmine-shoulder-press/",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "pilot": false
+  },
+  {
+    "exerciseId": "library-landmine-squat",
+    "exerciseName": "Landmine squat",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Legs",
+    "bodyRegions": [
+      "Legs"
+    ],
+    "position": "Unreviewed",
+    "equipment": [
+      "landmine-station",
+      "olympic-barbell",
+      "weight-plates"
+    ],
+    "motionFormat": null,
+    "assetStatus": "not_generated",
+    "assetPath": null,
+    "assetDimensions": null,
+    "assetFormat": null,
+    "assetFileSizeBytes": null,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": null,
+    "thumbnailDimensions": null,
+    "thumbnailFileSizeBytes": null,
+    "altText": null,
+    "panelDescription": null,
+    "modelRepresentation": null,
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Use a secured landmine station and hold the free end at the chest with both hands. Use controlled, tolerated depth and stable feet. Do not add a jump or push press.",
+        "existingDemoUrl": "https://library.theprehabguys.com/vimeo-video/squat-landmine/",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "pilot": false
+  },
+  {
+    "exerciseId": "library-landmine-meadows-row",
+    "exerciseName": "Landmine Meadows row",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Back",
+    "bodyRegions": [
+      "Back"
+    ],
+    "position": "Unreviewed",
+    "equipment": [
+      "landmine-station",
+      "olympic-barbell",
+      "weight-plates"
+    ],
+    "motionFormat": null,
+    "assetStatus": "not_generated",
+    "assetPath": null,
+    "assetDimensions": null,
+    "assetFormat": null,
+    "assetFileSizeBytes": null,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": null,
+    "thumbnailDimensions": null,
+    "thumbnailFileSizeBytes": null,
+    "altText": null,
+    "panelDescription": null,
+    "modelRepresentation": null,
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Secure the landmine and use a stable stance with a controlled hip hinge. Row one arm at a time without jerking or rotating. Use only if you can maintain the stance comfortably.",
+        "existingDemoUrl": "https://library.theprehabguys.com/vimeo-video/landmine-meadow-row/",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "pilot": false
+  },
+  {
+    "exerciseId": "library-rack-cable-leg-extension",
+    "exerciseName": "Rack-mounted cable leg extension",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Legs",
+    "bodyRegions": [
+      "Legs"
+    ],
+    "position": "Unreviewed",
+    "equipment": [
+      "rack-leg-extension",
+      "cable-station"
+    ],
+    "motionFormat": null,
+    "assetStatus": "not_generated",
+    "assetPath": null,
+    "assetDimensions": null,
+    "assetFormat": null,
+    "assetFileSizeBytes": null,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": null,
+    "thumbnailDimensions": null,
+    "thumbnailFileSizeBytes": null,
+    "altText": null,
+    "panelDescription": null,
+    "modelRepresentation": null,
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Secure the attachment using the manufacturer instructions and counterweight the rear of the rack before use. Start with light cable resistance; log the stack setting and pulley setup, not a barbell-equivalent load. Adjust the pad and cable connection exactly as shown for leg extensions; do not improvise the cuff or attachment. Extend and return under control.",
+        "existingDemoUrl": "https://www.majorfitness.com/cdn/shop/videos/c/vp/dc4b0e7ba3b94cb6b5115f59700c5ccc/dc4b0e7ba3b94cb6b5115f59700c5ccc.HD-1080p-3.3Mbps-27333024.mp4?v=0",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "pilot": false
+  },
+  {
+    "exerciseId": "library-rack-chest-supported-row",
+    "exerciseName": "Rack-mounted chest-supported cable row",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Back",
+    "bodyRegions": [
+      "Back"
+    ],
+    "position": "Unreviewed",
+    "equipment": [
+      "rack-leg-extension",
+      "cable-station"
+    ],
+    "motionFormat": null,
+    "assetStatus": "not_generated",
+    "assetPath": null,
+    "assetDimensions": null,
+    "assetFormat": null,
+    "assetFileSizeBytes": null,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": null,
+    "thumbnailDimensions": null,
+    "thumbnailFileSizeBytes": null,
+    "altText": null,
+    "panelDescription": null,
+    "modelRepresentation": null,
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Secure the attachment using the manufacturer instructions and counterweight the rear of the rack before use. Start with light cable resistance; log the stack setting and pulley setup, not a barbell-equivalent load. Set the pad to support the chest, select the appropriate cable handle, and row without lifting the torso from the pad.",
+        "existingDemoUrl": "https://www.majorfitness.com/cdn/shop/videos/c/vp/dc4b0e7ba3b94cb6b5115f59700c5ccc/dc4b0e7ba3b94cb6b5115f59700c5ccc.HD-1080p-3.3Mbps-27333024.mp4?v=0",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "pilot": false
+  },
+  {
+    "exerciseId": "library-rack-lat-pulldown",
+    "exerciseName": "Rack-mounted seated lat pulldown",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "Back",
+    "bodyRegions": [
+      "Back"
+    ],
+    "position": "Unreviewed",
+    "equipment": [
+      "rack-leg-extension",
+      "cable-station"
+    ],
+    "motionFormat": null,
+    "assetStatus": "not_generated",
+    "assetPath": null,
+    "assetDimensions": null,
+    "assetFormat": null,
+    "assetFileSizeBytes": null,
+    "optimizedFor": [
+      "mobile_library_thumbnail",
+      "exercise_detail_view"
+    ],
+    "thumbnailPath": null,
+    "thumbnailDimensions": null,
+    "thumbnailFileSizeBytes": null,
+    "altText": null,
+    "panelDescription": null,
+    "modelRepresentation": null,
+    "illustrationVersion": "1.0.0",
+    "existingDemoStatus": "external_reference",
+    "clinicalRuleReference": "Existing restrictions unchanged",
+    "mechanicsSources": [
+      {
+        "source": "src/data/exerciseLibrary.js",
+        "setup": "Secure the attachment using the manufacturer instructions and counterweight the rear of the rack before use. Start with light cable resistance; log the stack setting and pulley setup, not a barbell-equivalent load. Use the pad and thigh restraint in the manufacturer-supported seated setup with the high pulley. Pull toward the upper chest in front of the head; do not jump to reach the bar.",
+        "existingDemoUrl": "https://www.majorfitness.com/cdn/shop/videos/c/vp/dc4b0e7ba3b94cb6b5115f59700c5ccc/dc4b0e7ba3b94cb6b5115f59700c5ccc.HD-1080p-3.3Mbps-27333024.mp4?v=0",
+        "check": "Existing app setup and source metadata inspected; generated asset does not upgrade demo verification."
+      }
+    ],
+    "notes": "Not generated: awaiting a future illustration batch. Individual generation and visual review remain outstanding; existing setup/demo remain authoritative.",
+    "pilot": false
+  },
+  {
     "exerciseId": "library-lat-pulldown",
     "exerciseName": "Lat pulldown",
     "sourceCollections": [

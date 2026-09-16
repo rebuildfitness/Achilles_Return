@@ -4,7 +4,7 @@ import { getAll, put } from '../db.js';
 import { dayKey } from '../data/provisionalWeek.js';
 import { MEASUREMENTS, validateMeasurement } from '../data/measurements.js';
 
-export function MeasurementJournal({ editable = false }: { editable?: boolean }) {
+export function MeasurementJournal({ editable = false, onAssessment }: { editable?: boolean; onAssessment?: () => void }) {
   const [rows, setRows] = useState<any[]>([]);
   const [metric, setMetric] = useState('heel-reps');
   const [side, setSide] = useState('repaired');
@@ -18,7 +18,8 @@ export function MeasurementJournal({ editable = false }: { editable?: boolean })
   return <Card>
     <h2>Individual measurements</h2>
     <p>Record one result without repeating your baseline. Use the same setup for comparisons.</p>
-    <p className="helper">These dated observations do not update clearance or replace monthly assessments. Record only tests appropriate to your current restrictions; review Tests before performing a new test.</p>
+    <p className="helper">Saving here adds a dated observation to your history. Your plan uses a completed assessment, so a new measurement alone will not change its criteria. Record only tests appropriate to your current restrictions.</p>
+    {onAssessment && <details><summary>How can this result inform my plan?</summary><p>Open your assessment and go to Optional tests. Review saved results with the same measurement date and setup, then explicitly choose which values to copy. You must still answer the safety, symptoms and test-quality questions. Nothing changes until you save the completed assessment.</p><button className="secondary-button" onClick={onAssessment}>Review results in assessment</button></details>}
     <label className="form-field">Measurement<select value={metric} onChange={e => setMetric(e.target.value)}>{MEASUREMENTS.map(m => <option key={m.id} value={m.id}>{m.name}</option>)}</select></label>
     <label className="form-field">Side<select value={side} onChange={e => setSide(e.target.value)}><option value="repaired">Repaired</option><option value="uninvolved">Uninvolved</option></select></label>
     {editable && <form onSubmit={async e => {

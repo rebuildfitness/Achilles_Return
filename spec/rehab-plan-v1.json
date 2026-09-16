@@ -12,7 +12,7 @@
     "smith-machine", "adjustable-bench", "cable-station", "belt-squat", "trap-hex-bar",
     "dumbbells", "pull-up-bar", "dip-bars", "exercise-bike", "incline-treadmill",
     "slant-board", "balance-pad", "rehab-bands", "weighted-wagon", "olympic-barbell", "weight-plates",
-    "bosu-ball", "dyno-pad", "plyo-ball", "vibration-plate"
+    "bosu-ball", "dyno-pad", "plyo-ball", "vibration-plate", "landmine-station", "rack-leg-extension"
   ],
   "prohibitedEquipment": ["leg-press-machine"],
   "readiness": {

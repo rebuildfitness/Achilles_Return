@@ -1,10 +1,10 @@
 import { validateMeasurement } from "../data/measurements.js";
 import { validateMovement } from "../data/movement.js";
 export const VERSIONS = Object.freeze({
-  appVersion: "1.3.0",
+  appVersion: "1.3.1",
   databaseVersion: 2,
   rulesetVersion: "1.1.0",
-  exerciseLibraryVersion: "1.0.0",
+  exerciseLibraryVersion: "1.1.0",
   evidenceCatalogVersion: "1.0.0",
 });
 export const STORE_NAMES = [

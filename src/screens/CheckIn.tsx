@@ -1,3 +1,5 @@
+import { displayDate } from "../data/displayDates.js";
+import type { Session } from "../types";
 import type { FormEvent } from "react";
 import { PrimaryButton } from "../components/ui";
 import type { Answers } from "../types";
@@ -34,11 +36,13 @@ export function Choice({
 }
 export function CheckInScreen({
   initial,
+  reviewedSession,
   busy,
   onSubmit,
   onBack,
 }: {
   initial?: Answers;
+  reviewedSession?: Session;
   busy: boolean;
   onSubmit: (answers: Answers) => void;
   onBack: () => void;
@@ -61,9 +65,11 @@ export function CheckInScreen({
         ← Today
       </button>
       <div className="screen-heading">
+        {reviewedSession && <p className="eyebrow">Step 2 of 2 · Today</p>}
         <h1>Daily Check-In</h1>
         <p>How is your Achilles today?</p>
       </div>
+      {reviewedSession && <p className="notice">Response saved for {reviewedSession.workoutTitle || reviewedSession.workoutId} on {displayDate(reviewedSession.date)}: {reviewedSession.status === 'TOLERATED' ? 'tolerated' : 'needs attention'}. Confirm your current symptoms below. Today’s check-in does not change that saved response.</p>}
       <form onSubmit={submit}>
         <Choice
           name="pain"

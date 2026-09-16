@@ -96,6 +96,7 @@ export type Assessment = {
   step: number;
 };
 export type Profile = {
+  equipmentUpdate20260915?: boolean;
   scheduleMoves?: { from: string; to: string; kind: string }[];
   exerciseChoices?: Record<string, { id: string; reason: string; effectiveFrom?: string }>;
   id: string;

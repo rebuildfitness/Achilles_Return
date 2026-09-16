@@ -40,3 +40,8 @@ The following require a final direct short-demo URL before being made active:
 - soccer skill cards
 
 Codex should not substitute a random long video. It should leave the exercise locked and surface a development warning if the demo requirement is unmet.
+
+
+## User-approved landmine and rack attachment update
+
+See [Workflow and equipment update](WORKFLOW_AND_EQUIPMENT_UPDATE.md) for the six reference entries, manufacturer setup requirements, demo sources and limits. These entries do not automatically enter the prescribed rehabilitation plan.
