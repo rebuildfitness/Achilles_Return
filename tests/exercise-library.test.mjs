@@ -27,7 +27,7 @@ test("Library entries have unique IDs, owned equipment, demos and setup metadata
   for (const ex of EXERCISE_LIBRARY) {
     if (ex.referenceOnly) {
       assert.equal(ex.automaticScheduling, false);
-      assert.equal(ex.videoUrl, null);
+      if(ex.videoUrl) { assert.equal(new URL(ex.videoUrl).protocol,'https:'); assert.equal(ex.demoVerification.status,'playback-reviewed'); }
       if (ex.guideUrl) assert.equal(new URL(ex.guideUrl).protocol, "https:");
     } else {
       assert.equal(new URL(ex.videoUrl).protocol, "https:");

@@ -32,7 +32,8 @@ test('canonical references remain non-runnable even with equipment and green rea
  for(const ex of EQUIPMENT_REFERENCE_EXERCISES){
   assert.equal(activeExercise(ex,['training-sled','incline-treadmill']),false);
   assert.equal(swapOptions(ex,['training-sled','incline-treadmill']).length,0);
-  assert.equal(ex.videoUrl,null);assert.equal(ex.automaticScheduling,false);
+  if(ex.videoUrl) assert.equal(ex.demoVerification.status,'playback-reviewed');
+  assert.equal(ex.automaticScheduling,false);
  }
  for(const kind of ['A','B','C']){
   const plan=modifyWorkout(strengthTemplate(kind,baselineValues()),'GREEN',['training-sled','incline-treadmill']);

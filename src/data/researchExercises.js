@@ -1,4 +1,5 @@
 // Reviewed library content only. Never imported by the prescription catalog.
+import {withReferenceDemo} from './referenceDemos.js';
 export const RESEARCH_EXERCISES = [
   {
     "id": "library-tibialis-raise",
@@ -2598,4 +2599,4 @@ export const RESEARCH_EXERCISES = [
       "avoid": "Do not show running, a unilateral suitcase carry, clutter, or maximum dumbbells."
     }
   }
-];
+].map(withReferenceDemo);

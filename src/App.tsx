@@ -151,6 +151,7 @@ export function App() {
     notes: [today.note],
   };
   const workout: Workout = applySessionChanges(baseWorkout, sessionChanges, log, program.profile?.equipment, readiness?.level || "GREEN");
+  const savedCoachingSession = sessions.find(s => s.id === savedReviewId && s.date === date) || sessions.filter(s => s.date === date).slice().sort((a, b) => String(b.createdAt || "").localeCompare(String(a.createdAt || "")))[0];
   const strengthDone = sessions.some((s) => s.date === date && !s.domain);
   const canOpenWorkout =
     !!program.assessment &&
@@ -660,7 +661,7 @@ export function App() {
             />
           ) : tab === "Today" ? (
             <>
-              {savedReviewId && sessions.find(s => s.id === savedReviewId) && <Card><h2>Workout saved</h2><CoachingReview session={sessions.find(s => s.id === savedReviewId)!} sessions={sessions} /></Card>}
+              {savedCoachingSession && <Card><h2>Workout saved</h2><CoachingReview session={savedCoachingSession} sessions={sessions} expanded /></Card>}
               <Today
                 exposure={today.exposure}
                 onExposure={(d) => { setDomain(d); open("exposure"); }}
@@ -675,7 +676,7 @@ export function App() {
                 canOpenWorkout={canOpenWorkout}
                 workoutNote={
                   strengthDone
-                    ? "Workout saved. Recovery now; record the response tomorrow."
+                    ? "Workout saved. Your coaching report is ready now; add your next-morning response tomorrow."
                     : today.retest
                       ? "Reassessment due after the training break."
                       : today.note

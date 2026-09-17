@@ -1,5 +1,7 @@
 # Short Demonstration Video Catalog v1.0
 
+September 17, 2026 reference-library follow-up: see [Reference demo review](REFERENCE_DEMO_REVIEW_2026-09-17.md) for 22 playback-reviewed demos, two clearly labeled different-equipment clips and the unresolved backward-treadmill entry. Demo availability does not change reference-only or programming eligibility.
+
 The app should prioritize exercise-specific clips under ~2 minutes when possible. A longer page/video is acceptable only if it opens directly to the single exercise or a governing-body drill and does not force the user through a long lecture.
 
 | Exercise | Source | URL | Status |

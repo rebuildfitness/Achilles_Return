@@ -1,9 +1,9 @@
 {
   "passed": [
     "Existing wagon ownership retained; exact treadmill displayed; sled not marked owned",
-    "Canonical sled references are searchable without an unverified demo button",
+    "Canonical sled reference has a reviewed demo and retains visible reference-only status",
     "Backward treadmill remains a deferred reference without a demo link",
-    "New research exercise exposes a guide and working enlarged illustration without claiming a verified demo",
+    "Research exercise exposes reviewed demo and working illustration without unlocking programming",
     "Belt-squat concept retains visible unresolved setup status",
     "Research library favorites persist in IndexedDB",
     "Exact model persisted locally with no browser runtime errors"

@@ -506,7 +506,9 @@ try {
   assert.equal(saved.durationMs,120000);
   assert.equal(saved.exerciseLog['single-calf'].sets[1].rpe,'8');
   assert.equal(saved.exerciseLog['single-calf'].sets[2].feedbackConfirmed,false);
-  await page.getByText('AI coaching review',{exact:true}).click();
+  await page.getByRole('button',{name:'Copy coaching report',exact:true}).waitFor({state:'visible'});
+  await page.reload();
+  await page.getByRole('button',{name:'Copy coaching report',exact:true}).waitFor({state:'visible'});
   const coachText=await page.getByLabel('Coaching report',{exact:true}).inputValue();
   assert.ok(coachText.includes('00:02:00') && coachText.includes('Awaiting next-morning response') && coachText.includes('UNCONFIRMED'));
   const downloadEvent=page.waitForEvent('download');

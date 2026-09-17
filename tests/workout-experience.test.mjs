@@ -56,7 +56,9 @@ test('Coach report includes actual sets, previous same-exercise history, unknown
  const prior={id:'older',date:'2026-09-10',createdAt:'2026-09-10',status:'TOLERATED',exerciseLog:{press:{sets:[{complete:true,load:'10',reps:'5'}]}}};
  const report=coachingReport(session,[prior,session]);
  for(const phrase of ['00:02:00','load 0 lb','UNCONFIRMED','10 lb × 5','Pull-Up → Lat pulldown','Awaiting next-morning response','Not recorded','clinical clearance']) assert.ok(report.includes(phrase),phrase);
+ assert.match(report,/Immediate post-workout review: next-morning response pending/);
  const updated=coachingReport({...session,status:'TOLERATED',nextDayResponse:{change:'baseline'}},[prior]);
+ assert.match(updated,/Updated review: next-morning response included/);
  assert.match(updated,/Symptoms compared with usual: Back to usual baseline/);
  assert.doesNotMatch(updated,/Next-morning response not recorded/);
 });

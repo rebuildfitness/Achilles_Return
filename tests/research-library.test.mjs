@@ -11,7 +11,9 @@ test('All 21 approved reference candidates are searchable, illustrated and kept 
  for(const ex of RESEARCH_EXERCISES){
   assert(filterLibrary({search:ex.name}).some(x=>x.id===ex.id));
   assert.equal(ex.referenceOnly,true);assert.equal(ex.automaticScheduling,false);assert.equal(ex.approvedForAutomaticScheduling,false);
-  assert.equal(ex.videoUrl,null);assert.equal(ex.educationalDose,null);assert.equal(CATALOG[ex.id],undefined);
+  if(ex.videoUrl) assert.equal(ex.demoVerification.status,'playback-reviewed');
+  else assert.equal(ex.contentStatus,'setup-review-required');
+  assert.equal(ex.educationalDose,null);assert.equal(CATALOG[ex.id],undefined);
   assert.equal(manifest.find(r=>r.exerciseId===ex.id)?.assetStatus,'generated');
   assert.equal(ex.research.candidateNumber,ex.candidateNumber);
  }

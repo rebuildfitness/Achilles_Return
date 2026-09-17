@@ -201,6 +201,9 @@ export function ExerciseLibrary({
               >
                 Short Demo ↗
               </a> : <><p className="helper">Demo pending verification · Reference only</p>{"guideUrl" in ex && ex.guideUrl && <a className="demo-link" href={ex.guideUrl} target="_blank" rel="noopener noreferrer" aria-label={`Exercise guide: ${ex.name}`}>Exercise guide ↗</a>}</>}
+              {"referenceOnly" in ex && ex.referenceOnly && ex.videoUrl && <p className="helper">Reference only · Demo does not unlock this exercise.</p>}
+              {"demoVerification" in ex && ex.demoVerification && <p className="helper">{ex.demoVerification.note}</p>}
+              {"relatedDemo" in ex && ex.relatedDemo && <><a className="demo-link" href={ex.relatedDemo.url} target="_blank" rel="noopener noreferrer" aria-label={`Related demo: ${ex.name}`}>Related demo · Different equipment ↗</a><p className="helper">{ex.relatedDemo.note}</p><p className="helper">{ex.relatedDemo.provider} · Related clip reviewed {ex.relatedDemo.checkedAt}</p></>}
               {"contentStatus" in ex && ex.contentStatus === "setup-review-required" && <p className="helper">Equipment setup review required before use.</p>}
               {ex.id === "weighted-wagon-backward-drag" && <p className="helper">Your personal substitute for backward sled drag. Original wagon loads stay separate; this is not manufacturer-rated exercise equipment.</p>}
               <details>
@@ -256,8 +259,8 @@ export function ExerciseLibrary({
               </p>
               <p className="helper">
                 Your stability ball is a yoga ball, not a medicine ball.
-                Inflatable-cushion and vibration-plate demo coverage is still
-                being curated; no mismatched demonstration is substituted.
+                Related demos are labeled when the equipment differs. A video
+                does not establish readiness or unlock a reference exercise.
               </p>
             </details>
           {category === "All" && (
