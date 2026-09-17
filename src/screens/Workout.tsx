@@ -136,7 +136,7 @@ export function WorkoutScreen({
                 }}
               />
             ))}
-            <details className="feedback-carry"><summary>First-set feedback shortcut</summary><button className="text-button" disabled={!feedbackFields.some(field => (log[exercise.id]?.sets[0] as any)?.[field])} onClick={() => onFeedback(exercise.id, carryFeedback(log[exercise.id]?.sets || [], exercise.sets))}>Use first-set feedback for remaining sets</button><p className="helper">Copies RPE, quality and symptoms into blank fields. Change any set as needed.</p></details>
+            <p className="helper">First-set RPE, quality and symptoms automatically fill blank feedback on remaining sets of this exercise. Edit any differences; confirm carried feedback once after the exercise.</p><details className="feedback-carry"><summary>First-set feedback shortcut</summary><button className="text-button" disabled={!feedbackFields.some(field => (log[exercise.id]?.sets[0] as any)?.[field])} onClick={() => onFeedback(exercise.id, carryFeedback(log[exercise.id]?.sets || [], exercise.sets))}>Use first-set feedback for remaining sets</button><p className="helper">Copies RPE, quality and symptoms into blank fields. Change any set as needed.</p></details>
             {log[exercise.id]?.sets.some(set => set?.complete && set.inheritedFields?.length && !set.feedbackConfirmed) && <button className="secondary-button" onClick={() => onFeedback(exercise.id, confirmFeedback(log[exercise.id].sets))}>Confirm carried feedback for completed sets</button>}
             </>}
             <p className="eyebrow">{optionalAccessory(exercise) ? "OPTIONAL ACCESSORY" : "SESSION PRIORITY"}</p>

@@ -1,7 +1,7 @@
 import { validateMeasurement } from "../data/measurements.js";
 import { validateMovement } from "../data/movement.js";
 export const VERSIONS = Object.freeze({
-  appVersion: "1.6.2",
+  appVersion: "1.6.3",
   databaseVersion: 2,
   rulesetVersion: "1.1.0",
   exerciseLibraryVersion: "1.2.0",

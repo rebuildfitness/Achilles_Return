@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { EQUIPMENT } from "../data/catalog.js";
-import { equipmentLabel } from "../data/exerciseLibrary.js";
+import { EXERCISE_LIBRARY, equipmentLabel } from "../data/exerciseLibrary.js";
 import { easierOptions, swapOptions } from "../rules/trainingFlexibility.js";
 import type { Exercise } from "../types";
 
@@ -14,6 +14,8 @@ export function ExerciseSwap({ exercise, equipment = EQUIPMENT, unavailable, wor
   useEffect(() => setMissing(unavailable), [unavailable]);
   const options = swapOptions(exercise, equipment.filter(id => !missing.includes(id)))
     .filter((ex: any) => ex.id !== exercise.id && !workoutIds.includes(ex.id) && (reason !== "difficulty" || easierOptions(exercise).includes(ex.id)));
+  const [query, setQuery] = useState(""), [showUnavailable, setShowUnavailable] = useState(false);
+  const library = EXERCISE_LIBRARY.filter(ex => (showUnavailable || options.some((option: any) => option.id === ex.id)) && `${ex.name} ${ex.muscle}`.toLowerCase().includes(query.toLowerCase())).slice(0, 40);
   const candidate = options.find((ex: any) => ex.id === selected);
   async function apply(id: string | null, restore = false) {
     if (busy) return;
@@ -33,6 +35,18 @@ export function ExerciseSwap({ exercise, equipment = EQUIPMENT, unavailable, wor
     <details><summary>Equipment unavailable today ({missing.length})</summary>
       <p className="helper">Applies to this session when you save a swap or skip. Your owned-equipment profile stays the same.</p>
       <div className="equipment-checks">{equipment.map(id => <label key={id}><input type="checkbox" checked={missing.includes(id)} onChange={e => { setMissing(e.target.checked ? [...missing, id] : missing.filter(x => x !== id)); setSelected(""); }} />{equipmentLabel(id)}</label>)}</div>
+    </details>
+    <details className="swap-library"><summary>Browse exercise library</summary>
+      <label>Search library<input type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Exercise or muscle group" /></label>
+      <label><input type="checkbox" checked={showUnavailable} onChange={e => setShowUnavailable(e.target.checked)} /> Show entries unavailable for this swap</label>
+      <p className="helper">Available replacements preserve this exercise's reviewed purpose and use your available equipment. Reference exercises are not automatically cleared for your workout.</p>
+      {!library.length && <p>No matching available replacements. Change your search or show unavailable entries to see why.</p>}
+      {library.map(ex => {
+        const available = options.some((option: any) => option.id === ex.id);
+        const why = available ? "Available replacement" : ex.id === exercise.id ? "Current exercise" : workoutIds.includes(ex.id) ? "Already in this workout" : ex.referenceOnly ? "Reference only; not cleared for workout swaps" : ex.equipment.some((id: string) => !equipment.includes(id) || missing.includes(id)) ? "Required equipment unavailable" : reason === "difficulty" && !easierOptions(exercise).includes(ex.id) ? "Not a reviewed easier replacement" : "Not a reviewed replacement for this exercise's task and dose";
+        return <div className="swap-library-entry" key={ex.id}><strong>{ex.name}</strong><p className="helper">{why}</p>{available && <button className="text-button" onClick={() => setSelected(ex.id)}>{selected === ex.id ? "Selected" : "Select"} {ex.name}</button>}{ex.videoUrl && <a href={ex.videoUrl} target="_blank" rel="noreferrer">View reference</a>}</div>;
+      })}
+      {library.length === 40 && <p className="helper">Showing up to 40 matches. Narrow your search to find more.</p>}
     </details>
     {options.length ? <>
       <label>Alternative exercise<select aria-label="Alternative exercise" value={candidate ? selected : ""} onChange={e => setSelected(e.target.value)}><option value="">Choose an alternative</option>{options.map((ex: any) => <option key={ex.id} value={ex.id}>{ex.name}</option>)}</select></label>

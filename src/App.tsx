@@ -3,7 +3,7 @@ import { automaticPlanSnapshot } from "./rules/automaticPlan.js";
 import { saveAutomaticPlanAudit } from "./persistence/automaticPlan.js";
 import { SessionRefresh } from "./components/SessionEditor";
 import { CoachingReview } from "./components/CoachingReview";
-import { editFeedback, timerKey, timerTransition } from "./data/workoutExperience.js";
+import { carryFeedback, editFeedback, timerKey, timerTransition } from "./data/workoutExperience.js";
 import { useEffect, useRef, useState } from "react";
 import { AppShell, Card } from "./components/ui";
 import { Today } from "./screens/Today";
@@ -296,6 +296,7 @@ export function App() {
     const next = structuredClone(logRef.current);
     next[id] ||= { sets: [] };
     next[id].sets[index] = editFeedback(next[id].sets[index], value);
+    if (index === 0) next[id].sets = carryFeedback(next[id].sets, workout.items.find(ex => ex.id === id)?.sets || next[id].sets.length);
     persistLog(next);
   }
   function changeFeedback(id: string, sets: SetLog[]) {

@@ -1,6 +1,6 @@
 {
   "name": "achilles-return-basketball-pwa",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "private": true,
   "packageManager": "pnpm@11.19.0",
   "type": "module",

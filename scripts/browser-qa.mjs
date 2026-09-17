@@ -284,6 +284,9 @@ try {
     path: resolve(artifacts, "today-ready-mobile.png"),
     fullPage: true,
   });
+  await page.getByRole('button',{name:'Browse rehab support activities',exact:true}).click();
+  await page.getByRole('heading',{name:'Movement & Recovery',exact:true}).waitFor();
+  await page.getByRole('button',{name:'← Back',exact:true}).click();
   await page.getByRole("button", { name: /^(Open|Resume) Workout$/ }).click();
   assert.equal(await page.locator(".exercise-card").count(), 9);
   assert.equal(await page.getByLabel('Workout elapsed time',{exact:true}).innerText(),'00:00:00');
@@ -323,8 +326,9 @@ try {
   await feedbackCard.getByLabel('Single-Leg Calf Raise set 1 RPE',{exact:true}).fill('7');
   await feedbackCard.getByLabel('Single-Leg Calf Raise set 1 quality',{exact:true}).selectOption('good');
   await feedbackCard.getByLabel('Single-Leg Calf Raise set 1 symptoms',{exact:true}).selectOption('none');
-  await feedbackCard.getByText('First-set feedback shortcut',{exact:true}).click();
-  await feedbackCard.getByRole('button',{name:'Use first-set feedback for remaining sets',exact:true}).click();
+  assert.equal(await feedbackCard.getByLabel('Single-Leg Calf Raise set 2 RPE',{exact:true}).inputValue(),'7');
+  assert.equal(await feedbackCard.getByLabel('Single-Leg Calf Raise set 2 quality',{exact:true}).inputValue(),'good');
+  assert.equal(await feedbackCard.getByLabel('Single-Leg Calf Raise set 2 symptoms',{exact:true}).inputValue(),'none');
   await feedbackCard.getByText('Set 2 · RPE, quality & symptoms',{exact:true}).click();
   assert.equal(await feedbackCard.getByLabel('Single-Leg Calf Raise set 2 RPE',{exact:true}).inputValue(),'7');
   await feedbackCard.getByLabel('Single-Leg Calf Raise set 2 RPE',{exact:true}).fill('8');
@@ -443,7 +447,10 @@ try {
   await pullCard.getByLabel('Reason for change',{exact:true}).selectOption('difficulty');
   await pullCard.getByText('Equipment unavailable today (0)',{exact:true}).click();
   await pullCard.getByRole('checkbox',{name:'pull up bar',exact:true}).check();
-  await pullCard.getByLabel('Alternative exercise',{exact:true}).selectOption('library-lat-pulldown');
+  await pullCard.getByText('Browse exercise library',{exact:true}).click();
+  await pullCard.getByLabel('Search library',{exact:true}).fill('lat pulldown');
+  await pullCard.getByRole('button',{name:'Select Lat pulldown',exact:true}).click();
+  assert.equal(await pullCard.getByLabel('Alternative exercise',{exact:true}).inputValue(),'library-lat-pulldown');
   assert.equal(await pullCard.getByLabel('Apply change to',{exact:true}).inputValue(),'session');
   await pullCard.getByRole('button',{name:'Use this alternative',exact:true}).click();
   const latCard = page.locator('.exercise-card').filter({has:page.getByRole('heading',{name:'Lat pulldown',exact:true})});

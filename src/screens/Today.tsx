@@ -142,6 +142,16 @@ export function Today({
           </Card>
         </>
       )}
+      <Card className="rehab-access">
+        <div className="eyebrow">ACHILLES REHAB</div>
+        <h2>Rehab &amp; movement support</h2>
+        <p>Your prescribed calf and lower-body rehabilitation is included in the full workout alongside strength training.</p>
+        {!completed && !red && workout.items.length > 0 && <p className="helper">Today's calf and balance work: {workout.items.filter(ex => /calf|balance|knee-to-wall/.test(ex.originalId || ex.id)).map(ex => ex.name).join(", ") || "See the prescribed exercise list."}</p>}
+        {completed && <p className="helper">Your workout is saved. Avoid repeating its rehab sets as extra work.</p>}
+        {canOpenWorkout && !completed && !red && <button className="text-button" onClick={onWorkout}>View prescribed rehab in workout</button>}
+        <p className="helper">{red ? "Follow your safety guidance; activity logging is for recording what you already did." : "For additional support, browse existing mobility, balance and core routines with demos and activity logging. Availability follows your current readiness."}</p>
+        <button className="secondary-button" onClick={() => onRecovery()}>Browse rehab support activities</button>
+      </Card>
       <Card className="milestone-card">
         <div className="eyebrow">NEXT MILESTONE</div>
         <h3>

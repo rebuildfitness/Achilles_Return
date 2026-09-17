@@ -12,7 +12,7 @@ The timer is above the set-progress/rest dashboard to avoid taking away the logg
 
 ## First-set feedback
 
-Enter the first set's RPE, quality and symptoms, then choose **Use first-set feedback for remaining sets**. Only blank fields on unfinished sets of that exercise are filled. Loads, repetitions and completion are never copied. Existing individual responses and completed sets are preserved.
+Enter the first set's RPE, quality and symptoms; blank feedback on the remaining unfinished sets fills automatically. The manual **Use first-set feedback for remaining sets** action remains available for older drafts. Only blank fields on unfinished sets of that exercise are filled. Loads, repetitions and completion are never copied. Existing individual responses and completed sets are preserved.
 
 Copied fields are marked Carried feedback — unconfirmed. Edit any field independently. After the exercise, **Confirm carried feedback for completed sets** confirms only work already marked complete. Later sets still require confirmation after they are completed. The strength decision does not treat unconfirmed copied responses as observations supporting progression. Missing feedback remains optional for saving a session; it is disclosed in the report and cannot fabricate progression evidence.
 
