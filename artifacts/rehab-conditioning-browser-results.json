@@ -1,0 +1,9 @@
+{
+  "passed": [
+    "Dedicated schedule starts tomorrow, preserves today and does not alter completed history",
+    "Block and round navigation retain prescribed indices, demos, illustrations and actual set logging",
+    "Activity timer and logged rounds survive reload; mobile and desktop fit",
+    "Offline finish preserves actual work and history; immediate report includes format and pending tolerance"
+  ],
+  "failed": 0
+}

@@ -1,3 +1,5 @@
+import { PlannedExposure } from "../components/PlannedExposure";
+import { TimedActivity } from "../components/TimedActivity";
 import { ExercisePath } from "../components/ExercisePath";
 import { loadConvention, previousExerciseSession } from "../data/workflowClarity.js";
 import { displayDate } from "../data/displayDates.js";
@@ -15,6 +17,8 @@ import type { FormEvent } from "react";
 import type { Session, SetLog, Workout, WorkoutLog } from "../types";
 export function WorkoutScreen({
   workout,
+  exposure,
+  onExposure,
   date,
   onFeedback,
   log,
@@ -29,6 +33,8 @@ export function WorkoutScreen({
   readiness = "GREEN",
 }: {
   workout: Workout;
+  exposure?: any;
+  onExposure?: (domain: string) => void;
   date: string;
   onFeedback: (id: string, sets: SetLog[]) => void;
   log: WorkoutLog;
@@ -45,6 +51,9 @@ export function WorkoutScreen({
   const [rest, setRest] = useState<{ seconds: number; at: number } | null>(
     null,
   );
+  const [round, setRound] = useState(0);
+  const [blockFilter, setBlockFilter] = useState("");
+  const conditioning = workout.sessionFormat === "rehab-conditioning";
   const [shortSession, setShortSession] = useState(false);
   const visibleItems = workout.items.filter(ex => !shortSession || !optionalAccessory(ex) || log[ex.id]?.sets.some(s => s && Object.values(s).some(Boolean)));
   const retainedCompleted = (workout.retained || []).reduce((n, ex) => n + (log[ex.id]?.sets.filter(set => set?.complete).length || 0), 0);
@@ -65,7 +74,7 @@ export function WorkoutScreen({
         ← Today
       </button>
       <div className="screen-heading">
-        <h1>Full Workout</h1>
+        <h1>{conditioning ? "Rehab & Conditioning" : "Full Workout"}</h1>
         <p>{workout.title}</p>
         <p className="helper">{sessionEstimate(visibleItems)}</p>
         <details className="workout-options"><summary>Session options</summary>
@@ -90,18 +99,30 @@ export function WorkoutScreen({
           signal={rest}
         />
       </div>
-      {visibleItems.map((exercise) => {
+      {conditioning && <section className="detail-section" aria-label="Rehab session blocks">
+        <h2>Your session blocks</h2>
+        <p>Warm up gradually. Complete calf-strength sets with their prescribed recovery. For leg control, alternate one set of each exercise per round. Keep balance work controlled; extend rest whenever needed.</p>
+        <label>Session block<select aria-label="Session block" value={blockFilter} onChange={e=>{setBlockFilter(e.target.value);setRound(0);}}><option value="">Full session</option>{[...new Set(visibleItems.map(ex=>ex.block).filter(Boolean))].map(block=><option key={block} value={block}>{block}</option>)}</select></label>
+        <label>Round view<select aria-label="Round view" value={round} onChange={e=>setRound(Number(e.target.value))}><option value={0}>All sets</option>{Array.from({length: Math.max(0,...visibleItems.filter(ex=>!blockFilter || ex.block===blockFilter).map(ex=>ex.sets))},(_,i)=><option key={i} value={i+1}>Round {i+1}</option>)}</select></label>
+        <p className="helper">Round view changes the display only. It never completes, adds or removes prescribed work. The full session remains available above.</p>
+        {exposure && onExposure && <><p className="notice">This progression exposure replaces the bike block. Complete it through its own logger before saving the rehab workout. Follow its prescribed warm-up and recovery.</p><PlannedExposure exposure={exposure} onStart={onExposure}/></>}
+        {workout.conditioningReplaced && !exposure && <p className="notice">Progression work is already recorded today; no additional conditioning finisher is prescribed.</p>}
+        {!exposure && !workout.conditioningReplaced && <p className="helper">No impact session is assigned here today. Use the listed conditioning block; Tests shows requirements for progression activities. Floor backward jogging and carioca are not treadmill substitutions.</p>}
+      </section>}
+      {visibleItems.filter(ex=> !conditioning || ((!blockFilter || ex.block===blockFilter) && (!round || ex.sets>=round))).map((exercise) => {
         const previousSession = previousExerciseSession(sessions, exercise.id, date);
         const previous = previousSession?.exerciseLog[exercise.id];
         return (
           <ExerciseCard key={exercise.id} exercise={exercise} online={online}>
+            {conditioning && exercise.block && <p className="eyebrow">{exercise.block}</p>}
+            {conditioning && exercise.unit === "seconds" && <TimedActivity storageKey={`work-${date}-${workout.id}-${exercise.id}`} seconds={Number(String(exercise.reps).match(/\d+/)?.[0]) || 30} name={exercise.name} />}
             {onSwap && <ExerciseSwap exercise={exercise} equipment={equipment} unavailable={unavailable} workoutIds={workout.items.map(ex => ex.id)} onSwap={onSwap} />}
             {exercise.sets === 0 && <p className="helper">All planned sets were already completed. This change adds no extra sets today.</p>}
             {exercise.skipReason || exercise.equipment?.some(id => unavailable.includes(id)) ? <>
               <p className="notice">{exercise.skipReason ? "Remaining sets skipped: " + exercise.skipReason : "Equipment marked unavailable today. Swap or skip the remaining sets."}</p>
               <RecordedSets exercise={exercise} log={log} onChange={onChange} />
             </> : <>
-            <p className="helper workout-comparison">Today: {exercise.sets} × {exercise.reps}. Last recorded: {previousSession ? `${displayDate(previousSession.date)} · ${previousSession.status === "TOLERATED" ? "response tolerated" : previousSession.status === "PENDING_NEXT_DAY_RESPONSE" ? "response pending" : "response needs review"}` : "No earlier session"}.<br />{loadConvention(exercise)}</p>
+            <p className="helper workout-comparison">Today: {exercise.sets} × {exercise.reps}. Last recorded: {previousSession ? `${displayDate(previousSession.date)} · ${previousSession.status === "TOLERATED" ? "response tolerated" : previousSession.status === "PENDING_NEXT_DAY_RESPONSE" ? "response pending" : "response needs review"}` : "No earlier session"}.<br />{exercise.id === "library-stationary-cycling" ? "Record actual seconds; leave weight blank. Bike resistance is not pounds." : loadConvention(exercise)}</p>
             {exercise.progressionTarget && <p className="notice">{exercise.progressionTarget.text}</p>}
             <div className="set-row set-header" aria-hidden="true">
               <span>SET</span>
@@ -116,7 +137,7 @@ export function WorkoutScreen({
               </span>
               <span>✓</span>
             </div>
-            {Array.from({ length: exercise.sets }, (_, index) => (
+            {Array.from({ length: exercise.sets }, (_, index) => index).filter(index => !conditioning || !round || index === round-1).map(index => (
               <SetRow
                 key={index}
                 exercise={exercise}
@@ -129,7 +150,7 @@ export function WorkoutScreen({
                     !log[exercise.id]?.sets[index]?.complete
                   )
                     setRest({
-                      seconds: Number(exercise.restSec) || 60,
+                      seconds: exercise.restSec ?? 60,
                       at: Date.now(),
                     });
                   onChange(exercise.id, index, value);

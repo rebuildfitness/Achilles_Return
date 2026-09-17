@@ -352,6 +352,8 @@ export function App() {
         createdAt: new Date().toISOString(),
         workoutId: workout.id,
         workoutTitle: workout.title,
+        sessionFormat: workout.sessionFormat,
+        templateVersion: workout.templateVersion,
         plannedItems: recordedItems,
         exerciseChanges: sessionChanges.events,
         exerciseLog: activeLog,
@@ -612,6 +614,8 @@ export function App() {
           ) : flow === "workout" && canOpenWorkout ? (
             <WorkoutScreen
               workout={workout}
+              exposure={today.exposure}
+              onExposure={(domain) => { setDomain(domain); open("exposure"); }}
               date={date}
               onFeedback={changeFeedback}
               log={log}
@@ -664,6 +668,9 @@ export function App() {
             <>
               {savedCoachingSession && <Card><h2>Workout saved</h2><CoachingReview session={savedCoachingSession} sessions={sessions} expanded /></Card>}
               <Today
+                conditioningEnabled={program.profile?.strengthStyle === "conditioning"}
+                conditioningFrom={program.profile?.conditioningFrom}
+                onEnableConditioning={() => { if (busy) return; setBusy(true); void put("profile", {...program.profile, id:"athlete", equipment:program.profile?.equipment || DEFAULT_EQUIPMENT, availableDays:program.profile?.availableDays || ["1","3","5"], previousStrengthStyle:program.profile?.strengthStyle || "hybrid", strengthStyle:"conditioning", conditioningFrom:addDays(date,1)}).then(async()=>setProgram(await loadProgram())).catch(report).finally(()=>setBusy(false)); }}
                 exposure={today.exposure}
                 onExposure={(d) => { setDomain(d); open("exposure"); }}
                 hasDraft={Object.values(log).some(item => item.sets.some(set => set && Object.keys(set).length > 0))}

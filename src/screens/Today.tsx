@@ -8,6 +8,9 @@ import { baselineResult } from "../rules/baseline.js";
 import { dayKey } from "../data/provisionalWeek.js";
 
 export function Today({
+  conditioningEnabled = false,
+  conditioningFrom,
+  onEnableConditioning,
   exposure,
   onExposure,
   hasDraft = false,
@@ -25,6 +28,9 @@ export function Today({
   workoutNote,
   onResponse,
 }: {
+  conditioningEnabled?: boolean;
+  conditioningFrom?: string;
+  onEnableConditioning?: () => void;
   exposure?: any;
   onExposure: (domain: string) => void;
   hasDraft?: boolean;
@@ -145,6 +151,8 @@ export function Today({
       <Card className="rehab-access">
         <div className="eyebrow">ACHILLES REHAB</div>
         <h2>Rehab &amp; movement support</h2>
+        {conditioningEnabled ? <p className="notice">Dedicated Achilles Rehab &amp; Conditioning replaces your B session{conditioningFrom ? ` from ${conditioningFrom}` : ""}. View Plan for its next scheduled day.</p> : onEnableConditioning && <><p>Use a dedicated calf-strength, leg-control, balance and conditioning session in place of Strength B. A and C retain strength training.</p><button className="secondary-button" onClick={onEnableConditioning}>Use dedicated rehab schedule</button><p className="helper">Starts tomorrow; today's workout and saved history stay intact. This does not unlock impact exercises.</p></>}
+
         <p>Your prescribed calf and lower-body rehabilitation is included in the full workout alongside strength training.</p>
         {!completed && !red && workout.items.length > 0 && <p className="helper">Today's calf and balance work: {workout.items.filter(ex => /calf|balance|knee-to-wall/.test(ex.originalId || ex.id)).map(ex => ex.name).join(", ") || "See the prescribed exercise list."}</p>}
         {completed && <p className="helper">Your workout is saved. Avoid repeating its rehab sets as extra work.</p>}

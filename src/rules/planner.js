@@ -1,3 +1,4 @@
+import { rehabConditioningTemplate, coordinateConditioning } from "./rehabConditioning.js";
 import { applyAutomaticPlan } from "./automaticPlan.js";
 import { CATALOG, activeExercise, EQUIPMENT, DEFAULT_EQUIPMENT } from "../data/catalog.js";
 import { baselineResult } from "./baseline.js";
@@ -9,6 +10,7 @@ export const STRENGTH_STYLES = [
   ["hybrid", "Rehab + Strength & Hypertrophy"],
   ["hypertrophy", "Rehab + hypertrophy"],
   ["rehab", "Original rehab template"],
+  ["conditioning", "Strength + dedicated Achilles conditioning"],
 ];
 export function strengthTemplate(kind, values, style = "hybrid") {
   const unilateral =
@@ -73,6 +75,7 @@ export function strengthTemplate(kind, values, style = "hybrid") {
     ],
     C: [CATALOG.shoulderPress, CATALOG.row, CATALOG.curl, CATALOG.seatedCore],
   };
+  if (style === "conditioning" && kind === "B") return rehabConditioningTemplate(values, calf, soleus);
   const expanded = style !== "rehab";
   return {
     id: `strength-${kind}`,
@@ -245,7 +248,7 @@ export function weeklyPlan(
       ? strengthTemplate(
           ["A", "B", "C"][number],
           values,
-          profile?.strengthStyle || "hybrid",
+          profile?.conditioningFrom && key < profile.conditioningFrom ? (profile.previousStrengthStyle || "hybrid") : profile?.strengthStyle || "hybrid",
         )
       : null;
     const effectiveReadiness = key === actualToday && readiness !== "UNCHECKED" ? readiness : "GREEN";
@@ -323,5 +326,5 @@ export function weeklyPlan(
           ) > 10),
     };
   });
-  return applyAutomaticPlan(days, { assessment, checkpoints, sessions, readiness, today: actualToday });
+  return applyAutomaticPlan(days, { assessment, checkpoints, sessions, readiness, today: actualToday }).map(day => coordinateConditioning(day, sessions));
 }

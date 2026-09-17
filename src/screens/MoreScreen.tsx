@@ -5,6 +5,8 @@ import { DataField } from "./Baseline";
 import { ExerciseLibrary } from "../components/ExerciseLibrary";
 import { EQUIPMENT, DEFAULT_EQUIPMENT, EQUIPMENT_OPTIONS, EQUIPMENT_LABELS } from "../data/catalog.js";
 import { EVIDENCE, CLINICAL_COPY } from "../data/evidence.js";
+import { addDays } from "../rules/trainingFlexibility.js";
+import { dayKey } from "../data/provisionalWeek.js";
 import { STRENGTH_STYLES } from "../rules/planner.js";
 import { OWNED_LOADS } from "../data/ownedLoads.js";
 import { getAll, put, restoreBackup } from "../db.js";
@@ -42,7 +44,7 @@ export function MoreScreen({
   async function settings() {
     setBusy(true);
     try {
-      await put("profile", { ...profile, id: "athlete", ...values, equipmentUpdate20260915: true });
+      await put("profile", { ...profile, id: "athlete", ...values, ...(values.strengthStyle === "conditioning" && profile?.strengthStyle !== "conditioning" ? {conditioningFrom: addDays(dayKey(), 1), previousStrengthStyle: profile?.strengthStyle || "hybrid"} : {}), equipmentUpdate20260915: true });
       await onReload();
       setMessage("Preferences saved on this device.");
     } catch (e) {
@@ -150,6 +152,7 @@ export function MoreScreen({
             values={values}
             onChange={(id, v) => setValues({ ...values, [id]: v })}
           />
+          {values.strengthStyle === "conditioning" && <p className="notice">Dedicated Achilles Rehab &amp; Conditioning replaces the B session from tomorrow. A and C retain strength work; recovery days stay low-load. Existing sessions and today's workout are preserved. Impact activities still require their recorded progression criteria.</p>}
           <p className="helper">
             The hybrid program uses 5×5 for an incline dumbbell press on Strength A and a supported row
             on Strength B. This is not the StrongLifts program. Strength C adds higher-rep shoulder, back and arm

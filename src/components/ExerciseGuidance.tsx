@@ -15,6 +15,7 @@ export function ExerciseGuidance({
   equipment?: string[];
   onSwap?: (exercise: Exercise, id: string, reason: string) => Promise<void>;
 }) {
+  if (exercise.id === "library-stationary-cycling") return <details><summary>Conditioning guidance</summary><p>Use the listed duration at a comfortable, tolerated effort. Record actual seconds, not pedal revolutions, and leave weight blank. Bike resistance is not pounds.</p><p>Do not add an extra finisher when a progression exposure replaces this block. Next-morning feedback still determines tolerance.</p></details>;
   const guide = loadGuidance(exercise, sessions, readiness);
   return (
     <details>

@@ -28,6 +28,7 @@ export type SetLog = {
 };
 export type WorkoutLog = Record<string, { sets: SetLog[] }>;
 export type Exercise = {
+  block?: string;
   progressionTarget?: { action: string; text: string; reason: string; sourceSessionId: string; previousLoad: number; ruleId: string; matrixVersion: string; sourceIds: string[] };
   equipment?: string[];
   skipReason?: string;
@@ -48,6 +49,9 @@ export type Exercise = {
   unit?: string;
 };
 export type Workout = {
+  sessionFormat?: string;
+  templateVersion?: string;
+  conditioningReplaced?: boolean;
   progressionAllowed?: boolean;
   id: string;
   title: string;
@@ -59,6 +63,8 @@ export type Workout = {
   omitted?: { id: string; name: string; reason: string }[];
 };
 export type Session = {
+  sessionFormat?: string;
+  templateVersion?: string;
   revision?: number;
   updatedAt?: string;
   correctionHistory?: any[];
@@ -98,6 +104,8 @@ export type Assessment = {
   step: number;
 };
 export type Profile = {
+  conditioningFrom?: string;
+  previousStrengthStyle?: string;
   equipmentUpdate20260915?: boolean;
   scheduleMoves?: { from: string; to: string; kind: string }[];
   exerciseChoices?: Record<string, { id: string; reason: string; effectiveFrom?: string }>;
