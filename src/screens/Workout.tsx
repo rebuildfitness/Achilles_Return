@@ -1,3 +1,4 @@
+import { ExercisePath } from "../components/ExercisePath";
 import { loadConvention, previousExerciseSession } from "../data/workflowClarity.js";
 import { displayDate } from "../data/displayDates.js";
 import { WorkoutTimer } from "../components/WorkoutTimer";
@@ -139,6 +140,7 @@ export function WorkoutScreen({
             {log[exercise.id]?.sets.some(set => set?.complete && set.inheritedFields?.length && !set.feedbackConfirmed) && <button className="secondary-button" onClick={() => onFeedback(exercise.id, confirmFeedback(log[exercise.id].sets))}>Confirm carried feedback for completed sets</button>}
             </>}
             <p className="eyebrow">{optionalAccessory(exercise) ? "OPTIONAL ACCESSORY" : "SESSION PRIORITY"}</p>
+            <ExercisePath key={exercise.id} exercise={exercise} sessions={sessions} readiness={readiness} equipment={equipment || []} date={date} progressionAllowed={!!workout.progressionAllowed} unavailable={unavailable} workoutIds={workout.items.map(e=>e.id)} onSwap={onSwap} />
             <ExerciseGuidance
               exercise={exercise}
               sessions={sessions}

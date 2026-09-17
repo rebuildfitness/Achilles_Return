@@ -1,0 +1,276 @@
+{
+  "version": "1.0.0",
+  "clinicalRulesetVersion": "1.1.0",
+  "authority": "Product progression paths based on existing strength evidence checks and user equipment preferences; not medical clearance or a universal equipment hierarchy.",
+  "sourceIds": [
+    "general-strength",
+    "product-v1"
+  ],
+  "rows": [
+    {
+      "originId": "seated-march",
+      "title": "Seated Core March",
+      "mode": "alternatives",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "seated-march",
+        "cable-pallof-press"
+      ]
+    },
+    {
+      "originId": "supported-db-row",
+      "title": "Bench-Supported Dumbbell Row",
+      "mode": "alternatives",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "supported-db-row",
+        "library-chest-supported-dumbbell-row",
+        "library-smith-bent-over-row",
+        "library-barbell-bent-over-row"
+      ]
+    },
+    {
+      "originId": "seated-arnold-press",
+      "title": "Shoulder pressing",
+      "mode": "equipment-route",
+      "route": [
+        "seated-arnold-press",
+        "library-smith-seated-shoulder-press"
+      ],
+      "milestones": {
+        "seated-arnold-press": 50
+      },
+      "alternatives": [
+        "seated-arnold-press",
+        "library-seated-dumbbell-shoulder-press",
+        "library-smith-seated-shoulder-press"
+      ],
+      "unit": "lb per dumbbell"
+    },
+    {
+      "originId": "db-curl",
+      "title": "Dumbbell Biceps Curl",
+      "mode": "alternatives",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "db-curl",
+        "library-cable-biceps-curl",
+        "library-standing-hammer-curl",
+        "library-incline-dumbbell-curl",
+        "barbell-curl"
+      ]
+    },
+    {
+      "originId": "db-lateral-raise",
+      "title": "Dumbbell Lateral Raise",
+      "mode": "alternatives",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "db-lateral-raise",
+        "library-seated-dumbbell-lateral-raise",
+        "library-two-arm-cable-lateral-raise"
+      ]
+    },
+    {
+      "originId": "seated-db-triceps",
+      "title": "Seated Dumbbell Triceps Extension",
+      "mode": "alternatives",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "seated-db-triceps",
+        "library-rope-cable-triceps-extension",
+        "library-lying-dumbbell-triceps-extension"
+      ]
+    },
+    {
+      "originId": "barbell-curl",
+      "title": "Olympic Barbell Biceps Curl",
+      "mode": "alternatives",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "barbell-curl"
+      ]
+    },
+    {
+      "originId": "bilateral-calf",
+      "title": "Bilateral Standing Calf Raise",
+      "mode": "existing-rehab-rules",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "bilateral-calf"
+      ]
+    },
+    {
+      "originId": "seated-calf",
+      "title": "Loaded Seated Calf Raise",
+      "mode": "existing-rehab-rules",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "seated-calf"
+      ]
+    },
+    {
+      "originId": "single-calf",
+      "title": "Single-Leg Calf Raise",
+      "mode": "existing-rehab-rules",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "single-calf",
+        "bilateral-calf"
+      ]
+    },
+    {
+      "originId": "belt-squat",
+      "title": "Squatting",
+      "mode": "equipment-route",
+      "route": [
+        "belt-squat",
+        "library-smith-wide-stance-squat",
+        "library-barbell-back-squat"
+      ],
+      "milestones": {
+        "belt-squat": 225
+      },
+      "alternatives": [
+        "belt-squat",
+        "library-dumbbell-goblet-squat",
+        "library-smith-wide-stance-squat",
+        "library-barbell-back-squat"
+      ],
+      "unit": "lb added plates"
+    },
+    {
+      "originId": "dumbbell-romanian-deadlift",
+      "title": "Hip hinge",
+      "mode": "equipment-route",
+      "route": [
+        "dumbbell-romanian-deadlift",
+        "library-barbell-romanian-deadlift"
+      ],
+      "milestones": {
+        "dumbbell-romanian-deadlift": 50
+      },
+      "alternatives": [
+        "dumbbell-romanian-deadlift",
+        "library-barbell-romanian-deadlift",
+        "library-trap-bar-deadlift"
+      ],
+      "unit": "lb per dumbbell"
+    },
+    {
+      "originId": "bench-step-up",
+      "title": "Step-Up",
+      "mode": "existing-rehab-rules",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "bench-step-up"
+      ]
+    },
+    {
+      "originId": "bridge",
+      "title": "Bridge / Hip Thrust",
+      "mode": "alternatives",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "bridge",
+        "library-barbell-glute-bridge"
+      ]
+    },
+    {
+      "originId": "cable-pallof-press",
+      "title": "Standing Cable Pallof Press",
+      "mode": "alternatives",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "cable-pallof-press",
+        "seated-march"
+      ]
+    },
+    {
+      "originId": "single-balance",
+      "title": "Single-Leg Balance",
+      "mode": "existing-rehab-rules",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "single-balance"
+      ]
+    },
+    {
+      "originId": "weighted-wagon-backward-drag",
+      "title": "Weighted Wagon Backward Drag",
+      "mode": "existing-rehab-rules",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "weighted-wagon-backward-drag"
+      ]
+    },
+    {
+      "originId": "band-hamstring",
+      "title": "Prone Band Hamstring Curl",
+      "mode": "alternatives",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "band-hamstring",
+        "library-seated-unilateral-cable-hamstring-curl",
+        "library-standing-cable-hamstring-curl"
+      ]
+    },
+    {
+      "originId": "pull-up",
+      "title": "Pull-Up",
+      "mode": "alternatives",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "pull-up",
+        "library-lat-pulldown"
+      ]
+    },
+    {
+      "originId": "db-bench",
+      "title": "Chest pressing",
+      "mode": "equipment-route",
+      "route": [
+        "db-bench",
+        "library-smith-incline-bench-press",
+        "library-barbell-bench-press"
+      ],
+      "milestones": {
+        "db-bench": 50
+      },
+      "alternatives": [
+        "db-bench",
+        "library-flat-dumbbell-bench-press",
+        "library-dumbbell-floor-press",
+        "library-smith-incline-bench-press",
+        "library-barbell-bench-press"
+      ],
+      "unit": "lb per dumbbell"
+    },
+    {
+      "originId": "knee-to-wall",
+      "title": "Knee-to-Wall Mobility",
+      "mode": "existing-rehab-rules",
+      "route": [],
+      "milestones": {},
+      "alternatives": [
+        "knee-to-wall"
+      ]
+    }
+  ]
+}

@@ -134,3 +134,5 @@ See [the release guide](docs/WORKFLOW_AND_EQUIPMENT_UPDATE.md) for the four work
 Today and Plan now automatically incorporate eligible exposure doses and exercise-specific next-load instructions from recorded criteria and tolerance. See [the progression matrix and release notes](docs/AUTOMATIC_PROGRESSION_MATRIX.md). Clinical thresholds and saved history remain intact.
 
 Equipment follow-up release: see [docs/EQUIPMENT_FOLLOWUP_RELEASE.md](docs/EQUIPMENT_FOLLOWUP_RELEASE.md). App 1.4.1 separates canonical training sleds from personal wagon substitutions; new references remain excluded from automatic programming.
+
+Exercise paths: [docs/EXERCISE_PATHS_RELEASE.md](docs/EXERCISE_PATHS_RELEASE.md), app 1.5.0. Automatic path evaluation with explicit equipment-transition review.

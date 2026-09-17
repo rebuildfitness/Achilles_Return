@@ -48,6 +48,7 @@ export type Exercise = {
   unit?: string;
 };
 export type Workout = {
+  progressionAllowed?: boolean;
   id: string;
   title: string;
   phase: string;

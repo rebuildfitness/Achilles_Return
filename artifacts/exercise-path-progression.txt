@@ -1,0 +1,5 @@
+PASS Saving the next-morning response automatically inserts R2 into Today without manual advancement
+PASS Automatically prescribed session opens the existing exposure logger at the updated dose
+PASS Reload and future-week preview retain R2; future plans never invent successful R3 evidence
+PASS Changed readiness immediately removes the scheduled impact exposure
+PASS Offline reload retains the prescription and local decision evidence without runtime errors

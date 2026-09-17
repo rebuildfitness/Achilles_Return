@@ -1,0 +1,4 @@
+PASS Existing wagon ownership retained; exact treadmill displayed; sled not marked owned
+PASS Canonical sled references are searchable without an unverified demo button
+PASS Backward treadmill remains a deferred reference without a demo link
+PASS Exact model persisted locally with no browser runtime errors

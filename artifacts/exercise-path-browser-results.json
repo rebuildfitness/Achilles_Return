@@ -1,0 +1,8 @@
+{
+  "passed": [
+    "Qualified 50 lb pressing milestone exposes a reviewed transition and applies the selected next variation",
+    "Future exercise choice and path evidence are saved; prior session remains byte-for-byte equivalent",
+    "Reload preserves the chosen variation without cascading to the next equipment stage or runtime errors"
+  ],
+  "failed": 0
+}

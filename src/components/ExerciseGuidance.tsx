@@ -24,22 +24,6 @@ export function ExerciseGuidance({
       <p>{guide.overload}</p>
       <p className="helper">{guide.evidence}</p>
       <p>{guide.transition}</p>
-      {(exercise.originalId || exercise.id) === "db-bench" && (
-        <p>
-          Your preferred equipment route (not a ranking): incline dumbbells → Smith incline press →
-          Olympic-bar bench press with your B52 rack safeties. Each change needs
-          its own warm-up and starting-load assessment.
-        </p>
-      )}
-      {(exercise.originalId || exercise.id) === "belt-squat" && (
-        <p>
-          Preferred route: Fringe Sport Mammoth belt squat → controlled Smith
-          squat → barbell back squat with B52 rack safeties. At 225 lb, review
-          technique and Achilles tolerance before transitioning. There is no
-          automatic swap or Smith-to-barbell weight threshold. Establish a
-          separate starting load for each variation; loads are not interchangeable.
-        </p>
-      )}
       {guide.limit !== null && (
         <p>
           {exercise.id === "belt-squat" ? "Available Olympic plates: " : "Equipment limit: "}{guide.limit} lb

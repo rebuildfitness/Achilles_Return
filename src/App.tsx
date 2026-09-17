@@ -1,3 +1,4 @@
+import { exercisePath } from "./rules/exercisePaths.js";
 import { automaticPlanSnapshot } from "./rules/automaticPlan.js";
 import { saveAutomaticPlanAudit } from "./persistence/automaticPlan.js";
 import { SessionRefresh } from "./components/SessionEditor";
@@ -626,11 +627,19 @@ export function App() {
                 swapping.current = true; setBusy(true);
                 try {
                   const owned = program.profile?.equipment || DEFAULT_EQUIPMENT;
+                  let pathAudit: any = null;
+                  if (reason === "path") {
+                    const decision = exercisePath(exercise, sessions, readiness?.level || "UNCHECKED", owned.filter(key => !unavailable.includes(key)), date, !!workout.progressionAllowed);
+                    if (!decision.ready || decision.next?.id !== id || workout.items.some(e => e.id === id)) throw new Error("This path is no longer eligible. Review the current criteria.");
+                    pathAudit = {version:decision.version,sourceSessionId:decision.sourceSessionId,checks:decision.checks,setupReviewConfirmed:true};
+                    reason = "progression";
+                  }
                   const missing = unavailable.filter(key => owned.includes(key));
                   const replacement = id === exercise.id ? { ...exercise, skipReason: undefined } : id ? swapExercise(exercise, id, owned.filter(key => !missing.includes(key)), readiness?.level, reason) : null;
                   if (id !== exercise.id && workout.items.some(ex => ex.id === id)) throw new Error("That exercise is already in this workout.");
                   await queue.current;
                   const next = recordSessionChange(sessionChanges, exercise, replacement, reason, scope, missing, logRef.current, new Date().toISOString());
+                  if (pathAudit) next.events[next.events.length-1].pathReview = pathAudit;
                   const records: any[] = [{ store: "settings", value: next }];
                   if (scope === "future" && replacement) records.push({ store: "profile", value: {
                     ...program.profile, id: "athlete", exerciseChoices: { ...program.profile?.exerciseChoices,
