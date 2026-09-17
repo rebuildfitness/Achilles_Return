@@ -4,11 +4,12 @@ import { readFile, readdir } from 'node:fs/promises';
 import manifest from '../public/assets/exercises/manifests/exercise-illustrations.json' with {type:'json'};
 import { CATALOG } from '../src/data/catalog.js';
 import { EXERCISE_LIBRARY } from '../src/data/exerciseLibrary.js';
+import { EQUIPMENT_REFERENCE_EXERCISES } from '../src/data/equipmentContext.js';
 import { MOVEMENT_EXERCISES } from '../src/data/movementRoutines.js';
 import { illustrationUrl } from '../src/data/illustrationPaths.js';
 const root=new URL('../public/',import.meta.url);
 test('illustration inventory covers each canonical ID exactly once with exact display names',()=>{
-  const active=[...Object.values(CATALOG),...EXERCISE_LIBRARY,...MOVEMENT_EXERCISES];
+  const active=[...Object.values(CATALOG),...EXERCISE_LIBRARY,...MOVEMENT_EXERCISES,...EQUIPMENT_REFERENCE_EXERCISES];
   const ids=new Set(active.map(e=>e.id));
   assert.equal(manifest.length,ids.size);
   assert.equal(new Set(manifest.map(r=>r.exerciseId)).size,ids.size);

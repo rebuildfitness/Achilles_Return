@@ -944,12 +944,12 @@ try {
     .getByRole("button", { name: "Show all exercises", exact: true })
     .click();
   assert.equal(
-    await page.getByRole("link", { name: /Short Demo:/ }).count(),
+    await page.locator('.exercise-library-card .illustrated-exercise').count(),
     20,
   );
   await page.getByRole("button", { name: "Show 20 more exercises" }).click();
   assert.equal(
-    await page.getByRole("link", { name: /Short Demo:/ }).count(),
+    await page.locator('.exercise-library-card .illustrated-exercise').count(),
     40,
   );
   assert.ok(

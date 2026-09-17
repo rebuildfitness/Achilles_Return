@@ -48,7 +48,7 @@ export function ExerciseIllustration({ exerciseId, name, children }: {
             <img src={url!} alt={record?.altText || `${name} illustration`} width="640" height="960"
               onError={() => setDetailFailed(true)} />}
           <p className="helper">{record?.panelDescription}</p>
-          <p className="helper">Illustration supplements the setup and Short Demo above. Follow your Plan for the prescribed dose.</p>
+          <p className="helper">Illustration supplements the exercise guidance. Follow your Plan for the prescribed dose; reference artwork does not unlock an exercise.</p>
           <details><summary>Offline image availability</summary><p className="helper">Small previews download as you browse. Larger images download when you tap Enlarge. Each is saved for offline use after loading. App updates or cleared browser storage may require another download. Short Demos require internet.</p></details>
         </dialog>
       )}

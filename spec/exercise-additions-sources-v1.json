@@ -1,0 +1,131 @@
+{
+  "version": "1.0.0",
+  "sources": [
+    {
+      "id": "src-marrone-2024",
+      "title": "Rehabilitation and Return to Sports after Achilles Tendon Repair",
+      "authorsOrOrganization": "Marrone W, Andrews R, Reynolds A, et al.",
+      "year": 2024,
+      "url": "https://ijspt.scholasticahq.com/article/122643-rehabilitation-and-return-to-sports-after-achilles-tendon-repair",
+      "doiOrPmid": "doi:10.26603/001c.122643; PMID:39246413",
+      "evidenceType": "clinical commentary",
+      "population": "Adults after surgical Achilles tendon repair; recommendations synthesize literature and clinical practice.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Not a trial or a surgeon-specific protocol. Exercise timing, loading and return-to-sport decisions still require individual assessment; cited healthy-adult biomechanics are indirect."
+    },
+    {
+      "id": "src-gaspar-2026",
+      "title": "Return to running after Achilles tendon rupture: an international Delphi consensus",
+      "authorsOrOrganization": "Gaspar and international Delphi panel",
+      "year": 2026,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42503592/",
+      "doiOrPmid": "PMID:42503592",
+      "evidenceType": "expert consensus (Delphi)",
+      "population": "Return-to-running decisions after Achilles tendon rupture.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Consensus criteria require prospective validation and do not make a single exercise, elapsed time or 90% symmetry a universal clearance rule."
+    },
+    {
+      "id": "src-revak-2017",
+      "title": "Achilles Tendon Loading During Heel-Raising and -Lowering Exercises",
+      "authorsOrOrganization": "Revak A, Diers K, Kernozek TW",
+      "year": 2017,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28145739/",
+      "doiOrPmid": "doi:10.4085/1062-6050-52.1.04; PMID:28145739",
+      "evidenceType": "laboratory biomechanics study",
+      "population": "Healthy younger adults performing heel-raise and heel-lowering variations.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Estimates relative tendon loading; it does not establish postoperative readiness, safety, dose, range or progression timing.",
+      "developerCorrection": "Author list corrected from original PMC article."
+    },
+    {
+      "id": "src-bohm-2022",
+      "title": "Human Achilles tendon adaptation in response to exercise: a systematic review and meta-analysis",
+      "authorsOrOrganization": "Bohm and colleagues",
+      "year": 2022,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36278501/",
+      "doiOrPmid": "PMID:36278501",
+      "evidenceType": "systematic review and meta-analysis",
+      "population": "Primarily healthy participants in tendon-loading studies.",
+      "accessedAt": "2026-09-16",
+      "limitations": "General tendon adaptation evidence is not a postoperative prescription and does not validate any candidate's starting load or eligibility.",
+      "verificationStatus": "quarantined",
+      "eligibleForClinicalClaims": false
+    },
+    {
+      "id": "src-acsm-2026",
+      "title": "Resistance Training Prescription for Muscle Function, Hypertrophy, and Physical Performance in Healthy Adults: An Overview of Reviews",
+      "authorsOrOrganization": "American College of Sports Medicine; Currier and colleagues",
+      "year": 2026,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41843416/",
+      "doiOrPmid": "doi:10.1249/MSS.0000000000003897; PMID:41843416",
+      "evidenceType": "position stand / overview of reviews",
+      "population": "Healthy adults performing resistance training.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Supports general resistance-training principles only; not Achilles repair clearance, exercise-specific dosing, or equivalence among machines and free weights."
+    },
+    {
+      "id": "src-cheng-2024",
+      "title": "Effects of short foot training on foot posture in patients with flatfeet: A systematic review and meta-analysis",
+      "authorsOrOrganization": "Cheng and colleagues",
+      "year": 2024,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38517769/",
+      "doiOrPmid": "doi:10.3233/BMR-230226; PMID:38517769",
+      "evidenceType": "systematic review and meta-analysis",
+      "population": "People with flat feet; studies varied in symptoms and intervention duration.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Indirect to surgically repaired Achilles tendons; does not show that this drill is required, safe now, or superior to current rehabilitation.",
+      "developerVerification": "Title reconciled; PMID pairing still requires verification."
+    },
+    {
+      "id": "src-backward-walk-2025",
+      "title": "Effects of backward walking exercise on knee osteoarthritis: a systematic review and meta-analysis of randomized trials",
+      "authorsOrOrganization": "Authors indexed in PubMed",
+      "year": 2025,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40924430/",
+      "doiOrPmid": "PMID:40924430",
+      "evidenceType": "systematic review and meta-analysis of randomized trials",
+      "population": "Adults with knee osteoarthritis.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Wrong clinical population for postoperative Achilles decisions; does not verify treadmill compatibility or establish a safe speed, grade, dose or progression."
+    },
+    {
+      "id": "src-fringe-mammoth-2026",
+      "title": "Mammoth Belt Squat product page",
+      "authorsOrOrganization": "Fringe Sport",
+      "year": 2026,
+      "url": "https://www.fringesport.com/collections/squat-rack-attachments/products/mammoth-belt-squat",
+      "doiOrPmid": null,
+      "evidenceType": "manufacturer product information",
+      "population": "Equipment users; not a clinical population.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Supports only advertised equipment use. It is not clinical evidence, does not confirm the user's exact attachment/configuration, and does not confer readiness."
+    },
+    {
+      "id": "src-aaos-foot-ankle",
+      "title": "Foot and Ankle Conditioning Program",
+      "authorsOrOrganization": "American Academy of Orthopaedic Surgeons",
+      "year": null,
+      "url": "https://orthoinfo.aaos.org/en/recovery/foot-and-ankle-conditioning-program/",
+      "doiOrPmid": null,
+      "evidenceType": "patient education / conditioning guidance",
+      "population": "General foot and ankle conditioning audience.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Generic instruction, not a postoperative Achilles protocol, individualized clearance or validation of candidate-specific loading."
+    },
+    {
+      "id": "src-nsca-rdl",
+      "title": "Romanian Deadlift (RDL)",
+      "authorsOrOrganization": "National Strength and Conditioning Association",
+      "year": null,
+      "url": "https://www.nsca.com/education/articles/kinetic-select/romanian-deadlift-rdl/",
+      "doiOrPmid": null,
+      "evidenceType": "professional technique education",
+      "population": "General strength-training audience.",
+      "accessedAt": "2026-09-16",
+      "limitations": "Technique reference only; not specific to a trap bar, Smith machine, surgical Achilles rehabilitation, or personalized loading."
+    }
+  ],
+  "originalHandoff": "docs/research/exercise-followup/EXERCISE_ADDITIONS_CANDIDATES.json",
+  "note": "Source metadata preserved, including quarantined references. No new clinical claims or automatic programming."
+}

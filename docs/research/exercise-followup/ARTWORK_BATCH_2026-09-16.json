@@ -1,0 +1,224 @@
+{
+  "method": "Built-in imagegen",
+  "style": "Portrait 2:3 grayscale realistic exercise-manual illustrations on white; diverse adult models; no invented loads, doses or readiness thresholds.",
+  "briefNote": "Per-asset generation briefs and selected outputs; briefs summarize the generation instructions.",
+  "assets": [
+    {
+      "exerciseId": "library-tibialis-raise",
+      "selectedOutput": "exec-643c4f41-f244-4b82-be73-aa1265248df3.png",
+      "assetPath": "/assets/exercises/strength-library/library-tibialis-raise.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Stand with upper back against a wall and feet slightly forward. Keep heels planted and begin with toes relaxed on the floor. Lift the forefeet toward the shins without rocking onto the heels. Lower under control while the heels stay down."
+    },
+    {
+      "exerciseId": "library-banded-ankle-dorsiflexion",
+      "selectedOutput": "exec-398b4d6d-a38c-47ca-94b1-67ce791fe9d9.png",
+      "assetPath": "/assets/exercises/strength-library/library-banded-ankle-dorsiflexion.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Sit with the working heel supported and the band anchored in front of the foot. Place the band across the forefoot without compressing the toes. Draw the forefoot toward the shin while the heel stays still. Return slowly without letting the band pull the foot inward or outward."
+    },
+    {
+      "exerciseId": "library-short-foot",
+      "selectedOutput": "exec-a74c2781-a725-4461-a880-fba3c1099d24.png",
+      "assetPath": "/assets/exercises/strength-library/library-short-foot.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Sit or stand with heel, base of the great toe and base of the little toe contacting the floor. Relax the toes before beginning. Gently shorten the foot by drawing the ball of the foot toward the heel. Keep all three contact points and the toes long."
+    },
+    {
+      "exerciseId": "library-toe-yoga",
+      "selectedOutput": "exec-d1d42f40-3b6e-445c-bff1-dfced16ea13d.png",
+      "assetPath": "/assets/exercises/strength-library/library-toe-yoga.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Sit or stand with the foot supported and all toes relaxed. Keep the heel and ball of the foot in contact. Lift the great toe while the lesser toes stay down. Then press the great toe down while lifting the lesser toes; move only as far as control allows."
+    },
+    {
+      "exerciseId": "library-two-up-one-down-calf-raise",
+      "selectedOutput": "exec-07b04e53-89d9-40da-8b6f-468b2b3f1ae2.png",
+      "assetPath": "/assets/exercises/strength-library/library-two-up-one-down-calf-raise.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Use a stable support and stand on a flat floor; keep both feet fully supported. Rise with both legs before shifting only enough to lower on the selected side. Keep the working knee straight but not locked. Lower only to floor level under control; do not drop the heel below the floor."
+    },
+    {
+      "exerciseId": "library-bent-knee-soleus-isometric",
+      "selectedOutput": "exec-b1fe17b7-169e-44f5-93bd-5e469816a87f.png",
+      "assetPath": "/assets/exercises/strength-library/library-bent-knee-soleus-isometric.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Sit upright on a stable bench with knees bent and forefeet on the floor. Lift the heels within your reviewed range and hold without bouncing. The illustration shows an unloaded bilateral position; external loading and hold duration require individual review."
+    },
+    {
+      "exerciseId": "library-banded-terminal-knee-extension",
+      "selectedOutput": "exec-ecd11151-3835-44f9-845b-72d71588a20c.png",
+      "assetPath": "/assets/exercises/strength-library/library-banded-terminal-knee-extension.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Face a secure band anchor at knee height. Loop the band behind the working knee, so it pulls forward. From a small bend, tighten the thigh and straighten the knee without forcing hyperextension; return with control. Use stable hand support as needed."
+    },
+    {
+      "exerciseId": "library-cable-hip-adduction",
+      "selectedOutput": "exec-9b9e7244-dceb-4e9d-91eb-8ada4127255a.png",
+      "assetPath": "/assets/exercises/strength-library/library-cable-hip-adduction.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Stand side-on to the low pulley. Put the ankle cuff on the leg nearest the pulley and hold stable support. Draw that leg inward toward the standing leg without rotating the pelvis; return with control. Keep the stance foot planted."
+    },
+    {
+      "exerciseId": "library-cable-resisted-march",
+      "selectedOutput": "exec-0fd8641e-0091-47b2-bf35-fc61e7266db0.png",
+      "assetPath": "/assets/exercises/strength-library/library-cable-resisted-march.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Face away from a low pulley with the cuff on the working ankle and use stable hand support. Stand tall with both feet controlled before taking up cable tension. Lift the working knee without leaning back. Lower the foot under control and reset balance before the next repetition."
+    },
+    {
+      "exerciseId": "library-trap-bar-romanian-deadlift",
+      "selectedOutput": "exec-1c98ad4f-22bc-4046-affc-9431f135cc2c.png",
+      "assetPath": "/assets/exercises/strength-library/library-trap-bar-romanian-deadlift.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Stand centered in the trap bar with the selected handles and safeties/space verified. Begin from a controlled standing lockout using a separately reviewed start load. Push the hips back while keeping the bar close to the body's center. Stop the descent at the reviewed range and stand by extending the hips."
+    },
+    {
+      "exerciseId": "library-trap-bar-farmer-carry",
+      "selectedOutput": "exec-b3cc122a-3b58-4a07-9b5e-e2b6ef4df70e.png",
+      "assetPath": "/assets/exercises/strength-library/library-trap-bar-farmer-carry.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Set the trap bar on a level route with verified clearance and a reviewed load. Stand inside, lift to a stable tall position, then confirm the route is clear before walking. Take controlled steps and keep the bar from swinging. Turn only with adequate space and set down under control."
+    },
+    {
+      "exerciseId": "library-smith-romanian-deadlift",
+      "selectedOutput": "exec-148465d6-5eb9-4e88-9da5-fbe4b117915a.png",
+      "assetPath": "/assets/exercises/strength-library/library-smith-romanian-deadlift.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Set the Smith safeties and bar start height for a reviewed standing setup. Choose foot position relative to the fixed bar path before unracking. Push the hips back while keeping the bar path close to the legs. Stop at the reviewed range and stand without bouncing off the safeties."
+    },
+    {
+      "exerciseId": "library-smith-hip-thrust",
+      "selectedOutput": "exec-9d4dce08-a449-410b-a15f-224ebc06a96a.png",
+      "assetPath": "/assets/exercises/strength-library/library-smith-hip-thrust.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Secure a compatible bench so it cannot slide and set Smith safeties for entry/exit. Use a reviewed bar pad and foot position; begin only after a no-load setup check. Drive through both feet and extend the hips without overextending the low back. Pause in the reviewed top position and lower under control."
+    },
+    {
+      "exerciseId": "library-belt-squat-calf-raise",
+      "selectedOutput": "exec-b3be2a44-c845-49b4-bff0-f50bc7dca4fa.png",
+      "assetPath": "/assets/exercises/strength-library/library-belt-squat-calf-raise.png",
+      "illustrationKind": "movement-concept",
+      "generationBrief": "Movement concept only; exact attachment/setup review is still required."
+    },
+    {
+      "exerciseId": "library-belt-squat-isometric",
+      "selectedOutput": "exec-65298f35-5778-4a7d-a053-a8296f8d927c.png",
+      "assetPath": "/assets/exercises/strength-library/library-belt-squat-isometric.png",
+      "illustrationKind": "movement-concept",
+      "generationBrief": "Movement concept only; exact attachment/setup review is still required."
+    },
+    {
+      "exerciseId": "library-slant-board-squat",
+      "selectedOutput": "exec-d3a3ff06-1891-4fbe-ac15-073ce6f52a18.png",
+      "assetPath": "/assets/exercises/strength-library/library-slant-board-squat.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Place the board on a non-slip surface and verify its angle, width and rating. Stand with both heels fully supported and use external support if reviewed. Descend only through the reviewed range with knees tracking over the feet. Keep the heels supported and stand under control."
+    },
+    {
+      "exerciseId": "library-balance-cushion-single-leg-stance",
+      "selectedOutput": "exec-b8ab816a-afe0-4853-99cd-3bd470bfd0e0.png",
+      "assetPath": "/assets/exercises/strength-library/library-balance-cushion-single-leg-stance.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Inflatable cushion beside stable support on a nonslip floor; use device manufacturer inflation instructions. Stand tall with a soft knee and use support as needed. Step off if the cushion shifts or alignment/control changes."
+    },
+    {
+      "exerciseId": "library-push-up",
+      "selectedOutput": "exec-1dd9a2a4-6e92-4c27-b42b-33fce12e3de4.png",
+      "assetPath": "/assets/exercises/strength-library/library-push-up.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Hands on floor, supported through hands and toes. Incline and kneeling positions require separate records. Lower the chest under control with elbows tracking comfortably. Press away while keeping trunk and pelvis together."
+    },
+    {
+      "exerciseId": "library-chin-up",
+      "selectedOutput": "exec-d19d529e-53c1-4ce4-bd62-edcb6bd03ca6.png",
+      "assetPath": "/assets/exercises/strength-library/library-chin-up.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Use a verified pull-up bar and supinated grip with clear foot space. Choose a reviewed assistance method before hanging or stepping up. Begin from the approved shoulder position and pull without swinging. Lower under control and use the planned step-down."
+    },
+    {
+      "exerciseId": "library-single-arm-cable-row",
+      "selectedOutput": "exec-82e99c40-4c9b-4210-9c6d-5772d3f74589.png",
+      "assetPath": "/assets/exercises/strength-library/library-single-arm-cable-row.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Set a single cable handle at torso height. Stand in a stable stance with softly bent knees, feet planted and trunk still. Pull the handle toward your ribs without twisting; return with control. Review stance tolerance and stack setting separately from seated rows."
+    },
+    {
+      "exerciseId": "library-farmer-carry",
+      "selectedOutput": "exec-43c7239b-1840-42fc-b7db-94130a6b4135.png",
+      "assetPath": "/assets/exercises/strength-library/library-farmer-carry.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Choose two dumbbells and a clear, level route with a reviewed pickup method. Stand tall with one dumbbell at each side before walking. Take controlled steps while keeping both weights quiet. Turn deliberately and set both dumbbells down under control."
+    },
+    {
+      "exerciseId": "library-landmine-half-kneeling-press",
+      "selectedOutput": "exec-cedaea67-b3c4-4494-b8e6-838808b58e75.png",
+      "assetPath": "/assets/exercises/strength-library/library-landmine-half-kneeling-press.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Secure the bar in your landmine station. Use comfortable knee padding and an ankle position you tolerate. Press with one arm without leg drive or trunk rotation; return under control. Omit if kneeling or setup is uncomfortable."
+    },
+    {
+      "exerciseId": "library-landmine-squat",
+      "selectedOutput": "exec-e539c731-c70e-44d8-8762-286447533ff4.png",
+      "assetPath": "/assets/exercises/strength-library/library-landmine-squat.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Use a secured landmine station and hold the free end at the chest with both hands. Use controlled, tolerated depth and stable feet. Do not add a jump or push press."
+    },
+    {
+      "exerciseId": "library-landmine-meadows-row",
+      "selectedOutput": "exec-0c605b91-def3-4340-b3d5-60c62237e288.png",
+      "assetPath": "/assets/exercises/strength-library/library-landmine-meadows-row.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Secure the landmine and use a stable stance with a controlled hip hinge. Row one arm at a time without jerking or rotating. Use only if you can maintain the stance comfortably."
+    },
+    {
+      "exerciseId": "library-rack-cable-leg-extension",
+      "selectedOutput": "exec-5d9482d1-8ebb-4eca-ab29-99efd89d3266.png",
+      "assetPath": "/assets/exercises/strength-library/library-rack-cable-leg-extension.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Secure the attachment using the manufacturer instructions and counterweight the rear of the rack before use. Start with light cable resistance; log the stack setting and pulley setup, not a barbell-equivalent load. Adjust the pad and cable connection exactly as shown for leg extensions; do not improvise the cuff or attachment. Extend and return under control."
+    },
+    {
+      "exerciseId": "library-rack-chest-supported-row",
+      "selectedOutput": "exec-66659912-498a-4cea-9d24-63546cc0dcc2.png",
+      "assetPath": "/assets/exercises/strength-library/library-rack-chest-supported-row.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Secure the attachment using the manufacturer instructions and counterweight the rear of the rack before use. Start with light cable resistance; log the stack setting and pulley setup, not a barbell-equivalent load. Set the pad to support the chest, select the appropriate cable handle, and row without lifting the torso from the pad."
+    },
+    {
+      "exerciseId": "library-rack-lat-pulldown",
+      "selectedOutput": "exec-29c5d1cb-90fe-4cb4-8ba0-928fd4ebd677.png",
+      "assetPath": "/assets/exercises/strength-library/library-rack-lat-pulldown.png",
+      "illustrationKind": "exercise-illustration",
+      "generationBrief": "Secure the attachment using the manufacturer instructions and counterweight the rear of the rack before use. Start with light cable resistance; log the stack setting and pulley setup, not a barbell-equivalent load. Use the pad and thigh restraint in the manufacturer-supported seated setup with the high pulley. Pull toward the upper chest in front of the head; do not jump to reach the bar."
+    },
+    {
+      "exerciseId": "backward-sled-drag",
+      "selectedOutput": "exec-bb3491aa-bd7c-4a6f-980a-f922fe205bb4.png",
+      "assetPath": "/assets/exercises/strength-library/backward-sled-drag.png",
+      "illustrationKind": "movement-concept",
+      "generationBrief": "Movement concept only; exact attachment/setup review is still required."
+    },
+    {
+      "exerciseId": "sled-push",
+      "selectedOutput": "exec-3a25d661-54c2-42f0-ac32-a48a9b8d4bcb.png",
+      "assetPath": "/assets/exercises/strength-library/sled-push.png",
+      "illustrationKind": "movement-concept",
+      "generationBrief": "Movement concept only; exact attachment/setup review is still required."
+    },
+    {
+      "exerciseId": "forward-sled-drag",
+      "selectedOutput": "exec-1fe4dc54-516c-44d1-8ea7-8ea7d60335ac.png",
+      "assetPath": "/assets/exercises/strength-library/forward-sled-drag.png",
+      "illustrationKind": "movement-concept",
+      "generationBrief": "Movement concept only; exact attachment/setup review is still required."
+    },
+    {
+      "exerciseId": "backward-treadmill-walk",
+      "selectedOutput": "exec-7716a4d9-e8ad-4079-8029-f9f4ba5287b8.png",
+      "assetPath": "/assets/exercises/strength-library/backward-treadmill-walk.png",
+      "illustrationKind": "equipment-reference",
+      "generationBrief": "Equipment reference only. Backward use of this treadmill is not authorized by this illustration."
+    }
+  ]
+}

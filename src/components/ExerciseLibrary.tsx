@@ -200,7 +200,8 @@ export function ExerciseLibrary({
                 aria-label={`Short Demo: ${ex.name}`}
               >
                 Short Demo ↗
-              </a> : <p className="helper">Demo pending verification · Reference only</p>}
+              </a> : <><p className="helper">Demo pending verification · Reference only</p>{"guideUrl" in ex && ex.guideUrl && <a className="demo-link" href={ex.guideUrl} target="_blank" rel="noopener noreferrer" aria-label={`Exercise guide: ${ex.name}`}>Exercise guide ↗</a>}</>}
+              {"contentStatus" in ex && ex.contentStatus === "setup-review-required" && <p className="helper">Equipment setup review required before use.</p>}
               {ex.id === "weighted-wagon-backward-drag" && <p className="helper">Your personal substitute for backward sled drag. Original wagon loads stay separate; this is not manufacturer-rated exercise equipment.</p>}
               <details>
                 <summary>Setup & guidance</summary>
@@ -208,7 +209,7 @@ export function ExerciseLibrary({
                 {CALF_PATHWAY.find(c => c.id === ex.id) && <p className="helper">Easier: {CALF_PATHWAY.find(c => c.id === ex.id)!.easier}. Next review: {CALF_PATHWAY.find(c => c.id === ex.id)!.harder}.</p>}
                 <p className="helper">{ex.review}</p>
                 <p className="helper">
-                  {ex.libraryOnly
+                  {"referenceOnly" in ex && ex.referenceOnly ? "Reference only — unavailable for workout swaps or automatic programming." : ex.libraryOnly
                     ? "Library option — not automatically added to your workout."
                     : "Included in the rehab exercise catalog."}
                 </p>
@@ -216,6 +217,7 @@ export function ExerciseLibrary({
                   {ex.verifiedAt ? `${ex.videoSource} · Checked ${ex.verifiedAt}` : "Setup and demo review pending"}
                 </p>
                 <p className="helper">{ex.verification}</p>
+                {"loadConvention" in ex && <p className="helper">Load record: {ex.loadConvention}</p>}
               </details>
               </ExerciseIllustration>
             </Card>

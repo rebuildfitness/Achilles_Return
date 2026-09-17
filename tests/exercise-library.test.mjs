@@ -8,13 +8,13 @@ import { CATALOG, EQUIPMENT } from "../src/data/catalog.js";
 
 test("Press and row groups include upper-body lifts without misclassifying Pallof press", () => {
   const chest = filterLibrary({ muscle: "Chest", search: "press" });
-  assert.equal(chest.length, 6);
+  assert.equal(chest.length, 7);
   assert.ok(chest.every((ex) => !/Pallof/.test(ex.name)));
   assert.equal(
     filterLibrary({ muscle: "Shoulders", search: "press" }).length,
     5,
   );
-  assert.equal(filterLibrary({ muscle: "Back", search: "row" }).length, 7);
+  assert.equal(filterLibrary({ muscle: "Back", search: "row" }).length, 8);
   assert.equal(filterLibrary({ muscle: "Core", search: "Pallof" }).length, 1);
 });
 
@@ -25,8 +25,15 @@ test("Library entries have unique IDs, owned equipment, demos and setup metadata
     EXERCISE_LIBRARY.length,
   );
   for (const ex of EXERCISE_LIBRARY) {
-    assert.equal(new URL(ex.videoUrl).protocol, "https:");
-    assert.ok(ex.videoSource && ex.setup && ex.verification);
+    if (ex.referenceOnly) {
+      assert.equal(ex.automaticScheduling, false);
+      assert.equal(ex.videoUrl, null);
+      if (ex.guideUrl) assert.equal(new URL(ex.guideUrl).protocol, "https:");
+    } else {
+      assert.equal(new URL(ex.videoUrl).protocol, "https:");
+      assert.ok(ex.videoSource);
+    }
+    assert.ok(ex.setup && ex.verification);
     assert.ok(
       ex.equipment.every((id) => EQUIPMENT.includes(id)),
       ex.name,

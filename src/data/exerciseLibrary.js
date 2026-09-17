@@ -1,4 +1,5 @@
 import { EQUIPMENT_REFERENCE_EXERCISES } from "./equipmentContext.js";
+import { RESEARCH_EXERCISES } from "./researchExercises.js";
 import { NEW_EQUIPMENT_EXERCISES } from "./newEquipmentExercises.js";
 import { CALF_PATHWAY } from "./calfPathway.js";
 import { CATALOG, EQUIPMENT_LABELS } from "./catalog.js";
@@ -543,6 +544,7 @@ const inferMuscle = (ex) => {
   return "Legs";
 };
 export const EXERCISE_LIBRARY = [
+  ...RESEARCH_EXERCISES,
   ...NEW_EQUIPMENT_EXERCISES,
   { id: "library-lat-pulldown", name: "Lat pulldown", equipment: ["cable-station", "adjustable-bench"], muscle: "Back",
     videoUrl: "https://www.muscleandstrength.com/exercises/lat-pull-down.html", videoSource: "Muscle & Strength",
@@ -585,7 +587,7 @@ export function filterLibrary({
           : ex.equipment.includes(equipment))) &&
       (!muscle || ex.muscle === muscle) &&
       words.every((word) =>
-        [ex.name, ex.id === "weighted-wagon-backward-drag" ? "backward sled drag personal substitute" : "", ex.muscle, ...ex.equipment.map(equipmentLabel), ex.setup]
+        [ex.name, ...(ex.aliases || []), ex.id === "weighted-wagon-backward-drag" ? "backward sled drag personal substitute" : "", ex.muscle, ...ex.equipment.map(equipmentLabel), ex.setup]
           .join(" ")
           .toLowerCase()
           .includes(word),
