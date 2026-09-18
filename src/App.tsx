@@ -6,12 +6,13 @@ import { CoachingReview } from "./components/CoachingReview";
 import { carryFeedback, editFeedback, timerKey, timerTransition } from "./data/workoutExperience.js";
 import { useEffect, useRef, useState } from "react";
 import { AppShell, Card } from "./components/ui";
+import { RehabPreview } from "./screens/RehabPreview";
 import { Today } from "./screens/Today";
 import { MovementScreen } from "./screens/Movement";
 import { applySessionChanges, emptySessionChanges, recordSessionChange, sessionItems } from "./rules/sessionChanges.js";
 import { EQUIPMENT, DEFAULT_EQUIPMENT } from "./data/catalog.js";
 import { swapExercise, addDays } from "./rules/trainingFlexibility.js";
-import { weeklyPlan } from "./rules/planner.js";
+import { weeklyPlan, strengthTemplate, modifyWorkout } from "./rules/planner.js";
 import { baselineResult } from "./rules/baseline.js";
 import {
   exposureDecision,
@@ -95,6 +96,7 @@ export function App() {
   const logRef = useRef(log);
   const queue = useRef(Promise.resolve());
   const [flow, setFlow] = useState<
+    | "rehab-preview"
     | "recovery"
     | "checkin"
     | "workout"
@@ -275,6 +277,14 @@ export function App() {
   function open(next: typeof flow) {
     setFlow(next);
     window.scrollTo(0, 0);
+  }
+  async function enableConditioning() {
+    if (busy || program.profile?.strengthStyle === "conditioning") return;
+    setBusy(true);
+    try {
+      await put("profile", {...program.profile, id:"athlete", equipment:program.profile?.equipment || DEFAULT_EQUIPMENT, availableDays:program.profile?.availableDays || ["1","3","5"], previousStrengthStyle:program.profile?.strengthStyle || "hybrid", strengthStyle:"conditioning", conditioningFrom:addDays(date,1)});
+      setProgram(await loadProgram());
+    } catch(e) { report(e); } finally { setBusy(false); }
   }
   async function submitCheckIn(answers: Answers) {
     if (busy) return;
@@ -548,7 +558,20 @@ export function App() {
         </Card>
       ) : (
         <>
-          {flow === "baseline" ? (
+          {flow === "rehab-preview" ? (
+            <RehabPreview
+              workout={program.assessment ? modifyWorkout(strengthTemplate("B", program.assessment.values, "conditioning"), readiness?.level || "GREEN", program.profile?.equipment || DEFAULT_EQUIPMENT) : undefined}
+              enabled={program.profile?.strengthStyle === "conditioning"}
+              busy={busy}
+              online={online}
+              canStart={canOpenWorkout && workout.sessionFormat === "rehab-conditioning"}
+              onStart={() => open("workout")}
+              onEnable={enableConditioning}
+              onBack={() => open(null)}
+              onPlan={() => { open(null); select("Plan"); }}
+              onTests={() => { open(null); select("Tests"); }}
+            />
+          ) : flow === "baseline" ? (
             <BaselineWizard
               draft={program.draft}
               previous={program.assessment}
@@ -670,7 +693,8 @@ export function App() {
               <Today
                 conditioningEnabled={program.profile?.strengthStyle === "conditioning"}
                 conditioningFrom={program.profile?.conditioningFrom}
-                onEnableConditioning={() => { if (busy) return; setBusy(true); void put("profile", {...program.profile, id:"athlete", equipment:program.profile?.equipment || DEFAULT_EQUIPMENT, availableDays:program.profile?.availableDays || ["1","3","5"], previousStrengthStyle:program.profile?.strengthStyle || "hybrid", strengthStyle:"conditioning", conditioningFrom:addDays(date,1)}).then(async()=>setProgram(await loadProgram())).catch(report).finally(()=>setBusy(false)); }}
+                onEnableConditioning={enableConditioning}
+                onViewRehab={() => open("rehab-preview")}
                 exposure={today.exposure}
                 onExposure={(d) => { setDomain(d); open("exposure"); }}
                 hasDraft={Object.values(log).some(item => item.sets.some(set => set && Object.keys(set).length > 0))}

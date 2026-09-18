@@ -11,6 +11,7 @@ export function Today({
   conditioningEnabled = false,
   conditioningFrom,
   onEnableConditioning,
+  onViewRehab,
   exposure,
   onExposure,
   hasDraft = false,
@@ -31,6 +32,7 @@ export function Today({
   conditioningEnabled?: boolean;
   conditioningFrom?: string;
   onEnableConditioning?: () => void;
+  onViewRehab?: () => void;
   exposure?: any;
   onExposure: (domain: string) => void;
   hasDraft?: boolean;
@@ -150,7 +152,9 @@ export function Today({
       )}
       <Card className="rehab-access">
         <div className="eyebrow">ACHILLES REHAB</div>
-        <h2>Rehab &amp; movement support</h2>
+        <h2>Your dedicated rehab workout</h2>
+        {onViewRehab && <button className="primary-button" onClick={onViewRehab}>View dedicated rehab workout</button>}
+        <p>See the complete Achilles Rehab &amp; Conditioning workout, demos and illustrations any day.</p>
         {conditioningEnabled ? <p className="notice">Dedicated Achilles Rehab &amp; Conditioning replaces your B session{conditioningFrom ? ` from ${conditioningFrom}` : ""}. View Plan for its next scheduled day.</p> : onEnableConditioning && <><p>Use a dedicated calf-strength, leg-control, balance and conditioning session in place of Strength B. A and C retain strength training.</p><button className="secondary-button" onClick={onEnableConditioning}>Use dedicated rehab schedule</button><p className="helper">Starts tomorrow; today's workout and saved history stay intact. This does not unlock impact exercises.</p></>}
 
         <p>Your prescribed calf and lower-body rehabilitation is included in the full workout alongside strength training.</p>

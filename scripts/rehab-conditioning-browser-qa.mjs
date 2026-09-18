@@ -91,6 +91,16 @@ try {
  ...["2026-09-14","2026-09-16"].map(date=>({store:"checkins",value:{id:date,date,readiness:good,answers:{pain:"none",stiffness:"normal",swelling:"normal",previousResponse:"good",recovery:"good",unusualSymptoms:[]}}})),
  {store:"sessions",value:historic}]);
  await page.reload();await page.getByRole("heading",{name:"Today",exact:true}).waitFor();
+ await page.getByRole('button',{name:'View dedicated rehab workout',exact:true}).click();
+ await page.getByRole('heading',{name:'Achilles Rehab & Conditioning',exact:true}).waitFor();
+ assert.equal(await page.locator('.exercise-card').count(),7);
+ assert.equal(await page.getByRole('button',{name:'Finish Workout',exact:true}).count(),0);
+ assert.equal(await page.getByRole('button',{name:'Open scheduled rehab workout',exact:true}).count(),0);
+ assert.equal((await readStore('profile'))[0].strengthStyle,'hybrid');
+ assert.deepEqual((await readStore('sessions'))[0],historic);
+ await page.screenshot({path:resolve(artifacts,'rehab-preview-mobile.png'),fullPage:false});
+ await page.getByRole('button',{name:'Back to Today',exact:true}).click();
+ pass('Full rehab preview is visible before activation and on a non-rehab day without starting or logging work');
  await page.getByRole('button',{name:'Use dedicated rehab schedule',exact:true}).click();
  await page.getByText('Dedicated Achilles Rehab & Conditioning replaces your B session from 2026-09-15.',{exact:false}).waitFor();
  assert.equal((await readStore('profile'))[0].strengthStyle,'conditioning');
@@ -136,6 +146,11 @@ try {
  assert.equal(saved.exerciseLog['library-stationary-cycling'].sets[0].reps,'600');
  assert.match(await page.getByLabel('Coaching report',{exact:true}).inputValue(),/rehab-conditioning/);
  assert.deepEqual((await readStore('sessions')).find(s=>s.id==='historic'),historic);
+ await page.getByRole('button',{name:'View dedicated rehab workout',exact:true}).click();
+ await page.getByRole('heading',{name:'Achilles Rehab & Conditioning',exact:true}).waitFor();
+ assert.equal(await page.getByRole('button',{name:'Open scheduled rehab workout',exact:true}).count(),0);
+ assert.equal((await readStore('sessions')).length,2);
+ pass('Rehab preview remains accessible offline after saving without offering a duplicate workout');
  assert.deepEqual(errors,[]);
  pass('Offline finish preserves actual work and history; immediate report includes format and pending tolerance');
  await writeFile(resolve(artifacts,'rehab-conditioning-browser-results.json'),JSON.stringify({passed,failed:0},null,2));
