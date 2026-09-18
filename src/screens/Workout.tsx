@@ -1,3 +1,4 @@
+import { RehabProgression } from "../components/RehabProgression";
 import { PlannedExposure } from "../components/PlannedExposure";
 import { TimedActivity } from "../components/TimedActivity";
 import { ExercisePath } from "../components/ExercisePath";
@@ -101,7 +102,8 @@ export function WorkoutScreen({
       </div>
       {conditioning && <section className="detail-section" aria-label="Rehab session blocks">
         <h2>Your session blocks</h2>
-        <p>Warm up gradually. Complete calf-strength sets with their prescribed recovery. For leg control, alternate one set of each exercise per round. Keep balance work controlled; extend rest whenever needed.</p>
+        <RehabProgression rows={workout.blockProgression}/>
+        <p>Complete the logged warm-up, then Circuits A and B for three rounds and Circuit C for two. One set of each exercise makes a round. Readiness may reduce sets. Preserve the displayed recovery, and finish with the selected conditioning block.</p>
         <label>Session block<select aria-label="Session block" value={blockFilter} onChange={e=>{setBlockFilter(e.target.value);setRound(0);}}><option value="">Full session</option>{[...new Set(visibleItems.map(ex=>ex.block).filter(Boolean))].map(block=><option key={block} value={block}>{block}</option>)}</select></label>
         <label>Round view<select aria-label="Round view" value={round} onChange={e=>setRound(Number(e.target.value))}><option value={0}>All sets</option>{Array.from({length: Math.max(0,...visibleItems.filter(ex=>!blockFilter || ex.block===blockFilter).map(ex=>ex.sets))},(_,i)=><option key={i} value={i+1}>Round {i+1}</option>)}</select></label>
         <p className="helper">Round view changes the display only. It never completes, adds or removes prescribed work. The full session remains available above.</p>

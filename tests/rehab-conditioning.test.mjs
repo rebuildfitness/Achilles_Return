@@ -33,7 +33,7 @@ test("Red, yellow, re-entry and equipment restrictions still apply to dedicated 
  const w=raw();assert.deepEqual(modifyWorkout(w,"RED").items,[]);
  assert.ok(modifyWorkout(w,"YELLOW_3").items.every(e=>e.loadTier==="minimal"));
  assert.ok(modifyWorkout(w,"GREEN",[]).omitted.some(e=>e.id===CONDITIONING_BIKE_ID));
- assert.ok(modifyWorkout(w,"GREEN",EQUIPMENT,.2).items[0].sets<w.items[0].sets);
+ assert.ok(modifyWorkout(w,"GREEN",EQUIPMENT,.2).items.find(e=>e.id==="bench-step-up").sets<w.items.find(e=>e.id==="bench-step-up").sets);
  assert.equal(modifyWorkout(w,"YELLOW_1").progressionAllowed,false);
 });
 test("Scheduled or recorded impact replaces bike without mutating saved evidence",()=>{

@@ -423,7 +423,7 @@ export function ExerciseCard({
 }) {
   return (
     <Card className="exercise-card">
-      <ExerciseIllustration key={exercise.id} exerciseId={exercise.id} name={exercise.name}>
+      <>{exercise.requestedMovement && <p className="helper">Therapy movement: {exercise.requestedMovement}. {exercise.selectionReason}</p>}<ExerciseIllustration key={exercise.id} exerciseId={exercise.illustrationId || exercise.id} name={exercise.name}>
         <h3>{exercise.name}</h3>
         <p className="exercise-prescription">
           {exercise.sets} × {exercise.reps}{" "}
@@ -448,7 +448,7 @@ export function ExerciseCard({
             <p>{exercise.evidence}</p>
           </details>
         </div>
-      </ExerciseIllustration>
+      </ExerciseIllustration></>
       {exercise.adjustment && (
         <p className="adjustment">{exercise.adjustment}</p>
       )}

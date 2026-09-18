@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "clinicalRulesetVersion": "1.1.0",
+  "authority": "User-authorized automatic rehab-block programming. Operational mappings of existing strength/tolerance rules and approved exercise families; not independently validated clinical clearance thresholds.",
+  "sourceIds": [
+    "rehab-guidance",
+    "general-strength",
+    "product-v1"
+  ],
+  "maxNewBlockAdvancesPerSession": 1,
+  "bikeMinutes": [
+    10,
+    15,
+    20,
+    25
+  ],
+  "rows": [
+    {
+      "originId": "single-calf",
+      "nextId": "calf-dumbbell-single",
+      "kind": "variation",
+      "criterion": "Existing upper-range set quality, effort and next-morning tolerance rule; current template must already permit single-leg raises."
+    },
+    {
+      "originId": "single-balance",
+      "nextId": "library-single-leg-foam-pad-balance",
+      "kind": "variation",
+      "criterion": "Recorded goodBalance assessment plus complete controlled sets at the prescribed upper duration; confirmed feedback and tolerated next morning."
+    },
+    {
+      "originId": "library-stationary-cycling",
+      "kind": "duration",
+      "criterion": "Complete current prescribed duration with good quality, no increased symptoms, confirmed RPE 1\u20138 and next-morning tolerance. The RPE check is the existing recording rule, not an instruction to cycle at RPE 8."
+    }
+  ]
+}

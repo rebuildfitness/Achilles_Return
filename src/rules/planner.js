@@ -1,3 +1,4 @@
+import { legacyRehabConditioningTemplate } from "./legacyRehabConditioning.js";
 import { rehabConditioningTemplate, coordinateConditioning } from "./rehabConditioning.js";
 import { applyAutomaticPlan } from "./automaticPlan.js";
 import { CATALOG, activeExercise, EQUIPMENT, DEFAULT_EQUIPMENT } from "../data/catalog.js";
@@ -75,6 +76,7 @@ export function strengthTemplate(kind, values, style = "hybrid") {
     ],
     C: [CATALOG.shoulderPress, CATALOG.row, CATALOG.curl, CATALOG.seatedCore],
   };
+  if (style === "conditioning-legacy" && kind === "B") return legacyRehabConditioningTemplate(values, calf, soleus);
   if (style === "conditioning" && kind === "B") return rehabConditioningTemplate(values, calf, soleus);
   const expanded = style !== "rehab";
   return {
@@ -109,6 +111,20 @@ export function modifyWorkout(
       stopped: true,
       notes: ["Stop Achilles loading and seek appropriate medical evaluation."],
     };
+  if (workout.sessionFormat === "rehab-conditioning" && workout.templateVersion === "2.0.0") {
+    const treadmill = equipment.includes("incline-treadmill");
+    const bike = equipment.includes("exercise-bike");
+    const prep = treadmill || bike ? [{
+      id:"rehab-warmup-cardio", illustrationId:treadmill?"library-treadmill-walking":"library-stationary-cycling",
+      name:treadmill?"Walking warm-up":"Easy bike warm-up", block:"Warm-up", sets:1,reps:"240 sec",unit:"seconds",rpe:"Easy",restSec:0,
+      equipment:[treadmill?"incline-treadmill":"exercise-bike"],loadTier:"low",impactTier:0,
+      cue:treadmill?"2 minutes comfortable flat walking, then 2 minutes at an already tolerated incline; remain flat if incline is not established. Use the safety stop.":"Four minutes easy cycling. Record seconds, not repetitions or bike resistance as pounds.",
+      purpose:"Gradually prepare for the circuits.",evidence:"User-requested warm-up arrangement; no new speed or incline prescription.",evidenceSourceIds:["product-v1"],
+      videoUrl:treadmill?"https://www.youtube.com/watch?v=KALCW06tO5A":"https://www.youtube.com/watch?v=PFOfcsAOmVc",
+      videoSource:"South Tees Hospitals NHS",videoType:"exercise_specific_page",videoVerifiedAt:"2026-09-11"
+    }] : [];
+    workout = {...workout,items:[...prep,...workout.items]};
+  }
   const unavailable = workout.items.filter(
     (ex) => !activeExercise(ex, equipment),
   );
@@ -174,6 +190,7 @@ export function modifyWorkout(
         : []),
     ],
     progressionAllowed: readiness === "GREEN" && reentry === 0,
+    availableEquipment: equipment,
   };
 }
 export function weeklyPlan(
@@ -184,6 +201,7 @@ export function weeklyPlan(
   readiness = "GREEN",
   checkpoints = {},
   actualToday = dayKey(today),
+  inProgressIds = [],
 ) {
   sessions = sessions.filter(s => !s.date || s.date <= actualToday);
   const monday = new Date(
@@ -248,7 +266,7 @@ export function weeklyPlan(
       ? strengthTemplate(
           ["A", "B", "C"][number],
           values,
-          profile?.conditioningFrom && key < profile.conditioningFrom ? (profile.previousStrengthStyle || "hybrid") : profile?.strengthStyle || "hybrid",
+          key === actualToday && profile?.strengthStyle === "conditioning" && inProgressIds.length && !inProgressIds.some(id => id.startsWith("rehab-")) ? "conditioning-legacy" : profile?.conditioningFrom && key < profile.conditioningFrom ? (profile.previousStrengthStyle || "hybrid") : profile?.strengthStyle || "hybrid",
         )
       : null;
     const effectiveReadiness = key === actualToday && readiness !== "UNCHECKED" ? readiness : "GREEN";
@@ -326,5 +344,5 @@ export function weeklyPlan(
           ) > 10),
     };
   });
-  return applyAutomaticPlan(days, { assessment, checkpoints, sessions, readiness, today: actualToday }).map(day => coordinateConditioning(day, sessions));
+  return applyAutomaticPlan(days, { assessment, checkpoints, sessions, readiness, today: actualToday, manualChoices: profile?.exerciseChoices || {}, inProgressIds }).map(day => coordinateConditioning(day, sessions));
 }

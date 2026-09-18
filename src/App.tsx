@@ -138,6 +138,7 @@ export function App() {
     readiness?.level || "UNCHECKED",
     program.checkpoints,
     date,
+    [...Object.keys(log).filter(id => log[id]?.sets.some(set => set && Object.values(set).some(Boolean))), ...(sessionChanges.rehabTemplateVersion === "2.0.0" ? ["rehab-series-v2"] : [])],
   );
   const planSnapshot = JSON.stringify(automaticPlanSnapshot(week, program.assessment, program.checkpoints, sessions, readiness?.level || "UNCHECKED", date));
   useEffect(() => {
@@ -313,12 +314,15 @@ export function App() {
     const next = structuredClone(logRef.current); next[id] = {sets}; persistLog(next);
   }
   function persistLog(next: WorkoutLog) {
+    const updatedChanges = workout.templateVersion === "2.0.0" ? {...sessionChanges, rehabTemplateVersion:"2.0.0"} : sessionChanges;
+    if (updatedChanges !== sessionChanges) setSessionChanges(updatedChanges);
     logRef.current = next;
     setLog(next);
     queue.current = queue.current
       .catch(() => {})
       .then(async () => {
-        await saveDraft(date, next);
+        await put("settings", updatedChanges);
+          await saveDraft(date, next);
       })
       .catch(report);
   }
@@ -364,6 +368,8 @@ export function App() {
         workoutTitle: workout.title,
         sessionFormat: workout.sessionFormat,
         templateVersion: workout.templateVersion,
+        blockProgression: workout.blockProgression,
+        blockMatrixVersion: workout.blockMatrixVersion,
         plannedItems: recordedItems,
         exerciseChanges: sessionChanges.events,
         exerciseLog: activeLog,

@@ -1,3 +1,4 @@
+import { REHAB_SERIES_EXERCISES } from "./rehabSeriesExercises.js";
 import { EQUIPMENT_REFERENCE_EXERCISES } from "./equipmentContext.js";
 import { RESEARCH_EXERCISES } from "./researchExercises.js";
 import { NEW_EQUIPMENT_EXERCISES } from "./newEquipmentExercises.js";
@@ -544,6 +545,7 @@ const inferMuscle = (ex) => {
   return "Legs";
 };
 export const EXERCISE_LIBRARY = [
+  ...REHAB_SERIES_EXERCISES,
   ...RESEARCH_EXERCISES,
   ...NEW_EQUIPMENT_EXERCISES,
   { id: "library-lat-pulldown", name: "Lat pulldown", equipment: ["cable-station", "adjustable-bench"], muscle: "Back",

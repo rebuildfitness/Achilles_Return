@@ -174,3 +174,5 @@ Limited possessions/minutes, programmed rest.
 ## User-approved dedicated conditioning arrangement (v1.7.0)
 
 The optional Strength + dedicated Achilles conditioning style replaces B with the session documented in [ACHILLES_CONDITIONING_UPDATE.md](ACHILLES_CONDITIONING_UPDATE.md). Activation takes effect the next day and does not change completed history. It reuses existing approved doses and retains all clinical gates. Scheduled or recorded progression exposure replaces bike conditioning rather than adding another finisher.
+
+Automatic dedicated-rehab block progression: see [AUTOMATIC_REHAB_BLOCK_PROGRESSION.md](AUTOMATIC_REHAB_BLOCK_PROGRESSION.md). This user-authorized operational extension preserves existing clinical gates.

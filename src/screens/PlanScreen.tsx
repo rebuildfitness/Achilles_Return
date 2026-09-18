@@ -1,3 +1,4 @@
+import { RehabProgression } from "../components/RehabProgression";
 import { ExercisePath } from "../components/ExercisePath";
 import { PlannedExposure } from "../components/PlannedExposure";
 import { displayDate } from "../data/displayDates.js";
@@ -141,6 +142,7 @@ export function PlanScreen({
                   </div>
                 ))}
                 {day.workout && <details><summary>Exercise progression paths</summary>{day.workout.items.map((ex: Exercise)=><ExercisePath key={ex.id} exercise={ex} sessions={sessions} readiness={readiness} equipment={profile?.equipment || []} date={dayKey()} progressionAllowed={!!day.workout.progressionAllowed && !day.retest} />)}</details>}
+                <RehabProgression rows={day.workout?.blockProgression}/>
                 <PlannedExposure exposure={day.exposure} onStart={onExposure} />
                 {day.progressionReviews.map((r: any) => <p className="helper" key={r.domain}>{r.level}: {r.reason}</p>)}
                 {day.high && (

@@ -8786,5 +8786,344 @@
       }
     ],
     "notes": "Built-in imagegen; selected output visually inspected; grayscale size optimization only."
+  },
+  {
+    "exerciseId": "rehab-heel-toe-rocker",
+    "exerciseName": "Heel-to-toe rocks",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "rehab",
+    "bodyRegions": [
+      "Rehab & movement"
+    ],
+    "equipment": [],
+    "motionFormat": "exercise_demonstration",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/rehab-heel-toe-rocker.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 585159,
+    "thumbnailPath": "/assets/exercises/thumbnails/rehab-heel-toe-rocker.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 56124,
+    "altText": "Heel-to-toe rocks: illustrated movement demonstration.",
+    "panelDescription": "Stand near stable support. Slowly lift heels, return to flat feet, then lift toes. Stay within your reviewed ankle range; do not rock from the hips.",
+    "mechanicsSources": [
+      "https://library.theprehabguys.com/vimeo-video/heel-to-toe-rocker/"
+    ],
+    "illustrationVersion": "1.0.1",
+    "generationMethod": "built-in image_gen",
+    "reviewedAt": "2026-09-17",
+    "colorStyle": "black-and-white"
+  },
+  {
+    "exerciseId": "rehab-bodyweight-squat",
+    "exerciseName": "Bodyweight mini squat",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "rehab",
+    "bodyRegions": [
+      "Rehab & movement"
+    ],
+    "equipment": [],
+    "motionFormat": "exercise_demonstration",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/rehab-bodyweight-squat.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 473940,
+    "thumbnailPath": "/assets/exercises/thumbnails/rehab-bodyweight-squat.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 44523,
+    "altText": "Bodyweight mini squat: illustrated movement demonstration.",
+    "panelDescription": "Use a comfortable shallow range, heels down and knees following toes. Do not force depth.",
+    "mechanicsSources": [
+      "https://ca.physitrack.com/home-exercise-video/mini-squat-without-support"
+    ],
+    "illustrationVersion": "1.0.1",
+    "generationMethod": "built-in image_gen",
+    "reviewedAt": "2026-09-17",
+    "colorStyle": "black-and-white"
+  },
+  {
+    "exerciseId": "rehab-toe-walk",
+    "exerciseName": "Tip-toe walk",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "rehab",
+    "bodyRegions": [
+      "Rehab & movement"
+    ],
+    "equipment": [],
+    "motionFormat": "exercise_demonstration",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/rehab-toe-walk.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 456898,
+    "thumbnailPath": "/assets/exercises/thumbnails/rehab-toe-walk.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 39963,
+    "altText": "Tip-toe walk: illustrated movement demonstration.",
+    "panelDescription": "Use a clear, level floor near support. Take short controlled steps with consistent heel height. Stop when height or control falls.",
+    "mechanicsSources": [
+      "https://library.theprehabguys.com/vimeo-video/toe-walking/"
+    ],
+    "illustrationVersion": "1.0.1",
+    "generationMethod": "built-in image_gen",
+    "reviewedAt": "2026-09-17",
+    "colorStyle": "black-and-white"
+  },
+  {
+    "exerciseId": "rehab-bench-single-squat",
+    "exerciseName": "Modified single-leg squat to bench",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "rehab",
+    "bodyRegions": [
+      "Rehab & movement"
+    ],
+    "equipment": [
+      "adjustable-bench"
+    ],
+    "motionFormat": "exercise_demonstration",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/rehab-bench-single-squat.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 469076,
+    "thumbnailPath": "/assets/exercises/thumbnails/rehab-bench-single-squat.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 43406,
+    "altText": "Modified single-leg squat to bench: illustrated movement demonstration.",
+    "panelDescription": "Use a secured bench at a height you can control. Sit and stand on the working leg without dropping onto the bench. Use the bridge alternative if unable to control it.",
+    "mechanicsSources": [
+      "https://na.physitrack.com/home-exercise-video/modified-single-leg-squat-from-a-seat"
+    ],
+    "illustrationVersion": "1.0.1",
+    "generationMethod": "built-in image_gen",
+    "reviewedAt": "2026-09-17",
+    "colorStyle": "black-and-white"
+  },
+  {
+    "exerciseId": "rehab-wall-calf",
+    "exerciseName": "Wall squat with heel raises",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "rehab",
+    "bodyRegions": [
+      "Rehab & movement"
+    ],
+    "equipment": [],
+    "motionFormat": "exercise_demonstration",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/rehab-wall-calf.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 538873,
+    "thumbnailPath": "/assets/exercises/thumbnails/rehab-wall-calf.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 50185,
+    "altText": "Wall squat with heel raises: illustrated movement demonstration.",
+    "panelDescription": "Keep your back against a wall and use your reviewed squat depth. Raise and lower heels under control without bouncing. Use seated calf raises when this combination is too demanding.",
+    "mechanicsSources": [
+      "https://uk.physitrack.com/home-exercise-video/calf-raise-in-wall-squat"
+    ],
+    "illustrationVersion": "1.0.1",
+    "generationMethod": "built-in image_gen",
+    "reviewedAt": "2026-09-17",
+    "colorStyle": "black-and-white"
+  },
+  {
+    "exerciseId": "rehab-balance-reach",
+    "exerciseName": "Single-leg balance with forward/backward reach",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "rehab",
+    "bodyRegions": [
+      "Rehab & movement"
+    ],
+    "equipment": [],
+    "motionFormat": "exercise_demonstration",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/rehab-balance-reach.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 522639,
+    "thumbnailPath": "/assets/exercises/thumbnails/rehab-balance-reach.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 50074,
+    "altText": "Single-leg balance with forward/backward reach: illustrated movement demonstration.",
+    "panelDescription": "On a level floor near support, reach the free foot forward and backward within a controlled range. Keep the stance heel down and pelvis level.",
+    "mechanicsSources": [
+      "https://library.theprehabguys.com/vimeo-video/single-leg-reach-sagittal/"
+    ],
+    "illustrationVersion": "1.0.1",
+    "generationMethod": "built-in image_gen",
+    "reviewedAt": "2026-09-17",
+    "colorStyle": "black-and-white"
+  },
+  {
+    "exerciseId": "rehab-multidirectional-reach",
+    "exerciseName": "Single-leg side and diagonal reach",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "rehab",
+    "bodyRegions": [
+      "Rehab & movement"
+    ],
+    "equipment": [],
+    "motionFormat": "exercise_demonstration",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/rehab-multidirectional-reach.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 623215,
+    "thumbnailPath": "/assets/exercises/thumbnails/rehab-multidirectional-reach.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 59949,
+    "altText": "Single-leg side and diagonal reach: illustrated movement demonstration.",
+    "panelDescription": "Reach the free foot to the side and behind, returning to center each time. Keep the stance heel down. Record repetitions per direction, per leg.",
+    "mechanicsSources": [
+      "https://library.theprehabguys.com/vimeo-video/single-leg-reach-frontal-2/"
+    ],
+    "illustrationVersion": "1.0.1",
+    "generationMethod": "built-in image_gen",
+    "reviewedAt": "2026-09-17",
+    "colorStyle": "black-and-white"
+  },
+  {
+    "exerciseId": "rehab-lateral-step",
+    "exerciseName": "Lateral step-up",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "rehab",
+    "bodyRegions": [
+      "Rehab & movement"
+    ],
+    "equipment": [
+      "adjustable-bench"
+    ],
+    "motionFormat": "exercise_demonstration",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/rehab-lateral-step.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 507024,
+    "thumbnailPath": "/assets/exercises/thumbnails/rehab-lateral-step.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 48884,
+    "altText": "Lateral step-up: illustrated movement demonstration.",
+    "panelDescription": "Use only a stable, sufficiently low step surface. Step sideways up and lower slowly, knee aligned over the foot. If your bench is too high, use the floor squat alternative.",
+    "mechanicsSources": [
+      "https://library.theprehabguys.com/vimeo-video/lateral-step-up/"
+    ],
+    "illustrationVersion": "1.0.1",
+    "generationMethod": "built-in image_gen",
+    "reviewedAt": "2026-09-17",
+    "colorStyle": "black-and-white"
+  },
+  {
+    "exerciseId": "rehab-bosu-squat",
+    "exerciseName": "BOSU squat — flat side up",
+    "sourceCollections": [
+      "strength-library"
+    ],
+    "primaryCollection": "strength-library",
+    "primaryCategory": "rehab",
+    "bodyRegions": [
+      "Rehab & movement"
+    ],
+    "equipment": [
+      "bosu-ball"
+    ],
+    "motionFormat": "exercise_demonstration",
+    "assetStatus": "generated",
+    "assetPath": "/assets/exercises/strength-library/rehab-bosu-squat.png",
+    "assetDimensions": {
+      "width": 640,
+      "height": 960
+    },
+    "assetFormat": "png",
+    "assetFileSizeBytes": 535039,
+    "thumbnailPath": "/assets/exercises/thumbnails/rehab-bosu-squat.png",
+    "thumbnailDimensions": {
+      "width": 192,
+      "height": 288
+    },
+    "thumbnailFileSizeBytes": 52803,
+    "altText": "BOSU squat — flat side up: illustrated movement demonstration.",
+    "panelDescription": "Use only the orientation permitted by your equipment manufacturer and your reviewed setup, beside fixed support. This demo uses flat side up. Otherwise choose a stable-floor squat.",
+    "mechanicsSources": [
+      "https://library.theprehabguys.com/vimeo-video/squat-bosu-ball-2/"
+    ],
+    "illustrationVersion": "1.0.1",
+    "generationMethod": "built-in image_gen",
+    "reviewedAt": "2026-09-17",
+    "colorStyle": "black-and-white"
   }
 ]

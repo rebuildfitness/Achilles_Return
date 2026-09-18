@@ -4,15 +4,17 @@ import { strengthDecision } from "./progression.js";
 import { OWNED_LOADS } from "../data/ownedLoads.js";
 
 export const FAMILIES = {
+  "rehab-bodyweight-squat": ["rehab-bodyweight-squat", "rehab-bosu-squat"],
+  "rehab-lateral-step": ["rehab-lateral-step", "rehab-bodyweight-squat"],
   "pull-up": ["pull-up", "library-lat-pulldown"],
   "single-calf": ["single-calf", "bilateral-calf"],
   "bilateral-calf": ["bilateral-calf"],
-  "seated-calf": ["seated-calf"],
+  "seated-calf": ["seated-calf", "rehab-wall-calf"],
   "single-balance": ["single-balance"],
   "knee-to-wall": ["knee-to-wall"],
   "weighted-wagon-backward-drag": ["weighted-wagon-backward-drag"],
   "bench-step-up": ["bench-step-up"],
-  "bridge": ["bridge", "library-barbell-glute-bridge"],
+  "bridge": ["bridge", "library-barbell-glute-bridge", "rehab-bench-single-squat"],
   "band-hamstring": [
     "band-hamstring",
     "library-seated-unilateral-cable-hamstring-curl",
@@ -82,6 +84,7 @@ export function swapExercise(exercise, id, equipment, readiness, reason) {
   const option = swapOptions(exercise, equipment).find((e) => e.id === id);
   if (!option || !["equipment", "progression", "discomfort", "difficulty"].includes(reason))
     throw new Error("Choose an available reviewed alternative and a reason.");
+  if (["rehab-bosu-squat", "rehab-bench-single-squat", "rehab-wall-calf"].includes(id) && readiness !== "GREEN") throw new Error("Use the starting alternative on a modified day; review the harder combined movement when readiness is green.");
   if (readiness === "RED")
     throw new Error("Resolve safety concerns before loading.");
   if (reason === "progression" && readiness !== "GREEN")
@@ -96,10 +99,12 @@ export function swapExercise(exercise, id, equipment, readiness, reason) {
   return {
     ...exercise,
     ...option,
+    illustrationId: undefined,
+    selectionReason: exercise.requestedMovement ? "You selected this variation; only its remaining sets are prescribed." : undefined,
     progressionTarget: undefined,
     originalId: exercise.originalId || exercise.id,
     sets: id === "bilateral-calf" ? Math.min(exercise.sets, option.sets) : exercise.sets,
-    reps: id === "bilateral-calf" ? option.reps : /unilateral|one-arm/i.test(option.name) && !/side/.test(exercise.reps) ? `${exercise.reps} / side` : exercise.reps,
+    reps: id === "rehab-bench-single-squat" ? "8 / side" : id === "rehab-wall-calf" ? "12" : id === "bilateral-calf" ? option.reps : /unilateral|one-arm/i.test(option.name) && !/side/.test(exercise.reps) ? `${exercise.reps} / side` : exercise.reps,
     rpe: exercise.rpe,
     restSec: exercise.restSec,
     cue: option.setup || option.cue,
@@ -115,6 +120,10 @@ export function swapExercise(exercise, id, equipment, readiness, reason) {
 export function easierOptions(exercise) {
   const origin = exercise.originalId || exercise.id;
   const map = {
+    "rehab-lateral-step": ["rehab-bodyweight-squat"],
+    "rehab-bosu-squat": ["rehab-bodyweight-squat"],
+    "rehab-bench-single-squat": ["bridge"],
+    "rehab-wall-calf": ["seated-calf"],
     "pull-up": ["library-lat-pulldown"], "single-calf": ["bilateral-calf"],
     "barbell-curl": ["db-curl", "library-cable-biceps-curl"],
     "db-curl": ["library-cable-biceps-curl"],

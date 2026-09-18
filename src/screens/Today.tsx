@@ -1,3 +1,4 @@
+import { RehabProgression } from "../components/RehabProgression";
 import { PlannedExposure } from "../components/PlannedExposure";
 import { DailyBrand } from "../components/DailyBrand";
 import { sessionEstimate } from "../data/sessionPresentation.js";
@@ -146,6 +147,7 @@ export function Today({
               </p>
             )}
             <p className="helper">{workoutNote}</p>
+            <RehabProgression rows={workout.blockProgression}/>
             <PlannedExposure exposure={exposure} onStart={onExposure} />
           </Card>
         </>

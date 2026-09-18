@@ -1,3 +1,4 @@
+import { progressRehabBlocks } from "./rehabBlockProgression.js";
 import { PROGRESSION_DOMAINS } from "../data/catalog.js";
 import { exposureContent } from "../data/exposures.js";
 import { exposureDecision, exposureScheduling, exposureReentry, strengthDecision } from "./progression.js";
@@ -41,7 +42,7 @@ export function automaticStrengthTarget(exercise, sessions, readiness, date, pro
  * @param {any} context
  * @returns {(T & { exposure: any, progressionReviews: any[] })[]}
  */
-export function applyAutomaticPlan(days, { assessment, checkpoints = {}, sessions = [], readiness = "UNCHECKED", today }) {
+export function applyAutomaticPlan(days, { assessment, checkpoints = {}, sessions = [], readiness = "UNCHECKED", today, manualChoices = {}, inProgressIds = [] }) {
   if (!assessment?.completedAt) return days.map(d => ({ ...d, exposure: null, progressionReviews: [] }));
   const observed = sessions.filter(s => s.date <= today);
   const pending = observed.some(s => s.status === "PENDING_NEXT_DAY_RESPONSE");
@@ -53,7 +54,17 @@ export function applyAutomaticPlan(days, { assessment, checkpoints = {}, session
   const lastUsed = Object.fromEntries(decisions.map(d => [d.domain, observed.filter(s => s.domain === d.domain).map(s=>s.date).sort().at(-1) || ""]));
   return days.map(day => {
     if (day.date < today) return { ...day, exposure: null, progressionReviews: [] };
-    const workout = day.workout ? { ...day.workout, items: day.workout.items.map(ex => automaticStrengthTarget(ex, observed, effective, day.date, day.workout.progressionAllowed && !day.retest)) } : null;
+    let workout = day.workout ? progressRehabBlocks({...day.workout, progressionAllowed:day.workout.progressionAllowed && !day.retest}, {sessions:observed,readiness:effective,assessment,date:day.date,today,manualChoices,inProgressIds}) : null;
+    if(workout) {
+      const newSeries = workout.templateVersion === "2.0.0" && !observed.some(s=>s.sessionFormat === "rehab-conditioning" && s.templateVersion === "2.0.0" && s.status === "TOLERATED");
+      let changed = newSeries || workout.blockProgression?.some(d=>d.action==="ADVANCE") || false;
+      workout = {...workout,items:workout.items.map(ex=>{
+        if(workout.sessionFormat==="rehab-conditioning" && changed) return ex;
+        const next=automaticStrengthTarget(ex, observed, effective, day.date, workout.progressionAllowed && !day.retest);
+        if(workout.sessionFormat==="rehab-conditioning" && next.progressionTarget?.action==="INCREASE_LOAD") changed=true;
+        return next;
+      })};
+    }
     let exposure = null;
     const reviews = [];
     if (day.high && !day.retest && !pending && !["RED", "YELLOW_1", "YELLOW_2", "YELLOW_3"].includes(effective)) {
@@ -85,6 +96,7 @@ export function automaticPlanSnapshot(days, assessment, checkpoints, sessions, r
     checkpoints, readiness,
     sessionEvidence: sessions.map(s=>({id:s.id,revision:s.revision || 0,status:s.status,closedAt:s.closedAt || null})).sort((a,b)=>a.id.localeCompare(b.id)),
     plan: days.filter(d=>d.date >= today).map(d=>({date:d.date, exposure:d.exposure,
+      rehabBlocks:d.workout?.blockProgression || [], blockMatrixVersion:d.workout?.blockMatrixVersion || null,
       strength:d.workout?.items.map(e=>({id:e.id,sets:e.sets,reps:e.reps,target:e.progressionTarget || null})) || [], reviews:d.progressionReviews})),
   };
 }

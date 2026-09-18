@@ -1,0 +1,9 @@
+{
+  "passed": [
+    "Saving qualified next-morning feedback automatically inserts loaded calf work and explains the source milestone",
+    "Logging and reload keep the selected variation, separate working load and one-block progression limit",
+    "Offline save and coaching export retain decision evidence without rewriting previous sets or assuming tolerance",
+    "Versioned automatic-plan audit includes block decisions with no browser runtime errors"
+  ],
+  "failed": 0
+}
