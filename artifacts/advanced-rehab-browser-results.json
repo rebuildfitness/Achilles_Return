@@ -1,0 +1,7 @@
+{
+  "passed": [
+    "D5 exact demos and per-movement actual dose persist after exit and reload",
+    "Offline directional logging preserves history and requires next-morning tolerance"
+  ],
+  "failed": 0
+}

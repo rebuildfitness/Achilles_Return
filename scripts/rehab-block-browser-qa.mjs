@@ -106,7 +106,7 @@ try {
  await context.setOffline(true);await page.getByRole('button',{name:'Finish Workout',exact:true}).click();await page.locator('input[name="difficulty"][value="right"]').check();await page.locator('input[name="achilles"][value="good"]').check();await page.getByRole('button',{name:'Save Workout',exact:true}).click();
  await page.getByRole('heading',{name:'Today',exact:true}).waitFor();
  const records=await read('sessions'),saved=records.find(s=>!['prior-rehab','recent-strength'].includes(s.id));
- assert.equal(saved.status,'PENDING_NEXT_DAY_RESPONSE');assert.equal(saved.blockMatrixVersion,'1.0.0');assert.equal(saved.blockProgression.find(r=>r.originId==='single-calf').action,'ADVANCE');
+ assert.equal(saved.status,'PENDING_NEXT_DAY_RESPONSE');assert.equal(saved.blockMatrixVersion,'1.1.0');assert.equal(saved.blockProgression.find(r=>r.originId==='single-calf').action,'ADVANCE');
  assert.deepEqual(records.find(s=>s.id==='recent-strength'),recent);assert.deepEqual(records.find(s=>s.id==='prior-rehab').exerciseLog,prior.exerciseLog);
  assert.match(await page.getByLabel('Coaching report',{exact:true}).inputValue(),/Rehab block decisions/);
  pass('Offline save and coaching export retain decision evidence without rewriting previous sets or assuming tolerance');

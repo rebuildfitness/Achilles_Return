@@ -90,6 +90,10 @@ export function ExposureScreen({
     void queue.current.catch(() => {});
   }
   const fields = [
+    ...(domain === "cod" && decision.level === "D5" ? [
+      {id:"drillsPerformed",label:"Movements performed",type:"checks",options:[["shuffle","Lateral shuffle"],["crossover","Crossovers / carioca"],["closeout","Closeout"],["backward","Backward jog — previously reviewed, overground"]]},
+      {id:"drillDose",label:"Actual bouts, time or distance for each movement, and rest",type:"text"},
+    ] : []),
     { id: "minutes", label: "Actual minutes", type: "number", min: 0 },
     {
       id: "sessionRPE",

@@ -74,6 +74,11 @@ const passing = clip(
   "FIFA",
   "governing_body_clip",
 );
+export const ADVANCED_REHAB_DEMOS = {
+  forward: running,
+  crossover: {...clip("Crossovers / carioca", "https://us.physitrack.com/home-exercise-video/carioca", "Physitrack"), videoVerifiedAt:"2026-09-18", note:"Use the prescribed planned-movement pace and dose; practice both directions."},
+  backward: {...clip("Backward jog — overground", "https://www.youtube.com/watch?v=Bs70oaxCMTs", "Fischer Health — Dr. Brian Fischer, PT, DPT, SCS"), videoVerifiedAt:"2026-09-18", videoSourcePage:"https://fischer-health.com/physical-therapy-exercise-library/", verification:"Provider exercise-library link verified; playback not verified.", note:"Technique reference includes sprinting: use only the reviewed easy backward jog. Clear level overground space; never backward on the treadmill. Replace a planned bout, do not add bouts."},
+};
 
 const wbaPage =
   "https://www.wba.co.uk/albion-foundation/about-us/active-lifestyles/home-skills-videos/";
@@ -166,7 +171,7 @@ export const DRILL_DEMOS = {
   D2: [braking],
   D3: [cut45],
   D4: [cut90],
-  D5: [closeout],
+  D5: [closeout, ADVANCED_REHAB_DEMOS.crossover, ADVANCED_REHAB_DEMOS.backward],
   D6: [cut45],
   D7: [closeout],
   B1: [shooting],
@@ -218,7 +223,7 @@ export function exposureContent(domain, level) {
         ? "Keep running easy. Follow this dose; do not also increase speed or terrain difficulty."
         : domain === "basketball"
           ? "Court exposure is limited by the lowest required physical capacity. Stop if symptoms or movement quality deteriorate."
-          : "Do not add contacts, speed and complexity together. Stop for deteriorating technique or symptoms.",
+          : level === "D5" ? "Share the prescribed 4–6 total bouts across planned shuffle, crossover and closeout work. A previously reviewed backward jog may replace a bout, never add to the total. Use your established bout distance/time and rest; do not increase speed. Record the movements actually performed below." : "Do not add contacts, speed and complexity together. Stop for deteriorating technique or symptoms.",
   };
 }
 export function courtCap(level, sessions = []) {
@@ -234,6 +239,7 @@ export function courtCap(level, sessions = []) {
 }
 export function validateExposureLog(domain, level, values, sessions = []) {
   const errors = [];
+  if(domain === "cod" && level === "D5" && values.drillsPerformed?.includes("backward") && !String(values.drillDose || "").trim()) errors.push("Record the backward-jog bout dose and the other movements performed.");
   if (!(Number(values.minutes) > 0)) errors.push("Enter actual minutes.");
   if (
     !(Number(values.sessionRPE) >= 0 && Number(values.sessionRPE) <= 10) ||

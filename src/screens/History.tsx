@@ -57,6 +57,7 @@ export function History({ sessions, allSessions = sessions }: { sessions: Sessio
                 </div>
               ))}
               {s.notes && <p>{s.notes}</p>}
+              {s.drillDose && <p>Movement bouts: {String(s.drillDose)}</p>}
               {!!s.exerciseChanges?.length && <details><summary>Exercise changes</summary>{s.exerciseChanges.map((change,i)=><p key={i}>{change.fromName} → {change.toName || "Skipped remaining sets"} · {change.reason}</p>)}</details>}
               <SessionEditor session={s} />
               <CoachingReview session={s} sessions={allSessions} />

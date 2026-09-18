@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "clinicalRulesetVersion": "1.1.0",
   "authority": "User-authorized automatic rehab-block programming. Operational mappings of existing strength/tolerance rules and approved exercise families; not independently validated clinical clearance thresholds.",
   "sourceIds": [
@@ -15,6 +15,12 @@
     25
   ],
   "rows": [
+    {
+      "originId": "rehab-bodyweight-squat",
+      "nextId": "rehab-bosu-squat",
+      "kind": "variation",
+      "criterion": "User-requested advanced rehab extension: existing controlled upper-target squat sets and next-morning tolerance, recorded good balance and a tolerated foam-pad balance session. Fixed support and manufacturer-permitted setup are required. This operational mapping is not a validated clinical clearance threshold."
+    },
     {
       "originId": "single-calf",
       "nextId": "calf-dumbbell-single",

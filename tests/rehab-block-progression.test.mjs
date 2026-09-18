@@ -16,10 +16,11 @@ test("Qualified calf work automatically selects loaded variation without changin
  assert.equal(next.blockProgression.find(r=>r.originId==="single-balance").action,"QUEUED");assert.deepEqual(prior,before);
  assert.deepEqual(run([prior]),next);
 });
-test("Subsequent tolerated dedicated sessions advance balance then bike without future cascades",()=>{
+test("Subsequent tolerated dedicated sessions advance balance then BOSU then bike without future cascades",()=>{
  const first=run([record(raw())]); const second=run([record(first)]);
  assert.ok(second.items.some(e=>e.id==="library-single-leg-foam-pad-balance"));
- const third=run([record(second)]);assert.equal(third.items.at(-1).reps,"900 sec");
+ const bosu=run([record(second)]);assert.ok(bosu.items.some(e=>e.id==="rehab-bosu-squat"));assert.equal(bosu.items.at(-1).reps,"600 sec");
+ const third=run([record(bosu)]);assert.equal(third.items.at(-1).reps,"900 sec");
  const fourth=run([record(third)]);assert.equal(fourth.items.at(-1).reps,"1200 sec");
  const fifth=run([record(fourth)]);assert.equal(fifth.items.at(-1).reps,"1500 sec");
  assert.equal(run([record(fifth)]).items.at(-1).reps,"1500 sec");

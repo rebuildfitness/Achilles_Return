@@ -1,15 +1,17 @@
 import { Card, ExerciseCard, PrimaryButton } from "../components/ui";
+import { AdvancedRehab } from "../components/AdvancedRehab";
 import { sessionEstimate } from "../data/sessionPresentation.js";
 import type { Workout } from "../types";
-export function RehabPreview({workout, enabled, busy, online, canStart, onStart, onEnable, onBack, onPlan, onTests}: {
+export function RehabPreview({workout, enabled, busy, online, canStart, onStart, onEnable, onBack, onPlan, onTests, onProgress}: {
  workout?: Workout; enabled:boolean; busy:boolean; online:boolean; canStart:boolean;
- onStart:()=>void; onEnable:()=>void; onBack:()=>void; onPlan:()=>void; onTests:()=>void;
+ onStart:()=>void; onEnable:()=>void; onBack:()=>void; onPlan:()=>void; onTests:()=>void; onProgress:()=>void;
 }) {
  return <>
   <button className="text-button page-back" onClick={onBack}>Back to Today</button>
   <div className="screen-heading"><h1>Achilles Rehab &amp; Conditioning</h1><p>Dedicated workout preview</p></div>
   <p className="helper">Preview only; no activity is logged here. Your scheduled workout applies today's readiness and dose adjustments.</p>
   {canStart && <PrimaryButton onClick={onStart}>Open rehab logger</PrimaryButton>}
+  <AdvancedRehab onProgress={onProgress}/>
   {!workout ? <Card><p>Complete your baseline to show your personal exercise selection and prescription.</p><PrimaryButton onClick={onTests}>Open Tests</PrimaryButton></Card> : workout.stopped ? <Card><h2>Loading is on hold today</h2><p>Your current safety guidance overrides the workout. Review your check-in before training.</p></Card> : <>
    <p>{sessionEstimate(workout.items)}</p>
    {[...new Set(workout.items.map(ex=>ex.block))].map(block=><section key={block} className="detail-section"><h2>{block}</h2>{workout.items.filter(ex=>ex.block===block).map(ex=><ExerciseCard key={ex.id} exercise={ex} online={online}/>)}</section>)}

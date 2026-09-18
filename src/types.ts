@@ -68,6 +68,8 @@ export type Workout = {
   omitted?: { id: string; name: string; reason: string }[];
 };
 export type Session = {
+  drillsPerformed?: string[];
+  drillDose?: string;
   sessionFormat?: string;
   templateVersion?: string;
   blockProgression?: any[];

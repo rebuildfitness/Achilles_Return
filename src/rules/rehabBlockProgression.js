@@ -26,9 +26,15 @@ export function progressRehabBlocks(workout, {sessions=[], readiness="UNCHECKED"
   const available=candidate && !candidate.referenceOnly && candidate.videoUrl && (candidate.verifiedAt || candidate.videoVerifiedAt) && candidate.equipment.every(e=>equipment.includes(e));
   const variation=()=>({...base,...candidate,originalId:origin,block:base.block,sets:base.sets,reps:base.reps,rpe:base.rpe,restSec:base.restSec,unit:base.unit,loadTier:base.loadTier,impactTier:base.impactTier,libraryOnly:false,review:undefined,progressionTarget:undefined,
    videoType:"exercise_specific_page",videoVerifiedAt:candidate.verifiedAt || candidate.videoVerifiedAt,
+   illustrationId:candidate.id,
+   requestedMovement:undefined,selectionReason:undefined,
    cue:origin==="single-calf" ? "Use stable hand support and your reviewed range from floor level. Start with the lightest practical dumbbell and establish a new working load; do not copy bodyweight or another exercise's load." : candidate.setup,
    adjustment:base.adjustment});
-  const balancePermitted=origin!=="single-balance" || assessment?.values?.goodBalance==="yes";
+  const balancePermitted=!["single-balance","rehab-bodyweight-squat"].includes(origin) || assessment?.values?.goodBalance==="yes";
+  const bosuPrerequisite=origin!=="rehab-bodyweight-squat" || observed.some(s=>{
+   const foam=s.plannedItems?.find(e=>e.id==="library-single-leg-foam-pad-balance");
+   return s.sessionFormat==="rehab-conditioning" && s.readiness?.level==="GREEN" && foam && !foam.skipReason && !foam.adjustment && strengthDecision(foam,s.exerciseLog?.[foam.id]?.sets || [],s.status,readiness).action==="PROPOSE_SMALL_INCREMENT";
+  });
   if((prior?.id===row.nextId || (date===today && inProgressIds.includes(row.nextId))) && available && balancePermitted) current=variation();
   if(row.kind==="duration") {
    const minutes=Number(String(prior?.reps || "").match(/\d+/)?.[0])/60;
@@ -51,7 +57,7 @@ export function progressRehabBlocks(workout, {sessions=[], readiness="UNCHECKED"
   if(!qualifies) return finish(current);
   if(date===today && inProgressIds.includes(origin) && row.kind==="variation") {record.reason="Keep the exercise already logged in this session; reassess the next workout.";return finish(current);}
   if(row.kind==="variation" && current.id===row.nextId) {record.reason="Current variation established. Keep its dose; the existing load rule can prescribe the next working-load target.";return finish(current);}
-  if(row.kind==="variation" && (!available || !balancePermitted)) {record.reason="Next variation requires its equipment, reviewed demo and current assessment prerequisites.";return finish(current);}
+  if(row.kind==="variation" && (!available || !balancePermitted || !bosuPrerequisite)) {record.reason=origin==="rehab-bodyweight-squat" ? "BOSU squat follows controlled squat sets and a tolerated foam-pad balance session, recorded good balance and available BOSU equipment. Use fixed support and a manufacturer-permitted setup." : "Next variation requires its equipment, reviewed demo and current assessment prerequisites.";return finish(current);}
   if(row.kind==="duration" && Number(current.reps.match(/\d+/)?.[0])>=1500) {record.action="MAINTAIN";record.reason="At the approved 25-minute ceiling; no automatic pace or resistance increase.";return finish(current);}
   if(advanced) {record.action="QUEUED";record.reason="Milestone met; hold this block while another block advances. Reassess after recording that session's response.";return finish(current);}
   advanced=true;record.action="ADVANCE";

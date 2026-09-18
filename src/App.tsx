@@ -19,7 +19,7 @@ import {
   exposureScheduling,
   exposureReentry,
 } from "./rules/progression.js";
-import { exposureContent, exposureQuality } from "./data/exposures.js";
+import { exposureContent, exposureQuality, validateExposureLog } from "./data/exposures.js";
 import { validateWorkoutLog } from "./rules/response.js";
 import { classifyReadiness } from "./rules/readiness.js";
 import { exportAll, writeRecords, put, get } from "./db.js";
@@ -419,6 +419,8 @@ export function App() {
       program.assessment.completedAt,
     );
     if (!schedule.allowed) throw new Error(schedule.reason);
+    const logErrors = validateExposureLog(domain, fresh.level, values, latest);
+    if (logErrors.length) throw new Error(logErrors.join(" "));
     const reentry = exposureReentry(
       domain,
       latest,
@@ -576,6 +578,7 @@ export function App() {
               onBack={() => open(null)}
               onPlan={() => { open(null); select("Plan"); }}
               onTests={() => { open(null); select("Tests"); }}
+              onProgress={() => { open(null); select("Progress"); }}
             />
           ) : flow === "baseline" ? (
             <BaselineWizard

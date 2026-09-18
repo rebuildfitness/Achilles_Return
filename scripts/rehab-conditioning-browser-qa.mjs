@@ -93,6 +93,9 @@ try {
  await page.reload();await page.getByRole("heading",{name:"Today",exact:true}).waitFor();
  await page.getByRole('button',{name:'View dedicated rehab workout',exact:true}).click();
  await page.getByRole('heading',{name:'Achilles Rehab & Conditioning',exact:true}).waitFor();
+ await page.getByRole('heading',{name:'Advanced rehab activities',exact:true}).waitFor();
+ assert.equal(await page.getByRole('link',{name:/Short Demo · Backward jog/}).count(),1);
+ assert.equal(await page.getByRole('link',{name:/Short Demo · Crossovers/}).count(),1);
  assert.ok(await page.locator('.exercise-card').count() >= 18);
  assert.equal(await page.getByRole('button',{name:'Finish Workout',exact:true}).count(),0);
  assert.equal(await page.getByRole('button',{name:'Open scheduled rehab workout',exact:true}).count(),0);

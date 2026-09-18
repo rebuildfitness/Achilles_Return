@@ -33,6 +33,8 @@ export function coachingReport(session, sessions = [], movement = null) {
   for (const c of session.correctionHistory||[]) lines.push(`- ${c.at}: ${text(c.reason)}`);
  }
  if (session.domain) lines.push(`Exposure: ${session.domain} ${text(session.exposureLevel)}; planned dose: ${text(session.plannedDose)}; recorded minutes: ${text(session.minutes)}; session RPE: ${text(session.sessionRPE)}`);
+ if (session.drillsPerformed?.length) lines.push(`Movements performed: ${session.drillsPerformed.join(", ")}`);
+ if (session.drillDose) lines.push(`Actual movement bouts and rest: ${text(session.drillDose)}`);
  const planned = session.originalPlan || session.plannedItems || [];
  for (const ex of planned) lines.push(`- Planned ${ex.name}: ${text(ex.sets)} × ${text(ex.reps)}, RPE ${text(ex.rpe)}, rest ${text(ex.restSec)}s.`);
  const ids = new Set([...(session.plannedItems || []).map(ex=>ex.id), ...Object.keys(session.exerciseLog || {})]);
