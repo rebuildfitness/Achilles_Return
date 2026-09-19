@@ -7,7 +7,7 @@ import { displayDate } from "../data/displayDates.js";
 import { WorkoutTimer } from "../components/WorkoutTimer";
 import { carryFeedback, confirmFeedback, feedbackFields, timerKey } from "../data/workoutExperience.js";
 import { ExerciseSwap, type SwapAction } from "../components/ExerciseSwap";
-import { optionalAccessory, sessionEstimate } from "../data/sessionPresentation.js";
+import { optionalAccessory, sessionEstimate, sessionItemsForDisplay } from "../data/sessionPresentation.js";
 import { useState } from "react";
 import { RestTimer } from "../components/RestTimer";
 import { dayKey } from "../data/provisionalWeek.js";
@@ -20,6 +20,9 @@ export function WorkoutScreen({
   workout,
   exposure,
   onExposure,
+  exposureLogger,
+  shortSession = false,
+  onSessionMode,
   date,
   onFeedback,
   log,
@@ -34,6 +37,9 @@ export function WorkoutScreen({
   readiness = "GREEN",
 }: {
   workout: Workout;
+  exposureLogger?: import("react").ReactNode;
+  shortSession?: boolean;
+  onSessionMode?: (short: boolean) => void;
   exposure?: any;
   onExposure?: (domain: string) => void;
   date: string;
@@ -55,8 +61,7 @@ export function WorkoutScreen({
   const [round, setRound] = useState(0);
   const [blockFilter, setBlockFilter] = useState("");
   const conditioning = workout.sessionFormat === "rehab-conditioning";
-  const [shortSession, setShortSession] = useState(false);
-  const visibleItems = workout.items.filter(ex => !shortSession || !optionalAccessory(ex) || log[ex.id]?.sets.some(s => s && Object.values(s).some(Boolean)));
+  const visibleItems = sessionItemsForDisplay(workout.items, log, shortSession) as typeof workout.items;
   const retainedCompleted = (workout.retained || []).reduce((n, ex) => n + (log[ex.id]?.sets.filter(set => set?.complete).length || 0), 0);
   const total = visibleItems.reduce((n, ex) => n + Math.max(ex.sets, log[ex.id]?.sets.length || 0), 0) + retainedCompleted;
   const completed = [...workout.items, ...(workout.retained || [])].reduce(
@@ -77,10 +82,10 @@ export function WorkoutScreen({
       <div className="screen-heading">
         <h1>{conditioning ? "Rehab & Conditioning" : "Full Workout"}</h1>
         <p>{workout.title}</p>
-        <p className="helper">{sessionEstimate(visibleItems)}</p>
+        <p className="helper">{sessionEstimate(visibleItems)}{exposure ? "; add the prescribed running / sport block below." : ""}</p>
         <details className="workout-options"><summary>Session options</summary>
-        <label><input type="checkbox" checked={shortSession} onChange={e => setShortSession(e.target.checked)} /> Shorter session: hide optional accessories</label>
-        <p className="helper">Rehab and primary strength remain. Hidden exercises stay uncompleted in your original plan; completed sets are never removed. Restore the full list at any time.</p></details>
+        <label><input type="checkbox" checked={shortSession} onChange={e => onSessionMode?.(e.target.checked)} /> Shorter session: hide optional accessories</label>
+        <p className="helper">Full: {sessionEstimate(workout.items)}. Shorter: {sessionEstimate(sessionItemsForDisplay(workout.items, log, true))}. If there are no optional accessories, both options contain the same work.</p><p className="helper">Rehab and primary strength remain. Hidden exercises stay uncompleted in your original plan; completed sets are never removed. Restore the full list at any time.</p></details>
       </div>
       <div className="session-dashboard">
         <WorkoutTimer key={timerKey(date,workout.id)} storageKey={timerKey(date,workout.id)} />
@@ -107,7 +112,7 @@ export function WorkoutScreen({
         <label>Session block<select aria-label="Session block" value={blockFilter} onChange={e=>{setBlockFilter(e.target.value);setRound(0);}}><option value="">Full session</option>{[...new Set(visibleItems.map(ex=>ex.block).filter(Boolean))].map(block=><option key={block} value={block}>{block}</option>)}</select></label>
         <label>Round view<select aria-label="Round view" value={round} onChange={e=>setRound(Number(e.target.value))}><option value={0}>All sets</option>{Array.from({length: Math.max(0,...visibleItems.filter(ex=>!blockFilter || ex.block===blockFilter).map(ex=>ex.sets))},(_,i)=><option key={i} value={i+1}>Round {i+1}</option>)}</select></label>
         <p className="helper">Round view changes the display only. It never completes, adds or removes prescribed work. The full session remains available above.</p>
-        {exposure && onExposure && <><p className="notice">This progression exposure replaces the bike block. Complete it through its own logger before saving the rehab workout. Follow its prescribed warm-up and recovery.</p><PlannedExposure exposure={exposure} onStart={onExposure}/></>}
+        {exposure && onExposure && !exposureLogger && <><p className="notice">This progression exposure replaces the bike block. Complete it through its own logger before saving the rehab workout. Follow its prescribed warm-up and recovery.</p><PlannedExposure exposure={exposure} onStart={onExposure}/></>}
         {workout.conditioningReplaced && !exposure && <p className="notice">Progression work is already recorded today; no additional conditioning finisher is prescribed.</p>}
         {!exposure && !workout.conditioningReplaced && <p className="helper">No impact session is assigned here today. Use the listed conditioning block; Tests shows requirements for progression activities. Floor backward jogging and carioca are not treadmill substitutions.</p>}
       </section>}
@@ -163,7 +168,7 @@ export function WorkoutScreen({
             {log[exercise.id]?.sets.some(set => set?.complete && set.inheritedFields?.length && !set.feedbackConfirmed) && <button className="secondary-button" onClick={() => onFeedback(exercise.id, confirmFeedback(log[exercise.id].sets))}>Confirm carried feedback for completed sets</button>}
             </>}
             <p className="eyebrow">{optionalAccessory(exercise) ? "OPTIONAL ACCESSORY" : "SESSION PRIORITY"}</p>
-            <ExercisePath key={exercise.id} exercise={exercise} sessions={sessions} readiness={readiness} equipment={equipment || []} date={date} progressionAllowed={!!workout.progressionAllowed} unavailable={unavailable} workoutIds={workout.items.map(e=>e.id)} onSwap={onSwap} />
+            <ExercisePath blockProgression={workout.blockProgression} key={exercise.id} exercise={exercise} sessions={sessions} readiness={readiness} equipment={equipment || []} date={date} progressionAllowed={!!workout.progressionAllowed} unavailable={unavailable} workoutIds={workout.items.map(e=>e.id)} onSwap={onSwap} />
             <ExerciseGuidance
               exercise={exercise}
               sessions={sessions}
@@ -174,6 +179,8 @@ export function WorkoutScreen({
           </ExerciseCard>
         );
       })}
+      {exposureLogger && <section aria-label="Running and sport block" className="detail-section"><h2>Running / sport block</h2><p>Follow the prescribed dose and record it here. This block has its own tolerance record; it does not add another conditioning finisher.</p>{exposureLogger}</section>}
+      {sessions.filter(s=>s.date===date && s.domain).map(s=><section key={s.id} className="detail-section"><h2>Running / sport work saved</h2><p>{s.workoutTitle} · {s.minutes || '—'} minutes. Next-morning response still determines tolerance.</p></section>)}
       <details className="detail-section">
         <summary>Session guidance</summary>
         <p className="notice">
@@ -210,10 +217,12 @@ function RecordedSets({ exercise, log, onChange, start = 0 }: { exercise: import
   </div> : null)}</>;
 }
 export function FinishScreen({
+  review,
   busy,
   onBack,
   onSave,
 }: {
+  review?: import("react").ReactNode;
   busy: boolean;
   onBack: () => void;
   onSave: (details: {
@@ -240,6 +249,8 @@ export function FinishScreen({
         <h1>How did it go?</h1>
         <p>Tomorrow’s response confirms how you tolerated today’s loading.</p>
       </div>
+      {review}
+      <p className="helper">After saving, copy your AI coaching report immediately. Tomorrow’s response can be added later.</p>
       <form onSubmit={submit}>
         <Choice
           name="difficulty"

@@ -1,0 +1,8 @@
+{
+  "passed": [
+    "Shorter choice and logged sets persist together after reload",
+    "Embedded exposure saves offline without leaving workout or losing sets; no duplicate logger",
+    "Finish summary, linked separate records and immediate coaching report preserve tolerance requirements"
+  ],
+  "failed": 0
+}

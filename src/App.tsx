@@ -1,3 +1,5 @@
+import { SessionReview } from "./components/SessionReview";
+import { sessionItemsForDisplay } from "./data/sessionPresentation.js";
 import { exercisePath } from "./rules/exercisePaths.js";
 import { automaticPlanSnapshot } from "./rules/automaticPlan.js";
 import { saveAutomaticPlanAudit } from "./persistence/automaticPlan.js";
@@ -326,6 +328,11 @@ export function App() {
       })
       .catch(report);
   }
+  function changeSessionMode(shortSession: boolean) {
+    const next = {...sessionChanges, shortSession};
+    setSessionChanges(next);
+    queue.current = queue.current.catch(() => {}).then(() => put("settings", next)).then(() => {}).catch(report);
+  }
   async function finish(details: {
     overallDifficulty: string;
     immediateAchillesResponse: string;
@@ -361,6 +368,9 @@ export function App() {
         finishedAt,
         ...(timer ? { durationMs: timer.accumulatedMs, startedAt: timer.startedAt, workoutTimer: timer } : {}),
         originalPlan: baseWorkout.items,
+        sessionMode: sessionChanges.shortSession ? "shorter" : "full",
+        omittedOptionalIds: workout.items.filter(ex => !sessionItemsForDisplay(workout.items, activeLog, !!sessionChanges.shortSession).some((visible: import("./types").Exercise) => visible.id === ex.id)).map(ex=>ex.id),
+        linkedExposureIds: sessions.filter(s=>s.date===date && s.domain).map(s=>s.id),
         coachingContext: { weeklyPlan: week.map(d => ({date:d.date,title:d.title,items:d.workout?.items.map((e: import("./types").Exercise)=>({name:e.name,sets:e.sets,reps:e.reps})) || []})), phase: workout.phase, equipment: program.profile?.equipment || DEFAULT_EQUIPMENT, checkIn: checkIn?.answers, clinical: Object.fromEntries(["surgeryDate", "repairSide", "restrictions", "complications"].map(key => [key, program.assessment?.values[key] ?? "Not recorded"])) },
         date,
         createdAt: new Date().toISOString(),
@@ -391,7 +401,10 @@ export function App() {
   async function saveExposure(
     values: Values,
     decision: ReturnType<typeof exposureDecision>,
+    exposureDomain = domain,
+    stayInWorkout = false,
   ) {
+    const domain = exposureDomain;
     if (!program.assessment || readiness?.level !== "GREEN")
       throw new Error(
         "Complete a current green check-in before impact or sport work.",
@@ -483,8 +496,7 @@ export function App() {
     ]);
     setSessions(await loadSessions());
     setDomain("");
-    open(null);
-    select("Today");
+    if (!stayInWorkout) { open(null); select("Today"); }
   }
   async function download() {
     try {
@@ -646,6 +658,9 @@ export function App() {
           ) : flow === "workout" && canOpenWorkout ? (
             <WorkoutScreen
               workout={workout}
+              shortSession={!!sessionChanges.shortSession}
+              onSessionMode={changeSessionMode}
+              exposureLogger={today.exposure && program.assessment ? <ExposureScreen key={today.exposure.domain} embedded domain={today.exposure.domain} assessment={program.assessment} checkpoints={program.checkpoints} sessions={sessions} readiness={readiness?.level || "UNCHECKED"} onBack={()=>{}} onSave={(values,decision)=>saveExposure(values,decision,today.exposure.domain,true)} /> : undefined}
               exposure={today.exposure}
               onExposure={(domain) => { setDomain(domain); open("exposure"); }}
               date={date}
@@ -692,13 +707,14 @@ export function App() {
             />
           ) : flow === "finish" ? (
             <FinishScreen
+              review={<><SessionReview items={[...workout.items,...(workout.retained || [])]} log={log} sessions={sessions} date={date} short={!!sessionChanges.shortSession}/>{today.exposure && <p className="notice">The prescribed running / sport block has not been saved. Return to the workout to log it if performed; saving this workout does not complete that block.</p>}</>}
               busy={busy}
               onBack={() => !busy && open("workout")}
               onSave={finish}
             />
           ) : tab === "Today" ? (
             <>
-              {savedCoachingSession && <Card><h2>Workout saved</h2><CoachingReview session={savedCoachingSession} sessions={sessions} expanded /></Card>}
+              {savedCoachingSession && <Card><h2>Workout saved</h2>{!savedCoachingSession.domain && <SessionReview items={savedCoachingSession.plannedItems || []} log={savedCoachingSession.exerciseLog} sessions={sessions} date={savedCoachingSession.date} short={savedCoachingSession.sessionMode === "shorter"}/>}<CoachingReview session={savedCoachingSession} sessions={sessions} expanded /></Card>}
               <Today
                 conditioningEnabled={program.profile?.strengthStyle === "conditioning"}
                 conditioningFrom={program.profile?.conditioningFrom}

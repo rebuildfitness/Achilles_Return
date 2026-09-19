@@ -14,6 +14,7 @@ import { get, put } from "../db.js";
 import type { Assessment, Session, Values } from "../types";
 
 export function ExposureScreen({
+  embedded = false,
   domain,
   assessment,
   checkpoints,
@@ -22,6 +23,7 @@ export function ExposureScreen({
   onSave,
   onBack,
 }: {
+  embedded?: boolean;
   domain: string;
   assessment: Assessment;
   checkpoints: Values;
@@ -173,6 +175,7 @@ export function ExposureScreen({
       setBusy(false);
     }
   }
+  const Heading = embedded ? "h3" : "h1";
   if (!draftReady)
     return (
       <Card>
@@ -185,7 +188,7 @@ export function ExposureScreen({
     );
   return (
     <>
-      <button
+      {!embedded && <button
         className="text-button page-back"
         onClick={async () => {
           try {
@@ -197,12 +200,12 @@ export function ExposureScreen({
         }}
       >
         ← Progress
-      </button>
+      </button>}
       <div className="screen-heading">
-        <h1>
+        <Heading>
           {decision.level} ·{" "}
           {PROGRESSION_DOMAINS.find((d) => d.id === domain)?.title}
-        </h1>
+        </Heading>
         <p>
           {decision.level === "B8" ? CLINICAL_COPY.candidate : decision.title}
         </p>

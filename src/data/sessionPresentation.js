@@ -12,3 +12,19 @@ export function sessionEstimate(items) {
   const midpoint = Math.ceil(seconds/60/5)*5;
   return `${Math.max(5,midpoint-10)}–${midpoint+10} min estimate, including warm-up and rest`;
 }
+
+export function sessionItemsForDisplay(items, log = {}, short = false) {
+ return items.filter(ex => !short || !optionalAccessory(ex) || log[ex.id]?.sets?.some(set => set && Object.values(set).some(Boolean)));
+}
+export function sessionReview(items, log = {}, sessions = [], date = '') {
+ return [...new Map(items.map(ex => [ex.id, ex])).values()].map(ex => {
+  const done = (log[ex.id]?.sets || []).filter(s => s?.complete);
+  const previous = sessions.filter(s => s.date < date && s.exerciseLog?.[ex.id]?.sets?.some(set => set?.complete))
+   .sort((a,b) => b.date.localeCompare(a.date) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')))[0];
+  const prior = previous?.exerciseLog[ex.id].sets.filter(s => s?.complete) || [];
+  const describe = sets => sets.map(s => `${s.load == null || s.load === '' ? 'Load not recorded' : s.load+' lb'} × ${s.reps || '—'} ${ex.unit === 'seconds' ? 'sec' : ex.unit === 'yards' ? 'yards' : 'reps'}`).join('; ');
+  return {id:ex.id, name:ex.name, completed:done.length, planned:ex.sets, remaining:Math.max(0,ex.sets-done.length),
+   status:ex.skipReason ? 'Remaining work skipped' : !done.length ? 'Not performed' : done.length < ex.sets ? 'Partially completed' : 'Completed',
+   current:describe(done), previous:describe(prior), previousDate:previous?.date || null};
+ });
+}

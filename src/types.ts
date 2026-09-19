@@ -68,6 +68,9 @@ export type Workout = {
   omitted?: { id: string; name: string; reason: string }[];
 };
 export type Session = {
+  sessionMode?: "full" | "shorter";
+  omittedOptionalIds?: string[];
+  linkedExposureIds?: string[];
   drillsPerformed?: string[];
   drillDose?: string;
   sessionFormat?: string;
