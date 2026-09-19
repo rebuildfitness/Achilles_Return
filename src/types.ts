@@ -68,6 +68,8 @@ export type Workout = {
   omitted?: { id: string; name: string; reason: string }[];
 };
 export type Session = {
+  sessionOptionLabel?: string;
+  sessionOptionsVersion?: string;
   sessionMode?: "full" | "shorter";
   omittedOptionalIds?: string[];
   linkedExposureIds?: string[];

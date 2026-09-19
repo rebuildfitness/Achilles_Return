@@ -1,5 +1,5 @@
 import { SessionReview } from "./components/SessionReview";
-import { sessionItemsForDisplay } from "./data/sessionPresentation.js";
+import { sessionItemsForDisplay, REHAB_SESSION_OPTIONS_VERSION } from "./data/sessionPresentation.js";
 import { exercisePath } from "./rules/exercisePaths.js";
 import { automaticPlanSnapshot } from "./rules/automaticPlan.js";
 import { saveAutomaticPlanAudit } from "./persistence/automaticPlan.js";
@@ -369,6 +369,7 @@ export function App() {
         ...(timer ? { durationMs: timer.accumulatedMs, startedAt: timer.startedAt, workoutTimer: timer } : {}),
         originalPlan: baseWorkout.items,
         sessionMode: sessionChanges.shortSession ? "shorter" : "full",
+        ...(workout.sessionFormat === "rehab-conditioning" ? {sessionOptionLabel:sessionChanges.shortSession ? "Essential" : "Full",sessionOptionsVersion:REHAB_SESSION_OPTIONS_VERSION} : {}),
         omittedOptionalIds: workout.items.filter(ex => !sessionItemsForDisplay(workout.items, activeLog, !!sessionChanges.shortSession).some((visible: import("./types").Exercise) => visible.id === ex.id)).map(ex=>ex.id),
         linkedExposureIds: sessions.filter(s=>s.date===date && s.domain).map(s=>s.id),
         coachingContext: { weeklyPlan: week.map(d => ({date:d.date,title:d.title,items:d.workout?.items.map((e: import("./types").Exercise)=>({name:e.name,sets:e.sets,reps:e.reps})) || []})), phase: workout.phase, equipment: program.profile?.equipment || DEFAULT_EQUIPMENT, checkIn: checkIn?.answers, clinical: Object.fromEntries(["surgeryDate", "repairSide", "restrictions", "complications"].map(key => [key, program.assessment?.values[key] ?? "Not recorded"])) },

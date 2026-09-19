@@ -84,9 +84,14 @@ export function WorkoutScreen({
         <p>{workout.title}</p>
         <p className="helper">{sessionEstimate(visibleItems)}{exposure ? "; add the prescribed running / sport block below." : ""}</p>
         <details className="workout-options"><summary>Session options</summary>
-        <label><input type="checkbox" checked={shortSession} onChange={e => onSessionMode?.(e.target.checked)} /> Shorter session: hide optional accessories</label>
-        <p className="helper">Full: {sessionEstimate(workout.items)}. Shorter: {sessionEstimate(sessionItemsForDisplay(workout.items, log, true))}. If there are no optional accessories, both options contain the same work.</p><p className="helper">Rehab and primary strength remain. Hidden exercises stay uncompleted in your original plan; completed sets are never removed. Restore the full list at any time.</p></details>
+        <label><input type="checkbox" checked={shortSession} onChange={e => {onSessionMode?.(e.target.checked);setBlockFilter("");setRound(0);}} /> {conditioning ? "Essential rehab session" : "Shorter session: hide optional accessories"}</label>
+        <p className="helper">Full: {sessionEstimate(workout.items)}. {conditioning ? "Essential" : "Shorter"}: {sessionEstimate(sessionItemsForDisplay(workout.items, log, true))}. If there are no optional accessories, both options contain the same work.</p><p className="helper">Core rehab and primary strength remain at their prescribed doses. Hidden exercises stay uncompleted in your original plan; completed sets are never removed. Restore the full list at any time.</p></details>
       </div>
+      {conditioning && <section className="detail-section" aria-label="Rehab session choice">
+        <div className="section-heading"><h2>{shortSession ? "Essential session" : "Full session"}</h2><button className="text-button" onClick={()=>{onSessionMode?.(!shortSession);setBlockFilter("");setRound(0);}}>{shortSession ? "Choose Full" : "Choose Essential"}</button></div>
+        <p className="helper">{shortSession ? "Core work with the same sets, reps and rest. Supplementary exercises are omitted unless already started." : "Core work plus supplementary calf, toe-walking and movement practice."}</p>
+        <details><summary>What is supplementary?</summary><ul>{workout.items.filter(optionalAccessory).map(ex=><li key={ex.id}>{ex.name} · {ex.block}</li>)}</ul><p className="helper">Started exercises stay visible. Omitted exercises stay uncompleted and cannot earn progression.</p></details>
+      </section>}
       <div className="session-dashboard">
         <WorkoutTimer key={timerKey(date,workout.id)} storageKey={timerKey(date,workout.id)} />
         <div className="section-heading">
@@ -108,10 +113,10 @@ export function WorkoutScreen({
       {conditioning && <section className="detail-section" aria-label="Rehab session blocks">
         <h2>Your session blocks</h2>
         <RehabProgression rows={workout.blockProgression}/>
-        <p>Complete the logged warm-up, then Circuits A and B for three rounds and Circuit C for two. One set of each exercise makes a round. Readiness may reduce sets. Preserve the displayed recovery, and finish with the selected conditioning block.</p>
-        <label>Session block<select aria-label="Session block" value={blockFilter} onChange={e=>{setBlockFilter(e.target.value);setRound(0);}}><option value="">Full session</option>{[...new Set(visibleItems.map(ex=>ex.block).filter(Boolean))].map(block=><option key={block} value={block}>{block}</option>)}</select></label>
+        <p>Follow this order: warm-up → strength and Achilles circuits A/B → balance and control C → conditioning. Complete Circuits A and B for three rounds and Circuit C for two. One set of each exercise makes a round. Readiness may reduce sets. Preserve the displayed recovery, and finish with the selected conditioning block.</p>
+        <label>Session block<select aria-label="Session block" value={blockFilter} onChange={e=>{setBlockFilter(e.target.value);setRound(0);}}><option value="">{shortSession ? "All essential blocks" : "Full session"}</option>{[...new Set(visibleItems.map(ex=>ex.block).filter(Boolean))].map(block=><option key={block} value={block}>{block}</option>)}</select></label>
         <label>Round view<select aria-label="Round view" value={round} onChange={e=>setRound(Number(e.target.value))}><option value={0}>All sets</option>{Array.from({length: Math.max(0,...visibleItems.filter(ex=>!blockFilter || ex.block===blockFilter).map(ex=>ex.sets))},(_,i)=><option key={i} value={i+1}>Round {i+1}</option>)}</select></label>
-        <p className="helper">Round view changes the display only. It never completes, adds or removes prescribed work. The full session remains available above.</p>
+        <p className="helper">Round view changes the display only. It never completes, adds or removes prescribed work. All selected blocks remain available above.</p>
         {exposure && onExposure && !exposureLogger && <><p className="notice">This progression exposure replaces the bike block. Complete it through its own logger before saving the rehab workout. Follow its prescribed warm-up and recovery.</p><PlannedExposure exposure={exposure} onStart={onExposure}/></>}
         {workout.conditioningReplaced && !exposure && <p className="notice">Progression work is already recorded today; no additional conditioning finisher is prescribed.</p>}
         {!exposure && !workout.conditioningReplaced && <p className="helper">No impact session is assigned here today. Use the listed conditioning block; Tests shows requirements for progression activities. Floor backward jogging and carioca are not treadmill substitutions.</p>}
@@ -167,7 +172,7 @@ export function WorkoutScreen({
             <p className="helper">First-set RPE, quality and symptoms automatically fill blank feedback on remaining sets of this exercise. Edit any differences; confirm carried feedback once after the exercise.</p><details className="feedback-carry"><summary>First-set feedback shortcut</summary><button className="text-button" disabled={!feedbackFields.some(field => (log[exercise.id]?.sets[0] as any)?.[field])} onClick={() => onFeedback(exercise.id, carryFeedback(log[exercise.id]?.sets || [], exercise.sets))}>Use first-set feedback for remaining sets</button><p className="helper">Copies RPE, quality and symptoms into blank fields. Change any set as needed.</p></details>
             {log[exercise.id]?.sets.some(set => set?.complete && set.inheritedFields?.length && !set.feedbackConfirmed) && <button className="secondary-button" onClick={() => onFeedback(exercise.id, confirmFeedback(log[exercise.id].sets))}>Confirm carried feedback for completed sets</button>}
             </>}
-            <p className="eyebrow">{optionalAccessory(exercise) ? "OPTIONAL ACCESSORY" : "SESSION PRIORITY"}</p>
+            <p className="eyebrow">{optionalAccessory(exercise) ? conditioning ? "SUPPLEMENTARY" : "OPTIONAL ACCESSORY" : conditioning ? "ESSENTIAL" : "SESSION PRIORITY"}</p>
             <ExercisePath blockProgression={workout.blockProgression} key={exercise.id} exercise={exercise} sessions={sessions} readiness={readiness} equipment={equipment || []} date={date} progressionAllowed={!!workout.progressionAllowed} unavailable={unavailable} workoutIds={workout.items.map(e=>e.id)} onSwap={onSwap} />
             <ExerciseGuidance
               exercise={exercise}

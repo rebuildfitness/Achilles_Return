@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "authority": "User-approved essential/full presentation of the existing rehab circuit; not a new clinical protocol or clearance rule.",
+  "sourceDocuments": [
+    "docs/ACHILLES_CONDITIONING_UPDATE.md",
+    "docs/REHAB_CIRCUIT_SERIES_1_9_0.md",
+    "docs/WORKOUT_TEMPLATES.md"
+  ],
+  "supplementaryOriginIds": [
+    "rehab-bilateral-strength",
+    "rehab-toe-walk",
+    "rehab-balance-reach",
+    "rehab-multidirectional-reach",
+    "rehab-lateral-step",
+    "rehab-toe-walk-c"
+  ],
+  "preserve": "All other exercises, warm-up, retained exercise doses, readiness modifiers, progression criteria and started work remain unchanged."
+}

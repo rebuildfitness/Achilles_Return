@@ -1,5 +1,8 @@
+import rehabOptions from '../../spec/rehab-session-options-v1.json' with {type:'json'};
+export const REHAB_SESSION_OPTIONS_VERSION = rehabOptions.version;
 // Product time estimates, not prescribed duration or clinical progression rules.
 export function optionalAccessory(exercise) {
+  if (exercise.block && exercise.block !== 'Warm-up' && rehabOptions.supplementaryOriginIds.includes(exercise.originalId || exercise.id)) return true;
   return !!exercise.strengthModule && !['db-bench', 'supported-db-row'].includes(exercise.originalId || exercise.id);
 }
 export function sessionEstimate(items) {
