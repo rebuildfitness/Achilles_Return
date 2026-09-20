@@ -1,3 +1,4 @@
+import { nextGuidedSet } from '../data/guidedWorkout.js';
 import { RehabProgression } from "../components/RehabProgression";
 import { PlannedExposure } from "../components/PlannedExposure";
 import { TimedActivity } from "../components/TimedActivity";
@@ -23,6 +24,8 @@ export function WorkoutScreen({
   exposureLogger,
   shortSession = false,
   onSessionMode,
+  guided = false,
+  onGuided,
   date,
   onFeedback,
   log,
@@ -40,6 +43,8 @@ export function WorkoutScreen({
   exposureLogger?: import("react").ReactNode;
   shortSession?: boolean;
   onSessionMode?: (short: boolean) => void;
+  guided?: boolean;
+  onGuided?: (guided: boolean) => void;
   exposure?: any;
   onExposure?: (domain: string) => void;
   date: string;
@@ -62,6 +67,8 @@ export function WorkoutScreen({
   const [blockFilter, setBlockFilter] = useState("");
   const conditioning = workout.sessionFormat === "rehab-conditioning";
   const visibleItems = sessionItemsForDisplay(workout.items, log, shortSession) as typeof workout.items;
+  const nextSet = nextGuidedSet(visibleItems, log, conditioning);
+  const currentExercise = visibleItems.find(ex=>ex.id===nextSet?.id);
   const retainedCompleted = (workout.retained || []).reduce((n, ex) => n + (log[ex.id]?.sets.filter(set => set?.complete).length || 0), 0);
   const total = visibleItems.reduce((n, ex) => n + Math.max(ex.sets, log[ex.id]?.sets.length || 0), 0) + retainedCompleted;
   const completed = [...workout.items, ...(workout.retained || [])].reduce(
@@ -81,13 +88,14 @@ export function WorkoutScreen({
       </button>
       <div className="screen-heading">
         <h1>{conditioning ? "Rehab & Conditioning" : "Full Workout"}</h1>
-        <p>{workout.title}</p>
-        <p className="helper">{sessionEstimate(visibleItems)}{exposure ? "; add the prescribed running / sport block below." : ""}</p>
+        {!guided && <p>{workout.title}</p>}
+        {!guided && <p className="helper">{sessionEstimate(visibleItems)}{exposure ? "; add the prescribed running / sport block below." : ""}</p>}
         <details className="workout-options"><summary>Session options</summary>
+        <label><input type="checkbox" checked={guided} onChange={e=>onGuided?.(e.target.checked)}/> Guide me through each set</label>
         <label><input type="checkbox" checked={shortSession} onChange={e => {onSessionMode?.(e.target.checked);setBlockFilter("");setRound(0);}} /> {conditioning ? "Essential rehab session" : "Shorter session: hide optional accessories"}</label>
         <p className="helper">Full: {sessionEstimate(workout.items)}. {conditioning ? "Essential" : "Shorter"}: {sessionEstimate(sessionItemsForDisplay(workout.items, log, true))}. If there are no optional accessories, both options contain the same work.</p><p className="helper">Core rehab and primary strength remain at their prescribed doses. Hidden exercises stay uncompleted in your original plan; completed sets are never removed. Restore the full list at any time.</p></details>
       </div>
-      {conditioning && <section className="detail-section" aria-label="Rehab session choice">
+      {conditioning && !guided && <section className="detail-section" aria-label="Rehab session choice">
         <div className="section-heading"><h2>{shortSession ? "Essential session" : "Full session"}</h2><button className="text-button" onClick={()=>{onSessionMode?.(!shortSession);setBlockFilter("");setRound(0);}}>{shortSession ? "Choose Full" : "Choose Essential"}</button></div>
         <p className="helper">{shortSession ? "Core work with the same sets, reps and rest. Supplementary exercises are omitted unless already started." : "Core work plus supplementary calf, toe-walking and movement practice."}</p>
         <details><summary>What is supplementary?</summary><ul>{workout.items.filter(optionalAccessory).map(ex=><li key={ex.id}>{ex.name} · {ex.block}</li>)}</ul><p className="helper">Started exercises stay visible. Omitted exercises stay uncompleted and cannot earn progression.</p></details>
@@ -110,7 +118,7 @@ export function WorkoutScreen({
           signal={rest}
         />
       </div>
-      {conditioning && <section className="detail-section" aria-label="Rehab session blocks">
+      {conditioning && !guided && <section className="detail-section" aria-label="Rehab session blocks">
         <h2>Your session blocks</h2>
         <RehabProgression rows={workout.blockProgression}/>
         <p>Follow this order: warm-up → strength and Achilles circuits A/B → balance and control C → conditioning. Complete Circuits A and B for three rounds and Circuit C for two. One set of each exercise makes a round. Readiness may reduce sets. Preserve the displayed recovery, and finish with the selected conditioning block.</p>
@@ -121,7 +129,14 @@ export function WorkoutScreen({
         {workout.conditioningReplaced && !exposure && <p className="notice">Progression work is already recorded today; no additional conditioning finisher is prescribed.</p>}
         {!exposure && !workout.conditioningReplaced && <p className="helper">No impact session is assigned here today. Use the listed conditioning block; Tests shows requirements for progression activities. Floor backward jogging and carioca are not treadmill substitutions.</p>}
       </section>}
-      {visibleItems.filter(ex=> !conditioning || ((!blockFilter || ex.block===blockFilter) && (!round || ex.sets>=round))).map((exercise) => {
+      {guided && <section aria-label="Guided workout">
+        <div className="section-heading"><h2>Next set</h2><button className="text-button" onClick={()=>onGuided?.(false)}>View full session</button></div>
+        <p role="status">{currentExercise && nextSet ? currentExercise.name+" · "+(conditioning ? "Round " : "Set ")+(nextSet.index+1)+" of "+currentExercise.sets : "No uncompleted, unskipped exercise sets remain."}</p>
+        {nextSet?.block && <p className="eyebrow">{nextSet.block}</p>}
+        <p className="helper">Complete the set to continue, then rest as prescribed. Use Swap exercise to swap or skip remaining sets.</p>
+        {!nextSet && <p>{exposureLogger ? "Continue with the prescribed running / sport block below." : "Review your recorded work, then finish when ready."}</p>}
+      </section>}
+      {visibleItems.filter(ex=> guided ? ex.id===nextSet?.id : !conditioning || ((!blockFilter || ex.block===blockFilter) && (!round || ex.sets>=round))).map((exercise) => {
         const previousSession = previousExerciseSession(sessions, exercise.id, date);
         const previous = previousSession?.exerciseLog[exercise.id];
         return (
@@ -149,7 +164,7 @@ export function WorkoutScreen({
               </span>
               <span>✓</span>
             </div>
-            {Array.from({ length: exercise.sets }, (_, index) => index).filter(index => !conditioning || !round || index === round-1).map(index => (
+            {Array.from({ length: exercise.sets }, (_, index) => index).filter(index => guided ? index === nextSet?.index : !conditioning || !round || index === round-1).map(index => (
               <SetRow
                 key={index}
                 exercise={exercise}
@@ -184,7 +199,8 @@ export function WorkoutScreen({
           </ExerciseCard>
         );
       })}
-      {exposureLogger && <section aria-label="Running and sport block" className="detail-section"><h2>Running / sport block</h2><p>Follow the prescribed dose and record it here. This block has its own tolerance record; it does not add another conditioning finisher.</p>{exposureLogger}</section>}
+      {guided && visibleItems.filter(ex=>ex.id!==nextSet?.id && log[ex.id]?.sets.some(set=>set?.complete && set.inheritedFields?.length && !set.feedbackConfirmed)).map(ex=><section className="detail-section" key={ex.id}><h3>{ex.name}: review carried feedback</h3><p className="helper">Confirm only if the copied feedback matches the completed sets. Use the full session to correct differences.</p><button className="secondary-button" onClick={()=>onFeedback(ex.id,confirmFeedback(log[ex.id].sets))}>Confirm carried feedback for {ex.name}</button></section>)}
+      {exposureLogger && (!guided || !nextSet) && <section aria-label="Running and sport block" className="detail-section"><h2>Running / sport block</h2><p>Follow the prescribed dose and record it here. This block has its own tolerance record; it does not add another conditioning finisher.</p>{exposureLogger}</section>}
       {sessions.filter(s=>s.date===date && s.domain).map(s=><section key={s.id} className="detail-section"><h2>Running / sport work saved</h2><p>{s.workoutTitle} · {s.minutes || '—'} minutes. Next-morning response still determines tolerance.</p></section>)}
       <details className="detail-section">
         <summary>Session guidance</summary>

@@ -328,6 +328,11 @@ export function App() {
       })
       .catch(report);
   }
+  function changeGuided(guided: boolean) {
+    const next = {...sessionChanges, guided};
+    setSessionChanges(next);
+    queue.current = queue.current.catch(() => {}).then(() => put("settings", next)).then(() => {}).catch(report);
+  }
   function changeSessionMode(shortSession: boolean) {
     const next = {...sessionChanges, shortSession};
     setSessionChanges(next);
@@ -661,6 +666,8 @@ export function App() {
               workout={workout}
               shortSession={!!sessionChanges.shortSession}
               onSessionMode={changeSessionMode}
+              guided={!!sessionChanges.guided}
+              onGuided={changeGuided}
               exposureLogger={today.exposure && program.assessment ? <ExposureScreen key={today.exposure.domain} embedded domain={today.exposure.domain} assessment={program.assessment} checkpoints={program.checkpoints} sessions={sessions} readiness={readiness?.level || "UNCHECKED"} onBack={()=>{}} onSave={(values,decision)=>saveExposure(values,decision,today.exposure.domain,true)} /> : undefined}
               exposure={today.exposure}
               onExposure={(domain) => { setDomain(domain); open("exposure"); }}

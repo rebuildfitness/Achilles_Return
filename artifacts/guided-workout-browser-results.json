@@ -1,0 +1,8 @@
+{
+  "passed": [
+    "Guide shows one illustrated exercise and advances only on explicit set completion",
+    "Reload resumes the next set; full session retains the completed warm-up",
+    "Guided mode persists offline and fits mobile and desktop without runtime errors"
+  ],
+  "failed": 0
+}
