@@ -1,0 +1,111 @@
+.final-screen {
+  display: grid;
+  gap: 16px;
+}
+.final-screen h1,
+.final-screen h2,
+.final-screen h3 {
+  margin: 0 0 8px;
+}
+.final-screen p {
+  overflow-wrap: anywhere;
+}
+.final-screen label {
+  display: grid;
+  gap: 8px;
+}
+.final-actions,
+.final-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.final-row {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-200, #e5e8ee);
+}
+.final-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+  gap: 12px;
+}
+.final-app button,
+.final-app input,
+.final-app select {
+  min-height: 44px;
+}
+.final-screen button,
+.final-screen select,
+.final-screen input {
+  padding: 10px 14px;
+  border: 1px solid #d7dfec;
+  border-radius: 14px;
+  background: white;
+  color: #18202c;
+  max-width: 100%;
+}
+.final-screen button[aria-pressed="true"],
+.final-screen button[aria-current="page"] {
+  border: 2px solid #3165fc;
+  background: #eef3ff;
+}
+.final-screen .primary-button {
+  background: #3165fc;
+  color: white;
+}
+.final-app :focus-visible {
+  outline: 3px solid #3165fc;
+  outline-offset: 3px;
+}
+.final-exercise {
+  padding: 16px 0;
+  border-top: 1px solid #e5e8ee;
+}
+.final-table {
+  overflow-x: auto;
+}
+.final-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.final-table th,
+.final-table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #e5e8ee;
+}
+.progress-bar-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 24px;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+.progress-bar-row meter {
+  width: 100%;
+}
+.final-screen summary {
+  padding: 12px 0;
+  cursor: pointer;
+}
+.final-screen .builder-demo small {
+  display: block;
+}
+.final-screen .card {
+  min-width: 0;
+}
+.final-app .content {
+  padding-bottom: 100px;
+}
+@media (max-width: 390px) {
+  .final-actions > button {
+    flex: 1 1 120px;
+  }
+  .progress-bar-row {
+    grid-template-columns: 1fr;
+  }
+  .final-screen .card {
+    padding: 14px;
+  }
+}

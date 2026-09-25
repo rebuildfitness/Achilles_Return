@@ -12,7 +12,7 @@ import {
   writeRecords,
   DB_NAME,
 } from "../src/db.js";
-import { migrateBackup, STORE_NAMES } from "../src/persistence/schema.js";
+import { migrateBackup, ALL_STORE_NAMES } from "../src/persistence/schema.js";
 
 test("upgrade real v1 schema without changing records; commit, reopen, export and restore", async () => {
   const original = {
@@ -42,8 +42,8 @@ test("upgrade real v1 schema without changing records; commit, reopen, export an
     request.onerror = () => reject(request.error);
   });
   const db = await getDb();
-  assert.equal(db.version, 2);
-  assert.deepEqual([...db.objectStoreNames].sort(), [...STORE_NAMES].sort());
+  assert.equal(db.version, 3);
+  assert.deepEqual([...db.objectStoreNames].sort(), [...ALL_STORE_NAMES].sort());
   assert.deepEqual(await get("sessions", "old-session"), original);
   await put("settings", { id: "draft", log: { reps: 8 } });
   await closeDb();
@@ -52,7 +52,7 @@ test("upgrade real v1 schema without changing records; commit, reopen, export an
     log: { reps: 8 },
   });
   const exported = await exportAll();
-  assert.equal(exported.schemaVersion, 2);
+  assert.equal(exported.schemaVersion, 3);
   assert.equal(exported.sessions[0].rulesetVersion, "old-rules");
   assert.ok(exported.rulesetVersion && exported.exportedAt);
   await restoreBackup({

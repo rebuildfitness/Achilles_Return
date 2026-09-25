@@ -1,0 +1,7 @@
+{
+  "src/db.js": "fa8a7dd24e905cb0205b6720545d080083e1281edc03206bce0fc8c0ab2deb14",
+  "src/persistence/schema.js": "bec2a68ad202ad37821403c90c97c5efbded8bede601202ed9b0c68bc53065a2",
+  "tests/persistence.test.mjs": "f058204cb265124c9ec59c5dc8f954f507e4244eb593307b039b0ec0b85b4303",
+  "tests/movement.test.mjs": "ca2fa6490c632b7c32c00f57859033e88ba0d7bf3eeb094a6e2603a2bc814288",
+  "package.json": "dbdad6183eb3997b8da45831aab2bd08b398c2ef2fd625fd193b584cffb366cb"
+}

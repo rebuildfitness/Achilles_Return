@@ -1,3 +1,8 @@
+import {lazy,Suspense,useState} from 'react';
+const TodayPlans=lazy(()=>import('../components/v2/TodayPlans'));
+const TrainingRecords=lazy(()=>import('./TrainingRecords'));
+const WorkoutBuilder=lazy(()=>import('./WorkoutBuilder'));
+const WorkoutExecution=lazy(()=>import('./WorkoutExecution'));
 import { RehabProgression } from "../components/RehabProgression";
 import { PlannedExposure } from "../components/PlannedExposure";
 import { DailyBrand } from "../components/DailyBrand";
@@ -51,6 +56,7 @@ export function Today({
   workoutNote: string;
   onResponse: (session: Session) => void;
 }) {
+  const [v2,setV2]=useState<any>(null);
   const recovery = workout.items.length === 0;
   const red = readiness?.level === "RED";
   const result = assessment ? baselineResult(assessment.values) : null;
@@ -66,6 +72,7 @@ export function Today({
     : completed || recovery ? { label: "Log recovery", run: () => onRecovery() }
     : canOpenWorkout ? { label: hasDraft ? "Resume Workout" : "Open Workout", run: onWorkout }
     : { label: "Review Tests", run: onTests };
+  if(v2) return <Suspense fallback={<p>Loading workout…</p>}>{v2==='records'?<TrainingRecords onBack={()=>setV2(null)}/>:v2==='builder'?<WorkoutBuilder onBack={()=>setV2(null)}/>:<WorkoutExecution initial={v2} onBack={()=>setV2(null)}/>}</Suspense>;
   return (
     <>
       <div className="screen-heading">
@@ -78,6 +85,7 @@ export function Today({
           })}
         </p>
       </div>
+      <Suspense fallback={<p>Loading your planned workouts…</p>}><TodayPlans onOpen={()=>setV2('records')} onBuild={()=>setV2('builder')} onSession={setV2}/></Suspense>
       <Card className={`today-action ${red ? 'tone-stop' : responseDue ? 'tone-pending' : readiness?.level === 'GREEN' ? 'tone-ready' : readiness ? 'tone-pending' : ''}`}>
         <div className="eyebrow">TODAY’S STATUS</div>
         <h2>{red ? readinessLabel(readiness!.level) : !assessment ? 'Establish your starting point' : responseDue ? 'Next-morning review due' : readiness ? readinessLabel(readiness.level) : 'How is your Achilles today?'}</h2>

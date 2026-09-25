@@ -6,8 +6,8 @@ import "./ExerciseIllustration.css";
 const illustrations = new Map(manifest.map(record => [record.exerciseId, record]));
 
 /** Shared by both libraries; missing artwork never changes the exercise actions. */
-export function ExerciseIllustration({ exerciseId, name, children }: {
-  exerciseId: string; name: string; children: ReactNode;
+export function ExerciseIllustration({ exerciseId, name, children, compact = false }: {
+  exerciseId: string; name: string; children: ReactNode; compact?: boolean;
 }) {
   const record = illustrations.get(exerciseId);
   const url = illustrationUrl(record, import.meta.env.BASE_URL);
@@ -26,7 +26,7 @@ export function ExerciseIllustration({ exerciseId, name, children }: {
     trigger.current?.focus({preventScroll:true});
   }
   return (
-    <div className="illustrated-exercise" data-exercise-id={exerciseId}
+    <div className={`illustrated-exercise${compact ? " illustrated-exercise-compact" : ""}`} data-exercise-id={exerciseId}
       onKeyDown={event => { if (open && event.key === "Escape") { event.preventDefault(); event.stopPropagation(); close(); } }}>
       <div className="illustrated-exercise-row">
         {available ? (
@@ -42,13 +42,14 @@ export function ExerciseIllustration({ exerciseId, name, children }: {
         <div className="illustrated-exercise-content">{children}</div>
       </div>
       {available && open && (
-        <dialog ref={dialog} onCancel={e=>{e.preventDefault();close();}} id={panel} className="illustration-detail" aria-label={`${name} illustration`}>
+        <dialog ref={dialog} onCancel={e=>{e.preventDefault();e.stopPropagation();close();}} id={panel} className="illustration-detail" aria-label={`${name} illustration`}>
           <button className="secondary-button" type="button" onClick={close}>Close illustration</button>
+          <h2>{name}</h2>
           {detailFailed ? <div role="status"><p>Connect to load the larger illustration.</p><button type="button" onClick={() => setDetailFailed(false)}>Retry larger image</button></div> :
             <img src={url!} alt={record?.altText || `${name} illustration`} width="640" height="960"
               onError={() => setDetailFailed(true)} />}
           <p className="helper">{record?.panelDescription}</p>
-          <p className="helper">Illustration supplements the exercise guidance. Follow your Plan for the prescribed dose; reference artwork does not unlock an exercise.</p>
+          <p className="helper">{compact ? "Illustration is a visual reference, not a prescribed dose or medical clearance. You control your workout." : "Illustration supplements the exercise guidance. Follow your Plan for the prescribed dose; reference artwork does not unlock an exercise."}</p>
           <details><summary>Offline image availability</summary><p className="helper">Small previews download as you browse. Larger images download when you tap Enlarge. Each is saved for offline use after loading. App updates or cleared browser storage may require another download. Short Demos require internet.</p></details>
         </dialog>
       )}

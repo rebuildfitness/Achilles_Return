@@ -1,5 +1,7 @@
 import { DataHealth } from "../components/DataHealth";
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
+const TrainingRecords = lazy(() => import('./TrainingRecords'));
+const WorkoutBuilder = lazy(() => import('./WorkoutBuilder'));
 import { Card, PrimaryButton } from "../components/ui";
 import { DataField } from "./Baseline";
 import { ExerciseLibrary } from "../components/ExerciseLibrary";
@@ -21,6 +23,7 @@ export function MoreScreen({
   initialSection = "",
   prescribedIds = [],
   onWelcome,
+  settingsMode = false,
 }: {
   onMovement: () => void;
   profile?: Profile;
@@ -29,6 +32,7 @@ export function MoreScreen({
   initialSection?: string;
   prescribedIds?: string[];
   onWelcome?: () => void;
+  settingsMode?: boolean;
 }) {
   const [section, setSection] = useState(initialSection),
     [search, setSearch] = useState(""),
@@ -53,10 +57,12 @@ export function MoreScreen({
       setBusy(false);
     }
   }
+  if (section === 'records') return <Suspense fallback={<p>Loading records…</p>}><TrainingRecords onBack={() => setSection('')} /></Suspense>;
+  if (section === 'builder') return <Suspense fallback={<p role="status">Loading Workout Builder…</p>}><WorkoutBuilder onBack={() => setSection('')} /></Suspense>;
   return (
     <>
       <div className="screen-heading">
-        <h1>{({library:"Exercise library",profile:"Profile & schedule",evidence:"Evidence & rules",backup:"Backup & restore",about:"About & install"} as Record<string,string>)[section] || "More"}</h1>
+        <h1>{({library:"Exercise library",profile:settingsMode?"Profile & equipment":"Profile & schedule",evidence:"Evidence & rules",backup:"Backup & restore",about:"About & install"} as Record<string,string>)[section] || (settingsMode?"Settings":"More")}</h1>
         {onWelcome && !section && <button className="text-button" onClick={onWelcome}>Replay welcome hero</button>}
         <p>{section === "library" ? "Find demos, setup guidance and exercises for your equipment." : "Your plan, your data, your device."}</p>
       </div>
@@ -76,12 +82,14 @@ export function MoreScreen({
         <Card>
           <div className="menu-list">
             {[
+              ["builder", "Workout Builder"],
+              ["records", "Plan, Calendar & History"],
               ["profile", "Profile & schedule"],
               ["library", "Exercise library"],
               ["evidence", "Evidence & rules"],
               ["backup", "Backup & restore"],
               ["about", "About & install"],
-            ].map(([key, label]) => (
+            ].filter(([key])=>!settingsMode || !['builder','records','library'].includes(key)).map(([key, label]) => (
               <button
                 key={key}
                 aria-expanded={section === key}
@@ -90,7 +98,7 @@ export function MoreScreen({
                   setMessage("");
                 }}
               >
-                {label}
+                {settingsMode&&key==='profile'?'Profile & equipment':label}
                 <span aria-hidden="true">›</span>
               </button>
             ))}
@@ -252,7 +260,7 @@ export function MoreScreen({
           <h2>Backup & restore</h2>
           <p>
             Export regularly. Clearing browser/site data removes this device’s
-            records. V1 has no account or cloud sync.
+            records. This app has no account or cloud sync.
           </p>
           <PrimaryButton onClick={onExport}>Export JSON backup</PrimaryButton>
           <label className="form-field">
@@ -282,7 +290,7 @@ export function MoreScreen({
                 {STORE_NAMES.map((s) => `${backup[s].length} ${s}`).join(", ")}.
               </p>
               <p>
-                Restore merges records by ID. Matching IDs are replaced; other
+                Restore merges records by ID. Identical workout records are unchanged; conflicting V2 records are rejected. Legacy records retain their existing import behavior; other
                 local records remain. Export first if you want to retain a
                 separate copy.
               </p>

@@ -237,7 +237,7 @@ test("concurrent draft writes reject stale revisions rather than silently overwr
 test("backup schema 2 round-trips drafts and movement audit history", async () => {
   const before = await loadMovement(),
     backup = await exportAll();
-  assert.equal(backup.schemaVersion, 2);
+  assert.equal(backup.schemaVersion, 3);
   assert.equal(backup.backupSchemaVersion, undefined);
   assert.ok(backup.settings.some((r) => r.kind === "movement_transaction"));
   await restoreBackup(backup);

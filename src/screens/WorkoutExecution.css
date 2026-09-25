@@ -1,0 +1,51 @@
+.workout-execution .execution-target {
+  padding: 12px;
+  background: var(--blue-050, #eef3ff);
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+}
+.workout-execution .execution-set.is-complete {
+  border-color: var(--green-600, #38a971);
+}
+.workout-execution .execution-bout,
+.workout-execution .execution-round {
+  margin: 12px 0;
+  padding: 12px;
+  border: 1px solid var(--line-200, #e5e8ee);
+  border-radius: 12px;
+}
+.workout-execution fieldset {
+  min-width: 0;
+}
+.workout-execution legend {
+  max-width: 100%;
+  white-space: normal;
+}
+.workout-execution [role="timer"] {
+  font-variant-numeric: tabular-nums;
+  font-size: 24px;
+}
+.workout-execution .execution-set {
+  scroll-margin-top: 80px;
+}
+.workout-execution .execution-round a {
+  color: var(--blue-600, #3165fc);
+  display: inline-block;
+  min-height: 44px;
+  padding: 10px 0;
+}
+.workout-execution .execution-overview {
+  padding-left: 20px;
+}
+.workout-execution .execution-overview li {
+  margin-bottom: 12px;
+}
+.workout-execution .execution-overview span {
+  display: block;
+  color: var(--ink-700, #3d4755);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.workout-execution .execution-overview button {
+  text-align: left;
+}

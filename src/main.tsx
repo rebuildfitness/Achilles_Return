@@ -1,6 +1,7 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "./App";
+import FinalApp from "./FinalApp";
+const LegacyApp=lazy(()=>import('./App').then(m=>({default:m.App})));
 import { applyDesignTokens } from "./design/tokens";
 import "./styles.css";
 import "./design-refinement.css";
@@ -8,7 +9,9 @@ import "./design-refinement.css";
 applyDesignTokens();
 createRoot(document.getElementById("app")!).render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<p role="status">Loading Achilles Return…</p>}>
+      {new URLSearchParams(location.search).get('legacy')==='1'?<LegacyApp/>:<FinalApp/>}
+    </Suspense>
   </React.StrictMode>,
 );
 if (import.meta.env.PROD && "serviceWorker" in navigator) {

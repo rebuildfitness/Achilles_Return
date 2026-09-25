@@ -1,0 +1,3 @@
+# Preservation tests hash approved source/research bytes across Windows and CI.
+# Keep those bytes intact instead of applying platform newline conversion.
+* -text

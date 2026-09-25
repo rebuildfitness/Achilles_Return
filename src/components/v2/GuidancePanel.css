@@ -1,0 +1,64 @@
+.v2-guidance {
+  margin-block: 16px;
+}
+.guidance-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.guidance-finding {
+  border: 1px solid var(--border, #dce2ed);
+  border-left: 4px solid #4367ba;
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 12px;
+  background: var(--surface, #fff);
+}
+.guidance-caution {
+  border-left-color: #b5740c;
+}
+.guidance-strong_warning {
+  border-left-color: #b32632;
+}
+.guidance-level {
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+}
+.guidance-finding h3 {
+  margin-block: 4px 8px;
+}
+.v2-guidance summary {
+  padding: 10px 0;
+  cursor: pointer;
+}
+.v2-guidance pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 250px;
+  overflow: auto;
+  font-size: 0.75rem;
+}
+.guidance-proposal {
+  border: 2px solid #315efb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 12px;
+}
+.guidance-decision {
+  background: #f0f3f8;
+  padding: 10px;
+  border-radius: 8px;
+}
+.v2-guidance a {
+  overflow-wrap: anywhere;
+}
+.v2-guidance button {
+  min-height: 44px;
+}
+.v2-guidance :focus-visible {
+  outline: 3px solid #315efb;
+  outline-offset: 3px;
+}

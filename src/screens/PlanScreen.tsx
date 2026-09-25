@@ -1,9 +1,10 @@
+const TrainingRecords = lazy(()=>import('./TrainingRecords'));
 import { RehabProgression } from "../components/RehabProgression";
 import { ExercisePath } from "../components/ExercisePath";
 import { PlannedExposure } from "../components/PlannedExposure";
 import { displayDate } from "../data/displayDates.js";
 import { SectionSwitch } from "../components/SectionSwitch";
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Card, PrimaryButton, CalendarCard } from "../components/ui";
 import { RescheduleWorkout } from "../components/RescheduleWorkout";
 import { weeklyPlan } from "../rules/planner.js";
@@ -32,16 +33,18 @@ export function PlanScreen({
   onTests: () => void;
   onReload: () => Promise<void>;
 }) {
+  const [records,setRecords]=useState(false);
   const [selected, setSelected] = useState(dayKey()),
     [offset, setOffset] = useState(0);
   const [view, setView] = useState("week");
   const date = new Date();
   date.setDate(date.getDate() + offset * 7);
   const days = weeklyPlan(profile, assessment, sessions, date, readiness, checkpoints, dayKey());
+  if(records) return <Suspense fallback={<p>Loading plan…</p>}><TrainingRecords onBack={()=>setRecords(false)}/></Suspense>;
   return (
     <>
       <div className="screen-heading">
-        <h1>Plan</h1>
+        <h1>Plan</h1><button onClick={()=>setRecords(true)}>User-owned Plan, Calendar & History</button>
         <p>Your full week. Capacity first, recovery built in.</p><p className="helper">The plan updates automatically when saved criteria and responses support the next dose. Future work remains provisional.</p>
       </div>
       <SectionSwitch
